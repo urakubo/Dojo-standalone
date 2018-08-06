@@ -12,7 +12,7 @@ In addition to the original Dojo:
 1) A small gui was appended to control dojo at a desktop pc.
 2) Many input/output image file formats are supported. 
 3) Some codes were refactored for stability.
-4) Plugin section was created. Users can easily append new Python functions.
+4) Plugin section was created. Users can easily insert new Python functions.
 
 #) A standalone package for Windows10 is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
 
