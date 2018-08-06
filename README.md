@@ -14,7 +14,7 @@ In addition to the original Dojo:
 3) Some codes were refactored for stability.
 
 
-#) A standalone package for Windows10 is provided (pyinstaller version). If you do not use this, please build Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
+#) A standalone package for Windows10 is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
 
 
 1) open CV3: conda install -c conda-forge opencv=3.2.0
