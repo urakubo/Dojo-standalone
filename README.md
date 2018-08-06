@@ -27,6 +27,14 @@ In addition to the original Dojo:
 8) mahotas: conda install mahotas
 
 
+#) How to use:
+
+Please download
+
+Launch the .
+
+Load a stack of 2D EM images (tiff/png sequential files) and by use of .
+
 
 #) Currenly unresolved problem:
 
