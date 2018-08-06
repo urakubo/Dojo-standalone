@@ -10,7 +10,7 @@ In addition to the original Dojo:
 
 
 1) A small gui was appended to control dojo at a desktop pc.
-2) Many input/output file formats have been supported. 
+2) Many input/output image file formats are supported. 
 3) Some codes were refactored for stability.
 
 
