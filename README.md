@@ -30,7 +30,7 @@ In addition to the original Dojo:
 
 #) Currenly unresolved problem:
 
-1) Manual operation boards (in the small GUI panel) is under development.
+1) Manual operation board (at the bottom of the small GUI panel) is under development.
 
 2) It neearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (file: DojoStandalone.py).
 
