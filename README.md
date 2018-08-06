@@ -16,22 +16,14 @@ In addition to the original Dojo:
 
 A standalone package for Windows10 is provided. If you do not use this, please build Python2.7/(Python3.5 in near future) environment on your pc with the following .
 
-Requirements:
 
 1) open CV3: conda install -c conda-forge opencv=3.2.0
-
 2) pypng: pip install pypng
-
 3) Pillow: conda install -c anaconda pillow
-
 4) libtiff: conda install libtiff
-
 5) wxpython: conda install -c newville wxpython-phoenix
-
 6) wxpython: pip install -U wxPython
-
 7) marching cubes from ilastik. This is necesssary only for a Plugin function, and compilation is required: https://github.com/ilastik/marching_cubes
-
 8) mahotas: conda install mahotas
 
 
