@@ -1,6 +1,6 @@
 "# Dojo-standalone"
 
-Varieties of software have been launched for managing EM segmentation, but few of them aim for proofreading that involves over-segmentation/agglomeration process. Many of them work only on a specific platform on specific database, and others are not open-source.
+Varieties of software have been launched for managing EM segmentation, but few of them aim for the proofreading of automated segmentation that involves over-segmentation/agglomeration process. Many of them work only on a specific platform on specific database, and others are not open-source.
 I here present a open-source, standalone version of such proofreading software - Dojo in part of Rhoana pipeline (Pfister lab/Harvard, 2014). This software provides a 
 It has been developed on Python2.7 (Python3.5 in near future) on Windows10. It should also work on Mac and Linux, but I have not tested it.
 
