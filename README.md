@@ -1,4 +1,5 @@
-"# Dojo-standalone" 
+"# Dojo-standalone"
+
 Varities of software for EM segmentation have been launched, but few of them aim for proofreading that involves oversegmentation/agglomeration. 
 This is a standalone version of Dojo in part of Rhoana pipeline (Pfister lab/Harvard). It works on Python2.7 (Python3.5) on Windows. It should also work on Mac and Linux, but I have not tested it.
 
