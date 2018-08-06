@@ -1,0 +1,74 @@
+
+	// object
+	var material = new THREE.MeshLambertMaterial( { ambient: 0xff0000, color: 0xff0000} );
+    var loader=new THREE.STLLoader();
+    loader.addEventListener('load', function (event){
+        var geometry=event.content;
+        var mesh=new THREE.Mesh(geometry, material);
+        mesh.scale.set( 0.3,0.3,0.3);
+		mesh.material.side = THREE.DoubleSide;
+		mesh.name = 'test_name'; ///
+        APP.scene.add(mesh);
+        });
+    // STL file to be loaded
+    loader.load('./maxsize_obj.stl');
+
+
+	//3Dを用意
+	var loader = new THREE.STLLoader();
+	loader.load( './maxsize_obj.stl', function ( geometry ) {
+		var material = new THREE.MeshLambertMaterial( { ambient: 0xff0000, color: 0xff0000} );
+		//var material = new THREE.MeshLambertMaterial( { ambient: 0xffff10, color: 0xff1010} );
+		//var material= new THREE.MeshLambertMaterial({color: 0xFF1010});
+		mesh = new THREE.Mesh( geometry, material );
+		mesh.scale.set( 0.3,0.3,0.3);
+		mesh.material.side = THREE.DoubleSide;
+		// mesh.castShadow = true; // 影をつける
+		APP.scene.add( mesh );
+
+	});
+
+
+
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+  <meta charset='utf-8'> 
+  <script src="three.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+  <script>
+    $(document).ready( function() {
+      // Rendererを用意
+      var renderer = new THREE.WebGLRenderer( { 'canvas' : $('#canvas')[0] } );
+
+      // Cameraを用意
+      var camera = new THREE.PerspectiveCamera();
+      camera.position.z = 500;
+
+      // 物体の用意
+      var geometry = new THREE.CubeGeometry(200, 200, 200);
+      var material = new THREE.MeshLambertMaterial( { color: 0x00ff88 } )
+      var mesh = new THREE.Mesh( geometry, material );
+      mesh.rotation.x = 0.5;
+      mesh.rotation.y = 0.5;
+
+      // Sceneを用意
+      var scene = new THREE.Scene();
+      scene.add( mesh );
+
+      // render
+      renderer.render( scene, camera );      
+    } );
+  </script>
+</head>
+
+<body>
+  <canvas id="canvas" style="width:300px; height: 300px; border:solid 1px; margin: 30px;">
+    CanvasはHTML5の標準機能です。しばし普及に時間がかかりましたが、今や巻き返しの時です。グラフィカルなWebサイトはお好き？ 結構。ではますます好きになりますよ。さあ、どうぞ。WebGLを使った3D画像です。んあぁ、おっしゃらないで。IE8で見れない。でも、IEなんて9以前は使えたもんじゃない。どうぞChromeで見てください。余裕の3Dだ。レンダリング能力が違いますよ。
+  </canvas>
+</body>
+
+</html>

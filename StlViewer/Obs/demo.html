@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://navi-local.com/sample/3d/sample2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>demo</title>
+<script src="./demo_files/jquery-1.10.2.min.js.ダウンロード"></script>
+</head>
+<body style="">
+<p>STLファイルを読み込んで、3DをWebGLで表示</p>
+<script src="./demo_files/three.min.js.ダウンロード"></script>
+<script src="./demo_files/STLLoader.js.ダウンロード"></script>
+<script src="./demo_files/CanvasRenderer.js.ダウンロード"></script>
+<script src="./demo_files/Projector.js.ダウンロード"></script>
+<script src="./demo_files/TrackballControls.js.ダウンロード"></script>
+<script>
+
+var APP = { };
+
+APP.animate = function() {
+	APP.renderer.render( APP.scene, APP.camera );
+	APP.controls.update();
+	requestAnimationFrame( APP.animate );
+};
+
+$(document).ready( function() {
+
+	// Rendererを用意
+	APP.renderer = new THREE.WebGLRenderer();
+	APP.renderer.setSize(window.innerWidth, window.innerHeight);
+	document.body.appendChild( APP.renderer.domElement );
+
+	 // Cameraを用意
+	APP.camera = new THREE.PerspectiveCamera();
+	APP.camera.position.z = 100;
+
+	// Sceneを用意
+	APP.scene = new THREE.Scene();
+	APP.scene.add( APP.camera );
+
+	//ライトを用意
+	var directionalLight = new THREE.DirectionalLight( 0xffffff, 3 );
+	directionalLight.position.y = 10;
+	directionalLight.position.z = 10;
+	APP.scene.add( directionalLight );
+	var aLight = new THREE.AmbientLight( 0xffffff);
+	APP.scene.add( aLight );
+	
+	//3Dを用意
+	var loader = new THREE.STLLoader();
+	loader.load( 'openjscad.stl', function ( geometry ) {
+		var material = new THREE.MeshLambertMaterial( { ambient: 0xff5533, color: 0xff5533} );
+		mesh = new THREE.Mesh( geometry, material );
+		APP.scene.add( mesh );
+		
+		// Controlsを用意
+		APP.controls = new THREE.TrackballControls( APP.camera );
+		APP.animate();
+	});
+});
+
+</script>
+
+<canvas width="1920" height="898" style="width: 1920px; height: 898px;"></canvas></body></html>

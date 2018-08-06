@@ -1,0 +1,11 @@
+﻿  Building Custom Rule C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/generate.stamp is up-to-date.
+  python_wrapper.cpp
+  marching_cubes.cpp
+  laplacian_smoothing.cpp
+  Unknown compiler version - please run the configure tests and report the results
+LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。
+     ライブラリ C:/Users/urakubo/Desktop/dojo180724/marching_cubes/RelWithDebInfo/marching_cubes.lib とオブジェクト C:/Users/urakubo/Desktop/dojo180724/marching_cubes/RelWithDebInfo/marching_cubes.exp を作成中
+  コード生成しています。
+  コード生成が終了しました。
+  marching_cubes.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\RelWithDebInfo\marching_cubes.pyd

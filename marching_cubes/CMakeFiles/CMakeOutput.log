@@ -1,0 +1,714 @@
+The system is: Windows - 10.0.17134 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+.NET Framework ���� Microsoft (R) Build Engine �o�[�W���� 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:52 �Ƀr���h���J�n���܂����B
+�m�[�h 1 ��̃v���W�F�N�g "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdC\CompilerIdC.vcxproj" (����̃^�[�Q�b�g)�B
+PrepareForBuild:
+  �f�B���N�g�� "Debug\" ���쐬���Ă��܂��B
+  �f�B���N�g�� "Debug\CompilerIdC.tlog\" ���쐬���Ă��܂��B
+InitializeBuildStatus:
+  "AlwaysCreate" ���w�肳�ꂽ���� "Debug\CompilerIdC.tlog\unsuccessfulbuild" ���쐬���Ă��܂��B
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /nologo /W0 /WX- /diagnostics:classic /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+  CMakeCCompilerId.c
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdC.lib" /MACHINE:X64 Debug\CMakeCCompilerId.obj
+  CompilerIdC.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdC\.\CompilerIdC.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdC\.\CompilerIdC.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "Debug\CompilerIdC.tlog\CompilerIdC.write.1u.tlog" "Debug\vcpkg.applocal.log"
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_C_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\Hostx86\x64\cl.exe
+FinalizeBuildStatus:
+  �t�@�C�� "Debug\CompilerIdC.tlog\unsuccessfulbuild" ���폜���Ă��܂��B
+  "Debug\CompilerIdC.tlog\CompilerIdC.lastbuildstate" �̃^�b�` �^�X�N�����s���Ă��܂��B
+�v���W�F�N�g "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdC\CompilerIdC.vcxproj" (����̃^�[�Q�b�g) �̃r���h���������܂����B
+
+�r���h�ɐ������܂����B
+    0 �̌x��
+    0 �G���[
+
+�o�ߎ��� 00:00:01.30
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+
+The C compiler identification is MSVC, found in "C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/3.9.4/CompilerIdC/CompilerIdC.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler:  
+Build flags: 
+Id flags:  
+
+The output was:
+0
+.NET Framework ���� Microsoft (R) Build Engine �o�[�W���� 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:54 �Ƀr���h���J�n���܂����B
+�m�[�h 1 ��̃v���W�F�N�g "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdCXX\CompilerIdCXX.vcxproj" (����̃^�[�Q�b�g)�B
+PrepareForBuild:
+  �f�B���N�g�� "Debug\" ���쐬���Ă��܂��B
+  �f�B���N�g�� "Debug\CompilerIdCXX.tlog\" ���쐬���Ă��܂��B
+InitializeBuildStatus:
+  "AlwaysCreate" ���w�肳�ꂽ���� "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" ���쐬���Ă��܂��B
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /nologo /W0 /WX- /diagnostics:classic /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+  CMakeCXXCompilerId.cpp
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:".\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\CompilerIdCXX.lib" /MACHINE:X64 Debug\CMakeCXXCompilerId.obj
+  CompilerIdCXX.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdCXX\.\CompilerIdCXX.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdCXX\.\CompilerIdCXX.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "Debug\CompilerIdCXX.tlog\CompilerIdCXX.write.1u.tlog" "Debug\vcpkg.applocal.log"
+PostBuildEvent:
+  for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+  :VCEnd
+  CMAKE_CXX_COMPILER=C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\Hostx86\x64\cl.exe
+FinalizeBuildStatus:
+  �t�@�C�� "Debug\CompilerIdCXX.tlog\unsuccessfulbuild" ���폜���Ă��܂��B
+  "Debug\CompilerIdCXX.tlog\CompilerIdCXX.lastbuildstate" �̃^�b�` �^�X�N�����s���Ă��܂��B
+�v���W�F�N�g "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\3.9.4\CompilerIdCXX\CompilerIdCXX.vcxproj" (����̃^�[�Q�b�g) �̃r���h���������܂����B
+
+�r���h�ɐ������܂����B
+    0 �̌x��
+    0 �G���[
+
+�o�ߎ��� 00:00:00.96
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+
+The CXX compiler identification is MSVC, found in "C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/3.9.4/CompilerIdCXX/CompilerIdCXX.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_4f23a.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:55 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_4f23a.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_4f23a.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_4f23a.dir\Debug\cmTC_4f23a.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_4f23a.dir\Debug\cmTC_4f23a.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4f23a.dir\Debug\\" /Fd"cmTC_4f23a.dir\Debug\vc141.pdb" /Gd /TC /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\testCCompiler.c
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4f23a.dir\Debug\\" /Fd"cmTC_4f23a.dir\Debug\vc141.pdb" /Gd /TC /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\testCCompiler.c
+  testCCompiler.c
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_4f23a.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_4f23a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_4f23a.lib" /MACHINE:X64  /machine:x64 cmTC_4f23a.dir\Debug\testCCompiler.obj
+  cmTC_4f23a.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_4f23a.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_4f23a.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_4f23a.dir\Debug\cmTC_4f23a.tlog\cmTC_4f23a.write.1u.tlog" "cmTC_4f23a.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_4f23a.dir\Debug\cmTC_4f23a.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_4f23a.dir\Debug\cmTC_4f23a.tlog\cmTC_4f23a.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_4f23a.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:01.34
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_34f64.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:57 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_34f64.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_34f64.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_34f64.dir\Debug\cmTC_34f64.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_34f64.dir\Debug\cmTC_34f64.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_34f64.dir\Debug\\" /Fd"cmTC_34f64.dir\Debug\vc141.pdb" /Gd /TC /FC /errorReport:queue "C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\Library\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_34f64.dir\Debug\\" /Fd"cmTC_34f64.dir\Debug\vc141.pdb" /Gd /TC /FC /errorReport:queue "C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\Library\share\cmake-3.9\Modules\CMakeCCompilerABI.c"
+  CMakeCCompilerABI.c
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_34f64.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_34f64.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_34f64.lib" /MACHINE:X64  /machine:x64 cmTC_34f64.dir\Debug\CMakeCCompilerABI.obj
+  cmTC_34f64.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_34f64.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_34f64.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_34f64.dir\Debug\cmTC_34f64.tlog\cmTC_34f64.write.1u.tlog" "cmTC_34f64.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_34f64.dir\Debug\cmTC_34f64.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_34f64.dir\Debug\cmTC_34f64.tlog\cmTC_34f64.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_34f64.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:00.97
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_7b4e2.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:58 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_7b4e2.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_7b4e2.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_7b4e2.dir\Debug\cmTC_7b4e2.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_7b4e2.dir\Debug\cmTC_7b4e2.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7b4e2.dir\Debug\\" /Fd"cmTC_7b4e2.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_7b4e2.dir\Debug\\" /Fd"cmTC_7b4e2.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\testCXXCompiler.cxx
+  testCXXCompiler.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_7b4e2.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_7b4e2.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_7b4e2.lib" /MACHINE:X64  /machine:x64 cmTC_7b4e2.dir\Debug\testCXXCompiler.obj
+  cmTC_7b4e2.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_7b4e2.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_7b4e2.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_7b4e2.dir\Debug\cmTC_7b4e2.tlog\cmTC_7b4e2.write.1u.tlog" "cmTC_7b4e2.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_7b4e2.dir\Debug\cmTC_7b4e2.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_7b4e2.dir\Debug\cmTC_7b4e2.tlog\cmTC_7b4e2.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_7b4e2.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:01.05
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_f69b5.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:17:59 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_f69b5.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_f69b5.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_f69b5.dir\Debug\cmTC_f69b5.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_f69b5.dir\Debug\cmTC_f69b5.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f69b5.dir\Debug\\" /Fd"cmTC_f69b5.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue "C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\Library\share\cmake-3.9\Modules\CMakeCXXCompilerABI.cpp"
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_f69b5.dir\Debug\\" /Fd"cmTC_f69b5.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue "C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\Library\share\cmake-3.9\Modules\CMakeCXXCompilerABI.cpp"
+  CMakeCXXCompilerABI.cpp
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_f69b5.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_f69b5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_f69b5.lib" /MACHINE:X64  /machine:x64 cmTC_f69b5.dir\Debug\CMakeCXXCompilerABI.obj
+  cmTC_f69b5.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_f69b5.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_f69b5.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_f69b5.dir\Debug\cmTC_f69b5.tlog\cmTC_f69b5.write.1u.tlog" "cmTC_f69b5.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_f69b5.dir\Debug\cmTC_f69b5.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_f69b5.dir\Debug\cmTC_f69b5.tlog\cmTC_f69b5.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_f69b5.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:00.96
+
+
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_55902.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:18:00 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_55902.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_55902.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_55902.dir\Debug\cmTC_55902.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_55902.dir\Debug\cmTC_55902.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_55902.dir\Debug\\" /Fd"cmTC_55902.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_55902.dir\Debug\\" /Fd"cmTC_55902.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_55902.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_55902.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_55902.lib" /MACHINE:X64  /machine:x64 cmTC_55902.dir\Debug\feature_tests.obj
+  cmTC_55902.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_55902.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_55902.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_55902.dir\Debug\cmTC_55902.tlog\cmTC_55902.write.1u.tlog" "cmTC_55902.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_55902.dir\Debug\cmTC_55902.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_55902.dir\Debug\cmTC_55902.tlog\cmTC_55902.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_55902.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:00.93
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_03030.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:18:01 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_03030.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_03030.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_03030.dir\Debug\cmTC_03030.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_03030.dir\Debug\cmTC_03030.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_03030.dir\Debug\\" /Fd"cmTC_03030.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_03030.dir\Debug\\" /Fd"cmTC_03030.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_03030.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_03030.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_03030.lib" /MACHINE:X64  /machine:x64 cmTC_03030.dir\Debug\feature_tests.obj
+  cmTC_03030.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_03030.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_03030.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_03030.dir\Debug\cmTC_03030.tlog\cmTC_03030.write.1u.tlog" "cmTC_03030.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_03030.dir\Debug\cmTC_03030.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_03030.dir\Debug\cmTC_03030.tlog\cmTC_03030.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_03030.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:00.96
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_5b4e8.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:18:03 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_5b4e8.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_5b4e8.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_5b4e8.dir\Debug\cmTC_5b4e8.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_5b4e8.dir\Debug\cmTC_5b4e8.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_5b4e8.dir\Debug\\" /Fd"cmTC_5b4e8.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_5b4e8.dir\Debug\\" /Fd"cmTC_5b4e8.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5b4e8.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_5b4e8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_5b4e8.lib" /MACHINE:X64  /machine:x64 cmTC_5b4e8.dir\Debug\feature_tests.obj
+  cmTC_5b4e8.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5b4e8.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5b4e8.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_5b4e8.dir\Debug\cmTC_5b4e8.tlog\cmTC_5b4e8.write.1u.tlog" "cmTC_5b4e8.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_5b4e8.dir\Debug\cmTC_5b4e8.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_5b4e8.dir\Debug\cmTC_5b4e8.tlog\cmTC_5b4e8.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_5b4e8.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:00.95
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+
+
+Detecting CXX [] compiler features compiled with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_5cc03.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:18:04 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_5cc03.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_5cc03.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_5cc03.dir\Debug\cmTC_5cc03.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_5cc03.dir\Debug\cmTC_5cc03.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_5cc03.dir\Debug\\" /Fd"cmTC_5cc03.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_5cc03.dir\Debug\\" /Fd"cmTC_5cc03.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\feature_tests.cxx
+  feature_tests.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5cc03.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_5cc03.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_5cc03.lib" /MACHINE:X64  /machine:x64 cmTC_5cc03.dir\Debug\feature_tests.obj
+  cmTC_5cc03.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5cc03.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_5cc03.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_5cc03.dir\Debug\cmTC_5cc03.tlog\cmTC_5cc03.write.1u.tlog" "cmTC_5cc03.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_5cc03.dir\Debug\cmTC_5cc03.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_5cc03.dir\Debug\cmTC_5cc03.tlog\cmTC_5cc03.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_5cc03.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+    0 個の警告
+    0 エラー
+
+経過時間 00:00:01.02
+
+
+    Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
+    Feature record: CXX_FEATURE:1cxx_alias_templates
+    Feature record: CXX_FEATURE:1cxx_alignas
+    Feature record: CXX_FEATURE:1cxx_alignof
+    Feature record: CXX_FEATURE:1cxx_attributes
+    Feature record: CXX_FEATURE:1cxx_attribute_deprecated
+    Feature record: CXX_FEATURE:1cxx_auto_type
+    Feature record: CXX_FEATURE:1cxx_binary_literals
+    Feature record: CXX_FEATURE:1cxx_constexpr
+    Feature record: CXX_FEATURE:1cxx_contextual_conversions
+    Feature record: CXX_FEATURE:1cxx_decltype
+    Feature record: CXX_FEATURE:1cxx_decltype_auto
+    Feature record: CXX_FEATURE:1cxx_default_function_template_args
+    Feature record: CXX_FEATURE:1cxx_defaulted_functions
+    Feature record: CXX_FEATURE:1cxx_defaulted_move_initializers
+    Feature record: CXX_FEATURE:1cxx_delegating_constructors
+    Feature record: CXX_FEATURE:1cxx_deleted_functions
+    Feature record: CXX_FEATURE:1cxx_digit_separators
+    Feature record: CXX_FEATURE:1cxx_enum_forward_declarations
+    Feature record: CXX_FEATURE:1cxx_explicit_conversions
+    Feature record: CXX_FEATURE:1cxx_extended_friend_declarations
+    Feature record: CXX_FEATURE:1cxx_extern_templates
+    Feature record: CXX_FEATURE:1cxx_final
+    Feature record: CXX_FEATURE:1cxx_func_identifier
+    Feature record: CXX_FEATURE:1cxx_generalized_initializers
+    Feature record: CXX_FEATURE:1cxx_generic_lambdas
+    Feature record: CXX_FEATURE:1cxx_inheriting_constructors
+    Feature record: CXX_FEATURE:1cxx_inline_namespaces
+    Feature record: CXX_FEATURE:1cxx_lambdas
+    Feature record: CXX_FEATURE:1cxx_lambda_init_captures
+    Feature record: CXX_FEATURE:1cxx_local_type_template_args
+    Feature record: CXX_FEATURE:1cxx_long_long_type
+    Feature record: CXX_FEATURE:1cxx_noexcept
+    Feature record: CXX_FEATURE:1cxx_nonstatic_member_init
+    Feature record: CXX_FEATURE:1cxx_nullptr
+    Feature record: CXX_FEATURE:1cxx_override
+    Feature record: CXX_FEATURE:1cxx_range_for
+    Feature record: CXX_FEATURE:1cxx_raw_string_literals
+    Feature record: CXX_FEATURE:1cxx_reference_qualified_functions
+    Feature record: CXX_FEATURE:1cxx_return_type_deduction
+    Feature record: CXX_FEATURE:1cxx_right_angle_brackets
+    Feature record: CXX_FEATURE:1cxx_rvalue_references
+    Feature record: CXX_FEATURE:1cxx_sizeof_member
+    Feature record: CXX_FEATURE:1cxx_static_assert
+    Feature record: CXX_FEATURE:1cxx_strong_enums
+    Feature record: CXX_FEATURE:1cxx_template_template_parameters
+    Feature record: CXX_FEATURE:1cxx_thread_local
+    Feature record: CXX_FEATURE:1cxx_trailing_return_types
+    Feature record: CXX_FEATURE:1cxx_unicode_literals
+    Feature record: CXX_FEATURE:1cxx_uniform_initialization
+    Feature record: CXX_FEATURE:1cxx_unrestricted_unions
+    Feature record: CXX_FEATURE:1cxx_user_literals
+    Feature record: CXX_FEATURE:1cxx_variable_templates
+    Feature record: CXX_FEATURE:1cxx_variadic_macros
+    Feature record: CXX_FEATURE:1cxx_variadic_templates
+Performing C++ SOURCE FILE Test HAS_MSVC_GL_LTCG succeeded with the following output:
+Change Dir: C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community/MSBuild/15.0/Bin/MSBuild.exe" "cmTC_960d4.vcxproj" "/p:Configuration=Debug" "/p:VisualStudioVersion=15.0"
+.NET Framework 向け Microsoft (R) Build Engine バージョン 15.7.179.6572
+Copyright (C) Microsoft Corporation.All rights reserved.
+
+2018/07/23 10:18:10 にビルドを開始しました。
+ノード 1 上のプロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_960d4.vcxproj" (既定のターゲット)。
+PrepareForBuild:
+  ディレクトリ "cmTC_960d4.dir\Debug\" を作成しています。
+  ディレクトリ "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\" を作成しています。
+  ディレクトリ "cmTC_960d4.dir\Debug\cmTC_960d4.tlog\" を作成しています。
+InitializeBuildStatus:
+  "AlwaysCreate" が指定されたため "cmTC_960d4.dir\Debug\cmTC_960d4.tlog\unsuccessfulbuild" を作成しています。
+VcpkgTripletSelection:
+  Using triplet "x64-windows" from "C:\Users\urakubo\vcpkg\installed\x64-windows\"
+ClCompile:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\CL.exe /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /GL /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /openmp /Fo"cmTC_960d4.dir\Debug\\" /Fd"cmTC_960d4.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\src.cxx
+  Microsoft(R) C/C++ Optimizing Compiler Version 19.14.26430 for x64
+  Copyright (C) Microsoft Corporation.  All rights reserved.
+  
+  cl /c /I"C:\Users\urakubo\vcpkg\installed\x64-windows\include" /Zi /W3 /WX- /diagnostics:classic /Od /Ob0 /GL /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\"Debug\"" /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /openmp /Fo"cmTC_960d4.dir\Debug\\" /Fd"cmTC_960d4.dir\Debug\vc141.pdb" /Gd /TP /FC /errorReport:queue C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\src.cxx
+  src.cxx
+  
+Link:
+  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.14.26428\bin\HostX86\x64\link.exe /ERRORREPORT:QUEUE /OUT:"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_960d4.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib" /LIBPATH:"C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\manual-link" "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\lib\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_960d4.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/urakubo/Desktop/dojo180724/marching_cubes/CMakeFiles/CMakeTmp/Debug/cmTC_960d4.lib" /MACHINE:X64  /machine:x64 cmTC_960d4.dir\Debug\src.obj
+LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。 [C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_960d4.vcxproj]
+  コード生成しています。
+  コード生成が終了しました。
+  cmTC_960d4.vcxproj -> C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_960d4.exe
+AppLocalFromInstalled:
+  C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe -ExecutionPolicy Bypass -noprofile -File "C:\Users\urakubo\vcpkg\scripts\buildsystems\msbuild\applocal.ps1" "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\Debug\cmTC_960d4.exe" "C:\Users\urakubo\vcpkg\installed\x64-windows\debug\bin" "cmTC_960d4.dir\Debug\cmTC_960d4.tlog\cmTC_960d4.write.1u.tlog" "cmTC_960d4.dir\Debug\vcpkg.applocal.log"
+FinalizeBuildStatus:
+  ファイル "cmTC_960d4.dir\Debug\cmTC_960d4.tlog\unsuccessfulbuild" を削除しています。
+  "cmTC_960d4.dir\Debug\cmTC_960d4.tlog\cmTC_960d4.lastbuildstate" のタッチ タスクを実行しています。
+プロジェクト "C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_960d4.vcxproj" (既定のターゲット) のビルドが完了しました。
+
+ビルドに成功しました。
+
+"C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_960d4.vcxproj" (既定のターゲット) (1) ->
+(Link ターゲット) -> 
+  LINK : warning LNK4075: /INCREMENTAL は /LTCG の指定によって無視されます。 [C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\CMakeTmp\cmTC_960d4.vcxproj]
+
+    1 個の警告
+    0 エラー
+
+経過時間 00:00:00.95
+
+Source file was:
+int main() { return 0; }

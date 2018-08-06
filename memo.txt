@@ -1,0 +1,123 @@
+
+
+●stl viewer に適当なので、下のプラグインを動かしたい。
+https://www.viewstl.com/plugin/
+js ファイルを一つのフォルダに置いた。
+必要なファイルを_webにただおいて、
+viewer.pyの拡張子にstlを追加したら何とかなりそう。
+
+●numpy-stlをインストールする。
+http://numpy-stl.readthedocs.io/en/latest/
+http://numpy-stl.readthedocs.io/en/latest/usage.html#numpy-stl
+
+HDF5 save:  0.0150001049042 sec
+stl save:  0.345999956131 sec
+
+stlファイルの保存には時間がかかる。HDF5方が20倍早い。
+ファイルサイズも半分。4.5MB:2.1MB。
+
+
+●ilastik の marching cube アルゴリズムをインストールする。
+https://github.com/ilastik/marching_cubes
+
+◇cmake . -A x64
+にて、visual studioでコンパイルできた。
+https://github.com/pybind/pybind11/issues/548
+slnファイルをダブルクリックしてVisual studioを立ち上げて、
+上のボックス表示をdebug=>releaseにして、
+ビルドー＞バッチビルド　を行うと、pythonにインストールできた。
+
+
+◇conda build conda-recipeでインストールしようとしたらエラーが出た
+◇コンパイラがみつからない 
+cmake -G "Visual Studio 14 2015 Win64"
+-- The C compiler identification is unknown
+-- The CXX compiler identification is unknown
+　CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_C_COMPILER could be found.
+
+
+
+MinGWをインストール、、する必要なかった。
+https://qiita.com/pengincoalition/items/2bc1e0a80b114d6c49a6
+https://github.com/ilastik/marching_cubes/blob/master/conda-recipe/meta.yaml
+
+改造
+http://d.hatena.ne.jp/maminus/20180611/1528727604
+
+g++ -fPIC -shared -lboost_python -I C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\include  -I C:\Users\urakubo\AppData\Local\conda\conda\envs\py27\Library\include -o march.so laplacian_smoothing.cpp laplacian_smoothing.h marching_cubes.cpp  marching_cubes.h python_wrapper.cpp
+
+●pip install trimesh
+
+import trimesh
+import numpy as np
+from trimesh import voxel
+pitch = [[[0,1,0],[1,1,1],[0,1,0]],[[0,1,0],[1,1,1],[0,1,0]]]
+pi = np.array(pitch)
+msh = voxel.matrix_to_marching_cubes(matrix= pi, pitch=1.0, origin=(0,0,0))
+vox = voxel.VoxelMesh(pi,1.0)
+
+
+from skimage import measure
+verts, faces, normals, values = measure.marching_cubes_lewiner(pi, 0) ###　これで十分？
+
+vox = voxel.Voxel(pi,1.0)
+
+
+
+py35
+
+### wx
+https://ameblo.jp/maplerain78/entry-12265793422.html
+conda install -c newville wxpython-phoenix
+pip install -U wxPython
+python -c "import wx; print(wx.__version__)"
+
+### pillow
+conda install -c anaconda pillow
+http://yondakana.blogspot.com/2018/01/from-pil-import-image.html
+conda install libtiff
+https://qiita.com/KenichiroHirose/items/ec916cb0269869b8a924
+
+
+### opencv
+conda install opencv
+のみでインストールできた。と思ったら、
+>>> import cv2
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ImportError: DLL load failed: 指定されたモジュールが見つかりません。
+>>> import cv3
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ModuleNotFoundError: No module named 'cv3'
+
+というデラーが出たので、
+conda install -c conda-forge opencv=3.2.0
+http://mugichoko.hatenablog.com/entry/2017/05/31/024956
+をインストール：
+
+
+### png
+pip install pypng
+conda はあきらめた。
+conda install -c auto pypng
+https://anaconda.org/auto/pypng
+
+
+### mahotas
+conda install mahotas
+
+
+### StringIO import error
+
+# try:
+#    from StringIO import StringIO
+#except ImportError:
+#    from io import StringIO
+
+ではなく、
+from io import BytesIO
+# and refactor StringIO() calls to BytesIO() if passing byte-strings
+http://python-future.org/compatible_idioms.html
+

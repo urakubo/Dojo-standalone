@@ -1,0 +1,35 @@
+package:
+    name: marching_cubes
+
+source:
+  path: ../
+
+build:
+  number: 0
+  script_env:
+    # Control building with CXX11 abi
+    - DO_NOT_BUILD_WITH_CXX11_ABI  # [linux]
+
+requirements:
+  build:
+    - cmake
+    - python >=2.7
+    - python {{PY_VER}}*
+    - boost 1.63.0.*
+    - pybind11
+  run:
+    - python {{PY_VER}}*
+    - boost 1.63.0.*
+    # in order to suppor older linux distros after gcc5 switch:
+    - libstdcxx-ng >=5.4.0  # [linux]
+    - numpy
+
+test:
+  imports:
+    - marching_cubes
+
+about:
+  home: http://ilastik.org
+  license: BSD (3-clause)
+  liscense_file: LICENSE
+  summary: A fast marching cubes implementation in C++ with python bindings.

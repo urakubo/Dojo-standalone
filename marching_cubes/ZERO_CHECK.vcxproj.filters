@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\urakubo\Desktop\dojo180724\marching_cubes\CMakeFiles\43d167e7a7a864df1d2a4258434cf628\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{EC93CDEB-C9C8-3856-83CF-A979CBD4119E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
