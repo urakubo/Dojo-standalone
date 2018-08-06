@@ -34,6 +34,7 @@ In addition to the original Dojo:
 
 2) It neearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (file: DojoStandalone.py).
 
+3) 3D viewer is buggy.
 
 Hidetoshi Urakubo
 2018/8/7
