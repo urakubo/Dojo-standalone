@@ -40,7 +40,7 @@ Load a stack of 2D EM images (tiff/png sequential files) and by use of .
 
 1) Manual operation board (the bottom half of the small GUI panel) is under development.
 
-2) It neearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem).
+2) It nearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem). 
 
 3) 3D viewer is buggy.
 
