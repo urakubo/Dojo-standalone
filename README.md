@@ -39,9 +39,9 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 3-a. File -> Open Dojo folder, and specify the Dojo/Mojo-style file.
 
-2-b. Prepare a stack of 2D EM images (tiff/png sequential files) and segmentated images (tiff/png sequential files).
+2-b. Prepare a stack of 2D EM images (tiff/png sequential files) and segmentation images (tiff/png sequential files).
 
-3-b. File -> Import, and specify the stack of 2D EM images, the segmented images, and a output mojo folder.
+3-b. File -> Import, and specify the stack of 2D EM images, the segmentation images, and a output mojo folder.
 
 4. The message "please click here" appears if those files are successfully opened/imported. Plese click it, then the web-based dojo will launch for further editing. Users can save/export the editied file through the small GUI (control panel). 
 
