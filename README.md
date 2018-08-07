@@ -44,7 +44,7 @@ Load a stack of 2D EM images (tiff/png sequential files) and by use of .
 
 2) It nearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem). 
 
-3) Dojo accepts any size of images, but unnecessary fringe appears if you do not import 512*n size images.  
+3) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
 
 4) 3D viewer is buggy.
 
