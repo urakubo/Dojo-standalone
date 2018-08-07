@@ -36,9 +36,13 @@ Please download
 Launch the .
 
 4-1) Download Mojo-style .
+
 4-2) Prepare a stack of 2D EM images (tiff/png sequential files) and segmentated images (tiff/png sequential files).
+
 5) Download the Dojo-standalone.
+
 6) Command "python main.py", this launches a small gui that has 4 pulldown menus [File, Edit, Plugin, Help].
+
 7) Select dojo 
 
 ## A part of many unresolved problems:
