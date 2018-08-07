@@ -1,4 +1,4 @@
-# Dojo-standalone
+# Dojo standalone
 
 Varieties of software have been launched to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform on databases, and some is not open-source.
 
@@ -6,7 +6,7 @@ Varieties of software have been launched to manage electron microscopic (EM) ima
    Here I present a open-source, multi-platform, and standalone version of such proofreading software - Dojo standalone from a part of Rhoana pipeline (Pfister lab/Harvard, 2014; http://www.rhoana.org/dojo/). Dojo has provided functions for proof reading and 3D visualization, and I modified this software for desktop use. Dojo standalone has been built on Python2.7 (Python3.5 in near future), Javascript, and webGL on Windows10. It should also work on Linux and Mac (although I have not tested it). Thus, users can easily modify it for their own use.
 
 
-In addition to the original Dojo:
+## In addition to the original Dojo:
 
 
 1) A small gui was appended to control dojo at a desktop pc.
@@ -15,7 +15,7 @@ In addition to the original Dojo:
 4) Plugin section was created. Users can easily insert new Python functions.
 
 
-#h2 Requirements
+## Requirements
 A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
 
 
@@ -29,7 +29,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 8) mahotas: conda install mahotas
 
 
-#h2 How to use:
+## How to use:
 
 Please download
 
@@ -38,7 +38,7 @@ Launch the .
 Load a stack of 2D EM images (tiff/png sequential files) and by use of .
 
 
-#h3 A part of many unresolved problems:
+## A part of many unresolved problems:
 
 1) Manual operation board (the bottom half of the small GUI panel) is under development.
 
