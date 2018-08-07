@@ -1,6 +1,6 @@
 # Dojo standalone
 
-Varieties of software have been launched to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform on databases, and some is not open-source.
+Varieties of software have been developed to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform on databases, and some is not open-source.
 
 
    Here I present a open-source, multi-platform, and standalone version of such proofreading software - Dojo standalone from a part of Rhoana pipeline (Pfister lab/Harvard, 2014; http://www.rhoana.org/dojo/). Dojo has provided functions for proof reading and 3D visualization, and I modified this software for desktop use. Dojo standalone has been built on Python2.7 (Python3.5 in near future), Javascript, and webGL on Windows10. It should also work on Linux and Mac (although I have not tested it). Thus, users can easily modify it for their own use.
@@ -35,12 +35,19 @@ Please download
 
 Launch the .
 
-Load a stack of 2D EM images (tiff/png sequential files) and by use of .
+4-1) Download Mojo-style .
 
+4-2) Prepare a stack of 2D EM images (tiff/png sequential files) and segmentated images (tiff/png sequential files).
+
+5) Download the Dojo-standalone.
+
+6) Command "python main.py", this launches a small gui that has 4 pulldown menus [File, Edit, Plugin, Help].
+
+7) Select dojo 
 
 ## A part of many unresolved problems:
 
-1) Manual operation board (the bottom half of the small GUI panel) is under development.
+1) Manual operation board (the bottom half of the small GUI) is under development.
 
 2) It nearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem). 
 
