@@ -36,7 +36,7 @@ Launch the .
 Load a stack of 2D EM images (tiff/png sequential files) and by use of .
 
 
-#) Currenly unresolved problem:
+#) A part of unresolved problems:
 
 1) Manual operation board (the bottom half of the small GUI panel) is under development.
 
