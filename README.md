@@ -1,4 +1,4 @@
-"# Dojo-standalone"
+#h1 Dojo-standalone
 
 Varieties of software have been launched to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform on databases, and some is not open-source.
 
@@ -14,7 +14,9 @@ In addition to the original Dojo:
 3) Some codes were refactored for stability.
 4) Plugin section was created. Users can easily insert new Python functions.
 
-#) A software package for Windows10 is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
+
+#h2 Requirements
+A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
 
 
 1) open CV3: conda install -c conda-forge opencv=3.2.0
@@ -27,7 +29,7 @@ In addition to the original Dojo:
 8) mahotas: conda install mahotas
 
 
-#) How to use:
+#h2 How to use:
 
 Please download
 
@@ -36,7 +38,7 @@ Launch the .
 Load a stack of 2D EM images (tiff/png sequential files) and by use of .
 
 
-#) A part of unresolved problems:
+#h3 A part of many unresolved problems:
 
 1) Manual operation board (the bottom half of the small GUI panel) is under development.
 
