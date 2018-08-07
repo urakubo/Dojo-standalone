@@ -1,4 +1,4 @@
-#h1 Dojo-standalone
+# Dojo-standalone
 
 Varieties of software have been launched to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform on databases, and some is not open-source.
 
