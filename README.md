@@ -31,17 +31,18 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## How to use:
 
-1-a. Download Dojo_pyinstaller_small.zip on Windows10/64bit, unzip it, and click main.exe to confirm the launch of a small GUI.
+1-x. Download Dojo_pyinstaller_small.zip on Windows10/64bit, unzip it, and click main.exe to confirm the launch of a small GUI.
 
-1-b. Download all the files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
+1-y. Download all the files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
 
-2-a. Download a Mojo-style file (e.g. ).
+2-a. Download a Dojo/Mojo-style file (e.g. ).
+
+3-a. File -> Open Dojo folder, and specify the Dojo/Mojo-style file.
 
 2-b. Prepare a stack of 2D EM images (tiff/png sequential files) and segmentated images (tiff/png sequential files).
 
-3. Download the Dojo-standalone.
+3-b. File -> Import, and specify the stack of 2D EM images, the segmented images, and a output mojo folder.
 
-4. Select dojo  
 
 
 ## A part of many unresolved problems:
