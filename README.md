@@ -35,7 +35,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 1-y. Download all the files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
 
-2-a. Download a Dojo/Mojo-style file (e.g. ).
+2-a. Download a Dojo/Mojo-style file.
 
 3-a. File -> Open Dojo folder, and specify the Dojo/Mojo-style file.
 
@@ -43,7 +43,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 3-b. File -> Import, and specify the stack of 2D EM images, the segmented images, and a output mojo folder.
 
-
+4. The message "please click here" appears if those files are successfully loaded/imported. Plese click it, then the web-based dojo will launch for further editing. Users can save/export the editied file. 
 
 ## A part of many unresolved problems:
 
