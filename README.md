@@ -16,7 +16,7 @@ Varieties of software have been launched to manage electron microscopic (EM) ima
 
 
 ## Requirements
-A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) environment on your pc with the following modules:
+A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) anaconda environment on your pc with the following modules:
 
 
 1) open CV3: conda install -c conda-forge opencv=3.2.0
