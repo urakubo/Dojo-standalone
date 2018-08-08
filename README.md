@@ -25,7 +25,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 4) libtiff: conda install libtiff
 5) wxpython: conda install -c newville wxpython-phoenix
 6) wxpython: pip install -U wxPython
-7) marching cubes from ilastik. This is necesssary only for a Plugin function, and compilation is required: https://github.com/ilastik/marching_cubes
+7) marching cubes from ilastik. This is necesssary only for a Plugin function. C-compilation is required: https://github.com/ilastik/marching_cubes
 8) mahotas: conda install mahotas
 9) h5py: conda h5py install
 
