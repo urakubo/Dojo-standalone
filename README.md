@@ -46,7 +46,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## A part of many unresolved problems:
 
-1) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require the very large MKL module.  
+1) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require the very big MKL module.  
 
 2) Manual operation board (the bottom half of the small GUI) is under development.
 
