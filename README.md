@@ -35,7 +35,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 1-y. Download all the files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
 
-2-a. Download a Dojo/Mojo-style file.
+2-a. Download a Dojo/Mojo-style file (eg. https://1drv.ms/u/s!Ar0M8vZTxk-whXolghHevRjeXiOS . This is a copy from Mojo web page, kasthuri15 ).
 
 3-a. File -> Open Dojo folder, and specify the Dojo/Mojo-style file.
 
