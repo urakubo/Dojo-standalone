@@ -27,11 +27,11 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 6) wxpython: pip install -U wxPython
 7) marching cubes from ilastik. This is necesssary only for a Plugin function, and compilation is required: https://github.com/ilastik/marching_cubes
 8) mahotas: conda install mahotas
-
+9) h5py: conda h5py install
 
 ## How to use:
 
-1-x. Download Dojo_pyinstaller_small.zip on Windows10/64bit, unzip it, and click main.exe to confirm the launch of a small GUI.
+1-x. Download Dojo_pyinstaller.zip on Windows10/64bit from https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- (300MB large file). Unzip it, and click main.exe to confirm the launch of a small GUI.
 
 1-y. Download all the files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
 
@@ -47,13 +47,15 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## A part of many unresolved problems:
 
-1) Manual operation board (the bottom half of the small GUI) is under development.
+1) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require MKL module.  
 
-2) It nearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem). 
+2) Manual operation board (the bottom half of the small GUI) is under development.
 
-3) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
+3) It nearly works on Python3.5. But I do not understand how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by TerminateDojo/wxFileIO.py/wxMain and SaveChanges.py/Filesystem). 
 
-4) 3D viewer is buggy.
+4) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
+
+5) 3D viewer is buggy.
 
 Hidetoshi Urakubo
 2018/8/7
