@@ -8,11 +8,11 @@ Varieties of software have been developed to manage electron microscopic (EM) im
 
 ## In addition to the original Dojo:
 
-
-1) A small gui was equipped to control dojo at a desktop pc.
-2) Many input/output image file formats are supported. 
-3) Some codes were refactored for stability.
-4) Plugin section was created. Users can easily insert new Python functions.
+1) Codes were updated for Python3.5 compatibility. 
+2) A small gui was equipped to control dojo at a desktop pc.
+3) Many input/output image file formats are supported. 
+4) Some codes were refactored for stability.
+5) Plugin section was created. Users can easily insert new Python functions.
 
 
 ## Requirements
