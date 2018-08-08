@@ -43,7 +43,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 3-b. File -> Import, and specify the stack of 2D EM images, the segmentation images, and a output mojo folder.
 
-4. The message "please click here" appears if those files are successfully opened/imported. Plese click it, then the web-based dojo will launch for further editing ( http://www.rhoana.org/dojo/ ). Users can save/export the editied file through the small GUI (control panel). 
+4. The message "please click here" appears if those files are successfully opened or imported. Plese click it, then the web-based dojo will launch for further editing ( http://www.rhoana.org/dojo/ ). Users can save/export the editied file through the small GUI (control panel). 
 
 ## A part of many unresolved problems:
 
