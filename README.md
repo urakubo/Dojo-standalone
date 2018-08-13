@@ -46,15 +46,21 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## A part of many unresolved problems:
 
-1) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require the very big MKL module.  
+1) It nearly works on Python3.5. But I do not know how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by wxMain/wxFileIO.py [TerminateDojo] and Filesystem/SaveChanges.py ). 
 
 2) Manual operation board (the bottom half of the small GUI) is under development.
 
-3) It nearly works on Python3.5. But I do not know how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by wxMain/wxFileIO.py [TerminateDojo] and Filesystem/SaveChanges.py ). 
+3) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
 
-4) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
+4) 3D viewer is buggy.
 
-5) 3D viewer is buggy.
+5) The software package for Windows10/64bit provides limited functionality. This is due to unresolved miscommunication between pyinstaller and skimage (used for superpixelization and connected components). I will use CV2 instead in future.
+
+https://github.com/pyinstaller/pyinstaller/issues/3473
+ 
+https://stackoverflow.com/questions/50749124/pyinstaller-attributeerror-when-importing-packages-with-wildcards
+
+6) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require the very big MKL module.  
 
 Hidetoshi Urakubo
 2018/8/7
