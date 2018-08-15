@@ -62,7 +62,7 @@ https://github.com/pyinstaller/pyinstaller/issues/3473
  
 https://stackoverflow.com/questions/50749124/pyinstaller-attributeerror-when-importing-packages-with-wildcards
 
-6) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because mahotas, h5py, and numpy require the very big MKL module.  
+6) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because numpy require the very big MKL module.  
 
 Hidetoshi Urakubo
 2018/8/7
