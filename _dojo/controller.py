@@ -10,8 +10,11 @@ import numpy as np
 import mahotas as mh
 import math
 import shutil
-from scipy import ndimage
-from skimage import exposure
+#from scipy import ndimage
+#from skimage import exposure
+import cv2
+
+
 import tempfile ####  <=================== HU: 180626
 
 import itertools
@@ -386,7 +389,8 @@ class Controller(object):
     mh.imsave(self.__tmp_dojobox_tif, sub_tile);
 
     sub_tile = mh.gaussian_filter(sub_tile, 1).astype(np.uint8) # gaussian filter
-    sub_tile = (255 * exposure.equalize_hist(sub_tile)).astype(np.uint8) # enhance contrast
+#    sub_tile = (255 * skimage.exposure.equalize_hist(sub_tile)).astype(np.uint8) # enhance contrast
+    sub_tile = cv2.equalizeHist(sub_tile).astype(np.uint8).astype(np.uint8) # enhance contrast
 
     brush_mask = np.zeros((1024,1024),dtype=bool)
     brush_size = values['brush_size']
