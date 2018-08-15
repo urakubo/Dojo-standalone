@@ -12,7 +12,7 @@ import wx.grid
 import sys
 import os
 
-sys.path.append('./wxMain')
+sys.path.append("./wxMain")
 sys.path.append("./Filesystem")
 
 if os.name == 'nt':
