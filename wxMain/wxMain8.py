@@ -29,14 +29,21 @@ from wxReplace2D import wxReplace2D
 from wxCredit import wxCredit
 
 from os import path, pardir
-current_dir = path.abspath(path.dirname(__file__))  # Dir of script
-parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of script
-icon_dir    = path.join(parent_dir, "icons")
+main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+icon_dir    = path.join(main_dir, "icons")
+Plugins_dir = path.join(main_dir, "Plugins")
+sys.path.append(path.join(main_dir, "Plugins"))
+sys.path.append(os.path.join(main_dir, "Filesystem"))
 
-sys.path.append(path.join(parent_dir, "Plugins"))
+#current_dir = path.abspath(path.dirname(__file__))  # Dir of script
+#parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of script
+#icon_dir    = path.join(parent_dir, "icons")
+#sys.path.append(path.join(parent_dir, "Plugins"))
+#sys.path.append(os.path.join(parent_dir, "Filesystem"))
+
 from wxPlugins import wxPlugins
 
-sys.path.append(os.path.join(parent_dir, "Filesystem"))
+
 from Params import Params
 import UndoRedo
 
@@ -144,7 +151,7 @@ class ControlPanel(wx.Frame, wxPlugins, wxFileIO,
         self.frame_menubar.Append(wxglade_tmp_menu, "Edit")
 
         ##{
-        with open( path.join(parent_dir, self.u_info.fname_plugins_menu) , 'r' ) as fp:
+        with open( path.join(Plugins_dir, self.u_info.fname_plugins_menu) , 'r' ) as fp:
             e = json.load(fp, object_pairs_hook=OrderedDict)
         i = 10000
         menu_stack  = [wx.Menu()]
