@@ -25,14 +25,14 @@ if sys.version_info.major == 3:
   import asyncio
 
 from os import path, pardir
-current_dir = path.abspath(path.dirname(__file__))  # Dir of script
-icon_dir    = path.join(current_dir, "icons")
+main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+icon_dir    = path.join(main_dir, "icons")
 
-sys.path.append(os.path.join(current_dir, "Filesystem"))
+sys.path.append(os.path.join(main_dir, "Filesystem"))
 from Params import Params
 # import SaveChanges
 
-sys.path.append(current_dir)
+sys.path.append(main_dir)
 import _dojo
 
 if os.name == 'nt':
