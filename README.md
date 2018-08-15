@@ -27,6 +27,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 7) marching cubes from ilastik. This is necesssary only for a Plugin function. C-compilation is required: https://github.com/ilastik/marching_cubes
 8) mahotas: conda install mahotas
 9) h5py: conda h5py install
+Others: tornado, lxml, scipy, scikit-image, pypiwin32
 
 ## How to use:
 
