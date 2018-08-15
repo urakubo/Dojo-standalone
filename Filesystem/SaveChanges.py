@@ -24,7 +24,7 @@ import tornado.httpserver
 import threading
 
 from os import path, pardir
-current_dir = path.abspath(path.dirname(__file__))  # Dir of script
+current_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of script
 parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of script
 #sys.path.append(parent_dir)
 

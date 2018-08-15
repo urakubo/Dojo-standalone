@@ -54,7 +54,7 @@ class Params:
         # self.export_images_name         = 'z%08d'
         # self.export_ids_name            = 'z%08d'
 
-        self.fname_plugins_menu = './Plugins/menu.json'
+        self.fname_plugins_menu = 'menu.json'
 
 
         # Mojo file paths
