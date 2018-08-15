@@ -7,9 +7,6 @@ import wx
 import os
 import sys
 from os import path, pardir
-current_dir = path.abspath(path.dirname(__file__))  # Dir of script
-parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of script
-
 
 # ----------------------------------------------------------------------
 # Interface of plugins to Control Panel
@@ -17,10 +14,13 @@ parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of scri
 # Also please edit "menu.json" for a plugins pulldown menu.
 # ----------------------------------------------------------------------
 
-sys.path.append(path.join(current_dir, "superpixel"))
-import wxglade_superpixel
+main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+Plugins_dir  = path.abspath(path.join(main_dir, "Plugins"))
+sys.path.append(path.join(Plugins_dir, "superpixel"))
+sys.path.append(path.join(Plugins_dir, "export_stl"))
 
-#sys.path.append(path.join(current_dir, "export_stl"))
+
+import wxglade_superpixel
 #from ExportStl import ExportStl
 
 class wxPlugins():
@@ -34,9 +34,10 @@ class wxPlugins():
 
 
     def SuperPixel_(self, event):
+    
         # self.superpix = wxglade_superpixel.SuperPixel(self, wx.ID_ANY, "",sim_name=[self, self.UserInfo])
-        self.superpix = wxglade_superpixel.SuperPixel(self, wx.ID_ANY, "")
-        self.superpix.Show()
+    	self.superpix = wxglade_superpixel.SuperPixel(self, wx.ID_ANY, "")
+    	self.superpix.Show()
         #event.Skip()
 
 

@@ -3,14 +3,14 @@ from __future__ import division
 from __future__ import print_function
 
 import wx
-import os
+import os, sys
 import os.path
 import glob     # Wild card
 
 import numpy as np
 import PIL
 import PIL.Image
-
+from os import path, pardir
 import cv2
 
 from skimage.data import astronaut
@@ -20,7 +20,7 @@ from skimage.segmentation import felzenszwalb, slic, quickshift, watershed
 from skimage.segmentation import mark_boundaries
 import skimage.util
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 # sys.path.append('./../../ControlPanel/')
 # import DefaultParams
 
@@ -31,8 +31,12 @@ class SuperPixels():
         self.xsize = 256
         self.ysize = 256
 
-        self.input_images_path  = "D:\Kubota180625\Cropped_CLAHE_Cropped"
-        self.output_images_path = "D:\Kubota180625\Cropped_CLAHE_Cropped_ids"
+        #self.input_images_path  = "D:\Kubota180625\Cropped_CLAHE_Cropped"
+        #self.output_images_path = "D:\Kubota180625\Cropped_CLAHE_Cropped_ids"
+        main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+        Plugins_dir  = path.abspath(path.join(main_dir, "Plugins"))
+        superpixel_dir  = path.abspath(path.join(Plugins_dir, "superpixel"))
+        self.input_images_path  = superpixel_dir
         search1 = os.path.join(self.input_images_path, '*.tif')
         stack = sorted(glob.glob(search1))
         if stack == []:
