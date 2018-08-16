@@ -61,9 +61,9 @@ https://stackoverflow.com/questions/50749124/pyinstaller-attributeerror-when-imp
 
 
 
-180817) Resolved by use of offical pip numpy/scipy files and copying the files in envs\py35\Lib\site-packages\scipy\extra-dll to dist/main.
+180817) Resolved by use of offical pip numpy/scipy files and the copy of files in envs\py35\Lib\site-packages\scipy\extra-dll to dist/main.
 
-Dojo_pyinstaller.zip ( https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 ) is still large (120MB) even with numpy without the very big MKL module.  
+Dojo_pyinstaller.zip ( https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 ) is still large (300MB -> 120MB) even by use of the numpy without a very big MKL module.  
 
 
 
