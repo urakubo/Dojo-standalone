@@ -51,7 +51,9 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## Resolved problems:
 
-180817) The software package for Windows10/64bit provides limited functionality. This is due to unresolved miscommunication between pyinstaller and skimage (used for superpixelization and connected components). I will use CV2 instead in future.
+180817) The following mismatch occurs only on Python2.7.
+
+The software package for Windows10/64bit provides limited functionality. This is due to unresolved miscommunication between pyinstaller and skimage (used for superpixelization and connected components). I will use CV2 instead in future.
 
 https://github.com/pyinstaller/pyinstaller/issues/3473
  
@@ -59,7 +61,9 @@ https://stackoverflow.com/questions/50749124/pyinstaller-attributeerror-when-imp
 
 
 
-180817) Dojo_pyinstaller.zip ( https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 ) is still large (120MB) even with numpy without the very big MKL module.  
+180817) Resolved by use of offical pip numpy/scipy files and copying the files in envs\py35\Lib\site-packages\scipy\extra-dll to dist/main.
+
+Dojo_pyinstaller.zip ( https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 ) is still large (120MB) even with numpy without the very big MKL module.  
 
 
 
