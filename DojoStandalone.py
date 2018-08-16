@@ -15,7 +15,6 @@ import sys
 import tornado
 import tornado.websocket
 import tornado.httpserver
-#import tempfile
 
 import signal
 import subprocess
@@ -91,8 +90,8 @@ class ServerLogic:
     # and the setup
     self.__setup = _dojo.Setup(self, u_info.files_path, u_info.tmpdir)
 
-    path_gfx = os.path.join(os.path.dirname(__file__), "./_web/gfx")
-    path_stl = os.path.join(os.path.dirname(__file__), "./_web/stl")
+    path_gfx = os.path.join(main_dir, "./_web/gfx")
+    path_stl = os.path.join(main_dir, "./_web/stl")
 
     ####
     if sys.version_info.major == 3:
