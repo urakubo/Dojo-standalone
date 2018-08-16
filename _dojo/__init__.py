@@ -6,8 +6,9 @@ from __future__ import print_function
 import os
 import sys
 from os import path, pardir
-current_dir = path.abspath(path.dirname(__file__))  # Dir of script
-sys.path.append(current_dir)
+main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+_dojo_dir = path.join(main_dir, "_dojo")
+sys.path.append(_dojo_dir)
 # parent_dir  = path.abspath(path.join(current_dir, pardir))  # Parent dir of script
 # icon_dir    = path.join(parent_dir, "icons")
 # sys.path.append(path.join(parent_dir, "Plugins"))
