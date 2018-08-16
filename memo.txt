@@ -1,0 +1,18 @@
+
+numpyからmklを取り除くため、下に従ってnumpy scipyをインストール：
+
+https://stackoverflow.com/questions/46656367/how-to-create-an-environment-in-anaconda-with-numpy-nomkl
+https://pypi.org/project/numpy/
+https://pypi.org/project/scipy/#files
+
+
+Edit 3: So if all you need is a numpy-distribution without MKL, you can use these official wheelswhich are linked against OpenBLAS instead of MKL.
+
+
+さらに、下に従い
+C:\Users\uraku\AppData\Local\conda\conda\envs\py35\Lib\site-packages\scipy\extra-dll
+の内容を
+dist/main にコピーした。
+
+https://github.com/pyinstaller/pyinstaller/issues/3235
+
