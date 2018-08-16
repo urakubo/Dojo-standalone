@@ -32,11 +32,11 @@ Others: tornado, lxml, scipy, scikit-image, pypiwin32
 
 ## How to use:
 
-1-x. Download Dojo_pyinstaller.zip on Windows10/64bit from https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- (300MB large file). Unzip it, and click main.exe to confirm the launch of a small GUI.
+1-x. Download Dojo_pyinstaller.zip on Windows10/64bit from https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 (120MB file). Unzip it, and click main.exe to confirm the launch of a small GUI.
 
 1-y. Download all the github files on a PC with Python environment. Execute "python main.py" to confirm the launch of a small GUI.
 
-2-a. Download a Dojo/Mojo-style file (eg. https://1drv.ms/u/s!Ar0M8vZTxk-whXolghHevRjeXiOS . This is a copy from Mojo web page, kasthuri15 ).
+2-a. Download a Dojo/Mojo-format file (eg. https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0 . This is a copy from Mojo web page, kasthuri15 ).
 
 3-a. File -> Open Dojo folder, and specify the Dojo/Mojo-style file.
 
@@ -56,14 +56,21 @@ Others: tornado, lxml, scipy, scikit-image, pypiwin32
 
 4) 3D viewer is buggy.
 
-5) The software package for Windows10/64bit provides limited functionality. This is due to unresolved miscommunication between pyinstaller and skimage (used for superpixelization and connected components). I will use CV2 instead in future.
+
+## Resolved problems:
+
+180817) The software package for Windows10/64bit provides limited functionality. This is due to unresolved miscommunication between pyinstaller and skimage (used for superpixelization and connected components). I will use CV2 instead in future.
 
 https://github.com/pyinstaller/pyinstaller/issues/3473
  
 https://stackoverflow.com/questions/50749124/pyinstaller-attributeerror-when-importing-packages-with-wildcards
 
-6) Dojo_pyinstaller.zip ( https://1drv.ms/u/s!Ar0M8vZTxk-whyWDozBUZ0dQc9D- ) is big (300MB). This is because numpy require the very big MKL module.  
+
+
+180817) Dojo_pyinstaller.zip ( https://www.dropbox.com/s/95wraf6qwgbp9jf/Dojo_pyinstaller_Ver3.zip?dl=0 ) is still large (120MB) even with numpy without the very big MKL module.  
+
+
 
 Hidetoshi Urakubo
-2018/8/7
+2018/8/17
 
