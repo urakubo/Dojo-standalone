@@ -1,15 +1,18 @@
 # -*- mode: python -*-
+import sys
+from os import path, pardir
+main_dir = os.path.abspath(SPECPATH)
 
 block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\uraku\\Desktop\\DojoStandalone_',
-             'C:\\Users\\uraku\\Desktop\\DojoStandalone_\\Filesystem',
-             'C:\\Users\\uraku\\Desktop\\DojoStandalone_\\_dojo',
-             'C:\\Users\\uraku\\Desktop\\DojoStandalone_\\Plugins',
-             'C:\\Users\\uraku\\Desktop\\DojoStandalone_\\Plugins\\superpixel',
-             'C:\\Users\\uraku\\Desktop\\DojoStandalone_\\wxMain'],
+             pathex=[
+				path.join(main_dir, "Filesystem"),
+				path.join(main_dir, "_dojo"),
+				path.join(main_dir, "Plugins"),
+				path.join(main_dir, "Plugins\\superpixel"),
+				path.join(main_dir, "wxMain")],
              binaries=[],
              datas=[],
              hiddenimports=['scipy._lib.messagestream','pywt._extensions._cwt'],
