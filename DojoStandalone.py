@@ -15,6 +15,7 @@ import sys
 import tornado
 import tornado.websocket
 import tornado.httpserver
+#import tempfile
 
 import signal
 import subprocess
@@ -25,7 +26,7 @@ if sys.version_info.major == 3:
 
 from os import path, pardir
 main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
-icon_dir    = path.join(main_dir, "icons")
+icon_dir = path.join(main_dir, "icons")
 
 sys.path.append(os.path.join(main_dir, "Filesystem"))
 from Params import Params
@@ -62,6 +63,9 @@ class DojoHandler(tornado.web.RequestHandler):
 
 class ServerLogic:
 
+  def func(self, loop):
+    loop.stop()
+
   def __init__( self ):
     return
 
@@ -90,12 +94,15 @@ class ServerLogic:
     # and the setup
     self.__setup = _dojo.Setup(self, u_info.files_path, u_info.tmpdir)
 
-    path_gfx = os.path.join(main_dir, "./_web/gfx")
-    path_stl = os.path.join(main_dir, "./_web/stl")
+    path_gfx = os.path.join(main_dir, "_web/gfx")
+    path_stl = os.path.join(main_dir, "_web/stl")
+
 
     ####
     if sys.version_info.major == 3:
-      asyncio.set_event_loop(asyncio.new_event_loop())
+      #loop = asyncio.new_event_loop()
+      asyncio.set_event_loop(u_info.worker_loop)
+      #loop.call_soon(self.func, loop)
 
     dojo = tornado.web.Application([
       (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': path_gfx}),
@@ -104,7 +111,6 @@ class ServerLogic:
       (r'/(.*)', DojoHandler, dict(logic=self))
     ],debug = True) #            (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': '/dojo/gfx'})
 
-    
 
     # dojo.listen(u_info.port, max_buffer_size=1024*1024*150000)
     server = tornado.httpserver.HTTPServer(dojo)
