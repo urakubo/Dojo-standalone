@@ -50,7 +50,7 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## Resolved problems:
 
-180817) Solved. Asyncio now stops.
+180817) Solved. Asyncio now stops. It fully works on Python3.5.
 
 It nearly works on Python3.5. But I do not know how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by wxMain/wxFileIO.py [TerminateDojo] and Filesystem/SaveChanges.py ). 
 
