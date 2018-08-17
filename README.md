@@ -40,13 +40,15 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## A part of many unresolved problems:
 
+1) Manual operation board (the bottom half of the small GUI) is under development.
 
-2) Manual operation board (the bottom half of the small GUI) is under development.
+2) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
 
-3) Dojo accepts any size of 2D stack images, but unnecessary fringe appears if you do not import images with 512*n xy size.  
+3) 3D viewer is buggy.
 
-4) 3D viewer is buggy.
+4) I have failed in importing the marching cubes module in pyinstaller version.
 
+5) In pyinstaller version, developers have to move many files manually to appropriate folders (_web [$main.exe.link], _web/gtx [under dist/main/_web], _web/stl [under dist/main/_web], files in extra-dll [under dist/main], icons [under dist/main], Plugins [under dist/main]).
 
 ## Resolved problems:
 
