@@ -3,7 +3,7 @@
 Varieties of software have been developed to manage electron microscopic (EM) images, some of which have provided functions to handle automated EM segmentation in connectomics. However, only few aim for the proofreading of automated EM segmentation that involves agglomeration/futher segmentation, most of which work only on a specific platform with databases, and some is not open-source.
 
 
-   Here I present a open-source, multi-platform, and standalone version of such proofreading software - Dojo standalone from a part of Rhoana pipeline (Pfister lab/Harvard, 2014; http://www.rhoana.org/dojo/). Dojo has provided functions for proof reading and 3D visualization, and I modified this software for desktop use. Dojo standalone has been built on Python2.7 (Python3.5 in near future), Javascript, and webGL on Windows10. It should also work on Linux and Mac (although I have not tested it). Thus, users can easily modify it for their own use.
+   Here I present a open-source, multi-platform, and standalone version of such proofreading software - Dojo standalone from a part of Rhoana pipeline (Pfister lab/Harvard, 2014; http://www.rhoana.org/dojo/). Dojo has provided functions for proof reading and 3D visualization, and I modified this software for desktop use. Dojo standalone has been built on Python3.5/2.7, Javascript, and webGL on Windows10. It should also work on Linux and Mac (although I have not tested it). Thus, users can easily modify it for their own use.
 
 
 ## In addition to the original Dojo:
@@ -15,7 +15,7 @@ Varieties of software have been developed to manage electron microscopic (EM) im
 
 
 ## Requirements
-A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python2.7/(Python3.5 in near future) anaconda environment on your pc with the following modules:
+A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python3.5/2.7 anaconda environment on your pc with the following modules:
 
 
 1) openCV3, pypng, pillow, libtiff, wxpython, mahotas, h5py, tornado, lxml, numpy, scipy, scikit-image, pypiwin32
@@ -40,7 +40,6 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 ## A part of many unresolved problems:
 
-1) It nearly works on Python3.5. But I do not know how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by wxMain/wxFileIO.py [TerminateDojo] and Filesystem/SaveChanges.py ). 
 
 2) Manual operation board (the bottom half of the small GUI) is under development.
 
@@ -50,6 +49,11 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 
 ## Resolved problems:
+
+180817) Solved. Asyncio now stops.
+
+It nearly works on Python3.5. But I do not know how to stop tornado.web.Application under asyncio.set_event_loop that is required by Python3 (tornado is provided in: DojoStandalone.py, stop signals are sent by wxMain/wxFileIO.py [TerminateDojo] and Filesystem/SaveChanges.py ). 
+
 
 180817) The following mismatch occurs only on Python2.7.
 
