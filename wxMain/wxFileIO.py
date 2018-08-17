@@ -18,6 +18,7 @@ import threading
 import subprocess as s
 import tornado
 import tornado.websocket
+import time
 
 from wxExportDialog import wxExportDialog
 from wxImportDialog import wxImportDialog
@@ -57,16 +58,46 @@ class wxFileIO():
         logic.run(self.u_info)
 
 
-    def TerminateDojo(self):
-        ioloop = tornado.ioloop.IOLoop.instance()
-        ioloop.add_callback(ioloop.stop)
-
-        #if sys.version_info.major == 3:
-        #    self.u_info.dojo_thread.stop()
-        #    AbstractEventLoop.stop()
-
+    def RestartDojo(self):
 
         print("Asked tornado to exit\n")
+        if sys.version_info.major == 2:
+        	ioloop = tornado.ioloop.IOLoop.instance()
+        	ioloop.add_callback(ioloop.stop)
+        if sys.version_info.major == 3:
+            self.u_info.worker_loop.stop()
+            time.sleep(1)
+            self.u_info.worker_loop.close()
+            
+        time.sleep(1)
+        print('Restart dojo server.')
+
+        if sys.version_info.major == 2:
+            self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
+            self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
+            self.u_info.dojo_thread.start()
+        if sys.version_info.major == 3:
+            self.u_info.worker_loop = asyncio.new_event_loop()
+            self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
+            self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
+            self.u_info.dojo_thread.start()
+
+
+    def TerminateDojo(self):
+
+        print("Asked tornado to exit\n")
+        if sys.version_info.major == 2:
+        	ioloop = tornado.ioloop.IOLoop.instance()
+        	ioloop.add_callback(ioloop.stop)
+
+        if sys.version_info.major == 3:
+
+            self.u_info.worker_loop.stop()
+            time.sleep(1)
+            self.u_info.worker_loop.close()
+            #self.u_info.worker_loop.stop()
+            #self.u_info.worker_loop.call_soon_threadsafe(self.u_info.worker_loop.close)
+
 
         # if self.u_info.dojo_thread != None:
 
@@ -91,10 +122,16 @@ class wxFileIO():
         with open(path.join(parent_dir, "u_info.pickle"), 'wb') as f:
             pickle.dump(self.u_info, f,protocol=2)
 
-        self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
-        self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
-        self.u_info.dojo_thread.start()
 
+        if sys.version_info.major == 2:
+            self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
+            self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
+            self.u_info.dojo_thread.start()
+        if sys.version_info.major == 3:
+            self.u_info.worker_loop = asyncio.new_event_loop()
+            self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
+            self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
+            self.u_info.dojo_thread.start()
 
         print(self.u_info.url)
 
@@ -185,12 +222,22 @@ class wxFileIO():
 
     def CloseDojoFiles(self, event):  # wxGlade: ControlPanel.<event_handler>
 
-
+        dlg = wx.MessageDialog(None,'Do you want to save changes?','Closing Dojo File',wx.YES_NO | wx.ICON_QUESTION)
+        result = dlg.ShowModal()
+        dlg.Destroy()
+        if result == wx.ID_YES:
+        	self.SaveChanges = SaveChanges()
+        	self.SaveChanges.run(self.u_info)
+        	self.TerminateDojo()
+        else:
+        	self.TerminateDojo()
+        
         #Save changes?
+        #print("Save changes.")
         #self.SaveChanges = SaveChanges()
         #self.SaveChanges.run(self.u_info)
 
-        self.TerminateDojo()
+        #self.TerminateDojo()
 
 
     def SaveDojoFiles(self, event):  # wxGlade: ControlPanel.<event_handler>
@@ -201,7 +248,8 @@ class wxFileIO():
 
         self.SaveChanges = SaveChanges()
         self.SaveChanges.run(self.u_info)
-
+        self.RestartDojo()
+        
         # ----------------------------------------------------------------------
     def ExportDojoFiles(self, event):
         #if not  self.u_info.files_found :
