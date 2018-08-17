@@ -116,13 +116,3 @@ class SaveChanges:
         print('Successfully saved.')
 
 
-        print('Stop dojo server.')
-        ioloop = tornado.ioloop.IOLoop.instance()
-        ioloop.add_callback(ioloop.stop)
-        self.u_info.dojo_thread.join()
-        # sleep(1)
-        print('Restart dojo server.')
-        self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
-        self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
-        self.u_info.dojo_thread.start()
-
