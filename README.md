@@ -46,9 +46,9 @@ A software package for Windows10/64bit is provided (pyinstaller version). If you
 
 3) 3D viewer is buggy.
 
-4) I have failed in importing the marching cubes module in pyinstaller version.
+4) I have failed in importing the marching cubes module in the pyinstaller version.
 
-5) In pyinstaller version, developers have to manually move many files to appropriate folders (_web [$main.exe.link], _web/gtx [under dist/main/_web], _web/stl [under dist/main/_web], files in extra-dll [under dist/main], icons [under dist/main], Plugins [under dist/main]).
+5) In the pyinstaller version, developers have to manually move many files to appropriate folders (_web [$main.exe.link], _web/gtx [under dist/main/_web], _web/stl [under dist/main/_web], files in extra-dll [under dist/main], icons [under dist/main], Plugins [under dist/main]).
 
 ## Resolved problems:
 
