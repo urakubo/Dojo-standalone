@@ -18,7 +18,7 @@ Varieties of software have been developed to manage electron microscopic (EM) im
 A software package for Windows10/64bit is provided (pyinstaller version). If you do not use this, please build a Python3.5/2.7 anaconda environment on your pc with the following modules:
 
 
-1) openCV3, pypng, pillow, libtiff, wxpython, mahotas, h5py, tornado, lxml, numpy, scipy, scikit-image, pypiwin32, stl
+1) openCV3, pypng, pillow, libtiff, wxpython, mahotas, h5py, tornado, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl
 
 2) marching cubes from ilastik. This is necesssary only for a Plugin function. C-compilation is required: https://github.com/ilastik/marching_cubes
 
