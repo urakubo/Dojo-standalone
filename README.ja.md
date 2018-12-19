@@ -101,10 +101,12 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 
 
 -（参考1）cuda 9.0, cuDNN v7のインストール方法。
+
 	- <https://qiita.com/spiderx_jp/items/8d863b087507cd4a56b0>
 	- <https://qiita.com/kattoyoshi/items/494238793824f25fa489>
 	- <https://haitenaipants.hatenablog.com/entry/2018/07/25/002118>
 
 -（参考2）さらに詳細なマニュアル設定を行ってtrainingを実行したい場合は、Python スクリプトを作成したのち、コントロールパネル上端のプルダウンメニューよりScript → Run Scriptを選択して実行してください（実装中です。書き方も記述します）。およびTorsten Bullmann博士のGithubサイトを参照してください。
-<https://github.com/tbullmann/imagetranslation-tensorflow>
+
+	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
