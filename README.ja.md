@@ -81,17 +81,16 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 
 4. Executeボタンをクリックしてトレーニングを開始します。既定パラメータにて、サンプルEM画像データdata/segment_ 2DNN_img/49.png および サンプルSegmentation画像data/segment_ 2DNN_seg/49.png を対象にトレーニングを行います。
 5. プルダウンメニューよりSegmentation → Tensorboradを選択して、トレーニングの進捗を確認してください。既定パラメータにてサンプルEM/Segmentation画像のトレーニングを行った場合、NVIDIA GeForce GTX 1070 で5分程度かかりました。
-6. "saving model"と表示されたらトレーニング終了です。
+6. コマンドプロンプトに"saving model"と表示されたらトレーニング終了です。
 7. Checkpointフォルダに "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) が出力されていることを確認してください。このファイルにトレーニング結果が保存されています。
-8. コマンドプロンプトに～が表示されるとトレーニングは終了です。
-9. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください。
+8. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください。
 	- Image Folder	入力EM画像の指定
 		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
 	- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
 	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
-10. Executeボタンをクリックして推定を開始します。
-11. 推定結果はOutput Segmentation Folderに保存されます **[変更・拡張予定]** 。
+9. Executeボタンをクリックして推定を開始します。
+10. 推定結果はOutput Segmentation Folderに保存されます **[変更・拡張予定]** 。
 
 
 ### 三次元DNNを用いたセグメンテーション
