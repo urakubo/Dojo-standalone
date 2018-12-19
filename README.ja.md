@@ -61,9 +61,9 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 2. コントロールパネル上端のプルダウンメニューよりSegmentation → 2DNNを選択して、Training, Inferenceの2つのタブを持つダイアログを起動してください。
 3. Trainingタブを選択し各パラメータを設定してください **[参考]** ：
 	- Image Folder 入力EM画像の指定
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
 	- Segmentation Folder お手本セグメンテーション画像の指定 
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
 	- Checkpoint	トレーニングしたDNNの結合強度を保存するフォルダ
 	- X loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
 	- Y loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
@@ -82,7 +82,7 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 8. コマンドプロンプトに～が表示されるとトレーニングは終了です。
 9. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください。
 	- Image Folder	入力EM画像の指定
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
 	- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
 	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
