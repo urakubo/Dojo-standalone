@@ -7,8 +7,8 @@
 
 　そこで、私、浦久保秀俊はパイプライン上のソフトウェアのいくつかを実験研究者にも簡単に使えるように統合する作業を始めました。
 
-* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました*（改装・改良中 18/12/17）*。
-* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました_（"3D FFN" は実装予定 18/12/17）_。
+* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました**（改装・改良中 18/12/17）**。
+* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました**（"3D FFN" は実装予定 18/12/17）**。
 * セグメンテーション結果を3Dで確認することができるようにするために、3D Viewerを作成しました_（プロトタイプ。作成中 18/12/17）_。
 
 深層学習のプログラム知識を持たない実験研究者が、電子顕微鏡画像をもとに「お手本の作成」「セグメンテーション」「人手による校正（プルーフリード）」までできるようにすることを目標とします。
@@ -55,7 +55,7 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 
 ### 二次元DNNを用いたセグメンテーション：
 コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。実装はTorsten Bullmann博士が行いました。
-	- リンク <https://github.com/tbullmann/imagetranslation-tensorflow>
+	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
 2. コントロールパネル上端のプルダウンメニューよりSegmentation → ２DNNを選択して、Training, Inference, Exportの３つのタブを持つダイアログを起動してください。
