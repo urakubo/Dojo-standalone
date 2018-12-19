@@ -50,7 +50,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 
 ### 3D Viewer：
-Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます **[プロトタイプです]** 。_
+Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます **[試作品]** 。
 
 
 ### 二次元DNNを用いたセグメンテーション：
