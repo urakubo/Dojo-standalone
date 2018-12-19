@@ -21,7 +21,8 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 ### Pyinstaller版：
 1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(300 MB)を用意しました。いずれかをダウンロードして展開してください。
-2. 公開サンプルデータKatsuri.zip をダウンロードして適当なフォルダに展開してください。
+2. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
+	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください（図1）。
 
 ### Python版：
@@ -31,8 +32,9 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 	 - git clone https://github.com/urakubo/Dojo-standalone
 4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください（pip install -r requirements.txt　実装予定 18/12/17）。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
-6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py を実行してコントロールパネルを起動してください。
-7. 公開サンプルデータKatsuri.zip をダウンロードして適当なフォルダに展開してください。
+6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py と実行してコントロールパネルを起動してください。
+7. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
+	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 
 
 ## 使い方：
@@ -40,7 +42,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 ### 校正ソフトウェアDojo：
 自動セグメンテーション結果を確認・構成するツールです。Lichitman/Pfister 研が開発した Rhoana piplineの一部です。
 
-1. 上端のプルダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりKatsuriフォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。
+1. 上端のプルダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりkasthuri15フォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。
 2. Dojoはコントロールパネル内のWebブラウザ (Chromium/PyQt5) で動作します。動作がおかしいと思ったら、Reloadボタンを押してWebブラウザをリフレッシュしてださい。上部URL [ http://X.X.X.X:8888/dojo/ ] をコピーして、Chromeなどの他のWebブラウザのアドレスバーにペーストすると、そこでDojoが起動します。同じLAN内の他のPCにおいてもWebブラウザ上でDojoが起動するはずです。起動しない場合は、ファイアウォールを停止してみてください。
 3. Dojoの使い方は基本的にはDojoオリジナルページ [ http://www.rhoana.org/dojo/ ]に従います。例えばw/sキーでzレイヤ間を移動し、e/dキーでセグメンテーションの透過度を変更します。
 4. 新しい電子顕微鏡画像を編集する場合は、プルダウンメニュー Dojo → Import EM stackを選択して、tiff/pngの連続番号EM画像・Segmentation画像ファイルが入ったフォルダを指定してください（実装予定；EM画像のみの読込、マルチページtiff画像読込）。
@@ -97,7 +99,7 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 
 
 ## お願い：
-日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします。匿名のコメントも歓迎いたします。私一人で開発を続けるのは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
+日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします。匿名のコメントも歓迎いたします。私一人で開発を続けることは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
 
 - (参考1) cuda 9.0, cuDNN v7のインストール方法。
 	- <https://qiita.com/spiderx_jp/items/8d863b087507cd4a56b0>
