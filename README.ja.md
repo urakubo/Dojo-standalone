@@ -30,7 +30,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 3. 次の命令を実行してGithubより必要プログラムをダウンロードしてください。
 	 - git clone https://github.com/urakubo/Dojo-standalone
 4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください（pip install -r requirements.txt　実装予定 18/12/17）。
-5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL} \ Lib\site-packages へコピーしてください。{$INSTALL} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
+5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py を実行してコントロールパネルを起動してください。
 
 ## 使い方：
