@@ -59,7 +59,7 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
 2. コントロールパネル上端のプルダウンメニューよりSegmentation → 2DNNを選択して、Training, Inferenceの2つのタブを持つダイアログを起動してください。
-3. Trainingタブを選択し各パラメータを設定してください：
+3. Trainingタブを選択し各パラメータを設定してください **[参考]** ：
 	- Image Folder 入力EM画像の指定
 		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
 	- Segmentation Folder お手本セグメンテーション画像の指定 
