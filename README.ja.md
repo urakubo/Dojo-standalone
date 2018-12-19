@@ -58,20 +58,20 @@ https://github.com/tbullmann/imagetranslation- tensorflow
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
 2. コントロールパネル上端のプルダウンメニューよりSegmentation → ２DNNを選択して、Training, Inference, Exportの３つのタブを持つダイアログを起動してください（図4a）。
 3. Trainingタブを選択し各パラメータを設定してください：
-- Image Folder 入力EM画像の指定
-	- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
-- Segmentation Folder お手本セグメンテーション画像の指定 
-	- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
-- Checkpoint	トレーニングしたDNNの結合強度を保存するフォルダ
-- X loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
-- Y loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
-- Model		学習モデルの指定 "pix2pix", "pix2pix2", "CycleGAN"
-- Generator	DNNトポロジの指定 "unet", "resnet", "highwaynet", "densenet"
-- Augmentation	トレーニングデータ水増し方向の設定 {fliplr  ,flipud, transpose} 
-- Maximal epochs	トレーニング回数	
-- Display Frequency 	指定回数に一度Inferenceを行い、結果をCheckpointにhtml形式で出力する。
-- Save Parameters	上記パラメータを指定ファイルに保存します。
-- Load Parameters	上記パラメータを指定ファイルから読み出します。
+	- Image Folder 入力EM画像の指定
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+	- Segmentation Folder お手本セグメンテーション画像の指定 
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+	- Checkpoint	トレーニングしたDNNの結合強度を保存するフォルダ
+	- X loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
+	- Y loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
+	- Model		学習モデルの指定 "pix2pix", "pix2pix2", "CycleGAN"
+	- Generator	DNNトポロジの指定 "unet", "resnet", "highwaynet", "densenet"
+	- Augmentation	トレーニングデータ水増し方向の設定 {fliplr  ,flipud, transpose} 
+	- Maximal epochs	トレーニング回数	
+	- Display Frequency 	指定回数に一度Inferenceを行い、結果をCheckpointにhtml形式で出力する。
+	- Save Parameters	上記パラメータを指定ファイルに保存します。
+	- Load Parameters	上記パラメータを指定ファイルから読み出します。
 
 4. Executeボタンをクリックしてトレーニングを開始します。既定パラメータにて、サンプルEM画像データdata/segment_ 2DNN_img/49.png および サンプルSegmentation画像data/segment_ 2DNN_seg/49.png を対象にトレーニングを行います。
 5. プルダウンメニューよりSegmentation → Tensorboradを選択して、トレーニングの進捗を確認してください。既定パラメータにてサンプルEM/Segmentation画像のトレーニングを行った場合、NVIDIA GeForce GTX 1070 で5分程度かかりました。
@@ -79,32 +79,32 @@ https://github.com/tbullmann/imagetranslation- tensorflow
 7. Checkpointフォルダに "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) が出力されていることを確認してください。このファイルにトレーニング結果が保存されています。
 8. コマンドプロンプトに～が表示されるとトレーニングは終了です。
 9. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください（図4b）。
-- Image Folder	入力EM画像の指定
-	- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
-- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
-- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
+	- Image Folder	入力EM画像の指定
+		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
+	- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
+	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
 10. Executeボタンをクリックして推定を開始します。
 11. 推定結果はOutput Segmentation Folderに保存されます（拡張予定）（図4c）。
 
 
 ### 三次元DNNを用いたセグメンテーション（実装予定）
-Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜湧出専用のセグメンターです。
+Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜専用のセグメンターです。
 
->> https://github.com/google/ffn
+ <https://github.com/google/ffn>
 
-同手法により、これまで最も性能が出る方法とされた 二次元 U-Net によるセグメンテーションと GALAの組み合わせより、はるかに高い正確さでセグメンテーションを行うことができるようになりました。ただし、長いトレーニング期間が必要です。例えば、NVIDIA GeForce GTX 1080 ti使用した場合で約2週間かかります。
+同手法により、これまで最も性能が出る方法とされた 二次元 U-Net によるセグメンテーションと GALAの組み合わせより、はるかに高い正確さでセグメンテーションを行うことができるようになりました。ただし、3次元のお手本を準備する必要があります。また、長いトレーニング期間が必要です。例えば、NVIDIA GeForce GTX 1080 ti使用した場合で約2週間かかります。
 
 
 ## お願い：
 日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします。匿名のコメントも歓迎いたします。私一人で開発を続けるのは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
 
 
-### （参考）cuda 9.0, cuDNN v7のインストール方法。
-* <https://qiita.com/spiderx_jp/items/8d863b087507cd4a56b0>
-* <https://qiita.com/kattoyoshi/items/494238793824f25fa489>
-* <https://haitenaipants.hatenablog.com/entry/2018/07/25/002118>
+-（参考1）cuda 9.0, cuDNN v7のインストール方法。
+	- <https://qiita.com/spiderx_jp/items/8d863b087507cd4a56b0>
+	- <https://qiita.com/kattoyoshi/items/494238793824f25fa489>
+	- <https://haitenaipants.hatenablog.com/entry/2018/07/25/002118>
 
-### （参考２）さらに詳細なマニュアル設定を行ってtrainingを実行したい場合は、Python スクリプトを作成したのち、コントロールパネル上端のプルダウンメニューよりScript → Run Scriptを選択して実行してください（実装中です。書き方も記述します）。およびTorsten Bullmann博士のGithubサイトを参照してください。
+-（参考2）さらに詳細なマニュアル設定を行ってtrainingを実行したい場合は、Python スクリプトを作成したのち、コントロールパネル上端のプルダウンメニューよりScript → Run Scriptを選択して実行してください（実装中です。書き方も記述します）。およびTorsten Bullmann博士のGithubサイトを参照してください。
 <https://github.com/tbullmann/imagetranslation-tensorflow>
 
