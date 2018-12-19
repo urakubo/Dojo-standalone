@@ -35,8 +35,8 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 ## 使い方：
 
-###校正ソフトウェアDojo：
-校正ソフトウェアDojoは、自動セグメンテーション結果を確認・構成するツールとして開発されました。Lichitman/Pfister 研が開発した Rhoana piplineの一部です。
+### 校正ソフトウェアDojo：
+自動セグメンテーション結果を確認・構成するツールです。Lichitman/Pfister 研が開発した Rhoana piplineの一部です。
 
 1. 上端のプルダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりKatsuriフォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。
 2. Dojoはコントロールパネル内のWebブラウザ (Chromium/PyQt5) で動作します。動作がおかしいと思ったら、Reloadボタンを押してWebブラウザをリフレッシュしてださい。上部URL [ http://X.X.X.X:8888/dojo/ ] をコピーして、Chromeなどの他のWebブラウザのアドレスバーにペーストすると、そこでDojoが起動します。同じLAN内の他のPCにおいてもWebブラウザ上でDojoが起動するはずです。起動しない場合は、ファイアウォールを停止してみてください。
