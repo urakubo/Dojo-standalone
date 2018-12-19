@@ -3,18 +3,15 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-
 import os
 import re
 from io import BytesIO
-
 from datasource import Datasource
-from PIL import Image as PILImage
-import zlib
-
 import numpy as np
+import zlib
+import cv2
 
-import tifffile as tif
+
 
 class Image(Datasource):
 
@@ -23,7 +20,7 @@ class Image(Datasource):
     @override
     '''
     query = 'image'
-    input_format = 'tif'
+    input_format = None # input_format = None 180905
     output_format = 'jpg'
     sub_dir = 'images'
 
@@ -38,8 +35,11 @@ class Image(Datasource):
     out = None
     out_is_there = False
 
-    for f in files:
-      input_image = tif.imread(f)
+    # Sample all slices or a maximum number of z slices from all files
+    for i in np.linspace(0,len(files)-1, num=min(len(files),self._Datasource__zSample_max)).astype('int'):
+
+      print(files[i])   ##################################################
+      input_image = cv2.imread(files[i])
 
       if out_is_there:
         #out = np.dstack([out, input_image])
@@ -51,7 +51,6 @@ class Image(Datasource):
 
     c_image_data = zlib.compress(out)
 
-#    output = StringIO()
     output = BytesIO()
     output.write(c_image_data)
 
@@ -66,15 +65,14 @@ class Image(Datasource):
     '''
     super(Image, self).get_tile(file)
 
-    image_data = PILImage.open(file)
-    if image_data.mode != "RGB":
-      image_data = image_data.convert("RGB")
-#    output = StringIO()
-    output = BytesIO()
-    image_data.save(output, 'JPEG')
+    image_data = cv2.imread(file,1)
+    #if image_data.mode != "RGB":	#####
+    #    image_data = image_data.convert("RGB") #####
+
+
+    content = cv2.imencode('.jpg', image_data, [cv2.IMWRITE_JPEG_QUALITY, 90])[1].tostring()
 
     content_type = 'image/jpeg'
-    content = output.getvalue()
 
     return content, content_type
 
@@ -82,8 +80,7 @@ class Image(Datasource):
     '''
     @override
     '''
-    content_type = 'text/html'
-    content = None
+    return super(Image, self).handle(request)
 
-    return super(Image, self).handle(request, content, content_type)
+
 

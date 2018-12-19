@@ -75,78 +75,56 @@ function remove_duplicates(array) {
 //
 // shader utility functions
 //
-function readAndCompileShader(gl, id) {
-
-  var shaderScript = document.getElementById(id);
-
-  if (!shaderScript) {
-    return null;
-  }
-
-  var str = "";
-  var k = shaderScript.firstChild;
-  while (k) {
-    if (k.nodeType == 3) {
-      str += k.textContent;
-    }
-    k = k.nextSibling;
-  }
-
-  var shader;
-  if (shaderScript.type == "x-shader/x-fragment") {
-    shader = gl.createShader(gl.FRAGMENT_SHADER);
-  } else if (shaderScript.type == "x-shader/x-vertex") {
-    shader = gl.createShader(gl.VERTEX_SHADER);
-  } else {
-    return null;
-  }
-  
-  gl.shaderSource(shader, str);
-  gl.compileShader(shader);
-
-  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-    console.log(gl.getShaderInfoLog(shader));
-    return null;
-  }
-
-  return shader;
-
+function readShader(id) {
+  return document.getElementById(id).textContent.replace(/^\s+|\s+$/g, '');
 };
 
-function linkShaders(gl, vs_id, fs_id) {
+function createShader(gl, source, type) {
+  var shader = gl.createShader(type);
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  return shader;
+}
 
-  var fragmentShader = readAndCompileShader(gl, fs_id);
-  var vertexShader = readAndCompileShader(gl, vs_id);
+function createProgram(gl, vertexShaderSource, fragmentShaderSource) {
+  var program = gl.createProgram();
+  var vshader = createShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
+  var fshader = createShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
+  gl.attachShader(program, vshader);
+  gl.deleteShader(vshader);
+  gl.attachShader(program, fshader);
+  gl.deleteShader(fshader);
+  gl.linkProgram(program);
 
-  var shaderProgram = gl.createProgram();
-  gl.attachShader(shaderProgram, vertexShader);
-  gl.attachShader(shaderProgram, fragmentShader);
-  gl.linkProgram(shaderProgram);
-
-  if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
       console.log("Could not initialise shaders");
 
-      console.log(gl.getShaderInfoLog(fragmentShader));
-      console.log(gl.getShaderInfoLog(vertexShader));
-      console.log(gl.getProgramInfoLog(shaderProgram));
+      console.log(gl.getShaderInfoLog(fshader));
+      console.log(gl.getShaderInfoLog(vshader));
+      console.log(gl.getProgramInfoLog(program));
 
       return null;
 
   }
 
-  return shaderProgram;
+  return program;
+};
+
+function linkShaders(gl, vs_id, fs_id) {
+
+  var fragmentShader = readShader(fs_id);
+  var vertexShader = readShader(vs_id);
+
+  return createProgram(gl, vertexShader, fragmentShader);
 
 };
 
 function from32bitTo8bit(value) {
 
-  // pack value to 4 bytes (little endian)
-  var b3 = Math.floor(value / (256*256*256)); // lsb
-  var b2 = Math.floor((value-b3) / (256*256));
-  var b1 = Math.floor((value-b3-b2) / (256));
-  var b0 = Math.floor(value-b1*(256)-b2*(256*256)-b3*(256*256*256)); // msb  
-
-  return [b0, b1, b2, b3];
+  arr = new ArrayBuffer(4); // an Int32 takes 4 bytes
+  view = new DataView(arr);
+  view.setUint32(0, value, true); // byteOffset = 0; litteEndian = false
+  return new Uint8Array(arr);
 
 }
 
@@ -155,3 +133,32 @@ function fire_resize_event() {
   evt.initUIEvent('resize', true, false, window, 0);
   window.dispatchEvent(evt);  
 }
+
+
+function parse_args() {
+
+  // from http://stackoverflow.com/a/7826782/1183453
+  var args = document.location.search.substring(1).split('&');
+  argsParsed = {};
+  for (var i=0; i < args.length; i++)
+  {
+      arg = unescape(args[i]);
+
+      if (arg.length == 0) {
+        continue;
+      }
+
+      if (arg.indexOf('=') == -1)
+      {
+          argsParsed[arg.replace(new RegExp('/$'),'').trim()] = true;
+      }
+      else
+      {
+          kvp = arg.split('=');
+          argsParsed[kvp[0].trim()] = kvp[1].replace(new RegExp('/$'),'').trim();
+      }
+  }
+
+  return argsParsed;
+
+};

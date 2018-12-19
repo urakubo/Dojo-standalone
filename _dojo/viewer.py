@@ -6,6 +6,10 @@ import os
 import re
 import sys
 
+from os import path, pardir
+main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
+
+
 class Viewer(object):
 
   def __init__(self):
@@ -13,7 +17,14 @@ class Viewer(object):
     '''
     self.__query_viewer_regex = re.compile('^/dojo/.*$')
 
-    self.__web_dir = '_web/'
+
+    if getattr(sys, 'frozen', False):
+      print('Run on pyinstaller.')
+      self.__web_dir = os.path.join(main_dir, "../..", "_web/")
+    else:
+      print('Run on live python.')
+      self.__web_dir = os.path.join(main_dir, "_web/")
+
 
   def content_type(self, extension):
     '''
@@ -48,18 +59,25 @@ class Viewer(object):
 
     # get filename from query
     requested_file = self.__web_dir + url.replace('/dojo/', '')
+    requested_file = os.path.normpath( requested_file )
     extension = os.path.splitext(requested_file)[1]
 
+
+    # print('requested_file: ', requested_file)
+    # print('extension: ', extension)
 
     if not os.path.exists(requested_file):
       return 'Error 404', 'text/html'
 
 
-    if sys.version_info.major == 2:
-      with open(requested_file, 'r') as f:
-        content = f.read()
-    else :
-      with open(requested_file, 'r', encoding="utf-8_sig") as f:
-        content = f.read()
+    #if sys.version_info.major == 2:
+    #  with open(requested_file, 'r') as f:
+    #    content = f.read()
+    # else :
+
+    with open(requested_file, 'r', encoding="utf-8_sig") as f:
+      content = f.read()
 
     return content, self.content_type(extension)
+
+

@@ -12,17 +12,14 @@ import json
 import os
 import socket
 import sys
+import tempfile
+import signal
+
 import tornado
 import tornado.websocket
 import tornado.httpserver
-#import tempfile
-
-import signal
-import subprocess
-import pickle
-
-if sys.version_info.major == 3:
-  import asyncio
+from threading import Thread
+import asyncio
 
 from os import path, pardir
 main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
@@ -54,10 +51,12 @@ class DojoHandler(tornado.web.RequestHandler):
 
   def initialize(self, logic):
     self.__logic = logic
-
+  # @tornado.web.asynchronous
+  # @tornado.gen.coroutine
   def get(self, uri):
     self.__logic.handle(self)
-
+  # @tornado.web.asynchronous
+  # @tornado.gen.coroutine
   def post(self, uri):
     self.__logic.handle(self)
 
@@ -67,49 +66,62 @@ class ServerLogic:
     loop.stop()
 
   def __init__( self ):
-    return
 
- # def __init__( self ):
- #   if os.name == 'posix':
- #     signal.signal(signal.SIGINT, self.close)            ########## Linux
- #   elif os.name == 'nt':
- #     win32api.SetConsoleCtrlHandler(self.close_win, 1)   ########## Windows
- #   else:
- #     print("Unsupported OS")
- #     sys.exit(1)
+    pass
+
 
   def run( self, u_info ):
 
+    # self, mojo_dir, tmp_dir, /// out_dir, dojoserver
+
     # register two data sources
-    self.__segmentation = _dojo.Segmentation( u_info.files_path , u_info.tmpdir)
+    self.__segmentation = _dojo.Segmentation( u_info.files_path , u_info.tmpdir, self)
     self.__image = _dojo.Image( u_info.files_path , u_info.tmpdir)
 
     # and the controller
-    self.__controller = _dojo.Controller( u_info, self.__segmentation.get_database() ) ####
+    self.__controller = _dojo.Controller( u_info, self.__segmentation.get_database(), self ) ####
 
     # and the viewer
     self.__viewer = _dojo.Viewer()
 
 
+
+    # and the controller
+    if self.__segmentation:
+      db = self.__segmentation.get_database()
+    else:
+      db = None
+    self.__controller = _dojo.Controller( u_info, db, self )
+
+
+
     # and the setup
     self.__setup = _dojo.Setup(self, u_info.files_path, u_info.tmpdir)
 
-    path_gfx = os.path.join(main_dir, "_web/gfx")
-    path_stl = os.path.join(main_dir, "_web/stl")
+    if getattr(sys, 'frozen', False):
+      print('Run on pyinstaller.')
+      path_gfx = os.path.normpath(os.path.join(main_dir, "../..", "_web/gfx"))
+      path_stl = os.path.normpath(os.path.join(main_dir, "../..", "_web_stl"))
+    else:
+      print('Run on live python.')
+      path_gfx = os.path.join(main_dir, "_web/gfx")
+      path_stl = os.path.join(main_dir, "_web_stl")
+
+    print('path_gfx: ',path_gfx)
+    print('path_stl: ',path_stl)
+    # running live
+
 
 
     ####
-    if sys.version_info.major == 3:
-      #loop = asyncio.new_event_loop()
-      asyncio.set_event_loop(u_info.worker_loop)
-      #loop.call_soon(self.func, loop)
+    asyncio.set_event_loop(u_info.worker_loop)
 
     dojo = tornado.web.Application([
       (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': path_gfx}),
       (r'/dojo/stl/(.*)', tornado.web.StaticFileHandler, {'path': path_stl}),
       (r'/ws', _dojo.Websockets, dict(controller=self.__controller)),
       (r'/(.*)', DojoHandler, dict(logic=self))
-    ],debug = True) #            (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': '/dojo/gfx'})
+    ],debug=True,autoreload=True) #            (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': '/dojo/gfx'})
 
 
     # dojo.listen(u_info.port, max_buffer_size=1024*1024*150000)
@@ -141,13 +153,30 @@ class ServerLogic:
   def stop():
     asyncio.asyncio_loop.stop()
     server.stop()
+    # thread.join()
+
+  def get_image(self):
+    return self.__image
+
+
+  def get_segmentation(self):
+    return self.__segmentation
+
+
+  def get_controller(self):
+    return self.__controller
+
 
   def handle( self, r ):
 
     content = None
 
+    # the access to the viewer
+    #if not self.__configured:
+    #  content, content_type = self.__setup.handle(r.request)
+    #else:
     # viewer is ready
-    content, content_type = self.__viewer.handle(r.request) ## call viewer
+    content, content_type = self.__viewer.handle(r.request)
 
     # let the data sources handle the request
     if not content:
@@ -156,50 +185,22 @@ class ServerLogic:
     if not content:
       content, content_type = self.__image.handle(r.request)
 
-
     # invalid request
     if not content:
       content = 'Error 404'
       content_type = 'text/html'
 
-    print('IP',r.request.remote_ip)
+    # print 'IP',r.request.remote_ip
 
     r.set_header('Access-Control-Allow-Origin', '*')
     r.set_header('Content-Type', content_type)
     r.write(content)
 
 
-#  def close(self, signal, frame):
-#
-#    print('Dojo terminating..')
-#    output = {}
-#    output['origin'] = 'SERVER'
-#    # t = SaveChanges(u_info)
-#    # t.run()
-#    # self.__controller.save(output)
-#    sys.exit(0)
+  def close(self, signal, frame):
+    print('Sayonara..!!')
+    output = {}
+    output['origin'] = 'SERVER'
 
-
-#  def close_win(self, empty):
-
-#    print('Dojo terminating..')
-#    output = {}
-#    output['origin'] = 'SERVER'
-#    # self.__controller.save(output)
-#    sys.exit(0)
-
-#
-# entry point
-#
-
-if __name__ == "__main__":
-
-
-  user_dir = sys.argv[1]
-  with open('u_info.pickle', 'rb') as f:
-    u_info = pickle.load(f)
-
-  logic = ServerLogic()
-  logic.run( u_info )
-
+    sys.exit(0)
 

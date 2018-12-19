@@ -94,7 +94,7 @@ class ExportImgSeg():
         ##
         print("Tile Num: z {0}, y {1}, x {2}".format(db.num_tiles_z, db.num_tiles_y, db.num_tiles_x))
         iw = 0
-        for iz in range(100): # db.num_tiles_z):
+        for iz in range(db.num_tiles_z): # 100): # 
 
             print("iz ", iz)
             merged_images_ids = np.zeros( ( db.canvas_size_y, db.canvas_size_x ), np.uint32 )

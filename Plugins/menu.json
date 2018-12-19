@@ -1,7 +1,11 @@
 {
-"Export Stl": {
+"3D Viewer": {
 	"Sub":		0,
-	"Func":		"ExportStl_"
+	"Func":		"StlViewer_"
+},
+"3D Viewer (Big Objects)": {
+	"Sub":		0,
+	"Func":		"StlViewer2_"
 },
 "User Defined1": {
 	"Sub":		1,
@@ -11,7 +15,11 @@
 	"Sub":		0,
 	"Func":		"SuperPixel_"
 },
-"User Defined2": {
+"User Defined3": {
+	"Sub":		0,
+	"Func":		"UserDefined_"
+},
+"User Defined4": {
 	"Sub":		0,
 	"Func":		"UserDefined_"
 }

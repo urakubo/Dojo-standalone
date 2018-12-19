@@ -12,13 +12,50 @@ DOJO.modes = {
 DOJO.threeD_active = false;
 DOJO.link_active = false;
 DOJO.mousemove_timeout = null;
+DOJO.single_segment = false;
 
 DOJO.init = function() {
 
   DOJO.viewer = new J.viewer('dojo1');
+
+  var args = parse_args();
+
   DOJO.viewer.init(function() {
 
     DOJO.update_slice_number(1);
+    // Allows for highlighintg of searched segment
+    // Allowing for compatability with Neuroblocks
+    if (typeof(args['activeId']) != 'undefined') {
+
+      var id = args['activeId'];
+      DOJO.viewer._controller._adjust_mode = 1;
+      DOJO.viewer._controller._adjust_id = id;
+
+      DOJO.viewer._controller.activate(id);
+      DOJO.viewer._controller.highlight(id);
+
+      DOJO.single_segment = true;
+
+    };
+
+    if (typeof(args['jump']) != 'undefined') {
+
+      var coords = args['jump'].split(',');
+    
+      if (coords.length != 3) {
+
+        window.alert('Error parsing position.');
+
+      } else {
+
+        DOJO.viewer._camera._w = 0;
+
+        DOJO.viewer._camera.jumpIJK(coords[0], coords[1], coords[2]);
+
+      }
+
+    };
+
 
   });
 
@@ -28,6 +65,10 @@ DOJO.init = function() {
 
 DOJO.setup_buttons = function() {
 
+  var threeD = document.getElementById('threeD');
+  threeD.style.left = (document.body.clientWidth - 310) + 'px';  
+  DOJO.make_resizable();
+
   var merge = document.getElementById('merge');
   var merge_selected = document.getElementById('merge_selected');
 
@@ -35,10 +76,11 @@ DOJO.setup_buttons = function() {
 
     if (DOJO.mode != DOJO.modes.merge) {
 
-      DOJO.reset_tools();
+      if (!DOJO.single_segment)
+        DOJO.reset_tools();
 
       merge.style.display = 'none';
-      merge_selected.style.display = 'block';
+      merge_selected.style.display = 'block';      
 
       DOJO.mode = DOJO.modes.merge;
 
@@ -60,31 +102,9 @@ DOJO.setup_buttons = function() {
       DOJO.reset_tools();
 
       split.style.display = 'none';
-      split_selected.style.display = 'block';      
+      split_selected.style.display = 'block';
 
       DOJO.mode = DOJO.modes.split;
-
-    } else {
-
-      DOJO.reset_tools();
-
-    }
-
-  };
-
-  var adjust = document.getElementById('adjust');
-  var adjust_selected = document.getElementById('adjust_selected');
-
-  adjust.onclick = adjust_selected.onclick = function() {
-
-    if (DOJO.mode != DOJO.modes.adjust) {
-
-      DOJO.reset_tools();
-
-      adjust.style.display = 'none';
-      adjust_selected.style.display = 'block';
-
-      DOJO.mode = DOJO.modes.adjust;
 
     } else {
 
@@ -100,14 +120,15 @@ DOJO.setup_buttons = function() {
   threed.onclick = threed_selected.onclick = function() {
 
     if (!DOJO.threeD_active) {
+
       // threed.style.border = '1px solid white';
+
       threed.style.display = 'none';
       threed_selected.style.display = 'block';
 
       document.getElementById('threeD').style.display = 'block';
 
       if (!DOJO.threeD) {
-        DOJO.make_resizable();
         DOJO.init_threeD();
       }
 
@@ -125,53 +146,59 @@ DOJO.setup_buttons = function() {
 
       DOJO.threeD.renderer.destroy();
 
+      DOJO.threeD = null;
+
     }
 
   };
 
-  var link = document.getElementById('link');
-  var link_selected = document.getElementById('link_selected');
+  var save = document.getElementById('save');
 
-  link.onclick = link_selected.onclick = function() {
+  save.onclick = function() {
 
-    if (!DOJO.link_active) {
-
-      // link.style.border = '1px solid white';
-      link.style.display = 'none';
-      link_selected.style.display = 'block';
-
-      DOJO.link_active = true;
-
-    } else {
-
-      // link.style.border = '';
-      link.style.display = 'block';
-      link_selected.style.display = 'none';
+    // if (confirm("Saving might take hours and Dojo will be unusable during this time!\n\nDo you really want to save right now?") == true) {
 
 
-      DOJO.viewer._controller.reset_cursors();
-
-      DOJO.link_active = false;
-
-    }
+      $('#blocker').show();
 
 
-  };
+      DOJO.viewer._controller.save();
+
+    // }
+
+
+  };  
+
+  var undo = document.getElementById('undo');
+
+  undo.onclick = function() {
+
+    DOJO.viewer._controller.undo_action();
+
+  };  
+
+
+  var redo = document.getElementById('redo');
+
+  redo.onclick = function() {
+
+    DOJO.viewer._controller.redo_action();
+
+  };  
+
+
 
 };
 
 DOJO.reset_tools = function() {
 
-  DOJO.mode = DOJO.modes.pan_zoom;    
+  DOJO.mode = DOJO.modes.pan_zoom;
 
   merge.style.display = 'block';
   merge_selected.style.display = 'none';
 
   split.style.display = 'block';
   split_selected.style.display = 'none';
-
-  adjust.style.display = 'block';
-  adjust_selected.style.display = 'none';
 
   DOJO.viewer._controller.end();
 
@@ -198,7 +225,8 @@ DOJO.onleftclick = function(x, y) {
     if (DOJO.mode == DOJO.modes.merge) {
 
       if (!DOJO.viewer.is_locked(id))
-        DOJO.viewer._controller.merge(id);
+        DOJO.viewer._controller.start_merge(id, x, y);
+        // DOJO.viewer._controller.merge(id);
       
     } else if (DOJO.mode == DOJO.modes.split) {
 
@@ -235,22 +263,6 @@ DOJO.onleftclick = function(x, y) {
 
 DOJO.onmousemove = function(x, y) {
 
-  if (DOJO.link_active) {
-
-    var i_j = DOJO.viewer.xy2ij(x,y);
-
-    if (i_j[0] == -1) return;
-
-    if (DOJO.mousemove_timeout) {
-      clearTimeout(DOJO.mousemove_timeout);
-    }
-
-    DOJO.mousemove_timeout = setTimeout(function() {
-      DOJO.viewer._controller.send_mouse_move([i_j[0], i_j[1], DOJO.viewer._camera._z]);
-    }, 100);
-
-  }
-
   if (DOJO.mode == DOJO.modes.split && DOJO.viewer._interactor._left_down) {
 
     DOJO.viewer._controller.draw_split(x, y);
@@ -259,8 +271,12 @@ DOJO.onmousemove = function(x, y) {
 
     DOJO.viewer._controller.draw_adjust(x, y);
 
-  }
+  } else if (DOJO.mode == DOJO.modes.merge && DOJO.viewer._interactor._left_down) {
 
+    DOJO.viewer._controller.draw_merge(x, y);
+
+  }
+  
 };
 
 DOJO.onmouseup = function(x, y) {
@@ -271,6 +287,10 @@ DOJO.onmouseup = function(x, y) {
 
     DOJO.viewer._controller.end_draw_split(x, y);
 
+  } else if (DOJO.mode == DOJO.modes.merge) {
+
+    DOJO.viewer._controller.end_draw_merge(x,y);
+
   }
 
 };
@@ -278,7 +298,7 @@ DOJO.onmouseup = function(x, y) {
 DOJO.update_slice_number = function(n) {
 
   var slicenumber = document.getElementById('slicenumber');
-  slicenumber.innerHTML = n+'/'+DOJO.viewer._image.max_z_tiles;
+  slicenumber.innerHTML = n-1+'/'+(DOJO.viewer._image.max_z_tiles-1);
 
   // reset the cursors if we are in collab mode
   if (DOJO.link_active) {
@@ -294,7 +314,7 @@ DOJO.update_label = function(x, y) {
   var label = document.getElementById('label');
 
   if (i_j[0] == -1) {
-    label.innerHTML = 'Label n/a';
+    label.innerHTML = ' Label n/a';
     if (DOJO.mode != DOJO.modes.merge)
       DOJO.viewer._controller.reset_3d_labels();
     return;
@@ -307,7 +327,7 @@ DOJO.update_label = function(x, y) {
     var color = DOJO.viewer.get_color(id);
     var color_hex = rgbToHex(color[0], color[1], color[2]);
 
-    label.innerHTML = 'Label <font color="' + color_hex + '">' + id + '</font>';
+    label.innerHTML = ' Label <font color="' + color_hex + '">' + id + '</font> (' + i_j[0] + ',' + i_j[1] + ')';
 
     DOJO.viewer._controller.highlight(id);
 
@@ -316,8 +336,7 @@ DOJO.update_label = function(x, y) {
 };
 
 DOJO.update_log = function(input) {
-  console.log(input);
-  var log = document.getElementById('log');
+    var log = document.getElementById('log');
 
   var m = input.value;
 
@@ -340,7 +359,7 @@ DOJO.make_resizable = function() {
 // whose keys constitute optional parameters/settings:
 
 var dragresize = new DragResize('dragresize',
- { handles: ['bl'], minWidth: 300, minHeight: 300, minLeft: 20, minTop: 20, maxLeft: 600, maxTop: 600 });
+ { handles: ['bl'], minWidth: 300, minHeight: 300, minLeft: 10, minTop: 10, minRight: 10, minBottom: 10 });
 
 // Optional settings/properties of the DragResize object are:
 //  enabled: Toggle whether the object is active.
@@ -355,11 +374,11 @@ var dragresize = new DragResize('dragresize',
 
 dragresize.isElement = function(elm)
 {
- if (elm.className && elm.className.indexOf('threeDpanel') > -1) return true;
+ if (elm.className && elm.className.indexOf('draggable_panel') > -1) return true;
 };
 dragresize.isHandle = function(elm)
 {
- if (elm.className && elm.className.indexOf('threeDpanel') > -1) return true;
+ if (elm.className && elm.className.indexOf('drsMoveHandle') > -1) return true;
 };
 
 // You can define optional functions that are called as elements are dragged/resized.
@@ -371,7 +390,7 @@ dragresize.isHandle = function(elm)
 
 dragresize.ondragfocus = function() { };
 dragresize.ondragstart = function(isResize) { };
-dragresize.ondragmove = function(isResize) { fire_resize_event(); };
+dragresize.ondragmove = function(isResize) { if (DOJO.threeD) DOJO.threeD.renderer.onResize(); };
 dragresize.ondragend = function(isResize) { };
 dragresize.ondragblur = function() { };
 
@@ -389,22 +408,26 @@ DOJO.init_threeD = function() {
 
   // create and initialize a 3D renderer
   var r = new X.renderer3D();
-  r.container = 'threeD';
+  r.container = 'threeDcontent';
   r.init();
 
   DOJO.threeD.renderer = r;
 
   var vol = new X.volume();
-  vol.dimensions = [512,512,DOJO.viewer._image.max_z_tiles];
-  vol.spacing = [1,1,3];
-  vol.file = '/image/volume/00000001/&.RZ';
+  var zSample_num = Math.min(DOJO.viewer._image.zSample_max,DOJO.viewer._image.max_z_tiles);
+  var volume_zoomlevel = pad(DOJO.viewer._image.zoomlevel_count - 1, 8);
+
+  vol.spacing = [1,1,7.5];
+  vol.dimensions = [512,512,zSample_num];
+  vol.file = '/image/volume/'+volume_zoomlevel+'/&.RZ';
+  vol.xySampleRate = 1;
 
   vol.labelmap.use32bit = true;
-  vol.labelmap.file = '/segmentation/volume/00000001/&.RZ';
+  vol.labelmap.file = '/segmentation/volume/'+volume_zoomlevel+'/&.RZ';
   vol.labelmap.dimensions = vol.dimensions;
-  vol.labelmap.opacity = 0.5;
-  // vol.labelmap._dirty = true;
-
+  vol.labelmap.opacity = .5;
+  
+//  vol.labelmap._dirty = true;
 
   DOJO.threeD.volume = vol;
   DOJO.threeD.renderer = r;  

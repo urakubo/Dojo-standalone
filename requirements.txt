@@ -1,0 +1,17 @@
+tensorflow-gpu
+pyqt5
+opencv-python
+tornado
+Pillow
+libtiff
+mahotas
+h5py
+pypng
+lxml
+numpy
+scipy
+scikit-image
+pypiwin32
+numpy-stl
+pypng
+https://github.com/pyinstaller/pyinstaller/archive/develop.zip
