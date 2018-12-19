@@ -19,17 +19,16 @@ OSはMicrosoft Windows 10 (64 bit) です。メインメモリ8GB以上のPCで�
 ## インストール方法：
 Pythonのインストールの必要のないPyinstaller版とPythonソースコードの両方を提供します。
 
-###Pyinstaller版：
+### Pyinstaller版：
 1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(300 MB)を用意しました。いずれかをダウンロードして展開してください。
 2. 公開サンプルデータKatsuri.zip , Katsuri2.zipをダウンロードして適当なフォルダに展開してください。
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください（図1）。
 
-###Python版：
+### Python版：
 1. Windows10 において、 Python3.5-3.6 をインストールしてください。
 2. Tensorflow 1.12 のためにGPUを利用する場合はcuda 9.0, cuDNN v7をインスト―ルしてください。（参考）
-3. Githubサイトより
->> git clone https://github.com/urakubo/Dojo-standalone
- として、必要プログラムをロードしてください。
+3. 次の命令を実行してGithubより必要プログラムをダウンロードしてください。
+	 - git clone https://github.com/urakubo/Dojo-standalone
 4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください（pip install -r requirements.txt　実装予定 18/12/17）。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL} \ Lib\site-packages へコピーしてください。{$INSTALL} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py を実行してコントロールパネルを起動してください。
