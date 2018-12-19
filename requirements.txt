@@ -13,5 +13,4 @@ scipy
 scikit-image
 pypiwin32
 numpy-stl
-pypng
 https://github.com/pyinstaller/pyinstaller/archive/develop.zip
