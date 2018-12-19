@@ -21,7 +21,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 ### Pyinstaller版：
 1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(300 MB)を用意しました。いずれかをダウンロードして展開してください。
-2. 公開サンプルデータKatsuri.zip , Katsuri2.zipをダウンロードして適当なフォルダに展開してください。
+2. 公開サンプルデータKatsuri.zip をダウンロードして適当なフォルダに展開してください。
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください（図1）。
 
 ### Python版：
@@ -32,6 +32,8 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください（pip install -r requirements.txt　実装予定 18/12/17）。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py を実行してコントロールパネルを起動してください。
+7. 公開サンプルデータKatsuri.zip をダウンロードして適当なフォルダに展開してください。
+
 
 ## 使い方：
 
@@ -44,8 +46,10 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 4. 新しい電子顕微鏡画像を編集する場合は、プルダウンメニュー Dojo → Import EM stackを選択して、tiff/pngの連続番号EM画像・Segmentation画像ファイルが入ったフォルダを指定してください（実装予定；EM画像のみの読込、マルチページtiff画像読込）。
 5. 編集後はプルダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
+
 ### 3D Viewer（プロトタイプ）：
 Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます（図3）。
+
 
 ### 二次元DNNを用いたセグメンテーション：
 コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。実装はTorsten Bullmann博士が行いました。
