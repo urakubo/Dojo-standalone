@@ -7,7 +7,7 @@
 
 　そこで、私、浦久保秀俊はパイプライン上のソフトウェアのいくつかを実験研究者にも簡単に使えるように統合する作業を始めました。
 
-* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました **改装・改良中 18/12/17** 。
+* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました **[改装・改良中 18/12/17]** 。
 * さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました **["3D FFN" は実装予定 18/12/17]**。
 * セグメンテーション結果を3Dで確認することができるようにするために、3D Viewerを作成しました **[プロトタイプ。作成中 18/12/17]**。
 
@@ -27,10 +27,10 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 ### Python版：
 1. Windows10 において、 Python3.5-3.6 をインストールしてください。
-2. Tensorflow 1.12 のためにGPUを利用する場合はcuda 9.0, cuDNN v7をインスト―ルしてください（参考1）。
+2. Tensorflow 1.12 のためにGPUを利用する場合はcuda 9.0, cuDNN v7をインスト―ルしてください **[参考1]** 。
 3. 次の命令を実行してGithubより必要プログラムをダウンロードしてください。
 	 - git clone https://github.com/urakubo/Dojo-standalone
-4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください_（pip install -r requirements.txt　実装予定 18/12/17）_。
+4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください **[pip install -r requirements.txt　実装予定 18/12/17]** 。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py と実行してコントロールパネルを起動してください。
 7. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
@@ -50,7 +50,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 
 ### 3D Viewer：
-Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます。_プロトタイプです。_
+Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます **[プロトタイプです]** 。_
 
 
 ### 二次元DNNを用いたセグメンテーション：
@@ -58,7 +58,7 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
-2. コントロールパネル上端のプルダウンメニューよりSegmentation → ２DNNを選択して、Training, Inference, Exportの３つのタブを持つダイアログを起動してください。
+2. コントロールパネル上端のプルダウンメニューよりSegmentation → 2DNNを選択して、Training, Inferenceの2つのタブを持つダイアログを起動してください。
 3. Trainingタブを選択し各パラメータを設定してください：
 	- Image Folder 入力EM画像の指定
 		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
@@ -87,11 +87,11 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
 10. Executeボタンをクリックして推定を開始します。
-11. 推定結果はOutput Segmentation Folderに保存されます_（拡張予定）_。
+11. 推定結果はOutput Segmentation Folderに保存されます **[変更・拡張予定]** 。
 
 
 ### 三次元DNNを用いたセグメンテーション
-Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜専用のセグメンターです_（実装予定）_。
+Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜専用のセグメンターです **[実装予定]** 。
 
  <https://github.com/google/ffn>
 
@@ -99,7 +99,7 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 
 
 ## お願い：
-日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします（urakubo-h あっと sys.i.kyoto-u.ac.jp; 参考3）。匿名のコメントも歓迎いたします。私一人で開発を続けることは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
+日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします（urakubo-h あっと sys.i.kyoto-u.ac.jp; **[参考3]** ）。匿名のコメントも歓迎いたします。私一人で開発を続けることは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
 
 - (参考1) cuda 9.0, cuDNN v7のインストール方法。
 	- <https://qiita.com/spiderx_jp/items/8d863b087507cd4a56b0>
@@ -109,5 +109,5 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 - (参考2) さらに詳細なマニュアル設定を行ってtrainingを実行したい場合は、Python スクリプトを作成したのち、コントロールパネル上端のプルダウンメニューよりScript → Run Scriptを選択して実行してください（実装中です。書き方も記述します）。およびTorsten Bullmann博士のGithubサイトを参照してください。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
-- (参考3) 浦久保個人情報サイト。
+- (参考3) 浦久保 個人情報サイト。
 	- <https://researchmap.jp/urakubo/>
