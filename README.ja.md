@@ -7,9 +7,9 @@
 
 　そこで、私、浦久保秀俊はパイプライン上のソフトウェアのいくつかを実験研究者にも簡単に使えるように統合する作業を始めました。
 
-* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました（改装・改良中 18/12/17）。
-* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました（"3D FFN" は実装予定 18/12/17）。
-* セグメンテーション結果を3Dで確認することができるようにするために、3D Viewerを作成しました（プロトタイプ。作成中 18/12/17）。
+* まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました_（改装・改良中 18/12/17）_。
+* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました_（"3D FFN" は実装予定 18/12/17）_。
+* セグメンテーション結果を3Dで確認することができるようにするために、3D Viewerを作成しました_（プロトタイプ。作成中 18/12/17）_。
 
 深層学習のプログラム知識を持たない実験研究者が、電子顕微鏡画像をもとに「お手本の作成」「セグメンテーション」「人手による校正（プルーフリード）」までできるようにすることを目標とします。
 
@@ -23,14 +23,14 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(300 MB)を用意しました。いずれかをダウンロードして展開してください。
 2. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
 	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
-3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください（図1）。
+3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください。
 
 ### Python版：
 1. Windows10 において、 Python3.5-3.6 をインストールしてください。
 2. Tensorflow 1.12 のためにGPUを利用する場合はcuda 9.0, cuDNN v7をインスト―ルしてください（参考1）。
 3. 次の命令を実行してGithubより必要プログラムをダウンロードしてください。
 	 - git clone https://github.com/urakubo/Dojo-standalone
-4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください（pip install -r requirements.txt　実装予定 18/12/17）。
+4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください_（pip install -r requirements.txt　実装予定 18/12/17）_。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py と実行してコントロールパネルを起動してください。
 7. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
@@ -49,8 +49,8 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 5. 編集後はプルダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
 
-### 3D Viewer（プロトタイプ）：
-Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます（図3）。
+### 3D Viewer：
+Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を選択して、適当な数（<10）を指定すると、指定された数の3Dオブジェクトが表示されます。_プロトタイプです。_
 
 
 ### 二次元DNNを用いたセグメンテーション：
@@ -58,7 +58,7 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 	- リンク <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
-2. コントロールパネル上端のプルダウンメニューよりSegmentation → ２DNNを選択して、Training, Inference, Exportの３つのタブを持つダイアログを起動してください（図4a）。
+2. コントロールパネル上端のプルダウンメニューよりSegmentation → ２DNNを選択して、Training, Inference, Exportの３つのタブを持つダイアログを起動してください。
 3. Trainingタブを選択し各パラメータを設定してください：
 	- Image Folder 入力EM画像の指定
 		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
@@ -80,18 +80,18 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer (Big Objects)を�
 6. "saving model"と表示されたらトレーニング終了です。
 7. Checkpointフォルダに "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) が出力されていることを確認してください。このファイルにトレーニング結果が保存されています。
 8. コマンドプロンプトに～が表示されるとトレーニングは終了です。
-9. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください（図4b）。
+9. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください。
 	- Image Folder	入力EM画像の指定
 		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ（実装予定 18/12/17）]
 	- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
 	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
 10. Executeボタンをクリックして推定を開始します。
-11. 推定結果はOutput Segmentation Folderに保存されます（拡張予定）（図4c）。
+11. 推定結果はOutput Segmentation Folderに保存されます_（拡張予定）_。
 
 
-### 三次元DNNを用いたセグメンテーション（実装予定）
-Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜専用のセグメンターです。
+### 三次元DNNを用いたセグメンテーション
+Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNは基本的にはPaintルーチンのアルゴリズムを基盤といて、境界を3D DNNにより決定する細胞膜専用のセグメンターです_（実装予定）_。
 
  <https://github.com/google/ffn>
 
