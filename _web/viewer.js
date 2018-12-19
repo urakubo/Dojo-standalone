@@ -2,21 +2,19 @@ var J = J || {};
 
 J.viewer = function(container) {
 
-  var _container = document.getElementById(container);
+  this._container = document.getElementById(container);
 
-  var _canvas = document.createElement('canvas');
-  _canvas.width = _container.clientWidth;
-  _canvas.height = _container.clientHeight;
-  _container.appendChild(_canvas);
+  this._canvas = document.createElement('canvas');
+  this._canvas.width = this._container.clientWidth;
+  this._canvas.height = this._container.clientHeight;
+  this._container.appendChild(this._canvas);
 
-  this._width = _canvas.width;
-  this._height = _canvas.height;
+  this._width = this._canvas.width;
+  this._height = this._canvas.height;
 
-  this._canvas = _canvas;
   this._context = this._canvas.getContext('2d');
 
   this._image_buffer = document.createElement('canvas');
-  //_container.appendChild(this._image_buffer);
   this._image_buffer_context = this._image_buffer.getContext('2d');
   this._image_buffer_ready = false;
 
@@ -30,9 +28,16 @@ J.viewer = function(container) {
   this._pixel_data_buffer = this._segmentation_buffer_context.createImageData(512, 512);
 
   this._offscreen_buffer = document.createElement('canvas');
-  _container.appendChild(this._offscreen_buffer);
+  this._container.appendChild(this._offscreen_buffer);
   this._offscreen_buffer.width = 512;
   this._offscreen_buffer.height = 512;
+
+  // Buffer for the mouse pointer
+  this._pt_g_cols = [[0,0],[.5,0],[.6,.1],[.7,.2],[.8,1],[1,0]];
+  this._pt_buff = document.createElement('canvas');
+  this._container.appendChild(this._pt_buff);
+  this._pt_ctx = this._pt_buff.getContext('2d');
+  this._pt_ctx.rad = 200;
 
   this._force_rerender = false;
 
@@ -46,6 +51,7 @@ J.viewer = function(container) {
   this._overlay_show = true;
   this._overlay_opacity = 100;  
   this._overlay_borders = true;
+  this._only_locked = false;
 
   this._loader = new J.loader(this);
   this._camera = new J.camera(this);
@@ -84,8 +90,11 @@ J.viewer.prototype.init = function(callback) {
     // type cast some stuff
     this._image.width = parseInt(this._image.width, 10);
     this._image.height = parseInt(this._image.height, 10);
-    this._image.zoomlevel_count = parseInt(this._image.zoomlevel_count, 10);
+
+    this._image.zSample_max = parseInt(this._image.zSample_max, 10);
     this._image.max_z_tiles = parseInt(this._image.max_z_tiles, 10);
+    this._image.zoomlevel_count = parseInt(this._image.zoomlevel_count, 10);
+    this._camera._zStack = this._image.zSample_max/this._image.max_z_tiles;
 
     this._image.zoom_levels = this.calc_zoomlevels();
 
@@ -94,8 +103,8 @@ J.viewer.prototype.init = function(callback) {
 
     this._interactor = new J.interactor(this);
 
-    this._image_buffer.width = this._overlay_buffer.width = this._image.width;
-    this._image_buffer.height = this._overlay_buffer.height = this._image.height;
+    this._image_buffer.width = this._overlay_buffer.width = this._pt_buff.width = this._image.width;
+    this._image_buffer.height = this._overlay_buffer.height = this._pt_buff.height = this._image.height;
 
     this._loader.load_json('/segmentation/contents', function(res) {
 
@@ -116,6 +125,11 @@ J.viewer.prototype.init = function(callback) {
           this._gl_colormap[pos++] = c[0];
           this._gl_colormap[pos++] = c[1];
           this._gl_colormap[pos++] = c[2];
+
+		console.log(c[0])
+		console.log(c[1])
+		console.log(c[2])
+
         }
 
         this._camera.reset();
@@ -186,7 +200,7 @@ J.viewer.prototype.draw_image = function(x,y,z,w,i,s) {
 J.viewer.prototype.draw_webgl = function(x,y,z,w,i,s) {
 
   // draw image and segmentation
-  this._offscreen_renderer.draw(i, s, this._image_buffer_context, x, y);  
+  this._offscreen_renderer.draw(i, s, this._image_buffer_context, x, y);
 
 };
 
@@ -198,7 +212,6 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
     // nothing more here
     return;
   }
-
 
   // draw segmentation
   var pixel_data = this._pixel_data_buffer;
@@ -231,14 +244,10 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
       j++;
     }
 
-	// Get id
     var id = this.lookup_id(segmentation_data[p]);
-    
-    // Get color
+
     var color = this.get_color(id);
 
-
-	// If locked
     if (this.is_locked(id)) {
 
       var striped = (i/512 % 0.05 < 0.01) || (j/512 % 0.05 < 0.01);
@@ -254,14 +263,11 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
 
         pixel_data_data[pos++] = color[0];
         pixel_data_data[pos++] = color[1];
-        pixel_data_data[pos++] = color[2];
+        pixel_data_data[pos++] = color[2];        
         pixel_data_data[pos++] = 0.3*255;
 
       }
 
-	//
-	// もし、調整モードであり、さらに対象IDない場合は、色を消す
-	//
     } else if (adjust_mode > 0 && id != activated_id) {
 
       pixel_data_data[pos++] = 0;
@@ -269,14 +275,11 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
       pixel_data_data[pos++] = 0;        
       pixel_data_data[pos++] = 0;
 
-	//
-	// もし、分割モードであり、さらに活性化IDである場合も色を消す。
-	//
     } else if (split_mode > 0 && id == activated_id) {
 
       pixel_data_data[pos++] = 0;
       pixel_data_data[pos++] = 0;
-      pixel_data_data[pos++] = 0;
+      pixel_data_data[pos++] = 0;        
       pixel_data_data[pos++] = 0;
 
     } else {
@@ -293,11 +296,7 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
 
     }
 
-  }
-
-	//
-	// 現実に絵を描く。putImageDataとdrawImageは何のクラスのメソッドだ？
-	//
+  }  
 
   this._segmentation_buffer_context.putImageData(pixel_data, 0, 0);
   this._image_buffer_context.drawImage(this._segmentation_buffer,0,0,512,512,x*512,y*512,512,512);
@@ -306,11 +305,11 @@ J.viewer.prototype.draw_canvas = function(x,y,z,w,i,s) {
 
 J.viewer.prototype.lookup_id = function(id) {
 
-  if (this._controller._merge_table_length == -1) return;
+  if (!this._controller._new_merge_table) return;
 
   // check if this has an entry in the merge table
-  while(typeof this._controller._merge_table[id] !== 'undefined') {
-    id = this._controller._merge_table[id];
+  while(typeof this._controller._new_merge_table[id] !== 'undefined') {
+    id = this._controller._new_merge_table[id];
   }
 
   return id;
@@ -323,6 +322,40 @@ J.viewer.prototype.get_color = function(id) {
 
 };
 
+J.viewer.prototype.move_pointer = function(x,y,win = true) {
+
+  // Get zoom level and radius
+  var level = 1/(Math.pow(2,this._camera._w));
+  var rad = this._pt_ctx.rad*level;
+  this.clear_pointer_buffer();
+
+  // If screen coordinates
+  if (win) {
+    var i_j = this.xy2ij(x,y);
+    if (i_j.some((e) => {return e < 0})) { return; };
+    i_j = i_j.map((e) => {return e*level});
+  }
+  else {
+    var i_j = [x,y];
+  }
+
+  var pt =rad*(1-this._pt_g_cols[4][0]);
+  var grad = this._pt_ctx.createRadialGradient(i_j[0], i_j[1], 0, i_j[0], i_j[1],rad);
+
+  this._pt_g_cols.forEach((c)=>{grad.addColorStop(c[0], 'rgba(1,1,1,'+c[1]+')');});
+  this._pt_ctx.arc(i_j[0], i_j[1],rad, 0, 2*Math.PI);
+  this._pt_ctx.fillStyle = grad;
+  this._pt_ctx.fill();
+
+  this._pt_ctx.beginPath();
+  this._pt_ctx.fillStyle = 'rgb(1,1,1)';
+  this._pt_ctx.moveTo(i_j[0]-pt/2,i_j[1]+pt-rad);
+  this._pt_ctx.lineTo(i_j[0]+pt/2,i_j[1]+pt-rad);
+  this._pt_ctx.lineTo(i_j[0],i_j[1]);
+  this._pt_ctx.closePath();
+  this._pt_ctx.fill();
+};
+
 J.viewer.prototype.clear_buffer = function(width, height) {
 
   this._image_buffer_context.clearRect(0, 0, width, height);
@@ -332,6 +365,12 @@ J.viewer.prototype.clear_buffer = function(width, height) {
 J.viewer.prototype.clear_overlay_buffer = function() {
 
   this._overlay_buffer_context.clearRect(0,0,this._image.width, this._image.height);
+
+};
+
+J.viewer.prototype.clear_pointer_buffer = function() {
+
+  this._pt_ctx.clearRect(0,0,this._image.width, this._image.height);
 
 };
 
@@ -358,10 +397,10 @@ J.viewer.prototype.toggle_segmentation = function() {
 };
 
 J.viewer.prototype.increase_opacity = function() {
-  
+
   this._overlay_opacity = Math.min(255, this._overlay_opacity+=20);
   this.redraw();
-  
+
 };
 
 J.viewer.prototype.decrease_opacity = function() {
@@ -372,12 +411,8 @@ J.viewer.prototype.decrease_opacity = function() {
 };
 
 J.viewer.prototype.loading = function(value) {
-
-  // console.log('loading', value)
-  this._image_buffer_ready = !value;
-
+    this._image_buffer_ready = !value;
 };
-
 
 J.viewer.prototype.render = function() {
 
@@ -390,9 +425,12 @@ J.viewer.prototype.render = function() {
     this.clear();
     // put image buffer
     this._context.drawImage(this._image_buffer, 0, 0);
-
+    
     // draw overlays
     this._context.drawImage(this._overlay_buffer,0,0);
+
+    // draw mouse pointer
+    this._context.drawImage(this._pt_buff,0,0);
 
     this._force_rerender = false;
   }
@@ -401,18 +439,14 @@ J.viewer.prototype.render = function() {
 
 };
 
-
 J.viewer.prototype.xy2uv = function(x, y) {
 
   var u = x - this._camera._view[6];
   var v = y - this._camera._view[7];
-  // console.log(u, this._camera._view[6], x, this._image.zoom_levels[this._camera._zoom_level][0])
-  //if (u < 0 || u >= this._camera._view[0] * this._zoom_level*512) {
   if (u < 0 || u >= this._camera._view[0] * this._image.zoom_levels[this._camera._w][2] *512) {
     u = -1;
   }
 
-  //if (v < 0 || v >= this._camera._view[4] * this._zoom_level*512) {
   if (v < 0 || v >= this._camera._view[4] * this._image.zoom_levels[this._camera._w][3] *512) {
     v = -1;
   }
@@ -447,6 +481,7 @@ J.viewer.prototype.ij2xy = function(i, j) {
 
   var u = ((i * this._camera._view[0])/this._image.zoom_levels[0][2]) * this._image.zoom_levels[this._camera._w][2];
   var v = ((j * this._camera._view[4])/this._image.zoom_levels[0][3]) * this._image.zoom_levels[this._camera._w][3];
+   
 
   return this.uv2xy(u, v);
 
@@ -472,17 +507,28 @@ J.viewer.prototype.ij2uv_no_zoom = function(i, j) {
 
 J.viewer.prototype.ijk2xyz = function(i, j, k) {
 
-  return [Math.floor((i*512)/this._image.height) - 256, Math.floor((j*512)/this._image.width) - 256, Math.floor(k - (this._image.max_z_tiles-1)/2)*DOJO.threeD.volume.spacing[2]];
+  var spacing = 1;
+  return [Math.floor((i*512)/this._image.height) - 256, Math.floor((j*512)/this._image.width) - 256, Math.floor(k - (this._image.max_z_tiles-1)/2)*spacing];
 
 };
+
+J.viewer.prototype.ijk2xyz3d = function(i, j, k) {
+
+  var spacing = 1;
+
+  if (DOJO.threeD) {
+    spacing = DOJO.threeD.volume.spacing[2];
+  }
+
+  return [Math.floor((i*512)/this._image.height) - 256, Math.floor((j*512)/this._image.width) - 256, Math.floor(k - (this._image.max_z_tiles-1)/2)*spacing];
+
+};
+
 
 J.viewer.prototype.xyz2ijk = function(x, y, z) {
 
   var i = Math.floor((x + 256)*this._image.height/512);
   var j = Math.floor((y + 256)*this._image.width/512);
-  // var adjusted_z_range = Math.floor(this._image.max_z_tiles*DOJO.threeD.volume.spacing[2]);
-  // var k = Math.floor((z/adjusted_z_range)*adjusted_z_range;
-  // var k = z + Math.floor(this._image.max_z_tiles/2) * DOJO.threeD.volume.spacing[2];
   var k = z/DOJO.threeD.volume.spacing[2] + Math.floor(this._image.max_z_tiles/2);
 
   return [i, j, k];
@@ -530,6 +576,3 @@ J.viewer.prototype.get_segmentation_id_before_merge = function(i, j, callback) {
 J.viewer.prototype.is_locked = function(id) {
   return this._controller.is_locked(id);
 };
-
-
-
