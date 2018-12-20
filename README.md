@@ -39,22 +39,24 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 3.	Download the source code from the github site:
    	- git clone https://github.com/urakubo/Dojo-standalone
 4. Install the following modules of Python: Tensorflow-gpu, PyQt5, openCV3, pypng, tornado, pillow, 
-libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl .
-	Check "requirements.txt" in the source code. 
-4.	Copy Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd and paste it to {$INSTALL_PYTHON}\Lib\site-packages.
+libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl. Check also "requirements.txt". 
+5. Copy Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd and paste it to {$INSTALL_PYTHON}\Lib\site-packages.
+
 This is the compiled marching cubes from ilastik. https://github.com/ilastik/marching_cubes
-Execute "python main.py" in the Dojo_StandaloneX.XX/ folder to launch a control panel. 
-4.	Download sample EM/segmentation data from the following website, and unzip it:
+6. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder to see a control panel.
+
+7. Download sample EM/segmentation data from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 
 
 ## How to use
 ### Dojo proofreading software
 This is a proofreading software as a part of Rhoana pipeline developed by Lichtman/Pfister lab (Harvard, USA).
-   	- <https://www.rhoana.org/dojo/>
-1.	Select Dojo -> Open Dojo Folder from a pulldown menu, and specify the folder of the sample EM/segmentation data.
-2.	Dojo will launch as a web application. Please push the "Reload" button first if Dojo is in trouble. You will see the Dojo if you copy URL [ http://X.X.X.X:8888/dojo/ ] in the upper panel and past it to the address bar of the other web browser. You can also use the Dojo in the other connected PC by use of web browsers.
-3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . Briefly, You can move between the layers by w/s keys, and change the opacity of segmentation by c/d keys.
+
+	- <https://www.rhoana.org/dojo/>
+1. Select Dojo -> Open Dojo Folder from a pulldown menu, and specify the folder of the sample EM/segmentation data.
+2. Dojo will launch as a web application. Please push the "Reload" button first if Dojo is in trouble. You will also see Dojo if you copy the URL [ http://X.X.X.X:8888/dojo/ ] and past it to the address bar of the other web browser. You can also use Dojo through in the  web browsers in other PCs within the same LAN.
+3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . Briefly, You can move the layers by w/s keys, and change the opacity of segmentation by c/d keys.
 4.	You can import new EM images and export their segmentation through the Dojo pulldown menu. 
 
 
@@ -64,16 +66,17 @@ This is a prototype. In the pulldown menu, select Plugins -> 3D Viewer (Big Obje
 
 ### 2D DNN
 We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation programs on Tensorflow V1.12. Programmed by Dr Torsten Bullmann.
+
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1.	In the pulldown menu, select Segmentation -> 2D DNN. You will see a dialog that has the two tabs: training and inference.
 2.	Select the training tab and specify parameters:
 	- Image Folder:	Folder containing EM images (tiff/png images).
 	- Segmentation Folder: Folder containing ground truth segmentation (tiff/png images).
-	- Checkpoint:	DNN connectivity will be Stored.
-	- X loss:	X loss function "hinge", "square", "softmax", "approx", "dice", "logistic"
-	- Y loss:	X loss function "hinge", "square", "softmax", "approx", "dice", "logistic"
-	- Model:		"pix2pix", "pix2pix2", "CycleGAN"
+	- Checkpoint:	DNN connectivity will be stored.
+	- X loss:	"hinge", "square", "softmax", "approx", "dice", "logistic"
+	- Y loss:	"hinge", "square", "softmax", "approx", "dice", "logistic"
+	- Model:	"pix2pix", "pix2pix2", "CycleGAN"
 	- Generator:	"unet", "resnet", "highwaynet", "densenet"
 	- Augmentation:	{fliplr  ,flipud, transpose} 
 	- Maximal epochs
@@ -81,9 +84,9 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 	- Save Parameters
 	- Load Parameters
 3. Execute training. The default parameters target a sample EM image "data/segment_ 2DNN_img/49.png" and segmentation image "data/segment_ 2DNN_seg/49.png."
-4. Select Segmentation -> Tensorboard to inspect the progression of the training. It took 5 min for the training of sample data by use of NVIDIA GeForce GGTX 1070.
-5. We know the end of training if the word "saving model" is displayed.
-6. Confirm the file "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) in the checkpoint folder. 
+4. Select Segmentation -> Tensorboard to inspect the progression of training. It took 5 min for the training of sample data by use of NVIDIA GeForce GTX 1070.
+5. We know the end of training if "saving model" appears.
+6. Confirm the connectivity file "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) in the checkpoint folder. 
 9. Select Segmentation -> 2D DNN, and set the parameters of the inference tab.
 	- Image Folder:	Folder containing EM images (tiff/png images).
    	- Output Segmentation Folder 
