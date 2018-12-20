@@ -20,7 +20,7 @@ OSはMicrosoft Windows 10 (64 bit) です。メインメモリ8GB以上のPCで�
 Pythonのインストールの必要のないPyinstaller版とPythonソースコードの両方を提供します。
 
 ### Pyinstaller版：
-1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(300 MB)を用意しました。いずれかをダウンロードして展開してください。
+1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(432 MB)を用意しました。いずれかをダウンロードして展開してください。
 	- CPU版 (432 MB): https://www.dropbox.com/s/x8m7guh9s485k90/Dojo_Standalone0.50_cpu_pyinstaller.zip?dl=0
 	- GPU版 (700 MB): https://www.dropbox.com/s/9mpdvzpystrb6y1/Dojo_Standalone0.50_gpu_pyinstaller.zip?dl=0
 
