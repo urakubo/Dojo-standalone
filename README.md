@@ -69,7 +69,7 @@ This is a prototype. In the pulldown menu, select Plugins -> 3D Viewer (Big Obje
 ### 2D DNN
 We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation programs on Tensorflow V1.12. Programmed by Dr Torsten Bullmann.
 
-	- <https://github.com/tbullmann/imagetranslation-tensorflow>
+	- https://github.com/tbullmann/imagetranslation-tensorflow
 
 1.	In the pulldown menu, select Segmentation -> 2D DNN. You will see a dialog that has the two tabs: training and inference.
 2.	Select the training tab and specify parameters:
