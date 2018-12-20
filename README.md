@@ -42,7 +42,8 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl. Check also "requirements.txt". 
 5. Copy Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd and paste it to {$INSTALL_PYTHON}\Lib\site-packages.
 
-This is the compiled marching cubes from ilastik. https://github.com/ilastik/marching_cubes
+	- This is the compiled marching cubes from ilastik. https://github.com/ilastik/marching_cubes
+
 6. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder to see a control panel.
 
 7. Download sample EM/segmentation data from the following website, and unzip it:
@@ -56,7 +57,7 @@ This is a proofreading software as a part of Rhoana pipeline developed by Lichtm
 	- <https://www.rhoana.org/dojo/>
 1. Select Dojo -> Open Dojo Folder from a pulldown menu, and specify the folder of the sample EM/segmentation data.
 2. Dojo will launch as a web application. Please push the "Reload" button first if Dojo is in trouble. You will also see Dojo if you copy the URL [ http://X.X.X.X:8888/dojo/ ] and past it to the address bar of the other web browser. You can also use Dojo through in the  web browsers in other PCs within the same LAN.
-3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . Briefly, You can move the layers by w/s keys, and change the opacity of segmentation by c/d keys.
+3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . Briefly, you can move between the layers by w/s keys, and change the opacity of segmentation by c/d keys.
 4.	You can import new EM images and export their segmentation through the Dojo pulldown menu. 
 
 
