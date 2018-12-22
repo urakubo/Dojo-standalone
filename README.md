@@ -14,6 +14,7 @@ Multiple users can simultanously use it through web browsers. The final goal is 
 
 ## System requirements
 Operating system: Microsoft Windows 10 (64 bit).
+
 Recommendation: High-performance NVIDIA graphics card such as GeForce GTX 1080ti.
 
 ## Installation
