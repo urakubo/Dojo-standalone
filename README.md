@@ -10,7 +10,7 @@ Recent years have seen a rapid expansion in the field of micro-connectomics, whi
 2.	We merged it with Tensorflow/tensorboard (DNN framework by google) and 2D/3D DNN-based segmentation programs. 
 3.	A 3D viewer was equipped for visual inspection. 
 
-Multiple users can simultanously use it through web browsers. The final goad of this software is to develop unified softwre for alignment, DNN-based segmentation, and proofreading for EM experimentalists.
+Multiple users can simultanously use it through web browsers. The final goal is to develop unified softwre for alignment, ground-truth preparation, DNN-based segmentation, and proofreading for EM experimentalists.
 
 ## System requirements
 Operating system: Microsoft Windows 10 (64 bit).
