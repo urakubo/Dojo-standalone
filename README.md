@@ -1,6 +1,8 @@
 Japanese version here
 <https://github.com/urakubo/Dojo-standalone/blob/main0.2/README.ja.md>
 
+This software is under development!
+
 # A unified environment for automated neuronal network reconstruction from EM images
 
 ## Introduction
