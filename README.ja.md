@@ -55,7 +55,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 
 ### 3D Viewer：
-Dojoファイルを開いた状態で、Plugins → 3D Viewer を選択してください。Object Table上の赤いX印をクリックすると該当するIDのセグメントが表示されます。
+Dojoファイルを開いた状態で、Plugins → 3D Viewer を選択してください。Object Table上の赤いX印をクリックすると該当するIDのオブジェクト（セグメント）が表示されます。Sizeの大きなオブジェクトを表示すると分かりやすいです。
 
 
 ### 二次元DNNを用いたセグメンテーション：
