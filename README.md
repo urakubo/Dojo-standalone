@@ -25,9 +25,9 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 ### Pyinstaller version 
 
 1.	Download one of the following two versions, and unzip it:
-	- CPU version (432 MB): 
-   	- <https://www.dropbox.com/s/x8m7guh9s485k90/Dojo_Standalone0.50_cpu_pyinstaller.zip?dl=0>
-   	- GPU version (700 MB):
+	- CPU version (Ver0.54: 262 MB): 
+   	- <https://www.dropbox.com/s/zy92gi1cfohwn9z/Dojo_Standalone0.54_pyinstaller.zip?dl=0>
+   	- GPU version (Ver0.50: 700 MB):
    	- <https://www.dropbox.com/s/9mpdvzpystrb6y1/Dojo_Standalone0.50_gpu_pyinstaller.zip?dl=0>
 
 2.	Download sample EM/segmentation data from the following website, and unzip it:
