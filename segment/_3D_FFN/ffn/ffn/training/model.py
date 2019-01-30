@@ -20,7 +20,12 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from . import optimizer
+import sys
+from os import path
+main_dir = path.abspath(path.dirname(sys.argv[0]))
+current_dir = path.join(main_dir,"ffn","training")
+sys.path.append(current_dir)
+import optimizer
 
 
 class FFNModel(object):

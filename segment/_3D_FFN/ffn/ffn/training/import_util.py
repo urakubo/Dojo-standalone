@@ -22,6 +22,12 @@ from __future__ import print_function
 import importlib
 import logging
 
+import sys
+from os import path
+main_dir = path.abspath(path.dirname(sys.argv[0]))
+current_dir = path.join(main_dir,"ffn","training")
+sys.path.append(current_dir)
+import convstack_3d
 
 def import_symbol(specifier, default_packages='ffn.training.models'):
   """Imports a symbol from a python module.
@@ -39,14 +45,14 @@ def import_symbol(specifier, default_packages='ffn.training.models'):
     symbol: object from module
   """
   module_path, symbol_name = specifier.rsplit('.', 1)
-  try:
-    logging.info('Importing symbol %s from %s.%s',
-                 symbol_name, default_packages, module_path)
-    module = importlib.import_module(default_packages + '.' + module_path)
-  except ImportError as e:
-    logging.info(e)
-    logging.info('Importing symbol %s from %s', symbol_name, module_path)
-    module = importlib.import_module(module_path)
+#  try:
+#    logging.info('Importing symbol %s from %s.%s',
+#                 symbol_name, default_packages, module_path)
+#    module = importlib.import_module(default_packages + '.' + module_path)
+#  except ImportError as e:
+#    logging.info(e)
+#    logging.info('Importing symbol %s from %s', symbol_name, module_path)
+#    module = importlib.import_module(module_path)
 
-  symbol = getattr(module, symbol_name)
+  symbol = getattr(convstack_3d, symbol_name)
   return symbol

@@ -20,7 +20,12 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from .. import model
+import sys
+from os import path
+main_dir = path.abspath(path.dirname(sys.argv[0]))
+current_dir = path.join(main_dir, "ffn","training")
+sys.path.append(current_dir)
+import model
 
 
 # Note: this model was originally trained with conv3d layers initialized with

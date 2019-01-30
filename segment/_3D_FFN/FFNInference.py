@@ -24,17 +24,6 @@ sys.path.append(os.path.join(main_dir, "filesystem"))
 
 
 #######
-ffn_dir = path.join(main_dir, "segment","_3D_FFN", "ffn")
-sys.path.append(ffn_dir)
-from google.protobuf import text_format
-from absl import app
-from absl import flags
-from tensorflow import gfile
-
-from ffn.utils import bounding_box_pb2
-from ffn.inference import inference
-from ffn.inference import inference_flags
-from ffn.inference import inference_pb2
 
 #######
 
@@ -42,12 +31,12 @@ from MiscellaneousSegment import MiscellaneousSegment
 
 if getattr(sys, 'frozen', False):
     #print('Run on pyinstaller.')
-    exec_run_inference = os.path.join(main_dir, 'run_inference.exe')
+    exec_run_inference = os.path.join(main_dir, 'run_inference_win.exe')
 #
 else:
     #print('Run on live python.')
     exec_dir = os.path.join(main_dir, 'segment', '_3D_FFN', 'ffn')
-    exec_run_inference = 'python ' + os.path.join(exec_dir, 'run_inference.py')
+    exec_run_inference = 'python ' + os.path.join(exec_dir, 'run_inference_win.py')
 
 # running live
 
@@ -130,32 +119,23 @@ class FFNInference(MiscellaneousSegment):
 
         print('Configuration file was saved at :')
         print(config_file)
-
+        print('\n')
         ##
         ## Inference start (I gave up the use of run_inference because of the augment parsing problem)
         ##
-        request = inference_pb2.InferenceRequest()
-        with open(config_file, mode='r') as f:
-            text_list = f.readlines()
-        text = ' '.join(text_list)
-        text_format.Parse(text, request)
 
-        if not gfile.Exists(request.segmentation_output_dir):
-            gfile.MakeDirs(request.segmentation_output_dir)
-        runner = inference.Runner()
-        runner.start(request)
-        #  runner.run((bbox.start.z, bbox.start.y, bbox.start.x),
-        #             (bbox.size.z, bbox.size.y, bbox.size.x))
-        runner.run((0, 0, 0),
-                   (image_z, image_y, image_x))
+        ##
+        comm_inference = exec_run_inference + ' ' \
+                    + ' --image_size_x '  + np.str( image_x ) \
+                    + ' --image_size_y '  + np.str( image_y ) \
+                    + ' --image_size_z '  + np.str( image_z ) \
+                    + ' --parameter_file ' + config_file
 
-        counter_path = os.path.join(request.segmentation_output_dir, 'counters.txt')
-        if not gfile.Exists(counter_path):
-            runner.counters.dump(counter_path)
-        ##
-        ##
+        print(comm_title)
+        print(comm_inference)
+        print('\n')
+        s.call(comm_inference)
         print(comm_title, 'was finished.')
-        ##
         return True
         ##
 
