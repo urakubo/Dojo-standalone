@@ -78,7 +78,7 @@ J.controller.prototype.highlight = function(id) {
 
   this._highlighted_id = id;
 
-  this._viewer.redraw();   
+  this._viewer.redraw();
 
 }
 
@@ -89,7 +89,7 @@ J.controller.prototype.receive = function(data) {
   if (input.name == 'LOG') {
     DOJO.update_log(input);
     return;
-  } 
+  }
 
   if (input.origin == this._origin) {
     // we are the requester
@@ -97,16 +97,16 @@ J.controller.prototype.receive = function(data) {
     if (input.name == 'SPLITRESULT') {
       this.show_split_line(input.value);
       return;
-    } 
+    }
     else if (input.name == 'SPLITDONE') {
       this.finish_split(input.value);
-    } 
+    }
     else if (input.name == 'ADJUSTDONE') {
       this.finish_adjust(input.value);
-    } 
+    }
     else if (input.name == 'CURRENT_ACTION') {
       this.update_current_action(input.value);
-    } 
+    }
     else if (input.name == 'UNBLOCK') {
       $('#loading_blocker').hide();
     }
@@ -149,14 +149,14 @@ J.controller.prototype.receive = function(data) {
 
     this._gl_merge_table_changed = true;
 
-  } else if (input.name == 'UNDO_MERGE_GROUP') {    
-    
+  } else if (input.name == 'UNDO_MERGE_GROUP') {
+
     for (var i=0; i<input.value.length; i++) {
 
       var id = input.value[i];
-      
+
       delete this._new_merge_table[id];
-      delete this._temp_merge_table[id];     
+      delete this._temp_merge_table[id];
 
     }
 
@@ -233,13 +233,13 @@ J.controller.prototype.update_current_action = function(value) {
   this._current_action = parseInt(value[0],10);
   last_act = parseInt(value[1],10);
 
-  $('#undo').css('opacity', '1.0'); 
-  $('#redo').css('opacity', '1.0'); 
+  $('#undo').css('opacity', '1.0');
+  $('#redo').css('opacity', '1.0');
   if ( this._current_action == 0 ){
-    $('#undo').css('opacity', '0.3');      
+    $('#undo').css('opacity', '0.3');
   }
   if ( this._current_action == last_act ){
-    $('#redo').css('opacity', '0.3'); 
+    $('#redo').css('opacity', '0.3');
   }
 
 };
@@ -275,7 +275,7 @@ J.controller.prototype.on_mouse_move = function(origin, id, value) {
 
     this._cursors[id] = cursor;
 
-  } 
+  }
 
   cursor.style.left = x_y[0];
   cursor.style.top = x_y[1];
@@ -294,7 +294,7 @@ J.controller.prototype.on_mouse_move_3d = function(origin, id, i, j, k) {
 
   if (!cursor) {
 
-    var color = this._viewer.get_color(id+100);    
+    var color = this._viewer.get_color(id+100);
 
     cursor = new X.cube();
     cursor.dojo_type = '3dcursor';
@@ -347,7 +347,7 @@ J.controller.prototype.pick3d = function(o) {
   var i_j_k = this._viewer.xyz2ijk(x, y, z);
 
   if (o.dojo_type == '3dcursor') {
-    
+
     this._viewer._camera.jump(i_j_k[0], i_j_k[1], i_j_k[2]);
 
   } else if (o.dojo_type == '3dproblem') {
@@ -378,10 +378,10 @@ J.controller.prototype.send = function(name, data) {
 J.controller.prototype.update_threeD = function() {
 
   if (DOJO.threeD) {
-    DOJO.threeD.renderer.updateFromDojo(this._viewer._gl_colormap, 
+    DOJO.threeD.renderer.updateFromDojo(this._viewer._gl_colormap,
                      this._viewer._max_colors,
-                     this._gl_merge_table_keys, 
-                     this._gl_merge_table_values, 
+                     this._gl_merge_table_keys,
+                     this._gl_merge_table_values,
                      this._merge_table_length,
                      this._gl_3d_labels,
                      this._gl_3d_labels_length,
@@ -391,7 +391,7 @@ J.controller.prototype.update_threeD = function() {
 };
 
 J.controller.prototype.update_problem_table = function(data) {
-  
+
   this._problem_table = data;
 
   if (DOJO.link_active)
@@ -435,7 +435,7 @@ J.controller.prototype.add_exclamationmark = function(x, y) {
   this.send_problem_table();
 
   var log = 'User $USER marked a <font color="red">problem</font> in slice <strong>'+(DOJO.viewer._camera._z+1)+'</strong>.';
-  this.send_log(log);  
+  this.send_log(log);
 
 };
 
@@ -470,12 +470,12 @@ J.controller.prototype.remove_exclamationmark_2d = function(id) {
     this.send_problem_table();
 
     var log = 'User $USER resolved a <font color="green">problem</font> in slice <strong>'+(DOJO.viewer._camera._z+1)+'</strong>.';
-    this.send_log(log);      
+    this.send_log(log);
 
 };
 
 J.controller.prototype.remove_exclamationmark_3d = function(id) {
-  
+
   if (DOJO.threeD)
     DOJO.threeD.renderer.remove(this._exclamationmarks_3d[id]);
 
@@ -498,8 +498,8 @@ J.controller.prototype.create_exclamationmark_2d = function(i, j, id) {
   e.style.top = x_y[1]-15;
 
   e.onclick = function(id) {
-    
-    this.remove_exclamationmark_3d(id);    
+
+    this.remove_exclamationmark_3d(id);
     this.remove_exclamationmark_2d(id);
 
   }.bind(this, id);
@@ -510,7 +510,7 @@ J.controller.prototype.create_exclamationmark_2d = function(i, j, id) {
 
 J.controller.prototype.create_exclamationmark_3d = function(i, j, k, id) {
 
-  var height = DOJO.threeD.volume.dimensions[2]*DOJO.threeD.volume.spacing[2] + 50;  
+  var height = DOJO.threeD.volume.dimensions[2]*DOJO.threeD.volume.spacing[2] + 50;
 
   var x_y_z = this._viewer.ijk2xyz(i, j, k);
 
@@ -546,7 +546,7 @@ J.controller.prototype.create_exclamationmark_3d = function(i, j, k, id) {
 
   e.children[1].transform.matrix[12] = x_y_z[0];
   e.children[1].transform.matrix[13] = x_y_z[1];
-  e.children[1].transform.matrix[14] = x_y_z[2];  
+  e.children[1].transform.matrix[14] = x_y_z[2];
 
   this._exclamationmarks_3d[id] = e;
 
@@ -686,7 +686,7 @@ J.controller.prototype.larger_brush = function() {
 
 J.controller.prototype.smaller_brush = function() {
 
-  this._brush_size = Math.max(1, this._brush_size-=1);  
+  this._brush_size = Math.max(1, this._brush_size-=1);
 
 };
 
@@ -699,15 +699,15 @@ J.controller.prototype.reload_tiles = function(values) {
   var y = this._viewer._camera._y;
   var z2 = this._viewer._camera._z;
   var w = this._viewer._camera._w;
-  
+
   // Clear cache for complete depth
   for (var zi=0; zi<this._viewer._image.max_z_tiles; zi++){
-     this._viewer._loader.clear_cache_segmentation(x,y,zi,w); 
+     this._viewer._loader.clear_cache_segmentation(x,y,zi,w);
   }
 
-  for (var l=0;l<this._viewer._image.zoomlevel_count;l++) {  
+  for (var l=0;l<this._viewer._image.zoomlevel_count;l++) {
 
-    // only draw if zoomlevel is displayed 
+    // only draw if zoomlevel is displayed
     var draw = (z == z2 && w == l);
     // negate draw since it is a no_draw flag
     this._viewer._loader.load_tiles(x,y,z,l,l,!draw);
@@ -715,7 +715,7 @@ J.controller.prototype.reload_tiles = function(values) {
   }
   var lowest_w = this._viewer._image.zoomlevel_count-1;
   this._viewer._loader.get_segmentation(0, 0, z, lowest_w, function(x, y, z, lowest_w, s) {
-      
+
     this.update_3D_textures(z, full_bbox, s);
 
   }.bind(this, 0, 0, z, lowest_w));
@@ -783,7 +783,7 @@ J.controller.prototype.update_3D_textures = function(z, full_bbox, texture) {
 
       }
 
-    }  
+    }
 
   }
 
@@ -863,13 +863,13 @@ J.controller.prototype.finish_adjust = function(values) {
   var color1 = DOJO.viewer.get_color(this._adjust_id);
   var color1_hex = rgbToHex(color1[0], color1[1], color1[2]);
   var log = 'User $USER adjusted label <font color="'+color1_hex+'">'+this._adjust_id+'</font>.';
-  this.send_log(log);  
+  this.send_log(log);
 
 };
 
 J.controller.prototype.hard_reload_tiles = function(values) {
 
-  
+
   this.reload_tiles(values);
 
   this._viewer.clear_overlay_buffer();
@@ -897,7 +897,7 @@ J.controller.prototype.start_split = function(id, x, y) {
     // select label
     this._split_mode = 1;
     this._split_id = id;
-    this.activate(id);    
+    this.activate(id);
 
     this._viewer._canvas.style.cursor = 'crosshair';
 
@@ -949,7 +949,7 @@ J.controller.prototype.show_split_line = function(i_js) {
   d[2] = 0;
   d[3] = 255;
 
-  var i_js_count = i_js.length;  
+  var i_js_count = i_js.length;
 
   for(var i=0;i<i_js_count;i++) {
 
@@ -976,7 +976,7 @@ J.controller.prototype.discard = function() {
     this._split_mode = 1;
     // and reset
     this._brush_bbox = [];
-    this._brush_ijs = [];    
+    this._brush_ijs = [];
     this._viewer._canvas.style.cursor = 'crosshair';
 
     this._viewer.clear_overlay_buffer();
@@ -987,8 +987,8 @@ J.controller.prototype.discard = function() {
 
     this._split_mode = -1;
     this._brush_bbox = [];
-    this._brush_ijs = []; 
-    this._last_id = null;   
+    this._brush_ijs = [];
+    this._last_id = null;
     this.activate(null);
     this._viewer._canvas.style.cursor = '';
     this._viewer.clear_overlay_buffer();
@@ -999,7 +999,7 @@ J.controller.prototype.discard = function() {
 J.controller.prototype.draw_split = function(x, y) {
 
   if (this._split_mode == 1 || this._split_mode == 2) {
-   
+
     this._split_mode = 2;
     var i_j = this._viewer.xy2ij(x, y);
     if (i_j[0] == -1) return;
@@ -1022,7 +1022,7 @@ J.controller.prototype.draw_split = function(x, y) {
       this._brush_bbox[2] = Math.max(0,Math.min(this._brush_bbox[2], i_j[1]-factor*brush));
       // largest j
       this._brush_bbox[3] = Math.max(0,Math.max(this._brush_bbox[3], i_j[1]+factor*brush));
-      
+
     } else {
       this._brush_bbox.push(Math.max(i_j[0]));
       this._brush_bbox.push(Math.max(0,i_j[0]));
@@ -1050,7 +1050,7 @@ J.controller.prototype.end_draw_split = function(x, y) {
     // one more stroke..
     this.draw_split(x, y);
 
-    var context = this._viewer._image_buffer_context;    
+    var context = this._viewer._image_buffer_context;
     context.closePath();
 
     var data = {};
@@ -1094,7 +1094,7 @@ J.controller.prototype.start_merge = function(id, x, y) {
   this._brush_ijs = [];
   this._brush_bbox = [];
   context.beginPath();
-  context.moveTo(u_v[0], u_v[1]);  
+  context.moveTo(u_v[0], u_v[1]);
 
 };
 
@@ -1130,7 +1130,7 @@ J.controller.prototype.draw_merge = function(x, y) {
     DOJO.viewer.get_segmentation_id(i, i_j[1], function(id) {
 
       if (this._merge_target_ids.indexOf(id) == -1) {
-        
+
         if(!(id in this._lock_table)){
           this._merge_target_ids.push(id);
         }
@@ -1162,8 +1162,8 @@ J.controller.prototype.end_draw_merge = function() {
     this.merge(merge_id);
   }
 
-  var context = this._viewer._image_buffer_context;    
-  context.closePath();  
+  var context = this._viewer._image_buffer_context;
+  context.closePath();
 
   this._viewer._canvas.style.cursor = '';
   this._viewer.clear_overlay_buffer();
@@ -1269,13 +1269,13 @@ J.controller.prototype.create_gl_merge_table = function() {
     this._gl_merge_table_values[pos++] = b[1];
     this._gl_merge_table_values[pos++] = b[2];
     this._gl_merge_table_values[pos++] = b[3];
-  }  
+  }
 
 };
 
 J.controller.prototype.create_gl_lock_table = function() {
 
-  var lt = this._lock_table;  
+  var lt = this._lock_table;
   var keys = Object.keys(lt);
   var no_keys = keys.length;
 
@@ -1286,9 +1286,9 @@ J.controller.prototype.create_gl_lock_table = function() {
         if (value) {
       this._gl_lock_table[key] = 255;
           } else {
-      this._gl_lock_table[key] = 0;  
+      this._gl_lock_table[key] = 0;
     }
-    
+
   }
 
   var keys = Object.keys(this._lock_table);
@@ -1406,7 +1406,7 @@ J.controller.prototype.reset_3d_labels = function() {
 
   this.create_gl_3d_labels();
 
-  
+
 
   this.update_threeD();
 
@@ -1426,7 +1426,7 @@ J.controller.prototype.highlight_in_3d = function(id, clear) {
   this.add_3d_label(id);
 
   if (this._activated_id) {
-    this.add_3d_label(this._activated_id);    
+    this.add_3d_label(this._activated_id);
   }
 
   this._use_3d_labels = true;
@@ -1443,7 +1443,7 @@ J.controller.prototype.toggle_3d_labels = function() {
 
 J.controller.prototype.end = function() {
 
-  
+
   this._viewer.clear_overlay_buffer();
 
   this._split_mode = -1;

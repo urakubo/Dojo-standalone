@@ -21,10 +21,11 @@ main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
 sys.path.append(main_dir)
 sys.path.append(os.path.join(main_dir, "segment"))
 sys.path.append(os.path.join(main_dir, "filesystem"))
-
 _2D_DNN_dir = os.path.join(main_dir, 'segment', '_2D_DNN')
 
-class PartDialogTrainingExecutor():
+from MiscellaneousSegment import MiscellaneousSegment
+
+class PartDialogTrainingExecutor(MiscellaneousSegment):
 
     def ExecuteTraining(self):  # wxGlade: ImportImagesSegments.<event_handler>
         #
@@ -41,14 +42,10 @@ class PartDialogTrainingExecutor():
         # running live
 
 
-        training_params = self.ObtainUIParamsStr(self.obj_args_training, self.args_training, self.args_training_title)
+        params = self.ObtainParams(self.obj_args_training, self.args_training)
 
-        def DerivParam(param_name):
-            id = self.args_training_title.index(param_name)
-            return training_params[id]
 
-        id = self.args_training_title.index('Augmentation')
-        aug = training_params[id]
+        aug = params['Augmentation']
         if   aug == "fliplr, flipud, transpose":
             augmentation = '--fliplr --flipud --transpose'
         elif aug == "fliplr, flipud":
@@ -66,24 +63,25 @@ class PartDialogTrainingExecutor():
         #
         print('Images and segmentation were merged.')
         #
+
         comm = execfile +' ' \
                 + ' --mode train ' \
-                + ' --input_dir ' + DerivParam('Image Folder') + ' ' \
-                + ' --input_dir_B ' + DerivParam('Segmentation Folder') + ' ' \
-                + ' --output_dir ' + DerivParam('Checkpoint') + ' ' \
+                + ' --input_dir ' + params['Image Folder'] + ' ' \
+                + ' --input_dir_B ' + params['Segmentation Folder'] + ' ' \
+                + ' --output_dir ' + params['Checkpoint Folder'] + ' ' \
                 + ' --which_direction AtoB ' +  ' ' \
-                + ' --X_loss ' + DerivParam('X Loss Function') + ' ' \
-                + ' --Y_loss ' + DerivParam('Y Loss Function') + ' ' \
-                + ' --model ' + DerivParam('Model') + ' ' \
-                + ' --generator ' + DerivParam('Generator') + ' ' \
+                + ' --X_loss ' + params['X Loss Function'] + ' ' \
+                + ' --Y_loss ' + params['Y Loss Function'] + ' ' \
+                + ' --model ' + params['Model'] + ' ' \
+                + ' --generator ' + params['Generator'] + ' ' \
                 + ' ' + augmentation + ' ' \
-                + ' --max_epochs ' + DerivParam('Maximal Epochs') + ' ' \
-                + ' --display_freq ' +  DerivParam('Display Frequency') + ' ' \
-                + ' --u_depth ' + DerivParam('U depth') + ' ' \
-                + ' --n_res_blocks ' + DerivParam('N res blocks') + ' ' \
-                + ' --n_highway_units ' + DerivParam('N highway units') + ' ' \
-                + ' --n_dense_blocks ' + DerivParam('N dense blocks') + ' ' \
-                + ' --n_dense_layers ' + DerivParam('N dense layers') + ' '
+                + ' --max_epochs ' + params['Maximal Epochs'] + ' ' \
+                + ' --display_freq ' +  params['Display Frequency'] + ' ' \
+                + ' --u_depth ' + params['U depth'] + ' ' \
+                + ' --n_res_blocks ' + params['N res blocks'] + ' ' \
+                + ' --n_highway_units ' + params['N highway units'] + ' ' \
+                + ' --n_dense_blocks ' + params['N dense blocks'] + ' ' \
+                + ' --n_dense_layers ' + params['N dense layers'] + ' '
 
 
 

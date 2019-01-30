@@ -325,7 +325,10 @@ def load_images(input_dir, input_name=''):
             input_paths = sorted(input_paths)
 
         with tf.name_scope("load_%simages" % input_name):
+            # path_queue = tf.train.string_input_producer(input_paths, shuffle=a.mode == "train")
             path_queue = tf.train.string_input_producer(input_paths, shuffle=a.mode == "train")
+
+
             reader = tf.WholeFileReader()
             paths, contents = reader.read(path_queue)
             raw_input = decode(contents)
@@ -724,7 +727,7 @@ def create_pix2pix_model(inputs, targets,
     ema = tf.train.ExponentialMovingAverage(decay=0.99)
     update_losses = ema.apply([discrim_loss, gen_loss_GAN, gen_loss_classic])
 
-    global_step = contrib.framework.get_or_create_global_step()
+    global_step = tf.train.get_or_create_global_step()
     incr_global_step = tf.assign(global_step, global_step+1)
 
     return Model(
@@ -1061,6 +1064,7 @@ def main():
 
     logdir = a.output_dir if (a.trace_freq > 0 or a.summary_freq > 0) else None
     sv = tf.train.Supervisor(logdir=logdir, save_summaries_secs=0, saver=None)
+    # sv = tf.train.MonitoredTrainingSession(checkpoint_dir=logdir, save_summaries_secs=0)
     with sv.managed_session() as sess:
         print("parameter_count =", sess.run(parameter_count))
 

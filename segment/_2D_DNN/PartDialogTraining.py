@@ -32,9 +32,9 @@ icon_dir = path.join(main_dir, "icons")
 segmentation_dir = path.join(main_dir, "segment")
 sys.path.append(segmentation_dir)
 sys.path.append(os.path.join(main_dir, "filesystem"))
+from MiscellaneousSegment import MiscellaneousSegment
 
-
-class PartDialogTraining():
+class PartDialogTraining(MiscellaneousSegment):
     def TrainingSetParams(self, tab):
 
 
@@ -45,12 +45,11 @@ class PartDialogTraining():
                         'Output Filetype',
                         'Directory with checkpoint to resume training from or use for testing',
                         'Model',
-                        'Discriminator on target vs output or paired with input',
-                        'Generator',
+                        'Discriminator on target vs output or paired with input (CycleGAN only)',
                         'Number of training epochs',
                         'Write current training images every display frequency steps',
-                        'X Loss Function',
-                        'X Loss Function',
+                        'X Loss Function (only for pix2pix2 or CycleGAN)',
+                        'X Loss Function (only for pix2pix2 or CycleGAN)',
                         'Dimensions for Augmentation',
                         'Save Parameters ',
                         'Load Parameters ',
@@ -58,28 +57,30 @@ class PartDialogTraining():
                         'Number of residual blocks in res net',
                         'Number of highway units in highway net',
                         'Number of dense blocks in dense net',
-                        'Number of dense connected layers in each block of the dense net'
+                        'Number of dense connected layers in each block of the dense net',
+                        'Generator'
                         ]
 
-        datadir = self.parent.u_info.segmentation_data_path
-        imgpath =  os.path.join(datadir, "segment_2DNN_img")
-        segpath =  os.path.join(datadir, "segment_2DNN_seg")
-        paramfile = os.path.join(datadir, "Training_Params_2D.pickle")
+        datadir = self.parent.u_info.data_path
+        imgpath =  os.path.join(datadir, "_2DNN_training_images")
+        segpath =  os.path.join(datadir, "_2DNN_ground_truth")
+        modelpath =  os.path.join(datadir, "_2DNN_model_tensorflow")
+        paramfile = os.path.join(datadir, "parameters", "Training_2D.pickle")
         self.args_training = [
-                        ['Image Folder',    'LineEdit', imgpath, 'Browsedir'],
+                        ['Image Folder',    'LineEdit', imgpath, 'BrowseDirImg'],
                         ['Batch Size',      'SpinBox', [1,1, 65535]],
-                        ['Segmentation Folder',   'LineEdit', segpath, 'Browsedir'],
+                        ['Segmentation Folder',   'LineEdit', segpath, 'BrowseDirImg'],
                         ['Output Filetype', 'ComboBox', ['png','jpeg']],
-                        ['Checkpoint',      'LineEdit', datadir, 'Browsedir'],
+                        ['Checkpoint Folder',      'LineEdit', modelpath, 'BrowseDir'],
                         ['Model', 'ComboBox',   ['pix2pix','pix2pix2','CycleGAN']],
-                        ['Discriminator (CycleGAN only)', 'ComboBox', ['', 'paired', 'unpaired']],
+                        ['Discriminator', 'ComboBox', ['', 'paired', 'unpaired']],
                         ['Maximal Epochs', 'SpinBox', [1, 2000, 65535]],
                         ['Display Frequency', 'SpinBox', [0, 200, 65535]],
                         ['X Loss Function', 'ComboBox',   ["hinge", "square", "softmax", "approx", "dice", "logistic"]],
-                        ['Y Loss Function', 'ComboBox',   ["square", "hinge", "softmax", "approx", "dice", "logistic"]],
+                        ['Y Loss Function', 'ComboBox',   ["hinge", "square", "softmax", "approx", "dice", "logistic"]],
                         ['Augmentation',    'ComboBox', ["fliplr, flipud, transpose", "fliplr, flipud", "fliplr", "flipud", "None"]],
-                        ['Save Parameters', 'LineEdit',paramfile, 'Browsefile'],
-                        ['Load Parameters', 'LineEdit',paramfile, 'Browsefile'],
+                        ['Save Parameters', 'LineEdit',paramfile, 'BrowseFile'],
+                        ['Load Parameters', 'LineEdit',paramfile, 'BrowseFile'],
                         ['U depth','SpinBox',[1,8,8]],
                         ['N res blocks','SpinBox',[1,9,255]],
                         ['N highway units','SpinBox',[1,9,255]],
@@ -93,8 +94,9 @@ class PartDialogTraining():
         ## Labels
         lbl   = []
         self.obj_args_training = []
-        require_browsedir = []
-        require_browsefile = []
+        require_browse_dir = []
+        require_browse_dir_img = []
+        require_browse_file = []
         ##
         for i in range(len(self.args_training)):
         ##
@@ -106,7 +108,7 @@ class PartDialogTraining():
                 lbl.append(QPushButton(arg))
                 lbl[-1].clicked.connect(self._load_training_params_2D)
             else :
-                lbl.append(QLabel(self.args_training_title[i] + ' :'))
+                lbl.append(QLabel(self.args_training[i][0] + ' :'))
                 lbl[-1].setToolTip(tips[i])
         ##
         for i in range(len(self.args_training)):
@@ -114,10 +116,12 @@ class PartDialogTraining():
             if  self.args_training[i][1] == 'LineEdit':
                 self.obj_args_training.append( QLineEdit() )
                 self.obj_args_training[-1].setText( self.args_training[i][2] )
-                if self.args_training[i][3] == 'Browsedir':
-                    require_browsedir.append(i)
-                if self.args_training[i][3] == 'Browsefile':
-                    require_browsefile.append(i)
+                if self.args_training[i][3] == 'BrowseDir':
+                    require_browse_dir.append(i)
+                if self.args_training[i][3] == 'BrowseDirImg':
+                    require_browse_dir_img.append(i)
+                if self.args_training[i][3] == 'BrowseFile':
+                    require_browse_file.append(i)
             elif self.args_training[i][1] == 'SpinBox':
                 self.obj_args_training.append(QSpinBox())
                 self.obj_args_training[-1].setMinimum( self.args_training[i][2][0] )
@@ -146,7 +150,7 @@ class PartDialogTraining():
 
         # Organize tab widget
         display_order = [0,1,2,3,4,5,6,-1,7,8,9,10,11,12,13]
-        self.OrganizeTab(tab, lbl, self.obj_args_training, display_order, require_browsedir, require_browsefile, self.ExecuteTraining)
+        self.OrganizeTab(tab, lbl, self.obj_args_training, display_order, require_browse_dir, require_browse_dir_img, require_browse_file, self.ExecuteTraining)
 
 
     def _Training2D_Unet(self, ttab, lbl):
@@ -186,10 +190,10 @@ class PartDialogTraining():
 
 
     def _save_training_params_2D(self):
-        self.save_params_2D(self.obj_args_training, self.args_training, self.args_training_title, 'Training')
+        self.save_params(self.obj_args_training, self.args_training, 'Training')
         return True
 
     def _load_training_params_2D(self):
-        self.load_params_2D(self.obj_args_training, self.args_training, self.args_training_title, 'Training')
+        self.load_params(self.obj_args_training, self.args_training, 'Training')
         return True
 

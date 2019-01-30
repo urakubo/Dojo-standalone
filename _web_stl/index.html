@@ -1,39 +1,125 @@
 <!DOCTYPE html>
-<!-- saved from url=(0044)http://navi-local.com/sample/3d/sample2.html -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>demo</title>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3D Annotator</title>
+	<link rel="stylesheet" type="text/css" href="css/tabulator.css">
+	<link rel="stylesheet" type="text/css" href="css/construction.css">
+	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="js/tabulator.js"></script>
+
+	<script type="text/javascript" src="js/three.min.js"></script>
+	<script type="text/javascript" src="js/STLLoader.js"></script>
+	<script type="text/javascript" src="js/CanvasRenderer.js"></script>
+	<script type="text/javascript" src="js/Projector.js"></script>
+	<script type="text/javascript" src="js/TrackballControls.js"></script>
+	<script type="text/javascript" src="js/agh.sprintf.js"></script>
+
+	<script type="text/javascript" src="js/StlViewer.js?102"></script>
 </head>
+<body>
+    <div class="left-container">
+    	<div id="myCanvas"></div>
+    </div>
+    <script>
+		StlViewer()
+	</script>
+    
+    <div class="right-container">
+    <H3><B>3D Annotator</B></H3>
+	<div class="InLineMessage"> Clicked object ID: 
+	<div class="contents InLineMessage" id="ClickedObjectID"></div></div>
+	<ul id="menu">
+    <li><div class="archive">Appearance</div>
+        <ul class="subMenu">
+            <li>
+                Background: White
+                	<label class="switch">
+					<input type="checkbox" onclick="BackgroundWhiteBlack(this.checked);">
+					<span class="slider round"></span>
+					</label>
+					Black
+            </li>
+            <li>
+                Bounding box: OFF
+    			<label class="switch">
+  				<input type="checkbox" onclick="FrameOffOn(this.checked);">
+  				<span class="slider round"></span>
+				</label>
+				ON
+            </li>
+            <li>
+            	Directional light intensity:
+    			<input type="number" min="0" max="100" step="5" value="80" onchange="DirLight(this.value);"> 
+            </li>
+            <li>
+				Ambient light intensity:
+				<input type="number" min="0" max="100" step="5" value="50" onchange="AmbLight(this.value);"> 
+            </li>
+        </ul>
+        <li><div class="archive">Marker label</div>
+        <ul class="subMenu">
+            <li>
+                OFF
+                <label class="switch">
+  				<input type="checkbox" onclick="MarkerOffOn(this.checked);">
+  				<span class="slider round"></span>
+				</label>
+                ON
+            </li>
+            <li>
+				Radius: <input type="number" min="0.2" max="20" step="0.2" value="2.0" onchange="APP.MarkerRadius = Number(this.value);"> 
+            </li>
+            <li>
+				Color
+				 R: <input type="number" min="0" max="255" step="1" value="255" onchange="APP.MarkerR = Number(this.value);"> 
+				 G: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerG = Number(this.value);"> 
+				 B: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerB = Number(this.value);"> 
+            </li>
+            <li>
+				Prefix: <input type="text" value="Marker" onchange="APP.MarkerPrefix = this.value;">
+            </li>
+            <li>
+				Suffix: <input type="number" id="SetSuffixNum" min="0" step="1" value="0" onchange="APP.MarkerSuffix = Number(this.value);"> 
+            </li>
+        </ul>
+		<li><div class="archive" onClick="SaveImage(this.checked);">Save image</div></li>
+	</li>
+	</ul>
 
-<style type="text/css">
-  canvas {
-    width: 400px;
-    height: 200px;
-    margin: 10px;
-    padding: 0px;
-    position: static; /* fixed or static */
-    top: 10px;
-    left: 10px;
-  }
-</style>
-
-<div id="canvas">
-<p>3D Viewer</p>
-<script src="three.min.js"></script>
-<script src="STLLoader.js"></script>
-<script src="CanvasRenderer.js"></script>
-<script src="Projector.js"></script>
-<script src="TrackballControls.js"></script>
-<script type="text/javascript" charset="utf-8" src="agh.sprintf.js"></script>
-<script src="StlViewer.js"></script>
-<script>
-// マウスクリックイベントのリスナー登録
-document.addEventListener( 'mousedown', clickPosition, false );
-window.addEventListener( 'resize', onWindowResize, false );
-StlViewer()
-</script>
-
+    <p>
+    Object Table
+      <div id="ObjectTable"></div>
+      <button type="button" class="btn btn4 font3" onClick="ObjObjextTable.download('json', 'MarkerTable.json');"> Download JSON </button>
+    <p>
+    Marker Table
+      <div id="MarkerTable"></div>
+      <button type="button" class="btn btn4 font3" onClick="ObjMarkerTable.download('json', 'MarkerTable.json');"> Download JSON </button>
+    <p>
+    
 </body>
+	<script type="text/javascript" src="js/ObjectTable.js"></script>
+	<script type="text/javascript" src="js/MarkerTable.js"></script>
+    <script type="text/javascript" src="js/ControlStlViewer.js"></script>
+	<script type="text/javascript">
+	$('#form-ticker-symbol').on("keypress", function(event){return leaveOnlyNumber(event);});
+	function leaveOnlyNumber(e){
+  	// 数字以外の不要な文字を削除
+  		var st = String.fromCharCode(e.which);
+  		if ("0123456789".indexOf(st,0) < 0) { return false; }
+  		return true;  
+	}
+</script>
+	<script type="text/javascript">
+	<!--
+    	$(function(){
+        	$('.subMenu').hide();
+        	//
+        	$('#menu .archive').click(function(e){
+            	$('+ul.subMenu',this).slideToggle();
+        	});
+    	});
+	-->
+	</script>
+
 </html>
-
-
-

@@ -4,10 +4,6 @@
 # DOJO Image Server
 #
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 import json
 import os
 import socket
@@ -25,18 +21,21 @@ from os import path, pardir
 main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
 icon_dir = path.join(main_dir, "icons")
 
-sys.path.append(os.path.join(main_dir, "Filesystem"))
+sys.path.append(os.path.join(main_dir, "filesystem"))
 from Params import Params
 # import SaveChanges
 
 sys.path.append(main_dir)
 import _dojo
 
-if os.name == 'nt':
-  try:
-    import win32api
-  except Exception:
-    print('No win32api module.')
+
+if getattr(sys, 'frozen', False):
+  # Pyinstaller
+  path_gfx = os.path.normpath(os.path.join(main_dir, "../..", "_web/gfx"))
+else:
+  # Live Python
+  path_gfx = os.path.join(main_dir, "_web/gfx")
+
 
 #def doSaneThing(sig, func=None):
 #    print "Here I am"
@@ -98,17 +97,7 @@ class ServerLogic:
     # and the setup
     self.__setup = _dojo.Setup(self, u_info.files_path, u_info.tmpdir)
 
-    if getattr(sys, 'frozen', False):
-      print('Run on pyinstaller.')
-      path_gfx = os.path.normpath(os.path.join(main_dir, "../..", "_web/gfx"))
-      path_stl = os.path.normpath(os.path.join(main_dir, "../..", "_web_stl"))
-    else:
-      print('Run on live python.')
-      path_gfx = os.path.join(main_dir, "_web/gfx")
-      path_stl = os.path.join(main_dir, "_web_stl")
-
     print('path_gfx: ',path_gfx)
-    print('path_stl: ',path_stl)
     # running live
 
 
@@ -118,7 +107,6 @@ class ServerLogic:
 
     dojo = tornado.web.Application([
       (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': path_gfx}),
-      (r'/dojo/stl/(.*)', tornado.web.StaticFileHandler, {'path': path_stl}),
       (r'/ws', _dojo.Websockets, dict(controller=self.__controller)),
       (r'/(.*)', DojoHandler, dict(logic=self))
     ],debug=True,autoreload=True) #            (r'/dojo/gfx/(.*)', tornado.web.StaticFileHandler, {'path': '/dojo/gfx'})

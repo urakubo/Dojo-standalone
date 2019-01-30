@@ -81,7 +81,7 @@ body {
   position: absolute;
   background-color:black;
   opacity: 1;
-  border: solid 1px white;  
+  border: solid 1px white;
   z-index: 1000;
   color: white;
 }
@@ -124,7 +124,7 @@ body {
   /*top: 10px;*/
   width:300px;
   height:300px;
-  display: none;  
+  display: none;
 }
 
 #todo {
@@ -165,7 +165,7 @@ body {
 }
 
 .todo_header {
-  border-bottom: 1px solid white; 
+  border-bottom: 1px solid white;
 }
 
 .todo_check {
@@ -200,7 +200,7 @@ li {
 
 li li {
   border: solid 1px white;
-  padding: 10px;  
+  padding: 10px;
   margin: 1px;
   line-height: 20px;
   margin-right: 20px;

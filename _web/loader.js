@@ -1,7 +1,7 @@
 var J = J || {};
 
 J.loader = function(viewer) {
-  
+
   this._viewer = viewer;
 
   this._image_cache = [];
@@ -89,7 +89,7 @@ J.loader.prototype.get_image = function(x, y, z, w, callback, no_cache) {
 };
 
 J.loader.prototype.cache_image = function(x, y, z, w) {
-  // now get some more images  
+  // now get some more images
   for (var j=1;j<=this._z_cache_size;j++) {
     if (z+j < this._viewer._image.max_z_tiles) {
       this.get_image(x, y, z+j, w, function(i) {
@@ -171,7 +171,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
 
 
 
-  
+
   // I,J for the MOUSE (image space)
   var i_j = this._viewer._camera._i_j;
   if (i_j[0] == -1 || i_j[1] == -1) {
@@ -208,7 +208,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
 
   for (var l=1; l<=no_left; l++) {
     var new_x = x-l;
-    
+
     if (new_x < 0) break;
     tiles_to_load.push([new_x,y]);
   }
@@ -217,7 +217,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
     var new_y = y-t;
     if (new_y < 0) break;
     tiles_to_load.push([x, new_y]);
-  }  
+  }
 
   for (var r=1; r<=no_right; r++) {
     var new_x = x+r;
@@ -234,7 +234,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
 
   for (var t=1; t<=no_top; t++) {
     var new_y = y-t;
-    if (new_y < 0) break;    
+    if (new_y < 0) break;
     for (var r=1; r<=no_right; r++) {
       var new_x = x+r;
       if (new_x >= tilescount_x) break;
@@ -254,10 +254,10 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
 
   for (var t=1; t<=no_top; t++) {
     var new_y = y-t;
-    if (new_y < 0) break;    
+    if (new_y < 0) break;
     for (var l=1; l<=no_left; l++) {
       var new_x = x-l;
-      
+
       if (new_x < 0) break;
       tiles_to_load.push([new_x,new_y]);
     }
@@ -268,7 +268,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
     if (new_y >= tilescount_y) break;
     for (var l=1; l<=no_left; l++) {
       var new_x = x-l;
-      
+
       if (new_x < 0) break;
       tiles_to_load.push([new_x,new_y]);
     }
@@ -292,7 +292,7 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
       this.get_segmentation(x, y, z, mojo_w_new, function(x, y, z, mojo_w_new, s) {
 
         if (!no_draw) this._viewer.draw_image(x, y, z, mojo_w_new, i, s);
-        
+
         to_draw--;
 
 

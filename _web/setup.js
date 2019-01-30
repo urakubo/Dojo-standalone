@@ -12,7 +12,7 @@ function init() {
   // Add drop handling
   document.getElementById("body").addEventListener("dragenter", noop_handler, false);
   document.getElementById("body").addEventListener("dragleave", noop_handler, false);
-  document.getElementById("body").addEventListener("dragover", noop_handler, false);  
+  document.getElementById("body").addEventListener("dragover", noop_handler, false);
   document.getElementById("image_dropzone").addEventListener("drop", on_drop_img, false);
   document.getElementById("segmentation_dropzone").addEventListener("drop", on_drop_seg, false);
 
@@ -86,11 +86,11 @@ function upload() {
 
   for (var i=0; i<IMG.length;i++) {
     f.append('img',IMG[i]);
-  }  
- 
+  }
+
   for (var i=0; i<SEG.length;i++) {
     f.append('seg',SEG[i]);
-  }  
+  }
 
   var setup = document.getElementById('setup');
   var loading = document.getElementById('loading');

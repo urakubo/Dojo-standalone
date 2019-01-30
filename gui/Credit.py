@@ -24,10 +24,17 @@ class Credit():
     def Credit(self):
         #QMessageBox.setIcon(QMessageBox.Information)
         msg = QMessageBox(QMessageBox.Information, "About Dojo",
-                          "<h1>Dojo standalone Ver1.0</h1><BR>"
-                          "(C) 2018 Hidetoshi Urakubo in Ishii Lab<BR>"
-                          "<a href=\"http://www.rhoana.org/dojo/\">Dojo Web Site</a><BR> "
-                          "Powered by <a href=\"http://doc.qt.digia.com/4.5/stylesheet.html\">Qt</a><BR>"
+                            "<h1>Dojo standalone Ver1.0</h1><BR>"
+                            "(C) 2019 Hidetoshi Urakubo, Torsten Bullmann, Ryoji Miyamoto, Shin Ishii.<BR>"
+                            "Powered by the following software:<BR>"
+                            "<a href=\"https://github.com/google/ffn\">Flood filling network</a><BR> "
+                            "<a href=\"https://github.com/affinelayer/pix2pix-tensorflow\">Imagetranslation-tensorflow</a><BR> "
+                            "<a href=\"https://www.tensorflow.org/\">Tensorflow</a>,<BR>"
+                            "<a href=\"http://doc.qt.digia.com/4.5/stylesheet.html\">Qt</a>,<BR>"
+                            "<a href=\"https://threejs.org/\">Three.js</a>,<BR>"
+                            "<a href=\"http://www.rhoana.org/dojo/\">Rhoana Dojo</a><BR> "
+                            "<a href=\"https://opencv.org/\">Open CV</a><BR> "
+                            "<a href=\"http://scikit-image.org/docs/dev/api/skimage.html\">Scikit-image</a><BR> "
                           )
         msg.setIconPixmap(QPixmap(path.join(icon_dir, "Mojo2_128.png")))
         exe = msg.exec_()

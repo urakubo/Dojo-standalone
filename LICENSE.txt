@@ -1,4 +1,4 @@
-Below is the copyright statemanets about the following program:
+Below is the copyright statemanets about the program:
 Dojo-standalone/segment/_2D_DNN/translate.py
 
 

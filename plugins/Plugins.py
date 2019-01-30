@@ -25,74 +25,26 @@ sys.path.append(plugins_dir)
 # Also please edit "menu.json" for a plugins pulldown menu.
 # ----------------------------------------------------------------------
 
-sys.path.append(path.join(plugins_dir, "superpixel"))
-sys.path.append(path.join(plugins_dir, "export_stl"))
-sys.path.append(path.join(plugins_dir, "stl_viewer"))
-from StlViewer import StlViewer
+#sys.path.append(path.join(plugins_dir, "superpixel"))
+sys.path.append(path.join(plugins_dir, "_2D_watershed"))
+sys.path.append(path.join(plugins_dir, "_3D_filters"))
+sys.path.append(path.join(plugins_dir, "_2D_filters"))
+from Dialog_2D_Watershed import Dialog_2D_Watershed
+from Dialog_3D_Filters import Dialog_3D_Filters
+from Dialog_2D_Filters import Dialog_2D_Filters
 
 # import wxglade_superpixel
 
 class Plugins():
 
-    def ExportStl_(self):
-        print("'Export Stl' not implemented!")
+    def _2D_Filters(self):
+        self.tmp = Dialog_2D_Filters(self)
 
+    def _2D_Watershed(self):
+        self.tmp = Dialog_2D_Watershed(self)
 
-    def StlViewer_(self):
-
-        ## Dialog: Is Dojo activated?
-        if self.u_info.files_found == False:
-            QMessageBox.information(self, "3D Viewer", "Please Open Dojo File!")
-            return
-
-        ## Dialog: Is the 3D Viewer already launched?
-        if 2 in self.table_widget.appl:
-            QMessageBox.information(self, "3D Viewer", "3D Viewer Has Already Been Launched!")
-            return
-
-        ## Initialize
-        self.stl_viewer = StlViewer(self)
-        IDs = self.stl_viewer.ObtainIDs()
-        if (IDs == False) or (len(IDs)==0):
-            print('No Valid Number is Specified.')
-            return
-
-        ## Generate Stl
-        self.stl_viewer.GenerateStls(IDs)
-
-        ## Call StlViewer
-        self.table_widget.addTab(2, '3D Viewer', self.u_info.url+'stl/index.html' )
-
-
-
-    def StlViewer2_(self):
-
-        ## Dialog: Is Dojo activated?
-        if self.u_info.files_found == False:
-            QMessageBox.information(self, "3D Viewer", "Please Open Dojo File!")
-            return
-
-        ## Dialog: Is the 3D Viewer already launched?
-        if 2 in self.table_widget.appl:
-            QMessageBox.information(self, "3D Viewer", "3D Viewer Has Already Been Launched!")
-            return
-
-        ## Initialize
-        self.stl_viewer = StlViewer(self)
-        IDs = self.stl_viewer.ObtainIDs2()
-        if (IDs == False) or (len(IDs)==0):
-            print('No Valid Number is Specified.')
-            return
-
-        ## Generate Stl
-        self.stl_viewer.GenerateStls(IDs)
-
-        ## Call StlViewer
-        self.table_widget.addTab(2, '3D Viewer', self.u_info.url + 'stl/index.html')
-
-#    def Tensorboard_(self):
-#        tmp = Tensorboard(self)
-#        self.table_widget._addTab(0, 'Tensorboard', 'http://' + socket.gethostbyname(socket.gethostname()) + ':6006' )
+    def _3D_Filters(self):
+        self.tmp = Dialog_3D_Filters(self)
 
     def SuperPixel_(self):
         #import wx

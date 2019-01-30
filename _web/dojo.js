@@ -4,7 +4,7 @@ var DOJO = DOJO || {};
 
 DOJO.mode = null;
 DOJO.modes = {
-  pan_zoom:0, 
+  pan_zoom:0,
   merge:1,
   split:2,
   adjust:3
@@ -41,7 +41,7 @@ DOJO.init = function() {
     if (typeof(args['jump']) != 'undefined') {
 
       var coords = args['jump'].split(',');
-    
+
       if (coords.length != 3) {
 
         window.alert('Error parsing position.');
@@ -66,7 +66,7 @@ DOJO.init = function() {
 DOJO.setup_buttons = function() {
 
   var threeD = document.getElementById('threeD');
-  threeD.style.left = (document.body.clientWidth - 310) + 'px';  
+  threeD.style.left = (document.body.clientWidth - 310) + 'px';
   DOJO.make_resizable();
 
   var merge = document.getElementById('merge');
@@ -80,13 +80,13 @@ DOJO.setup_buttons = function() {
         DOJO.reset_tools();
 
       merge.style.display = 'none';
-      merge_selected.style.display = 'block';      
+      merge_selected.style.display = 'block';
 
       DOJO.mode = DOJO.modes.merge;
 
     } else {
 
-      DOJO.reset_tools();      
+      DOJO.reset_tools();
 
     }
 
@@ -114,6 +114,32 @@ DOJO.setup_buttons = function() {
 
   };
 
+
+  // Adjustは公開APIではなくなったが機能としては存在するのでボタン機能を残しておく
+  var adjust = document.getElementById('adjust');
+  var adjust_selected = document.getElementById('adjust_selected');
+
+  if (adjust && adjust_selected) {
+    adjust.onclick = adjust_selected.onclick = function() {
+
+      if (DOJO.mode != DOJO.modes.adjust) {
+
+        DOJO.reset_tools();
+
+        adjust.style.display = 'none';
+        adjust_selected.style.display = 'block';
+
+        DOJO.mode = DOJO.modes.adjust;
+
+      } else {
+
+        DOJO.reset_tools();
+
+      }
+
+    };
+  }
+
   var threed = document.getElementById('3d');
   var threed_selected = document.getElementById('3d_selected');
 
@@ -138,7 +164,7 @@ DOJO.setup_buttons = function() {
 
       // threed.style.border = '';
       threed.style.display = 'block';
-      threed_selected.style.display = 'none';      
+      threed_selected.style.display = 'none';
 
       document.getElementById('threeD').style.display = 'none';
 
@@ -167,7 +193,7 @@ DOJO.setup_buttons = function() {
     // }
 
 
-  };  
+  };
 
   var undo = document.getElementById('undo');
 
@@ -175,7 +201,7 @@ DOJO.setup_buttons = function() {
 
     DOJO.viewer._controller.undo_action();
 
-  };  
+  };
 
 
   var redo = document.getElementById('redo');
@@ -184,7 +210,7 @@ DOJO.setup_buttons = function() {
 
     DOJO.viewer._controller.redo_action();
 
-  };  
+  };
 
 
 
@@ -199,6 +225,9 @@ DOJO.reset_tools = function() {
 
   split.style.display = 'block';
   split_selected.style.display = 'none';
+
+  adjust.style.display = 'block';
+  adjust_selected.style.display = 'none';
 
   DOJO.viewer._controller.end();
 
@@ -218,16 +247,16 @@ DOJO.onleftclick = function(x, y) {
     DOJO.viewer._controller.reset_3d_labels();
     return;
   }
-  
+
   DOJO.viewer.get_segmentation_id(i_j[0], i_j[1], function(id) {
-    
+
     // now we have the segmentation id
     if (DOJO.mode == DOJO.modes.merge) {
 
       if (!DOJO.viewer.is_locked(id))
         DOJO.viewer._controller.start_merge(id, x, y);
         // DOJO.viewer._controller.merge(id);
-      
+
     } else if (DOJO.mode == DOJO.modes.split) {
 
       if (!DOJO.viewer.is_locked(id))
@@ -255,7 +284,7 @@ DOJO.onleftclick = function(x, y) {
       }
 
     }
-    
+
 
   });
 
@@ -276,7 +305,7 @@ DOJO.onmousemove = function(x, y) {
     DOJO.viewer._controller.draw_merge(x, y);
 
   }
-  
+
 };
 
 DOJO.onmouseup = function(x, y) {
@@ -426,18 +455,18 @@ DOJO.init_threeD = function() {
   vol.labelmap.file = '/segmentation/volume/'+volume_zoomlevel+'/&.RZ';
   vol.labelmap.dimensions = vol.dimensions;
   vol.labelmap.opacity = .5;
-  
+
 //  vol.labelmap._dirty = true;
 
   DOJO.threeD.volume = vol;
-  DOJO.threeD.renderer = r;  
+  DOJO.threeD.renderer = r;
 
   DOJO.viewer._controller.update_threeD();
 
   r.add(vol);
   // r.add(s)
 
-  
+
   var box = new X.object();
   box.points = new X.triplets(72);
   box.normals = new X.triplets(72);
@@ -482,9 +511,9 @@ DOJO.init_threeD = function() {
   slice.points.add(-_x, _y, 0);
   slice.points.add(_x, _y, 0);
   slice.points.add(_x, -_y, 0);
-  slice.points.add(_x, -_y, 0);  
-  slice.points.add(-_x, -_y, 0);  
-  slice.points.add(-_x, _y, 0);  
+  slice.points.add(_x, -_y, 0);
+  slice.points.add(-_x, -_y, 0);
+  slice.points.add(-_x, _y, 0);
   slice.points.add(-_x, -_y, 0);
   slice.color = [1,0,0];
   for ( var i = 0; i < 8; ++i) {
@@ -538,7 +567,7 @@ DOJO.init_threeD = function() {
 
     }
 
-  }  
+  }
 
 };
 

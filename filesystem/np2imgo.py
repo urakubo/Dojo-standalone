@@ -53,7 +53,7 @@ class Imgo:
         self.tile_index_w          = 0
         images_stride              = 1 ###
 
-        print('Original image size (x, y): ', original_image_num_pixels_x, original_image_num_pixels_y)
+        print('Image size (x, y): ', original_image_num_pixels_x, original_image_num_pixels_y)
 
         while current_image_num_pixels_y > self.tile_num_pixels_y / 2 or current_image_num_pixels_x > self.tile_num_pixels_x / 2:
 
@@ -66,6 +66,7 @@ class Imgo:
             num_tiles_y = int( math.ceil( float( current_image_num_pixels_y ) / self.tile_num_pixels_y ) )
             num_tiles_x = int( math.ceil( float( current_image_num_pixels_x ) / self.tile_num_pixels_x ) )
 
+            print('Scale: ', images_stride)
             print('Number of panels (x, y): ', num_tiles_x, num_tiles_y)
 
             for iy in range( num_tiles_y ):
@@ -83,7 +84,7 @@ class Imgo:
                     tile_with_fringe[ 0:tmp.shape[0], 0:tmp.shape[1] ] = tmp
                     m.save_tif8(tile_with_fringe, current_tile_image_name)
 
-                    print(current_tile_image_name)
+                    #print(current_tile_image_name)
 
             current_image_num_pixels_y = current_image_num_pixels_y / 2
             current_image_num_pixels_x = current_image_num_pixels_x / 2

@@ -21,11 +21,16 @@ sys.path.append(path.join(main_dir, "plugins"))
 sys.path.append(os.path.join(main_dir, "filesystem"))
 sys.path.append(os.path.join(main_dir, "gui"))
 sys.path.append(os.path.join(main_dir, "segment"))
+sys.path.append(os.path.join(main_dir, "plugins"))
 plugins_dir = path.join(main_dir, "plugins")
 segmentation_dir = path.join(main_dir, "segment")
+sys.path.append(os.path.join(main_dir, "annotator"))
+annotator_dir = path.join(main_dir, "annotator")
+
 
 from Params  import Params
 from Script  import Script
+from Annotator import Annotator
 from Plugins import Plugins
 from Segment import Segment
 from FileIO  import FileIO
@@ -36,7 +41,7 @@ from ExportImageDialog import ExportImageDialog
 from ExportIdDialog import ExportIdDialog
 from func_persephonep import *
 
-class MainWindow(QMainWindow, FileMenu, Credit, Plugins, Segment, FileIO, Script):
+class MainWindow(QMainWindow, FileMenu, Credit, Annotator, Plugins, Segment, FileIO, Script):
 # class MainWindow(QMainWindow, Credit, Plugins):
 
     def __init__(self):
@@ -73,6 +78,38 @@ class MainWindow(QMainWindow, FileMenu, Credit, Plugins, Segment, FileIO, Script
         self.file_id = self.InitialzeFileMenu( file_folder )
         self.InitModeFileMenu(self.file_id)
 
+
+        ##
+        ## Annotator menu
+        ##
+
+        annotator_folder = main_menu.addMenu('Annotator')
+
+        # Parse the json file "plugin/menu.json"
+        with open( path.join(annotator_dir, self.u_info.fname_menu) , 'r' ) as fp:
+            e = json.load(fp, object_pairs_hook=OrderedDict)
+        annotator_stack = [annotator_folder]
+        snum_stack   = [0]
+        items = e.items()    # python3
+
+        for key, val in items:
+            if val['Sub'] > 0:
+                annotator_stack.append(QMenu(key, self))
+                snum_stack = snum_stack + [ val['Sub'] ]
+            else:
+                id = QAction( key, self)
+                id.triggered.connect( getattr(self, val['Func']) )
+                annotator_stack[-1].addAction(id)
+            while(len(annotator_stack) >= 2 and snum_stack[-1] <= 0):
+                annotator_stack[-2].addMenu(annotator_stack[-1])
+                annotator_stack.pop()
+                snum_stack.pop()
+            if snum_stack and (snum_stack[-1] > 0):
+                snum_stack[-1] = snum_stack[-1] - 1
+
+
+
+
         ##
         ## Segmentation menu
         ##
@@ -84,10 +121,7 @@ class MainWindow(QMainWindow, FileMenu, Credit, Plugins, Segment, FileIO, Script
             e = json.load(fp, object_pairs_hook=OrderedDict)
         segmentation_stack = [segmentation_folder]
         snum_stack   = [0]
-        try:
-            items = e.iteritems()   # python2.7
-        except:
-            items = e.items()    # python3
+        items = e.items()    # python3
 
         for key, val in items:
             if val['Sub'] > 0:
@@ -115,10 +149,7 @@ class MainWindow(QMainWindow, FileMenu, Credit, Plugins, Segment, FileIO, Script
             e = json.load(fp, object_pairs_hook=OrderedDict)
         plugin_stack = [plugin_folder]
         snum_stack   = [0]
-        try:
-            items = e.iteritems()   # python2.7
-        except:
-            items = e.items()    # python3
+        items = e.items()    # python3
 
         for key, val in items:
             if val['Sub'] > 0:
@@ -229,6 +260,11 @@ class PersephonepTableWidget(QWidget):
             ###
             if ('dojo' == self.appl[index]):
                 fail = self.parent.CloseDojoFiles2()
+                if (fail == 1):
+                    return
+            ###
+            if ('stlviewer' == self.appl[index]):
+                fail = self.parent.CloseStlViewer()
                 if (fail == 1):
                     return
             ###

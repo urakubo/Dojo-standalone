@@ -26,11 +26,12 @@ sys.path.append(segmentation_dir)
 # ----------------------------------------------------------------------
 
 sys.path.append(path.join(segmentation_dir, "_2D_DNN"))
-sys.path.append(path.join(segmentation_dir, "ffn"))
+sys.path.append(path.join(segmentation_dir, "_3D_FFN"))
 sys.path.append(path.join(segmentation_dir, "tensorboard"))
 
 from Tensorboard import Tensorboard
 from Dialog_2D_DNN import Dialog_2D_DNN
+from Dialog_3D_FFN import Dialog_3D_FFN
 
 
 class Segment():
@@ -39,7 +40,7 @@ class Segment():
         self.tmp = Dialog_2D_DNN(self)
 
     def _3D_FFN(self):
-        print("'3D FFN' not yet implemented!")
+        self.tmp = Dialog_3D_FFN(self)
 
     def _Tensorboard(self):
 
@@ -47,6 +48,14 @@ class Segment():
         if 1 in self.table_widget.appl:
             QMessageBox.information(self, "Tensorboard", "Tensorboard Has Already Been Launched!")
             return
+
+        ## Select Tensorboard Folder
+        newdir = QFileDialog.getExistingDirectory(self, "Select tensorboard folder", self.u_info.tensorboard_path)
+        if len(newdir) == 0:
+            print('No folder was selected.')
+            return
+        self.u_info.tensorboard_path = newdir
+
 
         ## Tensorboard launch.
         tmp = Tensorboard(self)

@@ -63,7 +63,7 @@ J.interactor.prototype.onmousemove = function(e) {
 
   } else if (this._right_down) {
     // pan
-    this._camera.pan(x-this._last_mouse[0], y-this._last_mouse[1]);    
+    this._camera.pan(x-this._last_mouse[0], y-this._last_mouse[1]);
   } else {
     // show current label
     DOJO.update_label(x, y);
@@ -79,7 +79,7 @@ J.interactor.prototype.onmousedown = function(e) {
   var y = e.clientY;
 
   this._camera._x = x;
-  this._camera._y = y;  
+  this._camera._y = y;
   this._camera._i_j = this._viewer.xy2ij(x, y);
 
   if (e.button == 0) {
@@ -219,170 +219,170 @@ J.interactor.prototype.onkeydown = function(e) {
       }
 
       this._keypress_callback = null;
-    }.bind(this),10);   
+    }.bind(this),10);
 
 
   } else if (e.keyCode == 75) {
-  
+
     this._keypress_callback = setTimeout(function() {
-      
+
       var coords = window.prompt('Which slice to jump to?');
 
       if (coords) {
-        DOJO.viewer._camera.jump(coords, coords, coords);  
+        DOJO.viewer._camera.jump(coords, coords, coords);
       }
-      
+
 
       this._keypress_callback = null;
-    }.bind(this),10);       
+    }.bind(this),10);
 
   } else if (e.keyCode == 83) {
-  
+
     this._keypress_callback = setTimeout(function() {
       this._camera.slice_down();
       this._keypress_callback = null;
-    }.bind(this),10);   
+    }.bind(this),10);
 
   } else if (e.keyCode == 67) {
 
     this._keypress_callback = setTimeout(function() {
       this._camera.zoom(this._camera._x, this._camera._y, 1);
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 88) {
 
     this._keypress_callback = setTimeout(function() {
       this._camera.zoom(this._camera._x, this._camera._y, -1);
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 65) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer.toggle_borders();
       this._keypress_callback = null;
-    }.bind(this),10); 
-  
+    }.bind(this),10);
+
   } else if (e.keyCode == 8) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.kill(this._camera._x, this._camera._y);
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 76) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.lock(this._camera._x, this._camera._y);
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 90 && e.ctrlKey) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.undo_action();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 89 && e.ctrlKey) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.redo_action();
       this._keypress_callback = null;
-    }.bind(this),10); 
-    
+    }.bind(this),10);
+
   } else if (e.keyCode == 90) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.add_exclamationmark(this._camera._x, this._camera._y);
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 81) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer.toggle_segmentation();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 69) {
-    
+
     this._keypress_callback = setTimeout(function() {
       this._viewer.increase_opacity();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 68) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer.decrease_opacity();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 27) {
-    
+
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.discard();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 189) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.smaller_brush();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 187) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.larger_brush();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 9) {
 
     this._keypress_callback = setTimeout(function() {
       this._viewer._controller.end_adjust();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 49) {
 
     this._keypress_callback = setTimeout(function() {
       document.getElementById('merge').click();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 50) {
 
     this._keypress_callback = setTimeout(function() {
       document.getElementById('split').click();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 51) {
 
     this._keypress_callback = setTimeout(function() {
       document.getElementById('adjust').click();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 52) {
 
     this._keypress_callback = setTimeout(function() {
       document.getElementById('3d').click();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
   } else if (e.keyCode == 53) {
 
     this._keypress_callback = setTimeout(function() {
       document.getElementById('link').click();
       this._keypress_callback = null;
-    }.bind(this),10); 
+    }.bind(this),10);
 
-  } 
+  }
 
 };

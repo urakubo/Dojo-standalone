@@ -251,7 +251,11 @@ J.offscreen_renderer.prototype.draw = function(i, s, c, x, y) {
   // Bind the Texture Buffer
   gl.enableVertexAttribArray(this._att.aTexturePosition);
   gl.bindBuffer(gl.ARRAY_BUFFER, this._textureBuffer);
-  gl.vertexAttribPointer(this._att.aTexturePosition, 2, gl.FLOAT, false, 0, 0);  
+
+  // ↓タイプミスを修正。undefinedのまま関数に渡され、関数も文句いわずにno-opしちゃうので直す
+  //gl.vertexAttribPointer(this._att.TexturePosition, 2, gl.FLOAT, false, 0, 0);
+  gl.vertexAttribPointer(this._att.aTexturePosition, 2, gl.FLOAT, false, 0, 0);
+
   gl.bindBuffer(gl.ARRAY_BUFFER, null);
 
   // Add all the textures to the shaders
@@ -263,7 +267,10 @@ J.offscreen_renderer.prototype.draw = function(i, s, c, x, y) {
     gl.uniform1i(vals.sampler, vals.id);
   }
 
-  gl.drawArrays(gl.TRIANGLES, 0, 6); //<==================================
+  // 黒いloadingのままになってしまうのを修正
+  // gl.drawArrays(gl.TRIANGLES, 0, 6); <==================================
+  gl.drawArrays(gl.TRIANGLES, 0, 6);
+
 
   c.drawImage(this._canvas,0,0,512,512,x*512,y*512,512,512);
 

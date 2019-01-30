@@ -72,20 +72,12 @@ class Tensorboard:
     def StartThreadTensorboard(self):
 
 
-        if getattr(sys, 'frozen', False):
-            print('Run on pyinstaller.')
-            tfevents_dir = os.path.normpath( path.join(main_dir, "../..", "data") )
-        # running in a bundle
-        else:
-            print('Run on live python.')
-            tfevents_dir = path.join(main_dir, "data")
-
         # Remove http messages
         # log = logging.getLogger('werkzeug').setLevel(logging.ERROR)
 
 		# Tensorborad V1.12
         tb = program.TensorBoard(default.get_plugins(), default.get_assets_zip_provider())
-        tb.configure(argv=[None, '--logdir', tfevents_dir,'--host', socket.gethostbyname(socket.gethostname())])
+        tb.configure(argv=[None, '--logdir', self.u_info.tensorboard_path,'--host', socket.gethostbyname(socket.gethostname())])
         tb.launch()
 
 		# Tensorborad V1.10

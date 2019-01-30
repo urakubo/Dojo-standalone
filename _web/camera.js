@@ -80,7 +80,7 @@ J.camera.prototype.jumpIJK = function(i, j, k) {
   var shape = [['width', i, 0], ['height', j, 0], ['max_z_tiles', k, 1]],
   ijk_int = [], ijk_str = [], w = this._w, image = this._viewer._image, view = this._view;
 
-  shape.forEach( function(s) { 
+  shape.forEach( function(s) {
     ijk_int.push( Math.min(this[s[0]]-s[2], Math.max(0, parseInt(s[1],10))) );
     ijk_str.push( ijk_int.slice(-1)[0].toString() );
     }, image);

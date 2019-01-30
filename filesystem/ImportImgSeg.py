@@ -23,6 +23,7 @@ sys.path.append(path.join(parent_dir, "Filesystem"))
 from Params import Params
 from np2imgo import Imgo
 from np2sego import Sego
+from np2sego_dummy import Sego_dummy
 ##
 
 ##
@@ -64,8 +65,10 @@ class ImportImgSeg():
         # read all pngs in pngs folder
         search1 = os.path.join(input_images_path,'*.png')
         search2 = os.path.join(input_images_path,'*.tif')
+        search3 = os.path.join(input_images_path, '*.tiff')
         stack   = sorted(glob.glob(search1))
         stack.extend( sorted(glob.glob(search2)) )
+        stack.extend( sorted(glob.glob(search3)) )
         if stack == [] :
             print('No PNG/TIFF images.')
             return False
@@ -77,12 +80,30 @@ class ImportImgSeg():
         # read all pngs in pngs folder
         search1 = os.path.join(input_ids_path,'*.png')
         search2 = os.path.join(input_ids_path,'*.tif')
+        search3 = os.path.join(input_ids_path,'*.tiff')
         stack   = sorted(glob.glob(search1))
         stack.extend( sorted(glob.glob(search2)) )
+        stack.extend( sorted(glob.glob(search3)) )
         if stack == [] :
             print('No PNG/TIFF segments.')
             return False
         outfile = Sego( self.u_info )
+        self.main( outfile, stack )
+        return True
+
+
+    def ids_dummy( self, input_image_path ):
+        # read all pngs in pngs folder
+        search1 = os.path.join(input_image_path,'*.png')
+        search2 = os.path.join(input_image_path,'*.tif')
+        search3 = os.path.join(input_image_path,'*.tiff')
+        stack   = sorted(glob.glob(search1))
+        stack.extend( sorted(glob.glob(search2)) )
+        stack.extend( sorted(glob.glob(search3)) )
+        if stack == [] :
+            print('No PNG/TIFF segments.')
+            return False
+        outfile = Sego_dummy( self.u_info )
         self.main( outfile, stack )
         return True
 

@@ -31,87 +31,97 @@ sys.path.append(segmentation_dir)
 sys.path.append(os.path.join(main_dir, "filesystem"))
 
 
-class PartDialogInference():
+from MiscellaneousSegment import MiscellaneousSegment
+
+class PartDialogInference(MiscellaneousSegment):
     def InferenceSetParams(self, tab):
 
         tips = [
                         'Path to folder containing images',
                         'Path to folder for storing segmentation',
                         'Directory with checkpoint for training data',
-                        'Target image height ',
-                        'Target image width ',
                         'Save Parameters ',
                         'Load Parameters '
                         ]
 
-        datadir = self.parent.u_info.segmentation_data_path
-        imgpath =  os.path.join(datadir, "segment_2DNN_img")
-        outpath =  os.path.join(datadir, "segment_2DNN_out")
-        paramfile = os.path.join(datadir, "Inference_Params_2D.pickle")
-        self.args_inference = [
-                        ['Image Folder',    'LineEdit', imgpath, 'Browsedir'],
-                        ['Output Segmentation Folder',   'LineEdit', outpath, 'Browsedir'],
-                        ['Checkpoint',      'LineEdit', datadir, 'Browsedir'],
-                        ['Image Height', 'SpinBox', [0, 1024, 65535]],
-                        ['Image Width',  'SpinBox', [0, 512, 65535]],
-                        ['Save Parameters', 'LineEdit',paramfile, 'Browsefile'],
-                        ['Load Parameters', 'LineEdit',paramfile, 'Browsefile']
+        datadir = self.parent.u_info.data_path
+        imgpath =  os.path.join(datadir, "_2DNN_test_images")
+        outpath =  os.path.join(datadir, "_2DNN_inference")
+        modelpath =  os.path.join(datadir, "_2DNN_model_tensorflow")
+        paramfile = os.path.join(datadir, "parameters", "Inference_2D.pickle")
+        args = [
+                        ['Image Folder',    'LineEdit', imgpath, 'BrowseDirImg'],
+                        ['Output Segmentation Folder',   'LineEdit', outpath, 'BrowseDirImg'],
+                        ['Checkpoint Folder',      'LineEdit', modelpath, 'BrowseDir'],
+                        ['Save Parameters', 'LineEdit',paramfile, 'BrowseFile'],
+                        ['Load Parameters', 'LineEdit',paramfile, 'BrowseFile']
                         ]
-        self.args_inference_title = [self.args_inference[i][0] for i in range(len(self.args_inference))]
+        self.args_inference_title = [args[i][0] for i in range(len(args))]
 
+        filter_name = 'Inference'
 
         ## Labels
         lbl   = []
-        self.obj_args_inference = []
-        require_browsedir = []
-        require_browsefile = []
+        obj_args = []
+        require_browse_dir = []
+        require_browse_dir_img = []
+        require_browse_file = []
         ##
-        for i in range(len(self.args_inference)):
         ##
-            arg = self.args_inference[i][0]
+        for i in range(len(args)):
+        ##
+            arg = args[i][0]
             if arg == 'Save Parameters':
                 lbl.append(QPushButton(arg))
-                lbl[-1].clicked.connect(self._save_inference_params_2D)
+                lbl[-1].clicked.connect(lambda: self.save_params(obj_args, args, filter_name))
             elif arg == 'Load Parameters':
                 lbl.append(QPushButton(arg))
-                lbl[-1].clicked.connect(self._load_inference_params_2D)
+                lbl[-1].clicked.connect(lambda: self.load_params(obj_args, args, filter_name))
             else :
-                lbl.append(QLabel(self.args_inference_title[i] + ' :'))
+                lbl.append(QLabel(args[i][0] + ' :'))
                 lbl[-1].setToolTip(tips[i])
+
         ##
-        for i in range(len(self.args_inference)):
+        for i in range(len(args)):
         ##
-            if  self.args_inference[i][1] == 'LineEdit':
-                self.obj_args_inference.append( QLineEdit() )
-                self.obj_args_inference[-1].setText( self.args_inference[i][2] )
-                if self.args_inference[i][3] == 'Browsedir':
-                    require_browsedir.append(i)
-                if self.args_inference[i][3] == 'Browsefile':
-                    require_browsefile.append(i)
-            elif self.args_inference[i][1] == 'SpinBox':
-                self.obj_args_inference.append(QSpinBox())
-                self.obj_args_inference[-1].setMinimum( self.args_inference[i][2][0] )
-                self.obj_args_inference[-1].setMaximum( self.args_inference[i][2][2] )
-                self.obj_args_inference[-1].setValue( self.args_inference[i][2][1] )
-            elif self.args_inference[i][1] == 'ComboBox':
-                self.obj_args_inference.append(QComboBox(self))
-                items = self.args_inference[i][2]
+            if  args[i][1] == 'LineEdit':
+                obj_args.append( QLineEdit() )
+                obj_args[-1].setText( args[i][2] )
+                if args[i][3] == 'BrowseDir':
+                    require_browse_dir.append(i)
+                if args[i][3] == 'BrowseDirImg':
+                    require_browse_dir_img.append(i)
+                if args[i][3] == 'BrowseFile':
+                    require_browse_file.append(i)
+            elif args[i][1] == 'SpinBox':
+                obj_args.append(QSpinBox())
+                obj_args[-1].setMinimum( args[i][2][0] )
+                obj_args[-1].setMaximum( args[i][2][2] )
+                obj_args[-1].setValue( args[i][2][1] )
+            elif args[i][1] == 'ComboBox':
+                obj_args.append(QComboBox(self))
+                items = args[i][2]
                 for item in items:
-                    self.obj_args_inference[-1].addItem(item)
+                    obj_args[-1].addItem(item)
             else:
                 print('Internal error. No fucntion.')
 
+        self.obj_args_inference = obj_args
+        self.args_inference = args
+
         # Organize tab widget
         display_order = [0,1,2,3,4]
-        self.OrganizeTab(tab, lbl, self.obj_args_inference, display_order, require_browsedir, require_browsefile, self.ExecuteInference)
+        self.OrganizeTab(tab, lbl, obj_args, display_order, require_browse_dir,require_browse_dir_img, require_browse_file, self.ExecuteInference)
 
 
     def _save_inference_params_2D(self):
-        self.save_params_2D(self.obj_args_inference, self.args_inference, self.args_inference_title, 'Inference')
+        self.save_params(self.obj_args_inference, self.args_inference, 'Inference')
         return True
 
     def _load_inference_params_2D(self):
-        self.load_params_2D(self.obj_args_inference, self.args_inference, self.args_inference_title, 'Inference')
+        self.load_params(self.obj_args_inference, self.args_inference, 'Inference')
         return True
+
+
 
 

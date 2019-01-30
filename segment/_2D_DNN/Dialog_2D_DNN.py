@@ -14,7 +14,6 @@ import threading
 import subprocess as s
 import tornado
 import tornado.websocket
-import time
 
 
 
@@ -32,12 +31,15 @@ segmentation_dir = path.join(main_dir, "segment")
 sys.path.append(segmentation_dir)
 sys.path.append(os.path.join(main_dir, "filesystem"))
 
+from MiscellaneousSegment import MiscellaneousSegment
+
+
 from PartDialogTraining  import PartDialogTraining
 from PartDialogTrainingExecutor  import PartDialogTrainingExecutor
 from PartDialogInference  import PartDialogInference
 from PartDialogInferenceExecutor  import PartDialogInferenceExecutor
 
-class Dialog_2D_DNN(QWidget, PartDialogTraining, PartDialogTrainingExecutor, PartDialogInference, PartDialogInferenceExecutor):
+class Dialog_2D_DNN(QWidget, PartDialogTraining, PartDialogTrainingExecutor, PartDialogInference, PartDialogInferenceExecutor, MiscellaneousSegment):
     def __init__(self, parent):
         super().__init__()
         self.left   = 200
@@ -85,10 +87,10 @@ class Dialog_2D_DNN(QWidget, PartDialogTraining, PartDialogTrainingExecutor, Par
     ##
     ##
     ##
-    def ObtainUIParams(self, obj_args, args, args_title):
-
+    def ObtainUIParams(self, obj_args, args):
+        args_header = [args[i][0] for i in range(len(args))]
         params = []
-        for i, arg in enumerate(args_title):
+        for i, arg in enumerate(args_header):
             param = []
             if   args[i][1] == 'LineEdit':
                 param = obj_args[i].text()
@@ -102,13 +104,14 @@ class Dialog_2D_DNN(QWidget, PartDialogTraining, PartDialogTrainingExecutor, Par
 
         return params
 
-    ##
-    ##
-    ##
-    def ObtainUIParamsStr(self, obj_args, args, args_title):
 
+    ##
+    ##
+    ##
+    def ObtainUIParamsStr(self, obj_args, args):
+        args_header = [args[i][0] for i in range(len(args))]
         params = []
-        for i, arg in enumerate(args_title):
+        for i, arg in enumerate(args_header):
             param = []
             if   args[i][1] == 'LineEdit':
                 param = obj_args[i].text()
@@ -126,118 +129,33 @@ class Dialog_2D_DNN(QWidget, PartDialogTraining, PartDialogTrainingExecutor, Par
 
 
 
-    def save_params_2D(self, obj_args, args, args_title, TrainOrInf):
-
-        print('')
-
-        params = self.ObtainUIParams(obj_args, args, args_title)
-
-        id = args_title.index('Save Parameters')
-        filename = obj_args[id].text()
-        print('')
-        print('Save file : ', filename)
-        self.print_current_states(obj_args, args, args_title)
-        print('')
-        try:
-            with open(filename, mode='wb') as f:
-                pickle.dump(params, f)
-            print(TrainOrInf, 'parameter file for 2D DNN was saved.')
-        except :
-            print(TrainOrInf, 'parameter file for 2D DNN cannot be saved.')
-            return False
-
-        return True
-
-
-    def load_params_2D(self, obj_args, args, args_title, TrainOrInf):
-        #
-        id = args_title.index('Load Parameters')
-        filename = obj_args[id].text()
-        print('')
-        print('Load file : ', filename)
-        try:
-            with open(filename, mode='rb') as f:
-                params = pickle.load(f)
-        except :  # parent of IOError, OSError *and* WindowsError where available
-            print(TrainOrInf, ' parameter file for 2D DNN cannot be open.')
-            return False
-
-        for i, arg in enumerate(args_title):
-            if   args[i][1] == 'LineEdit':
-                obj_args[i].setText( params[i] )
-            elif args[i][1] == 'SpinBox':
-                obj_args[i].setValue( params[i] )
-            elif args[i][1] == 'ComboBox':
-                id = obj_args[i].findText( params[i] )
-                obj_args[i].setCurrentIndex( id )
-            elif args[i][1] == 'Tab':
-                obj_args[i].setCurrentIndex( params[i] )
-
-        self.print_current_states(obj_args, args, args_title)
-        return True
-
-
-    def print_current_states(self, obj_args, args, args_title):
-        for i, arg in enumerate(args_title):
-            if   args[i][1] == 'LineEdit':
-                param = obj_args[i].text()
-                print("{0:>20} : {1:s}".format(arg, param))
-            elif args[i][1] == 'SpinBox':
-                param = obj_args[i].value()
-                print("{0:>20} : {1:d}".format(arg, param))
-            elif args[i][1] == 'ComboBox':
-                param = obj_args[i].currentText()
-                print("{0:>20} : {1:s}".format(arg, param))
-            elif args[i][1] == 'Tab':
-                param = obj_args[i].currentIndex()
-                print("{0:>20} : {1:s}".format(arg, obj_args[i].tabText(param)))
-
-
-    def browse_dir(self, lineedit_obj):
-        currentdir = lineedit_obj.text()
-        newdir = QFileDialog.getExistingDirectory(self, "Select Folder", currentdir)
-        if len(newdir) == 0:
-            return False
-        newdir = newdir.replace('/', os.sep)
-        lineedit_obj.setText(newdir)
-        return True
-
-
-    def browse_file(self, lineedit_obj):
-        currentfile = lineedit_obj.text()
-        newf = QFileDialog.getOpenFileName(self, "Select Folder", currentfile)
-        newfile = newfile[0]
-        if len(newfile) == 0:
-            return False
-        newfile = newfile.replace('/', os.sep)
-        lineedit_obj.setText(newfile)
-        return True
-
-
     def Cancel(self):  # wxGlade: ImportImagesSegments.<event_handler>
         self.close()
         print('2D DNN was not executed.')
         return False
 
 
-    def OrganizeTab(self, tab,  lbl, obj_args, display_order, require_browsedir, require_browsefile, Execute):
+    def OrganizeTab(self, tab,  lbl, obj_args, display_order, require_browse_dir, require_browse_dir_img, require_browse_file, Execute):
         tab.layout = QGridLayout(tab)
         ncol = 8
         browse_button = []
         for i, id in enumerate(display_order):
             tab.layout.addWidget(lbl[id], i + 1, 0, alignment=Qt.AlignRight)  # (Qt.AlignRight | Qt.AlignTop)
-            if id in require_browsedir:
+            tab.layout.addWidget(obj_args[id], i + 1, 1, 1, ncol - 1)
+            if id in require_browse_dir:
                 browse_button.append(QPushButton("Browse..."))
                 browse_button[-1].clicked.connect(lambda state, x=id: self.browse_dir(obj_args[x]))
-                tab.layout.addWidget(obj_args[id], i + 1, 1, 1, ncol - 1)
                 tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
-            elif id in require_browsefile:
+            elif id in require_browse_dir_img:
                 browse_button.append(QPushButton("Browse..."))
-                browse_button[-1].clicked.connect(lambda state, x=id: self.browse_file(obj_args[x]))
-                tab.layout.addWidget(obj_args[id], i + 1, 1, 1, ncol - 1)
+                browse_button[-1].clicked.connect(lambda state, x=id: self.browse_dir_img(obj_args[x]))
                 tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
-            else:
-                tab.layout.addWidget(obj_args[id], i + 1, 1, 1, ncol)
+            elif id in require_browse_file:
+                browse_button.append(QPushButton("Browse..."))
+                browse_button[-1].clicked.connect(lambda  state, x=id: self.browse_file(obj_args[x]))
+                tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
+
+
                 # addWidget(*Widget, row, column, rowspan, colspan)
 
         ## Execute & cancel buttons

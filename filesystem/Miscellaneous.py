@@ -153,7 +153,7 @@ def save_png8(id_data, filename):
 def mkdir_safe( dir_to_make ):
     if not os.path.exists( dir_to_make ):
         execute_string = 'mkdir ' + '"' + dir_to_make + '"'
-        print(execute_string)
+        #print(execute_string)
         os.system( execute_string )
 
 

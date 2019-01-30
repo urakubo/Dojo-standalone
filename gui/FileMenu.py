@@ -30,8 +30,7 @@ class FileMenu():
 
 
         # File menu
-        self.file_menu_ = ['Import EM Stack',
-                   'Import Segmentation',
+        self.file_menu_ = ['Import EM Stack/Segmentation',
                    'Open Dojo Folder',
                    'Close Dojo Folder',
                    'Save Dojo Folder',
@@ -41,7 +40,6 @@ class FileMenu():
                    'Exit']
 
         self.file_icon = ['Photo_Import_16.png',
-                  'Object_Import_16.png',
                   'Folder_16.png',
                   'Close_16.png',
                   'Save_16.png',
@@ -51,7 +49,6 @@ class FileMenu():
                   'Power_Off_16.png']
 
         self.file_icon_diabled = ['Photo16.png',
-                          'Object16.png',
                           'Folder16.png',
                           'Close16.png',
                           'Save16.png',
@@ -59,11 +56,10 @@ class FileMenu():
                           'Photo16.png',
                           'Object16.png',
                           'PowerOff16.png']
-        self.act_file_icon_init = [1, 0, 1, 0, 0, 0, 0, 0, 1]
-        self.act_file_icon_open = [0, 1, 0, 1, 1, 1, 1, 1, 1]
+        self.act_file_icon_init = [1, 1, 0, 0, 0, 0, 0, 1]
+        self.act_file_icon_open = [0, 0, 1, 1, 1, 1, 1, 1]
 
         self.file_action = [self.Import,
-                          self.Import,
                           self.SelectDojoFile,
                           self.CloseDojoFiles,
                           self.SaveDojoFiles,

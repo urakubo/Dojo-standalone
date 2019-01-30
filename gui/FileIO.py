@@ -103,7 +103,7 @@ class FileIO():
         self.u_info.worker_loop.close()
         #self.u_info.worker_loop.stop()
         #self.u_info.worker_loop.call_soon_threadsafe(self.u_info.worker_loop.close)
-        self.u_info.dojo_thread.join()
+        #self.u_info.dojo_thread.join()
 
         # if self.u_info.dojo_thread != None:
 

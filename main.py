@@ -2,9 +2,6 @@
 # -*- coding: UTF-8 -*-
 #
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
 
 from PyQt5.QtWidgets import QMainWindow, QApplication, QWidget, QPushButton, QAction, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap

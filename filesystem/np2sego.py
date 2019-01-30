@@ -93,6 +93,9 @@ class Sego:
             num_tiles_y = int( math.ceil( float( current_ids_num_pixels_y ) / self.tile_num_pixels_y ) )
             num_tiles_x = int( math.ceil( float( current_ids_num_pixels_x ) / self.tile_num_pixels_x ) )
 
+            print('Scale: ', ids_stride)
+            print('Number of panels (x, y): ', num_tiles_x, num_tiles_y)
+
             for iy in range( num_tiles_y ):
                 for ix in range( num_tiles_x ):
 
