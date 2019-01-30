@@ -81,14 +81,16 @@ class FFNInference(MiscellaneousSegment):
             target_image_files = self.ObtainImageFiles(params['Target Image Folder'])
             images = [cv2.imread(i, cv2.IMREAD_GRAYSCALE) for i in target_image_files]
             images = np.array(images)
-            image_x    = images.shape[0]
+            image_z    = images.shape[0]
             image_y    = images.shape[1]
-            image_z    = images.shape[2]
+            image_x    = images.shape[2]
             image_mean = np.mean(images).astype(np.int16)
             image_std  = np.std(images).astype(np.int16)
+            print('x: {}, y: {}, z: {}'.format(image_x, image_y, image_z))
+
             with h5py.File( target_image_file_h5 , 'w') as f:
                 f.create_dataset('raw', data=images, compression='gzip')
-            print('h5 file (target image) was generated.')
+            print('"grayscale_inf.h5" file (target inference image) was generated.')
         except:
             print("Error: Target Image h5 was not generated.")
             return False
@@ -102,10 +104,9 @@ class FFNInference(MiscellaneousSegment):
         request['image_stddev'] = image_std
         request['checkpoint_interval'] = int(params['Checkpoint Interval'])
         request['seed_policy'] = "PolicyPeaks"
-        request['model_checkpoint_path'] = params['Tensorflow Model File'].replace('\\', '/')
+        request['model_checkpoint_path'] = params['Tensorflow Model Files'].replace('\\', '/')
         request['model_name'] = "convstack_3d.ConvStack3DFFNModel"
 
-        print("params['Sparse Z']", params['Sparse Z'])
         if params['Sparse Z'] != Qt.Unchecked:
             request['model_args'] = "{\\\"depth\\\": 9, \\\"fov_size\\\": [33, 33, 17], \\\"deltas\\\": [8, 8, 4]}"
             #request['model_args'] = ' {"depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]} '
@@ -161,9 +162,9 @@ class FFNInference(MiscellaneousSegment):
     def __init__(self, u_info):
         ##
         datadir = u_info.data_path
-        Inference_image_path = os.path.join(datadir, "_3DNN_training_images")
+        Inference_image_path = os.path.join(datadir, "_3DNN_test_images")
         ffn_file_path        = os.path.join(datadir, "ffn")
-        tensorflow_file      = os.path.join(datadir, "_3DNN_model_tensorflow", "model.ckpt-2000000.data-00000-of-00001")
+        tensorflow_file      = os.path.join(datadir, "_3DNN_model_tensorflow", "model.ckpt-2000000")
         self.paramfile = os.path.join(datadir, "parameters", "FFN_Inference.pickle")
 
         self.filter_name = 'FFN Inference'
@@ -171,19 +172,19 @@ class FFNInference(MiscellaneousSegment):
         self.tips = [
                         'Path to folder containing target images',
                         'Output inference folder',
-                        'Tensorflow model File',
+                        'Tensorflow model Files. 3 files are required. Please remove their suffixes',
                         'Click it if you used in the training process',
                         'Checkpoint Interval',
-                        'FFN File Folder',
+                        'Tensorflow file follder'
                         ]
 
         self.args = [
                         ['Target Image Folder',  'LineEdit', Inference_image_path, 'BrowseDirImg'],
                         ['Output Inference Folder',  'LineEdit', ffn_file_path, 'BrowseDir'],
-                        ['Tensorflow Model File', 'LineEdit', tensorflow_file, 'BrowseFile'],
+                        ['Tensorflow Model Files', 'LineEdit', tensorflow_file, 'BrowseFile'],
                         ['Sparse Z', 'CheckBox', False],
                         ['Checkpoint Interval', 'SpinBox', [100, 1800, 65535]],
-                        ['FFN File Folder',   'LineEdit', ffn_file_path, 'BrowseDir'],
+                        ['FFN File Folder', 'LineEdit', ffn_file_path, 'BrowseDir']
             ]
 
 

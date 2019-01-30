@@ -36,7 +36,6 @@ class FFNPostprocessing(MiscellaneousSegment):
         print('File contents :', data.files)
         segmentation = data['segmentation']
         print('Segmentation image size: ', segmentation.shape)
-        num_z = segmentation.shape[0]
         filetype = params['Output Filetype']
         ##
         ##
@@ -49,25 +48,28 @@ class FFNPostprocessing(MiscellaneousSegment):
 
         ##
         ##
-        for idz in range(num_z):
+        for idz in range(segmentation.shape[0]):
+            image2d = segmentation[idz, :, :]
+            print('image2d size: ', image2d.shape)
+
             if filetype == '16-bit gray scale TIFF':
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.tif'.format(idz))
-                m.save_tif16(segmentation[idz, :, :], filename)
+                m.save_tif16(image2d, filename)
             elif filetype == '8-bit gray scale TIFF':
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.tif'.format(idz))
-                m.save_tif8(segmentation[idz, :, :], filename)
+                m.save_tif8(image2d, filename)
             elif filetype == '16-bit gray scale PNG':
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.png'.format(idz))
-                m.save_png16(segmentation[idz, :, :], filename)
+                m.save_png16(image2d, filename)
             elif filetype == '8-bit gray scale PNG':
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.png'.format(idz))
-                m.save_png8(segmentation[idz, :, :], filename)
+                m.save_png8(image2d, filename)
             elif filetype == '8-bit color PNG' :
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.png'.format(idz))
-                m.save_pngc(segmentation[idz, :, :], filename, colormap)
+                m.save_pngc(image2d, filename, colormap)
             elif filetype == '8-bit color TIFF' :
                 filename = os.path.join(params['Output Segmentation Folder'], 'z{:0=4}.tif'.format(idz))
-                m.save_tifc(segmentation[idz, :, :], filename, colormap)
+                m.save_tifc(image2d, filename, colormap)
             else:
                 print('Data was not saved.')
         ##
@@ -79,7 +81,7 @@ class FFNPostprocessing(MiscellaneousSegment):
         ##
         datadir = u_info.data_path
 
-        target_inference_file = os.path.join(datadir, "ffn", "seg-0_0_0.npz")
+        target_inference_file = os.path.join(datadir, "ffn","0", "0", "seg-0_0_0.npz")
         output_segmentation_path   = os.path.join(datadir, "_3DNN_inference")
 
         self.paramfile = os.path.join(datadir, "parameters", "FFN_Postprocessing.pickle")
@@ -95,9 +97,8 @@ class FFNPostprocessing(MiscellaneousSegment):
         self.args = [
                         ['Target Inference File',  'LineEdit', target_inference_file, 'BrowseFile'],
                         ['Output Segmentation Folder',   'LineEdit', output_segmentation_path, 'BrowseDirImg'],
-                        ['Output Filetype', 'ComboBox', ["16-bit gray scale PNG", "16-bit gray scale TIFF",
-                                                         "8-bit gray scale PNG", "8-bit gray scale TIFF",
-                                                         "8-bit color PNG", "8-bit color TIFF"]],
+                        ['Output Filetype', 'ComboBox', ["8-bit color PNG", "16-bit gray scale PNG", "8-bit gray scale PNG", 
+                                                         "8-bit color TIFF", "16-bit gray scale TIFF", "8-bit gray scale TIFF"]],
             ]
 
 

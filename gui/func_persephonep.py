@@ -4,15 +4,32 @@
 import sys
 import os
 import re
-from PyQt5.QtWidgets import (QWidget, QLabel, QLineEdit, 
-                             QTextEdit, QGridLayout, QApplication, QPushButton,  QDesktopWidget)
+from time import sleep
+from PyQt5.QtWidgets import (QWidget, QLabel, QLineEdit, QFileDialog, QProgressBar,
+                              QTextEdit, QGridLayout, QApplication, QPushButton,  QDesktopWidget)
+
+from PyQt5 import QtCore
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QUrl
+#from PyQt5.QtCore import QUrl
 from PyQt5.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEngineDownloadItem, QWebEnginePage
 from PyQt5 import QtNetwork
 
 __program__ = 'PERSEPHONEP'
 
+
+PROGRESS_STYLE = """
+QProgressBar {
+    background-color: white;
+    text-align: center;
+    height: 20px;
+}
+QProgressBar::chunk {
+    background-color: #01DF74;
+    margin: 1px;
+    width: 10px;
+    height: 20px;
+}
+"""
 
 ''' This is a single page of the browser.
     This class equals a tab of PersephonepTableWidget.
@@ -43,7 +60,8 @@ class PersephonepWindow(QWidget):
         QtNetwork.QNetworkProxy.setApplicationProxy(proxy)
    
         # condig url
-        self.window.load(QUrl(self.initurl))
+        ###self.window.load(QUrl(self.initurl))
+        self.window.load(QtCore.QUrl(self.initurl))
         #self.window.resize(1000,600)
         #self.window.move(200,200)
         #self.window.setWindowTitle(__program__)
@@ -58,6 +76,19 @@ class PersephonepWindow(QWidget):
         self.reload_button = QPushButton('reload')
         self.reload_button.setToolTip('Reload this page.')
         self.reload_button.clicked.connect(self.window.reload)
+
+
+        ##
+        ## Download dialog
+        ##
+        self.progress = QProgressBar(self)
+        self.progress.setMaximum(100)
+        self.progress.setStyleSheet(PROGRESS_STYLE)
+        self.progress.hide()
+        self.downloading_filename = ''
+        ##
+        ##
+
         self.url_edit = QLineEdit()
         self.url_edit.setText( self.initurl )
         self.url_edit.setReadOnly(True)
@@ -73,9 +104,16 @@ class PersephonepWindow(QWidget):
         
         # signal catch from moving web pages.
 
-        #self.window.urlChanged.connect(self.updateCurrentUrl)
-        #self.window.page().profile().downloadRequested.connect(self._downloadRequested)
-        
+
+        ##
+        ## Download dialog
+        ##
+        self.window.urlChanged.connect(self.updateCurrentUrl)
+        # self.window.page().profile().downloadRequested.connect(self._downloadRequested)
+        self.window.page().profile().downloadRequested.connect(self.on_download_requested)
+        ##
+
+
         # setting layout
         grid = QGridLayout()
         grid.setSpacing(0)
@@ -86,6 +124,7 @@ class PersephonepWindow(QWidget):
         #grid.addWidget(self.move_button, 1, 14)
         #grid.addWidget(self.home_button, 1, 15)
         grid.addWidget(self.window,2, 0, 5, 16)
+        grid.addWidget(self.progress, 7, 0, 1, 3) #### Download
         self.setLayout(grid) 
         
         
@@ -119,7 +158,9 @@ class PersephonepWindow(QWidget):
             google_search_url = 'https://www.google.co.jp/search?ie=utf-8&oe=utf-8&q={}&hl=ja&btnG=search'.format(search_word)
             move_url = google_search_url
         # move_url = QUrl(move_url)
-        move_url = QUrl(self.initurl)
+        # move_url = QUrl(self.initurl)
+        move_url = QtCore.QUrl(move_url)
+
         self.window.load(move_url)
         self.updateCurrentUrl()
         
@@ -151,17 +192,51 @@ class PersephonepWindow(QWidget):
     def loadHomePage(self):
         ''' move to the home page
         '''
-        initurl = 'https://www.google.co.jp'
-        self.window.load(QUrl(initurl))
+        #initurl = 'https://www.google.co.jp'
+        #self.window.load(QUrl(initurl))
+        self.window.load(QtCore.QUrl(initurl)) ### Download
 
     def saveFile(self):
         print('download')
 
-    def _downloadRequested(self, item): # QWebEnginDownloadItem
-        # print('downloading to', item.path)
-        item.accept()
-        
-        
+#    def _downloadRequested(self, item): # QWebEnginDownloadItem
+#        # print('downloading to', item.path)
+#        item.accept()
+
+
+    @QtCore.pyqtSlot(QWebEngineDownloadItem)
+    def on_download_requested(self, download):
+        #print('{} downloading to {}'.format(download.url(), download.path()))
+        self.downloading_filename = QtCore.QFileInfo(download.path()).fileName()
+        self.progress.setValue(0)
+        self.progress.show()
+        download.downloadProgress.connect(self.on_download_progress)
+        download.stateChanged.connect(self.on_download_state)
+        download.accept()
+
+
+    def on_download_progress(self, read, total):
+        self.progress.setValue((total/read)*100)
+        self.progress.setFormat('{} : {}%'.format(self.downloading_filename, (total/read)*100))
+
+    def on_download_state(self, state):
+        if state == QWebEngineDownloadItem.DownloadRequested:
+            print('requested')
+        elif state == QWebEngineDownloadItem.DownloadInProgress:
+            print('progress')
+        elif state == QWebEngineDownloadItem.DownloadCompleted:
+            print('Download complete')
+            sleep(1)    ################ Download
+            self.progress.hide()
+        elif state == QWebEngineDownloadItem.DownloadCancelled:
+            print('cancel')
+        elif state == QWebEngineDownloadItem.DownloadInterrupted:
+            print('interrupt')
+
+
+
+
+
 if __name__ == '__main__':
     # mainPyQt5()
     app = QApplication(sys.argv)

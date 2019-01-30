@@ -58,14 +58,14 @@ class FFNPrepTraining(MiscellaneousSegment):
         images = np.array(images)
         with h5py.File(os.path.join(params['FFN File Folder'], "grayscale_maps.h5"), 'w') as f:
             f.create_dataset('raw', data=images, compression='gzip')
-        print('h5 file (training image) was generated.')
+        print('"grayscale_maps.h5" file (training image) was generated.')
 
         ground_truth_files = self.ObtainImageFiles(params['Ground Truth Folder'])
         images = [cv2.imread(i, -1) for i in ground_truth_files]
         images = np.array(images).astype(np.int32)
         with h5py.File(os.path.join(params['FFN File Folder'], "groundtruth.h5"), 'w') as f:
             f.create_dataset('stack', data=images, compression='gzip')
-        print('h5 file (ground truth) was generated.')
+        print('"groundtruth.h5" file (ground truth) was generated.')
         ##
         #except:
         #    print("Error: h5 files (ground truth) were not generated.")
@@ -100,7 +100,8 @@ class FFNPrepTraining(MiscellaneousSegment):
 
         self.tips = [
                         'Path to folder containing images',
-                        'Path to folder containing ground truth'
+                        'Path to folder containing ground truth',
+                        'Tensorflow file follder'
                         ]
 
 

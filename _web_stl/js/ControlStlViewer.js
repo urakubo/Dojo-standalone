@@ -38,23 +38,11 @@ function MarkerOffOn(ischecked) {
       }
 
 function SaveImage(ischecked) {
-		console.log("Save Image")
-		var type = 'image/png';
-  		var myCanvas = document.getElementById('myCanvas');
-  		var canvas = myCanvas.querySelector('canvas');
-  		var base64 = canvas.toDataURL(type);
+	let canvas = document.getElementById("myCanvas").querySelector('canvas');
 
-		// From Base64 to Binay
-		var bin = atob(base64.replace(/^.*,/, ''));
-		var buffer = new Uint8Array(bin.length);
-		for (var i = 0; i < bin.length; i++) {
-        	buffer[i] = bin.charCodeAt(i);
-		}
-  		var blob = new Blob([buffer.buffer], {type: type});
-  		var a = document.createElement("a");
-		a.href = URL.createObjectURL(blob);
-		a.target = '_blank';
-		a.download = 'Screenshot.png';
-		a.click();
-		}
+	let link = document.createElement("a");
+	link.href = canvas.toDataURL("image/png");
+	link.download = "Screenshot.png";
+	link.click();
+	}
 
