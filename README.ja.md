@@ -8,8 +8,9 @@
 　そこで、私、浦久保秀俊はパイプライン上のソフトウェアのいくつかを実験研究者にも簡単に使えるように統合する作業を始めました。
 
 * まずHarvard 大学、Lichtman 研が開発した Rhoana パイプラインのDojoという校正ソフトウェア（サーバ＆クライアントシステム）に注目し、原作者(Daniel Haehn)の許可のもと改変してWindows　PCデスクトップアプリとしました **[改装・改良中 18/12/17]** 。
-* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました **["3D FFN" は実装予定 18/12/17]**。
-* セグメンテーション結果を3Dで確認することができるようにするために、3D Viewerを作成しました。
+* さらに、同アプリに深層学習の基盤ソフトウェアであるTensorflow/ Tensorboard (Google) および深層学習に基づいた二種類のセグメンテーションソフトウェア"2D DNN (Resnetほか)", "3D FFN" を統合しました。
+* セグメンテーション結果を3Dで確認・アノテーションすることができるようにするために、3D annotatorを作成しました。
+* 推定画像の操作を行うために2D/3D フィルタを作成しました。
 
 深層学習のプログラム知識を持たない実験研究者が、EM画像をもとに「お手本の作成」「セグメンテーション」「人手による校正（プルーフリード）」までできるようにすることを目標とします。
 
@@ -20,13 +21,14 @@ OSはMicrosoft Windows 10 (64 bit) です。メインメモリ8GB以上のPCで�
 Pythonのインストールの必要のないPyinstaller版とPythonソースコードの両方を提供します。
 
 ### Pyinstaller版：
-1. Tensorflow-GPU 版(700 MB)とTensorflow-CPU版(432 MB)を用意しました。いずれかをダウンロードして展開してください。
+1. Tensorflow-GPU 版(498 MB)とTensorflow-CPU版(XXX MB, 作成中)を用意しました。いずれかをダウンロードして展開してください。
 	- CPU版 (498 MB; Ver 0.59): https://www.dropbox.com/s/l1hogvujp1x6wiw/Dojo_Standalone0.59_cpu_pyinstaller.zip?dl=0
 	
 	- GPU版 (XXX MB; Ver 0.XX): Under construction
 
 2. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
 	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
+	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください。
 
 ### Python版：
@@ -34,7 +36,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 2. Tensorflow 1.12 のためにGPUを利用する場合はcuda 9.0, cuDNN v7をインスト―ルしてください **[参考1]** 。
 3. 次の命令を実行してGithubより必要プログラムをダウンロードしてください。
 	 - git clone https://github.com/urakubo/Dojo-standalone
-4. Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」をpip, condaなどのコマンドを用いてインストールしてください **[pip install -r requirements.txt　実装予定 18/12/17]** 。
+4. requirements.txtを参考、Pythonに必要モジュール「Tensorflow-gpu 1.12, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl」を にpip install -r requirements.txt (あるいはconda）などのコマンドを用いてインストールしてください。
 5. Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd を {$INSTALL_PYTHON}\Lib\site-packages へコピーしてください。{$INSTALL_PYTHON} は例えばAnacondaであれば、conda info -e コマンドにより分かります。
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py と実行してコントロールパネルを起動してください。
 7. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
@@ -54,9 +56,18 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 5. 編集後はプルダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
 
-### 3D Viewer：
-Dojoファイルを開いた状態で、Plugins → 3D Viewer を選択してください。Object Table上の赤いX印をクリックすると該当するIDのオブジェクト（セグメント）が表示されます。Sizeの大きなオブジェクトを表示すると分かりやすいです。
-
+### 3D Annotator：
+Dojoファイルを開いた状態で、 上端のプルダウンメニュー左から二番目のAnntator → Openを選択してください。3D Annotatorが起動します。
+1. Object Table左の赤いX印(Visible)をクリックすると該当するIDのオブジェクト（セグメント）が表示されます。Object TableのSize欄をクリックしてSize順に並び替え、Size の大きなオブジェクトを表示するとわかりやすいです。
+	- 左表示パネル上、マウスの左ボタンを押した状態でドラックすることにより、オブジェクトの移動・回転ができます。
+	- 右Objectテーブル上で名前(Name)と色(RGB)の変更ができます。
+	- テーブル下"Download JSON"ボタンをクリックすることで、テーブルの内容をJSON形式で保存できます**[CSV形式に変更予定 19/2/1]**。
+	- 右上段アコーディオンメニューのAppearanceを開くことで、背景色（白黒）の変更、境界ボックスの表示、オブジェクトへの照明強度の変更ができます。
+2. 右上段アコーディオンメニューMarker labelを開いて最上段のトグルボタンをONにしてください。その状態で左表示パネルのオブジェクトをクリックすると、赤色のマーカーを付与することができます。
+	- アコーディオンメニューMarker labelより、付与するマーカーの半径(Radius)、色(RGB)、名前(Prefix)、名前番号(Suffix)を変更できます。
+	- 右Markerテーブル上で名前(Name)、半径(Radius)、色(RGB)の変更ができます。
+	- テーブル下"Download JSON"ボタンをクリックすることで、テーブルの内容をJSON形式で保存できます**[CSV形式に変更予定 19/2/1]**。
+3. 右上段アコーディオンメニューのSave imageをクリックすることで、3D画像のpngファイルがScreenshot.pngとして保存されます。
 
 ### 二次元DNNを用いたセグメンテーション：
 コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。実装はTorsten Bullmann博士が行いました。
@@ -65,10 +76,8 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer を選択してく
 1. Dojoを利用するなどして、EM画像 とお手本セグメンテーション（ground truth）のペアを作成してください。どちらもgray scale としてください。
 2. コントロールパネル上端のプルダウンメニューよりSegmentation → 2DNNを選択して、Training, Inferenceの2つのタブを持つダイアログを起動してください。
 3. Trainingタブを選択し各パラメータを設定してください **[参考]** ：
-	- Image Folder 入力EM画像の指定
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
-	- Segmentation Folder お手本セグメンテーション画像の指定 
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
+	- Image Folder 入力EM画像のtiff/png連続番号ファイルの入ったフォルダ
+	- Segmentation Folder 正解セグメンテーション画像のtiff/png連続番号ファイルの入ったフォルダ
 	- Checkpoint	トレーニングしたDNNの結合強度を保存するフォルダ
 	- X loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
 	- Y loss		損失関数　"hinge", "square", "softmax", "approx", "dice", "logistic"
@@ -85,13 +94,12 @@ Dojoファイルを開いた状態で、Plugins → 3D Viewer を選択してく
 6. コマンドプロンプトに"saving model"と表示されたらトレーニング終了です。
 7. Checkpointフォルダに "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) が出力されていることを確認してください。このファイルにトレーニング結果が保存されています。
 8. Segmentation → ２DNNを選択して、さらにInferenceタブを選択し各パラメータを設定してください。
-	- Image Folder	入力EM画像の指定
-		- [tiff/png画像の連続番号ファイルの入ったフォルダ]または[Dojoフォルダ **[実装予定 18/12/17]** ]
+	- Image Folder	入力EM画像のtiff/png連続番号ファイルの入ったフォルダ
 	- Output Segmentation Folder 出力セグメンテーション画像を保存するフォルダの指定
 	- Checkpoint トレーニングしたDNNの結合強度ファイル"model.ckpt-XXXX.data-YYYY-of-ZZZZ" の指定 (X,Y,Zは数字）。ファイル名が指定されない場合は、指定フォルダ内でもっとも大きな番号をもつ"model.ckpt "が選択されます。
 
 9. Executeボタンをクリックして推定を開始します。
-10. 推定結果はOutput Segmentation Folderに保存されます **[変更・拡張予定]** 。
+10. 推定結果はデフォルトでOutput Segmentation Folderに保存されます 。
 
 
 ### 三次元DNNを用いたセグメンテーション
