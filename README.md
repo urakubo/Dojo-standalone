@@ -1,5 +1,5 @@
 Japanese version here
-<https://github.com/urakubo/Dojo-standalone/blob/main0.2/README.ja.md>
+<https://github.com/urakubo/Dojo-standalone/blob/main0./README.ja.md>
 
 This software is under development!
 
