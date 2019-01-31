@@ -379,7 +379,7 @@ class Canvas(object):
       # Top-left corner of the FoV.
       start = np.array(pos) - self.margin
       end = start + self._input_image_size
-      img = self.image[[slice(s, e) for s, e in zip(start, end)]]
+      img = self.image[tuple([slice(s, e) for s, e in zip(start, end)])]
 
       # Record the amount of time spent on non-prediction tasks.
       if self.t_last_predict is not None:
@@ -418,7 +418,7 @@ class Canvas(object):
       start = np.array(pos) - off
       end = start + self._input_seed_size
       logit_seed = np.array(
-          self.seed[[slice(s, e) for s, e in zip(start, end)]])
+          self.seed[tuple([slice(s, e) for s, e in zip(start, end)])])
       init_prediction = np.isnan(logit_seed)
       logit_seed[init_prediction] = np.float32(self.options.pad_value)
 
@@ -586,7 +586,7 @@ class Canvas(object):
         low = np.array(pos) - mbd
         high = np.array(pos) + mbd + 1
         sel = [slice(s, e) for s, e in zip(low, high)]
-        if np.any(self.segmentation[sel] > 0):
+        if np.any(self.segmentation[tuple(sel)] > 0):
           logging.debug('Too close to existing segment.')
           self.segmentation[pos] = -1
           continue
