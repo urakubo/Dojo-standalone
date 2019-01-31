@@ -1,5 +1,5 @@
 Japanese version here
-<https://github.com/urakubo/Dojo-standalone/blob/main0.2/README.ja.md>
+<https://github.com/urakubo/Dojo-standalone/blob/main0.3/README.ja.md>
 
 This software is under development!
 
@@ -25,10 +25,10 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 ### Pyinstaller version 
 
 1.	Download one of the following two versions, and unzip it:
-	- CPU version (Ver0.54: 262 MB): 
-   	- <https://www.dropbox.com/s/zy92gi1cfohwn9z/Dojo_Standalone0.54_pyinstaller.zip?dl=0>
-   	- GPU version (Ver0.50: 700 MB):
-   	- <https://www.dropbox.com/s/9mpdvzpystrb6y1/Dojo_Standalone0.50_gpu_pyinstaller.zip?dl=0>
+	- CPU version (Ver0.59: 498 MB): 
+   	- <https://www.dropbox.com/s/l1hogvujp1x6wiw/Dojo_Standalone0.59_cpu_pyinstaller.zip?dl=0>
+   	- GPU version (Ver0.XX: XXX MB):
+   	- Under construction.
 
 2.	Download sample EM/segmentation data from the following website, and unzip it:
    	- <https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0>
