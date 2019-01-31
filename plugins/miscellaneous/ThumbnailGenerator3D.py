@@ -118,10 +118,10 @@ class ThumbnailGenerator3D(MiscellaneousPlugins):
             s[-1].valueChanged.connect(slider_events[i])
             self.control_thumbnail.append(s[-1])
 
-        self.norm_sample = QCheckBox('Dummy')
-        self.norm_sample.move(2, 2)
-        self.norm_sample.stateChanged.connect(lambda: self._ChangeXY)
-        vbox.addWidget(self.norm_sample)
+        dummy = QCheckBox('Dummy')
+        dummy.move(2, 2)
+        dummy.stateChanged.connect(lambda: self._ChangeXY)
+        vbox.addWidget(dummy)
 
 
         ### Generate objects

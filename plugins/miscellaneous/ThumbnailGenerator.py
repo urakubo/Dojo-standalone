@@ -161,10 +161,10 @@ class ThumbnailGenerator(MiscellaneousPlugins):
         b.clicked.connect( self._ObtainSample )
         vbox.addWidget(b)
 
-        self.norm_sample = QCheckBox('Dummy')
-        self.norm_sample.move(2, 2)
-        self.norm_sample.stateChanged.connect(lambda: self._ChangeXY)
-        vbox.addWidget(self.norm_sample)
+        dummy = QCheckBox('Dummy')
+        dummy.move(2, 2)
+        dummy.stateChanged.connect(lambda: self._ChangeXY)
+        vbox.addWidget(dummy)
 
         ### Initial sample image
         self._ChangeZ()
