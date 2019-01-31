@@ -4,7 +4,7 @@
 - [動作条件](#動作条件)
 - [インストール方法](#インストール方法)
 - [使い方：校正ソフトウェアDojo](#校正ソフトウェアDojo)
-- [使い方：3D Annotator](#3D Annotator)
+- [使い方：3D Annotator](#3D-Annotator)
 - [使い方：二次元DNNを用いたセグメンテーション](#二次元DNNを用いたセグメンテーション)
 - [使い方：三次元FFNを用いたセグメンテーション](#三次元FFNを用いたセグメンテーション)
 - [使い方：2D/3Dフィルタ](#2D/3Dフィルタ)
@@ -67,7 +67,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 5. 編集後はプルダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
 
-### 3D Annotator：
+### 3D-Annotator：
 Dojoファイルを開いた状態で、 上端のプルダウンメニュー左から二番目のAnntator → Openを選択してください。3D Annotatorが起動します。
 1. 右Object Tableの赤いX印(Visible)をクリックすると該当するIDのオブジェクト（セグメント）が表示されます。Object TableのSize欄をクリックしてSize順に並び替え、Size の大きなオブジェクトを表示するとわかりやすいです。
 	- 左表示パネル上、マウスの左ボタンを押した状態でドラックすることにより、オブジェクトの移動・回転ができます。
