@@ -3,10 +3,10 @@ Japanese version here
 
 This software is under development!
 
-# A unified environment for automated neuronal network reconstruction from EM images
+# A unified environment for DNN-based automated segmentation of neuronal EM images
 
 ## Introduction
-Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). Thanks to deep neural networks (DNN) that enable automated neuronal segmentation, the spatial scale of the 3D reconstruction grows rapidly over 1 mm3. Advanced research teams have developed their own pipelines for large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC environments. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
+Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). Thanks to deep neural networks (DNN) that enable automated neuronal segmentation, the spatial scale of the 3D reconstruction grows rapidly over 1 mm3. Advanced research teams have developed their own pipelines for such large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC configuration. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
    To bridge this divide, we are now trying to unify pieces of software for automated EM segmentation. 
 1.	We built a desktop version of the proofreading software Dojo (IEEE Trans. Vis. Comput. Graph. 20, 2466–2475) with permission of Dr. Daniel Haehn.
 2.	We merged it with Tensorflow/tensorboard (DNN framework by google) and 2D/3D DNN-based segmentation programs. 
