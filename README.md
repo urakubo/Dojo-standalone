@@ -123,7 +123,7 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 
 
 ### 2D FFN
-Here, we wrapped the excellent membrane segmentation program developed by Dr. Michał Januszewski: flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3D convolutional network, directly produce 3D volume segmentation with high precision. 
+Here, we wrapped the excellent membrane segmentation program developed by Dr. Michał Januszewski et al. : flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3D convolutional network, directly produce 3D volume segmentation with high precision. 
 
 Note that there are two requirements. 
 1.	3D ground truth of 512 x 512 xy-pixels and - 50 Z-slices.
