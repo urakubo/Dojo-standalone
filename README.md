@@ -151,6 +151,25 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 	- Tensorflow Record File:	Generated file.
 	- Tensorflow Model Folder:	Folder storing training results.
 5.	Execute the training. It requires over a few days depending on the target image volume, machine speed, and the Max Training Steps. A few million training steps are required for minimal quality inference. You can execute additive training by specifying the same parameter settings with the increasing number of "Max Training Steps".
+6.	Select the inference tab and specify parameters:
+	- Target Image Folder:	Folder containing EM images (sequential grayscale tiff/png images).
+	- Output Inference Folder: Folder that will store the inference result.
+	- Tensorflow Model Files: Specify the trained model files. Please remove their suffix, and just specify the prefix such as "model.ckpt-2000000."
+	- Sparse Z:	Check it if you checked it at the training process.
+	- Checkpoint interval: Checkpoint interval.
+	- FFN File Folder: Folder storing generated files for inference "inference_params.pbtxt."
+	- Save Parameters
+	- Load Parameters
+7.  Execute the inference. It requires 5-60 min depending on the target image volume and machine speed. It produces the inference results "0/0/seg-0_0_0.npz " and " seg-0_0_0.prob " in the Output Inference Folder. It also produces "inference_params.pbtxt" in the FFN file folder.
+8.  Select the postprocessing tab and specify parameters:
+	- Target Inference File: Specify inferred segmentation file such as seg-0_0_0.npz.
+	- Output Inference Folder: Folder storing generated sequential image files.
+	- OUtput Filetype: Please select one of them. 16 bit images are recommended.
+	- Save Parameters
+	- Load Parameters
+9.  Execute the postprocessing. It generally requires less than 5 min. It produces the inference results in the Output Inference Folder.
+10. Check the quality of segmentation by use of colored images, or Dojo proofreader.
+
 
 
 Hidetoshi Urakubo
