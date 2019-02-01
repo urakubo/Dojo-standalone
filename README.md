@@ -136,13 +136,13 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 10. Execute inference.
 11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
 
-![3D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "3D DNN")
+![2D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "2D DNN")
 
 
 ### 3D FFN
 Here, we wrapped the excellent membrane segmentation program developed by Dr. Michał Januszewski et al. : flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3D convolutional network, directly produce 3D volume segmentation with high precision. 
 
-#### Two requirements. 
+#### Requirements. 
 1.	3D ground truth of 512 x 512 xy-pixels and - 50 Z-slices.
 2.	Long training period (-1 weeks) with a high-performance NVIDIA-GPU card (GTX1080ti or higher).
 
