@@ -119,7 +119,7 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
    	- Output Segmentation Folder 
 	- Checkpoint 
 10. Execute inference.
-11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference in default).
+11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
 
 Hidetoshi Urakubo
 209/2/1
