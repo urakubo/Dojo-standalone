@@ -122,4 +122,4 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
 
 Hidetoshi Urakubo
-209/2/1
+2019/2/1
