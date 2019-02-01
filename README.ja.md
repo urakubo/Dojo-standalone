@@ -66,6 +66,8 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 4. 新しいEM画像を編集する場合は、ドロップダウンメニュー Dojo → Import EM stackを選択して、tiff/pngの連続番号EM画像・Segmentation画像ファイルが入ったフォルダを指定してください **[実装予定；マルチページtiff画像読込 19/2/1]** 。
 5. 編集後はドロップダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
+![Dojo Proofreading software](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Dojo.png "Dojo")
+
 
 ### 3D Annotator：
 Dojoファイルを開いた状態で、 上端のドロップダウンメニュー左から二番目のAnntator → Openを選択してください。3D Annotatorが起動します。
@@ -79,6 +81,9 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 	- 右Marker Table上で付与されたマーカーの名前(Name)、半径(Radius)、色(RGB)の変更、マーカーの消去(Delete)ができます。
 	- テーブル下"Download JSON"ボタンをクリックすることで、テーブルの内容をJSON形式で保存できます **[CSV形式に変更予定 19/2/1]**。
 3. 右上段アコーディオンメニューのSave imageをクリックすることで、左表示パネルにおける表示内容が"Screenshot.png"として保存されます。
+
+![3D Annotator](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Annotator.png "3D Annotator")
+
 
 ### 二次元DNNを用いたセグメンテーション：
 コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。U-netは空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。Torsten Bullmann博士が実装を行いました。
@@ -111,6 +116,8 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 
 9. Executeボタンをクリックして推定を開始します。
 10. 推定結果はデフォルトでDojo_Standalone/data/_2DNN_inferenceに保存されます 。
+
+![2D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "2D DNN")
 
 
 ### 三次元FFNを用いたセグメンテーション
