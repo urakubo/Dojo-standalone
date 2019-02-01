@@ -52,7 +52,7 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 4. Install the following modules of Python: Tensorflow-gpu, PyQt5, openCV3, pypng, tornado, pillow, libtiff, mahotas, h5py, lxml, numpy, scipy, scikit-image, pypiwin32, numpy-stl. Check also "requirements.txt". 
 5. Copy Dojo_StandaloneX.XX/Marching_cube/marching_cubes.cp3X-win_amd64.pyd and paste it to {$INSTALL_PYTHON}\Lib\site-packages.
 
-	- This is the compiled marching cubes from ilastik. https://github.com/ilastik/marching_cubes
+	- This marching cube program is obtained from the ilastik: https://github.com/ilastik/marching_cubes
 
 6. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder. The control panel will appear.
 
