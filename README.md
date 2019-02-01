@@ -132,5 +132,25 @@ Note that there are two requirements.
 The VAST Lite is recommended for the ground truth generation (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
 
+#### Procedure:
+1.	Select Segmentation -> 3D FFN in the pulldown menu. You will see a dialog that has the four tabs: Preprocessing, Training, Inference, and Postprocessing.
+2.	Select the preprocessing tab and specify parameters:
+	- Image Folder:	Folder containing EM images (grayscale sequential tiff/png images).
+	- Ground Truth Folder: Folder containing ground truth segmentation (grayscale sequential tiff/png images).
+	- FFN File Folders: 	Folder storing generated files for training.
+	- Save Parameters
+	- Load Parameters
+	By default, you can see an example EM image volume and their segmentation (kasthuri15) those of which are stored in Dojo-standalone/data/_3DNN_training_images and Dojo-standalone/data/_3DNN_ground_truth, respectively.
+3.	Execute the preprocessing. It takes 5 to 60 min depending on the target image volume and machine speed. It produces the following files in the FFN file folders: af.h5, groundtruth.h5, and tf_record_file .
+4.	Select the training tab and specify parameters:
+	- Max Training Steps: 	The number of training FFN, a key parameter.
+	- Sparse Z:	Check it if the target EM-image stack is anisotropic. Internally, 
+	- Training Image h5 File:	Generated file
+	- Ground truth h5 File:		Generated file.
+	- Tensorflow Record File:	Generated file.
+	- Tensorflow Model Folder:	Folder storing training results.
+
+
+
 Hidetoshi Urakubo
 2019/2/1
