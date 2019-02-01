@@ -77,7 +77,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 ### 3D Annotator
 In the dropdown menu, select Annotator -> Open. The 3D Annotator will launch.
 
-1.	Check red crosses in the object table at the right side (visible lane). The checked objects will appear in the left side. Objects in the object table can be re-ordered by size, and you can see visible big objects by clicking the red crosses of large size objects.
+1.	Check red crosses in the visible lane of the object table (right side). The checked objects will appear in the left side. Objects in the object table can be re-ordered by size, and you can see visible big objects by clicking the red crosses of large size objects.
 2.	The appeared objects can be rotated, panned, zoomed in/out with the mouse, and their names and colors (RGB) can be changed though the object table.
 3.	Also, you can control the background color, bounding box, and light projection to the objects.
 4.	The edited contents of the object table can be saved by clicking the button under the object table (JSON/CSV).
