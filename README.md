@@ -189,7 +189,14 @@ We equipped a variety of 2D and 3D image filters. Select Plugins -> 2D/3D Filter
 ## About copyrights
 The copyright policy of this software is pre-determined, but must be one of free software licenses. Apparently, this software is rather a mixture of excellent free but copyrighted software packages. We will soon examine the copyright policies of those software packages and will give a necessary declaration. Please give us grace time.
 
-
+	- Flood-filling networks (Apache License 2.0)
+	- Imagetranslation-tensorflow (MIT)
+	- Tensorflow, Tensorboard (Apache License 2.0)
+	- PyQT5 (LGPL, declaration required?)
+	- Rhoana Dojo (MIT)
+	- Open CV3 (3-clause BSD License, https://opencv.org/license.html)
+	- Scikit image (http://scikit-image.org/docs/dev/license.html)
+	- Three.js (MIT)
 
 Hidetoshi Urakubo
 2019/2/1
