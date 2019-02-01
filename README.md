@@ -7,10 +7,10 @@ This software is under development!
 
 - [Introduction](#Introduction)
 - [System requirements](#System-requirements)
-- [Installation](# Installation)
-- [How to use: Dojo proofreader](# Dojo-proofreader)
-- [How to use: 3D Annotator](# 3D-Annotator)
-- [How to use: 2D DNN](# 2D-DNN)
+- [Installation](#Installation)
+- [How to use: Dojo proofreader](#Dojo-proofreader)
+- [How to use: 3D Annotator](#3D-Annotator)
+- [How to use: 2D DNN](#2D-DNN)
 
 
 ## Introduction
