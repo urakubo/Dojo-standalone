@@ -125,7 +125,7 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 ### 3D FFN
 Here, we wrapped the excellent membrane segmentation program developed by Dr. Michał Januszewski et al. : flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3D convolutional network, directly produce 3D volume segmentation with high precision. 
 
-#### two requirements. 
+#### Two requirements. 
 1.	3D ground truth of 512 x 512 xy-pixels and - 50 Z-slices.
 2.	Long training period (-1 weeks) with a high-performance NVIDIA-GPU card (GTX1080ti or higher).
 
@@ -140,6 +140,7 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 	- FFN File Folder: 	Folder storing generated files for training.
 	- Save Parameters
 	- Load Parameters
+
 	By default, you can see an example EM image volume and their segmentation (kasthuri15) those of which are stored in Dojo-standalone/data/_3DNN_training_images and Dojo-standalone/data/_3DNN_ground_truth, respectively.
 3.	Execute the preprocessing. It takes 5 to 60 min depending on the target image volume and machine speed. It produces the three files in the FFN file folder: af.h5, groundtruth.h5, and tf_record_file .
 4.	Select the training tab and specify parameters:
