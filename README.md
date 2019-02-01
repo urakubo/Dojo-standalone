@@ -110,16 +110,16 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 	- Display Frequency
 	- Save Parameters
 	- Load Parameters
-3. Execute training. The default parameters target a sample EM image "data/segment_ 2DNN_img/49.png" and segmentation image "data/segment_ 2DNN_seg/49.png."
+3. Execute training. The default parameters target a sample EM image "Dojo_Standalone/data/_2DNN_ground_truth/0049.png" and segmentation image "Dojo_Standalone/data/_2DNN_training_images/49_memb.png".
 4. Select Segmentation -> Tensorboard to inspect the progression of training. It took 5 min for the training of sample data by use of NVIDIA GeForce GTX 1070.
-5. We know the end of training if "saving model" appears.
+5. We know the end of training if "Saving model" appears.
 6. Confirm the connectivity file "model-XXXXX.data-XXXXX-of-XXXXX" (800 MB) in the checkpoint folder. 
 9. Select Segmentation -> 2D DNN, and set the parameters of the inference tab.
 	- Image Folder:	Folder containing EM images (tiff/png images).
    	- Output Segmentation Folder 
 	- Checkpoint 
 10. Execute inference.
-11. You will soon see the inference results in the Output Segmentation Folder.
+11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference in default).
 
 Hidetoshi Urakubo
-2018/12/20
+209/2/1
