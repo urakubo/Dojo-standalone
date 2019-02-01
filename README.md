@@ -96,6 +96,15 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 
 	- https://github.com/tbullmann/imagetranslation-tensorflow
 
+#### Requirements. 
+1.	one-page ground truth with 512 x 512 xy-pixels.
+2.	5 min training period with a NVIDIA-GPU card (in the case of GTX1070).
+
+The VAST Lite is recommended for the ground truth generation (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+
+
+#### Procedure:
+
 1.	Select Segmentation -> 2D DNN in the pulldown menu. You will see a dialog that has the two tabs: training and inference.
 2.	Select the training tab and specify parameters:
 	- Image Folder:	Folder containing EM images (tiff/png images).
