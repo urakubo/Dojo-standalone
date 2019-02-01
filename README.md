@@ -11,7 +11,7 @@ This software is under development!
 - [How to use: Dojo proofreader](#Dojo-proofreader)
 - [How to use: 3D Annotator](#3D-Annotator)
 - [How to use: 2D DNN](#2D-DNN)
-
+- [How to use: 2D FFN](#2D-FFN)
 
 ## Introduction
 Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). The spatial scale of the 3D reconstruction grows rapidly over 1 mm3, thank to deep neural networks (DNN) that enable automated neuronal segmentation. Advanced research teams have developed their own pipelines for the DNN-based large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are typically a series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC configuration. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
@@ -120,6 +120,17 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 	- Checkpoint 
 10. Execute inference.
 11. You will soon see the inference results in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
+
+
+### 2D FFN
+Here, we wrapped the excellent membrane segmentation program developed by Dr. Michał Januszewski: flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3d convolutional network, directly produce 3D volume segmentation with high performance. 
+
+Note that there are two requirements. 
+1.	3D ground truth of 512 x 512 xy-pixels and - 50 Z-slices.
+2.	Long training period (-1 weeks) with a high-performance NVIDIA-GPU card (GTX1080ti or higher).
+
+The VAST Lite is recommended for the ground truth generation (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+
 
 Hidetoshi Urakubo
 2019/2/1
