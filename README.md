@@ -67,7 +67,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 
 	- https://www.rhoana.org/dojo/
 
-1. Select Dojo -> Open Dojo Folder from a dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
+1. Select Dojo -> Open Dojo Folder from the dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
 2. Please push the "Reload" button first if the Dojo seems to be in trouble. The Dojo can also be seen in the other web browser if you copy and paste the URL [ http://X.X.X.X:8888/dojo/ ] . You can use Dojo through in the web browsers in other PCs within the same LAN.
 3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . For example, you can move the layers by pressing w/s keys, and change the opacity of segmentation by pressing c/d keys.
 4.	You can import pairs of new EM images and segmentation by selecting Dojo -> Import EM Stack/Segmentation. Through the dialog, please specify the folders containing stacks of EM images and segmentation images (sequentially numbered, gray-scale png/tiff files). 
@@ -75,7 +75,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 
 
 ### 3D Annotator
-In the dropdown menu, select Annotator -> Open. The 3D Annotator will be launched.
+Select Annotator -> Open in the dropdown menu. The 3D Annotator will be launched.
 
 1.	Check red crosses in the visible lane of the object table (right side). The checked objects will appear in the left side. Objects in the object table can be re-ordered by size, and you can see visible big objects by clicking the red crosses of large size objects.
 2.	The appeared objects can be rotated, panned, zoomed in/out with the mouse, and their names and colors (RGB) can be changed though the object table.
