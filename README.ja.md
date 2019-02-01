@@ -120,7 +120,7 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 
 同手法により、これまで最も性能が出る方法とされた 二次元 U-Net によるセグメンテーションと GALAの組み合わせより、はるかに高い正確さでセグメンテーションを行うことができるようになりました。ただし、3次元のお手本を準備する必要があります。また、長いトレーニング期間が必要です。例えば、NVIDIA GeForce GTX 1080 ti使用した場合で約2週間かかります。
 
-1. Vast liteを利用するなどして ( https://software.rc.fas.harvard.edu/lichtman/vast/ )、EMスタック画像から正解セグメンテーション（ground truth）を作成してください。EM連番スタック画像、Segmentation連番スタック画像のペアとして、Dojo-standalone/data/_3DNN_training_imagesおよびDojo-standalone/data/ _3DNN_ground_truth_imagesフォルダに保存してください。画像フォーマットはどちらもgray scale png, tiffとしてください。
+1. Vast liteを利用するなどして ( https://software.rc.fas.harvard.edu/lichtman/vast/ )、EMスタック画像から正解セグメンテーション（ground truth）を作成してください。EM連番スタック画像、Segmentation連番スタック画像のペアとして、Dojo-standalone/data/_3DNN_training_imagesおよびDojo-standalone/data/ _3DNN_ground_truthフォルダに保存してください。画像フォーマットはどちらもgray scale png, tiffとしてください。
 2. コントロールパネル上端のドロップダウンメニューよりSegmentation → 2D FFNを選択して、Preprocessing, Training, Inference, Postprocessingの4つのタブを持つダイアログを起動してください。
 
 
