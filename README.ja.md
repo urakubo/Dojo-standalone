@@ -81,7 +81,7 @@ Dojoファイルを開いた状態で、 上端のプルダウンメニュー左
 3. 右上段アコーディオンメニューのSave imageをクリックすることで、左表示パネルにおける表示内容が"Screenshot.png"として保存されます。
 
 ### 二次元DNNを用いたセグメンテーション：
-コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。Torsten Bullmann博士が実装を行いました。
+コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。U-netは空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。Torsten Bullmann博士が実装を行いました。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1. Vast liteを利用するなどして ( https://software.rc.fas.harvard.edu/lichtman/vast/ )、EM画像から正解セグメンテーション（ground truth）を作成してください。EM画像、Segmentation画像のペアとして、Dojo-standalone/data/_2DNN_training_imagesおよびDojo-standalone/data/ _2DNN_ground_truth_imagesフォルダに保存してください。画像フォーマットはどちらもgray scale png, tiffとしてください。
