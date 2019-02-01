@@ -12,6 +12,9 @@ This software is under development!
 - [How to use: 3D Annotator](#3D-Annotator)
 - [How to use: 2D DNN](#2D-DNN)
 - [How to use: 3D FFN](#3D-FFN)
+- [How to use: 2D and 3D filters](#2D-and-3D-filters)
+- [About copyrights](#About-copyrights)
+
 
 ## Introduction
 Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). The spatial scale of the 3D reconstruction grows rapidly over 1 mm3, thank to deep neural networks (DNN) that enable automated neuronal segmentation. Advanced research teams have developed their own pipelines for the DNN-based large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are typically a series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC configuration. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
@@ -104,7 +107,6 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 
 
 #### Procedure:
-
 1.	Select Segmentation -> 2D DNN in the pulldown menu. You will see a dialog that has the two tabs: training and inference.
 2.	Select the training tab and specify parameters:
 	- Image Folder:	Folder containing EM images (tiff/png images).
@@ -178,6 +180,15 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 	- Load Parameters
 9.  Execute the postprocessing. It generally requires less than 5 min. It produces the inference result in the Output Inference Folder.
 10. Check the quality of segmentation (inference) by use of colored images or Dojo proofreader.
+
+
+### 2D and 3D filters
+We equipped a variety of 2D and 3D image filters. Select Plugins -> 2D/3D Filters. Those filters are intended to use a postprocessing of 2D DNN segmentation. I will soon describe how to use them.
+
+
+## About copyrights
+The copyright policy of this software is pre-determined, but must be one of free software licenses. Apparently, this software is rather a mixture of excellent free but copyrighted software packages. We will soon examine the copyright policies of those software packages and will give a necessary declaration. Please give us grace time.
+
 
 
 Hidetoshi Urakubo
