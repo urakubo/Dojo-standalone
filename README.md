@@ -11,7 +11,7 @@ This software is under development!
 - [How to use: Dojo proofreader](#Dojo-proofreader)
 - [How to use: 3D Annotator](#3D-Annotator)
 - [How to use: 2D DNN](#2D-DNN)
-- [How to use: 2D FFN](#2D-FFN)
+- [How to use: 3D FFN](#3D-FFN)
 
 ## Introduction
 Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). The spatial scale of the 3D reconstruction grows rapidly over 1 mm3, thank to deep neural networks (DNN) that enable automated neuronal segmentation. Advanced research teams have developed their own pipelines for the DNN-based large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are typically a series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC configuration. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
