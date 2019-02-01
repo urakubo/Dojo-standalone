@@ -137,11 +137,11 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 2.	Select the preprocessing tab and specify parameters:
 	- Image Folder:	Folder containing EM images (grayscale sequential tiff/png images).
 	- Ground Truth Folder: Folder containing ground truth segmentation (grayscale sequential tiff/png images).
-	- FFN File Folders: 	Folder storing generated files for training.
+	- FFN File Folder: 	Folder storing generated files for training.
 	- Save Parameters
 	- Load Parameters
 	By default, you can see an example EM image volume and their segmentation (kasthuri15) those of which are stored in Dojo-standalone/data/_3DNN_training_images and Dojo-standalone/data/_3DNN_ground_truth, respectively.
-3.	Execute the preprocessing. It takes 5 to 60 min depending on the target image volume and machine speed. It produces the following files in the FFN file folders: af.h5, groundtruth.h5, and tf_record_file .
+3.	Execute the preprocessing. It takes 5 to 60 min depending on the target image volume and machine speed. It produces the three files in the FFN file folder: af.h5, groundtruth.h5, and tf_record_file .
 4.	Select the training tab and specify parameters:
 	- Max Training Steps: 	The number of training FFN, a key parameter.
 	- Sparse Z:	Check it if the target EM-image stack is anisotropic. Internally, 
