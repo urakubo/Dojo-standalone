@@ -88,7 +88,7 @@ Turn on the toggle switch in the accordion menu 'Marker label' (right side), the
 2.	You can also define the colors, names, and numbers of next makers through the accordion menu 'Marker label' (right side).
 3.	The edited contents of the marker table can be saved by clicking the download button under the marker table (JSON/CSV).
 
-Click the "Save image" button at the right side. A screenshot of the scene will be saved as "Screechot.png".
+Click the "Save image" button at the right side. A screenshot of the scene will be saved as "Screenshot.png".
 
 
 ### 2D DNN
