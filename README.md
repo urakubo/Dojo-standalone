@@ -96,7 +96,7 @@ We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation prog
 
 	- https://github.com/tbullmann/imagetranslation-tensorflow
 
-1.	In the pulldown menu, select Segmentation -> 2D DNN. You will see a dialog that has the two tabs: training and inference.
+1.	Select Segmentation -> 2D DNN in the pulldown menu. You will see a dialog that has the two tabs: training and inference.
 2.	Select the training tab and specify parameters:
 	- Image Folder:	Folder containing EM images (tiff/png images).
 	- Segmentation Folder: Folder containing ground truth segmentation (tiff/png images).
