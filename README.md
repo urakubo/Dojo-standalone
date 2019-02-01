@@ -82,6 +82,14 @@ In the dropdown menu, select Annotator -> Open. The 3D Annotator will launch.
 3.	Also, you can control the background color, bounding box, and light projection to the objects.
 4.	The edited contents of the object table can be saved by clicking the button under the object table (JSON/CSV).
 
+Turn on the toggle switch in the accordion menu 'Marker label' (right side), then click any appeared objects. You will see red markers at the clicked surface location. 
+
+1.	The appeared markers are registered in the marker table. Their colors (RGB), names, radiuses, and deletion can be controlled through the marker table.
+2.	You can also define the colors, names, and numbers of next makers through the accordion menu 'Marker label' (right side).
+3.	The edited contents of the marker table can be saved by clicking the download button under the marker table (JSON/CSV).
+
+Click the "Save image" button at the right side. A screenshot of the scene will be saved as "Screechot.png".
+
 
 ### 2D DNN
 We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation programs on Tensorflow V1.12. Programmed by Dr Torsten Bullmann.
