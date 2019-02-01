@@ -167,9 +167,8 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 	- OUtput Filetype: Please select one of them. 16 bit images are recommended.
 	- Save Parameters
 	- Load Parameters
-9.  Execute the postprocessing. It generally requires less than 5 min. It produces the inference results in the Output Inference Folder.
-10. Check the quality of segmentation by use of colored images, or Dojo proofreader.
-
+9.  Execute the postprocessing. It generally requires less than 5 min. It produces the inference result in the Output Inference Folder.
+10. Check the quality of segmentation (inference) by use of colored images or Dojo proofreader.
 
 
 Hidetoshi Urakubo
