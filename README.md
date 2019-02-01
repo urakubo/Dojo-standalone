@@ -149,7 +149,7 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 	- Ground truth h5 File:		Generated file.
 	- Tensorflow Record File:	Generated file.
 	- Tensorflow Model Folder:	Folder storing training results.
-5.	Execute the training. It requires over a few days depending on the target image volume, machine speed, and the Max Training Steps. A few million training steps are required for minimal quality inference. You can execute additive training by specifying the same files, Sparse and folders with the increasing number of "Max Training Steps".
+5.	Execute the training. It requires over a few days depending on the target image volume, machine speed, and the Max Training Steps. A few million training steps are required for minimal quality inference. You can execute additive training by specifying the same parameter settings with the increasing number of "Max Training Steps".
 
 
 Hidetoshi Urakubo
