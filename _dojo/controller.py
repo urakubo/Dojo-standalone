@@ -258,7 +258,8 @@ class Controller(object):
       self.finalize_split(input)
 
     elif input['name'] == 'ADJUST':
-      print('Not Adjusted')
+      #########################################
+      self.adjust(input)
       #########################################
 
     elif input['name'] == 'SAVE':
@@ -281,7 +282,7 @@ class Controller(object):
   def add_action(self, input):
 
 
-	##  print(input)
+  ##  print(input)
 
     values = list(input['value'])
     current_action = values[0]
@@ -833,6 +834,10 @@ class Controller(object):
     label_id = values['id']
     i_js = values['i_js']
     brush_size = values['brush_size']
+
+    print('brush size: ',brush_size)
+    print('i_js: ',i_js)
+    print('label_id : ', label_id)
 
     for c in i_js:
 
