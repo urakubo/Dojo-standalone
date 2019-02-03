@@ -80,7 +80,7 @@ class Dialog_3D_FFN(QWidget):
         run_ffn = FFNTraining(self.u_info)
         table2 = TableGeneratorFFN(self)
         Widget2_bottom, obj_args, args = table2.GenerateTableObject(run_ffn) # Widget
-        tabs.addTab(Widget2_bottom, 'Run Training')
+        tabs.addTab(Widget2_bottom, 'Training')
 
         ##
         ## FFN inferernce
@@ -88,7 +88,7 @@ class Dialog_3D_FFN(QWidget):
         run_ffn = FFNInference(self.u_info)
         table3 = TableGeneratorFFN(self)
         Widget3_bottom, obj_args, args = table3.GenerateTableObject(run_ffn) # Widget
-        tabs.addTab(Widget3_bottom, 'Run Inference')
+        tabs.addTab(Widget3_bottom, 'Inference')
 
         ##
         ## FFN postprocessing

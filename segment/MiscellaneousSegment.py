@@ -20,6 +20,7 @@ from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QWidget, QTabWidget
     QGroupBox, QHBoxLayout, QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QFileDialog, QTextEdit, QVBoxLayout
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt, pyqtSlot
+from typing import Any
 
 
 class MiscellaneousSegment():
@@ -57,6 +58,7 @@ class MiscellaneousSegment():
         newfile = newfile.replace('/', os.sep)
         lineedit_obj.setText(newfile)
         return True
+
 
     def print_current_states(self, obj_args, args, args_title):
         for i, arg in enumerate(args_title):
@@ -116,12 +118,13 @@ class MiscellaneousSegment():
             if args[i][1] == 'LineEdit':
                 obj_args[i].setText(params[args_header[i]])
             elif args[i][1] == 'SpinBox':
-                obj_args[i].setValue(params[args_header[i]])
+                print(params[args_header[i]])
+                obj_args[i].setValue(int(params[args_header[i]]))
             elif args[i][1] == 'ComboBox':
                 id = obj_args[i].findText(params[args_header[i]])
                 obj_args[i].setCurrentIndex(id)
             elif args[i][1] == 'Tab':
-                obj_args[i].setCurrentIndex(params[args_header[i]])
+                obj_args[i].setCurrentIndex(  args[i][2].index(params[args_header[i]])  )
             elif args[i][1] == 'CheckBox':
                 obj_args[i].setCheckState(params[args_header[i]])
 
@@ -163,3 +166,56 @@ class MiscellaneousSegment():
         filestack.extend(sorted(glob.glob(search3)))
         return filestack
     ##
+
+    def OrganizeTab2DNN(self, lbl, obj_args, display_order, require_browse_dir, require_browse_dir_img, require_browse_file, Execute):
+        tab = QWidget()  # type: Any
+        tab.layout = QGridLayout(tab)
+        ncol = 8
+        browse_button = []
+        for i, id in enumerate(display_order):
+            tab.layout.addWidget(lbl[id], i + 1, 0, alignment=Qt.AlignRight)  # (Qt.AlignRight | Qt.AlignTop)
+            tab.layout.addWidget(obj_args[id], i + 1, 1, 1, ncol - 1)
+            if id in require_browse_dir:
+                browse_button.append(QPushButton("Browse..."))
+                browse_button[-1].clicked.connect(lambda state, x=id: self.browse_dir(obj_args[x]))
+                tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
+            elif id in require_browse_dir_img:
+                browse_button.append(QPushButton("Browse..."))
+                browse_button[-1].clicked.connect(lambda state, x=id: self.browse_dir_img(obj_args[x]))
+                tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
+            elif id in require_browse_file:
+                browse_button.append(QPushButton("Browse..."))
+                browse_button[-1].clicked.connect(lambda  state, x=id: self.browse_file(obj_args[x]))
+                tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
+
+
+                # addWidget(*Widget, row, column, rowspan, colspan)
+
+        ## Execute & cancel buttons
+        ok_import = QPushButton("Execute")
+        cl_import = QPushButton("Cancel")
+        ok_import.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        cl_import.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        ok_import.clicked.connect(Execute)
+        cl_import.clicked.connect(self.Cancel2D)
+        tab.layout.addWidget(ok_import, i + 2, 1, alignment=(Qt.AlignRight))
+        tab.layout.addWidget(cl_import, i + 2, 2)
+        tab.layout.setRowStretch(10, 1) # I do not understand why >(5, 1) produces top aligned rows.
+        tab.setLayout(tab.layout)
+
+        return tab
+
+
+    def Cancel2D(self):  # wxGlade: ImportImagesSegments.<event_handler>
+        print('2D DNN was not executed.')
+        self.parent.close()
+        return False
+
+    def SaveParams2D(self):
+        self.save_params(self.obj_args, self.args, 'Training')
+        return True
+
+    def LoadParams2D(self):
+        self.load_params(self.obj_args, self.args, 'Training')
+        return True
+
