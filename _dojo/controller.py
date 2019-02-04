@@ -827,28 +827,23 @@ class Controller(object):
     print('adjust')
 
     #######################
-    tile = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
+    tile       = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
+    paint_area = np.zeros_like(tile, dtype = np.uint8)
     #######################
 
-    # 
+    #
+    brush_size = values['brush_size']
     label_id = values['id']
     i_js = values['i_js']
-    brush_size = values['brush_size']
+    i_js = np.array(i_js, np.int32)+np.array(brush_size/2, dtype='int32')
 
-    print('brush size: ',brush_size)
-    print('i_js: ',i_js)
-    print('label_id : ', label_id)
 
-    for c in i_js:
+    #print('brush size: ',brush_size)
+    #print('i_js: ',i_js)
+    #print('label_id : ', label_id)
 
-      x = int(c[0])# - brush_size/2)
-      y = int(c[1])# - brush_size/2)
-
-      for i in range(brush_size):
-        for j in range(brush_size):
-
-          tile[y+j,x+i] = label_id
-
+    paint_area = cv2.polylines(paint_area, [i_js], False, 255, brush_size)
+    tile[paint_area > 0] = label_id
 
     full_coords = np.where(tile == label_id)
     full_bbox = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]

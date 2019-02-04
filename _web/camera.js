@@ -248,3 +248,4 @@ J.camera.prototype.slice_down = function() {
   DOJO.update_slice_number(this._z+1);
 
 };
+
