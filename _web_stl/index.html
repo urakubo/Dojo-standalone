@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <title>3D Annotator</title>
+  	<link rel="shortcut icon" href="/favicon.ico?v=b3f1">
 	<link rel="stylesheet" type="text/css" href="css/tabulator.css">
 	<link rel="stylesheet" type="text/css" href="css/construction.css">
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/tabulator.js"></script>
-
 	<script type="text/javascript" src="js/three.min.js"></script>
-	<script type="text/javascript" src="js/STLLoader.js"></script>
+	<script type="text/javascript" src="js/STLLoader.js?000000"></script> 
+	<!--  I used the new version of STLLoader.js to avoid the warning "A synchronous XMLHttpRequest" -->
 	<script type="text/javascript" src="js/CanvasRenderer.js"></script>
 	<script type="text/javascript" src="js/Projector.js"></script>
 	<script type="text/javascript" src="js/TrackballControls.js"></script>
@@ -90,21 +91,20 @@
     <p>
     Object Table
       <div id="ObjectTable"></div>
-      <button type="button" class="btn btn4 font3" onClick="ObjObjextTable.download('json', 'MarkerTable.json');"> Download JSON </button>
+      <button type="button" class="btn btn4 font3" onClick="ObjObjextTable.download('csv', 'ObjectTable.csv');"> Download CSV </button>
     <p>
     Marker Table
       <div id="MarkerTable"></div>
-      <button type="button" class="btn btn4 font3" onClick="ObjMarkerTable.download('json', 'MarkerTable.json');"> Download JSON </button>
+      <button type="button" class="btn btn4 font3" onClick="ObjMarkerTable.download('csv', 'MarkerTable.csv');"> Download CSV </button>
     <p>
     
 </body>
 	<script type="text/javascript" src="js/ObjectTable.js"></script>
-	<script type="text/javascript" src="js/MarkerTable.js"></script>
+	<script type="text/javascript" src="js/MarkerTable.js?00"></script>
     <script type="text/javascript" src="js/ControlStlViewer.js?2222"></script>
 	<script type="text/javascript">
 	$('#form-ticker-symbol').on("keypress", function(event){return leaveOnlyNumber(event);});
 	function leaveOnlyNumber(e){
-  	// 数字以外の不要な文字を削除
   		var st = String.fromCharCode(e.which);
   		if ("0123456789".indexOf(st,0) < 0) { return false; }
   		return true;  
@@ -121,5 +121,6 @@
     	});
 	-->
 	</script>
-
 </html>
+
+

@@ -136,7 +136,6 @@ class StlServerLogic:
       (r'/js/(.*)', tornado.web.StaticFileHandler, {'path': path_js}),
       (r'/data/(.*)', tornado.web.StaticFileHandler, {'path': stldata_dir}),
       (r'/ws/display', StlWebSocket, {'player': self.small_ids}),
-      (r'/(favicon.ico)', tornado.web.StaticFileHandler, {"path": ""}),
       (r'/(.*)', tornado.web.StaticFileHandler, {'path': path_main})
     ],debug=True,autoreload=True)
 

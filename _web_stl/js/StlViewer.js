@@ -182,9 +182,9 @@ function clickPosition( event ) {
     			"r": APP.MarkerR,
     			"g": APP.MarkerG,
     			"b": APP.MarkerB,
-    			"x": x,
-    			"y": y,
-    			"z": z
+    			"x": parseInt(x),
+    			"y": parseInt(y),
+    			"z": parseInt(z)
     			};
 
     		console.log(NewMarker);
@@ -305,7 +305,7 @@ function StlViewer() {
 			APP.BoundingboxZ = jsondata.z;
     		};
   		};
-  	req.open("GET", url, false);
+  	req.open("GET", url, true);
   	req.send(null);	
 
 	console.log(APP.BoundingboxX)

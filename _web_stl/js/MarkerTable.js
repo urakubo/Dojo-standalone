@@ -5,6 +5,7 @@ var editCheck1 = function(cell){
 	cell.getRow().delete();
 }
 
+
 var ObjMarkerTable = new Tabulator("#MarkerTable", {
 	layout:"fitColumns",      //fit columns to width of table
 	autoResize:true,
@@ -27,6 +28,9 @@ var ObjMarkerTable = new Tabulator("#MarkerTable", {
 		{title:"R", field:"r", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
 		{title:"G", field:"g", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
 		{title:"B", field:"b", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
+		{title:"x", field:"x", width:40},
+		{title:"y", field:"y", width:40},
+		{title:"z", field:"z", width:40}
 	],
 	
 	
