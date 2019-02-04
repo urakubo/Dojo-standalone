@@ -53,7 +53,7 @@ class StlWebSocket(tornado.websocket.WebSocketHandler):
   ###
   def on_message(self, message):
     id = int(message)
-    print('Server requested to make id:', id)
+    print('Target object id:', id)
     result = self.GenerateStl(id)
     if result :
         self.write_message("True")
@@ -67,7 +67,7 @@ class StlWebSocket(tornado.websocket.WebSocketHandler):
     except:
         print('Mesh was not generated.')
         return False
-    print('Generated Face Number: ', faces.shape)
+    print('Generated face number: ', faces.shape)
     our_mesh = mesh.Mesh(np.zeros(faces.shape[0], dtype=mesh.Mesh.dtype))
     for i, f in enumerate(faces):
         for j in range(3):
