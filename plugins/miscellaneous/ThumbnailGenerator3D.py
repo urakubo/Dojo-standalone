@@ -83,6 +83,7 @@ class ThumbnailGenerator3D(MiscellaneousPlugins):
         self.obj_args = obj_args
         self.args     = args
         self.image_cropped = []
+        self.target_image = []
         image1 = (np.ones((H, W))*128).astype(np.uint8)
         qimage1 = QtGui.QImage(image1.data, image1.shape[1], image1.shape[0],
                               QtGui.QImage.Format_Grayscale8)

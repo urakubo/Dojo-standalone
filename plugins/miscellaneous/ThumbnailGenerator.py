@@ -102,6 +102,7 @@ class ThumbnailGenerator(MiscellaneousPlugins):
         ##
         ## Canvas
         ##
+        self.target_image  = []
         self.image_cropped = []
         self.filter   = filter
         self.obj_args = obj_args
