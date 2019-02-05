@@ -15,11 +15,14 @@ import copy
 import pickle
 
 
+
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QWidget, QTabWidget, QSizePolicy, QInputDialog, \
     QLineEdit, QComboBox, QDialog, QDialogButtonBox, QFormLayout, QGridLayout, QMessageBox, QSpinBox, QCheckBox, \
     QGroupBox, QHBoxLayout, QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QFileDialog, QTextEdit, QVBoxLayout
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt, pyqtSlot
+import PyQt5.QtGui as QtGui
+
 from typing import Any
 
 
@@ -130,8 +133,6 @@ class MiscellaneousSegment():
 
         self.print_current_states(obj_args, args, args_header)
         return True
-
-    ##
     ##
     ##
     def ObtainParams(self, obj_args, args):
@@ -152,8 +153,6 @@ class MiscellaneousSegment():
                 param = obj_args[i].checkState()
             params[args_header[i]] = param
         return params
-
-    ##
     ##
     ##
     def ObtainImageFiles(self, input_path):
@@ -166,7 +165,36 @@ class MiscellaneousSegment():
         filestack.extend(sorted(glob.glob(search3)))
         return filestack
     ##
-
+    ##
+    def ObtainCroppedImage(self, input_image, sx, sy, W,  H, MAXSLIDER):
+        #
+        imgy, imgx = input_image.shape
+        onset_x = (imgx - W) * sx / MAXSLIDER
+        onset_y = (imgy - H) * sy / MAXSLIDER
+        onset_x = int(onset_x)
+        onset_y = int(onset_y)
+        onset_x = (onset_x > 0) * onset_x
+        onset_y = (onset_y > 0) * onset_y
+        output_image = input_image[onset_y: onset_y + H, onset_x: onset_x + W].copy()
+        return output_image
+    ##
+    ##
+    def DrawImage(self, input_image, W,  H, canvas):
+        qimage1 = QtGui.QImage(input_image, W, H,
+                               QtGui.QImage.Format_Grayscale8)
+        pixmap1 = QtGui.QPixmap.fromImage(qimage1)
+        canvas.setPixmap(pixmap1)
+    ##
+    ##
+    def ObtainNormalizedImage(self, input_image, isChecked):
+        if isChecked == True:
+            normal_factor = (255 / np.max(input_image)).astype(np.float)
+            truth_cropped_normalized = (input_image * normal_factor).astype(np.uint8)
+        else:
+            truth_cropped_normalized = input_image
+        return truth_cropped_normalized
+    ##
+    ##
     def OrganizeTab2DNN(self, lbl, obj_args, display_order, require_browse_dir, require_browse_dir_img, require_browse_file, Execute):
         tab = QWidget()  # type: Any
         tab.layout = QGridLayout(tab)
@@ -189,7 +217,6 @@ class MiscellaneousSegment():
                 tab.layout.addWidget(browse_button[-1], i + 1, ncol, 1, 1, alignment=(Qt.AlignRight))
 
 
-                # addWidget(*Widget, row, column, rowspan, colspan)
 
         ## Execute & cancel buttons
         ok_import = QPushButton("Execute")

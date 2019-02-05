@@ -41,64 +41,67 @@ class ThumbnailGenerator(MiscellaneousPlugins):
     def __init__(self, parent):
         self.parent = parent
 
-    def _ChangeZ(self):
-        self.filestack = self.ObtainTarget()
-        sz = self.control_thumbnail[0].value()  # Z 0:99
-        if len(self.filestack) > 0:
-            znum = len( self.filestack )
-            id = np.floor(znum * sz / MAXSLIDER).astype(np.uint16)
-            self.target_image = cv2.imread(self.filestack[id], cv2.IMREAD_GRAYSCALE).astype(np.uint8)
-            self._ChangeXY()
-
-    def _ChangeXY(self):
-        sx = self.control_thumbnail[1].value() # X 0:99
-        sy = self.control_thumbnail[2].value() # y 0:99
-
-        if len(self.target_image) > 0:
-            imgy, imgx = self.target_image.shape
-
-            onset_x = (imgx - W) * sx / MAXSLIDER
-            onset_y = (imgy - H) * sy / MAXSLIDER
-            onset_x = int(onset_x)
-            onset_y = int(onset_y)
-
-            onset_x = (onset_x > 0) * onset_x
-            onset_y = (onset_y > 0) * onset_y
-            self.image_cropped = np.zeros( (H, W), dtype=np.uint8 )
-            self.image_cropped = self.target_image[ onset_y : onset_y + H, onset_x : onset_x + W].copy()
-
-            if self.norm_sample.isChecked() == True:
-                normal_factor = (255 / np.max(self.image_cropped) ).astype(np.float)
-                cropped_normalized = (self.image_cropped * normal_factor).astype(np.uint8)
-            else:
-                cropped_normalized = self.image_cropped
-
-            qimage1 = QtGui.QImage(cropped_normalized, W, H,
-                           QtGui.QImage.Format_Grayscale8)
-            pixmap1 = QtGui.QPixmap.fromImage(qimage1)
-            self.canvas1.setPixmap(pixmap1)
-
-    def _ObtainSample(self):
-        if len(self.image_cropped) > 0:
-            self._ChangeZ()
-            params       = self.ObtainParams(self.obj_args, self.args)
-            output_image = self.filter.Filter( self.image_cropped, params )
-            output_image = output_image.astype(np.uint8)
-
-            if self.norm_output.isChecked() == True:
-                normal_factor = (255 / np.max(output_image) ).astype(np.float)
-                cropped_normalized = (output_image * normal_factor).astype(np.uint8)
-            else:
-                cropped_normalized = output_image
-
-            qimage2 = QtGui.QImage(cropped_normalized.data, W, H,
-                           QtGui.QImage.Format_Grayscale8)
-            pixmap2 = QtGui.QPixmap.fromImage(qimage2)
-            self.canvas2.setPixmap(pixmap2)
-
-
 
     def GenerateThumbnailObject(self, filter, obj_args, args):
+        ##
+        ##
+        ##
+
+        def _ChangeZ():
+            self.filestack = self.ObtainTarget()
+            sz = self.control_thumbnail[0].value()  # Z 0:99
+            if len(self.filestack) > 0:
+                znum = len(self.filestack)
+                id = np.floor(znum * sz / MAXSLIDER).astype(np.uint16)
+                self.target_image = cv2.imread(self.filestack[id], cv2.IMREAD_GRAYSCALE).astype(np.uint8)
+                _ChangeXY()
+
+        def _ChangeXY():
+            sx = self.control_thumbnail[1].value()  # X 0:99
+            sy = self.control_thumbnail[2].value()  # y 0:99
+
+            if len(self.target_image) > 0:
+                imgy, imgx = self.target_image.shape
+
+                onset_x = (imgx - W) * sx / MAXSLIDER
+                onset_y = (imgy - H) * sy / MAXSLIDER
+                onset_x = int(onset_x)
+                onset_y = int(onset_y)
+
+                onset_x = (onset_x > 0) * onset_x
+                onset_y = (onset_y > 0) * onset_y
+                self.image_cropped = np.zeros((H, W), dtype=np.uint8)
+                self.image_cropped = self.target_image[onset_y: onset_y + H, onset_x: onset_x + W].copy()
+
+                if self.norm_sample.isChecked() == True:
+                    normal_factor = (255 / np.max(self.image_cropped)).astype(np.float)
+                    cropped_normalized = (self.image_cropped * normal_factor).astype(np.uint8)
+                else:
+                    cropped_normalized = self.image_cropped
+
+                qimage1 = QtGui.QImage(cropped_normalized, W, H,
+                                       QtGui.QImage.Format_Grayscale8)
+                pixmap1 = QtGui.QPixmap.fromImage(qimage1)
+                self.canvas1.setPixmap(pixmap1)
+
+        def _ObtainSample():
+            if len(self.image_cropped) > 0:
+                _ChangeZ()
+                params = self.ObtainParams(self.obj_args, self.args)
+                output_image = self.filter.Filter(self.image_cropped, params)
+                output_image = output_image.astype(np.uint8)
+
+                if self.norm_output.isChecked() == True:
+                    normal_factor = (255 / np.max(output_image)).astype(np.float)
+                    cropped_normalized = (output_image * normal_factor).astype(np.uint8)
+                else:
+                    cropped_normalized = output_image
+
+                qimage2 = QtGui.QImage(cropped_normalized.data, W, H,
+                                       QtGui.QImage.Format_Grayscale8)
+                pixmap2 = QtGui.QPixmap.fromImage(qimage2)
+                self.canvas2.setPixmap(pixmap2)
+
         ##
         ## Canvas
         ##
@@ -127,7 +130,7 @@ class ThumbnailGenerator(MiscellaneousPlugins):
 
 
         slider_names    = ['Target Z', 'Target X', 'Target Y']
-        slider_events   = [ self._ChangeZ, self._ChangeXY, self._ChangeXY ]
+        slider_events   = [ _ChangeZ, _ChangeXY, _ChangeXY ]
 
         self.control_thumbnail  = []
         s = []
@@ -149,26 +152,21 @@ class ThumbnailGenerator(MiscellaneousPlugins):
         ##
         self.norm_sample = QCheckBox('Target normalized')
         self.norm_sample.move(20, 20)
-        self.norm_sample.stateChanged.connect(self._ChangeXY)
+        self.norm_sample.stateChanged.connect(_ChangeXY)
         vbox.addWidget(self.norm_sample)
         self.norm_output = QCheckBox('Output normalized')
         self.norm_output.move(20, 20)
-        self.norm_output.stateChanged.connect( self._ObtainSample )
+        self.norm_output.stateChanged.connect( _ObtainSample )
         vbox.addWidget(self.norm_output)
         ##
         ##
         ##
         b = QPushButton("Obtain sample output")
-        b.clicked.connect( self._ObtainSample )
+        b.clicked.connect( _ObtainSample )
         vbox.addWidget(b)
 
-        dummy = QCheckBox('Dummy')
-        dummy.move(2, 2)
-        dummy.stateChanged.connect(lambda: self._ChangeXY)
-        vbox.addWidget(dummy)
-
         ### Initial sample image
-        self._ChangeZ()
+        _ChangeZ()
 
 
         ### Generate objects

@@ -2,7 +2,6 @@ import sys, os, time, errno
 import numpy as np
 
 
-
 from PyQt5.QtWidgets import QMainWindow, qApp, QApplication, QWidget, QTabWidget, QSizePolicy, QInputDialog, \
     QLineEdit, QComboBox, QDialog, QDialogButtonBox, QFormLayout, QGridLayout, QMessageBox, QSpinBox, QCheckBox, \
     QGroupBox, QHBoxLayout, QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QFileDialog, QTextEdit, QVBoxLayout
@@ -12,6 +11,7 @@ from PyQt5.QtCore import Qt, pyqtSlot
 from os import path, pardir
 main_dir = path.abspath(path.dirname(sys.argv[0]))  # Dir of main
 sys.path.append(main_dir)
+
 from MiscellaneousPlugins  import MiscellaneousPlugins
 from Executor  import Executor
 
@@ -116,7 +116,6 @@ class TableGenerator(MiscellaneousPlugins):
 
 
 
-
     ##
     ##
 
@@ -124,4 +123,5 @@ class TableGenerator(MiscellaneousPlugins):
         self.parent.close()
         print('2D filter was not executed.')
         return False
+
 

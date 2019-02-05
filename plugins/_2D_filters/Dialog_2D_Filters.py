@@ -28,6 +28,7 @@ sys.path.append(main_dir)
 icon_dir = path.join(main_dir, "icons")
 sys.path.append(os.path.join(main_dir, "plugins", "miscellaneous"))
 
+from MiscellaneousPlugins  import MiscellaneousPlugins
 from TableGenerator import TableGenerator
 from ThumbnailGenerator import ThumbnailGenerator
 
@@ -37,7 +38,7 @@ from Invert   import Invert
 from Label   import Label
 from Canny   import Canny
 
-class Dialog_2D_Filters(QWidget):
+class Dialog_2D_Filters(QWidget, MiscellaneousPlugins):
     def __init__(self, parent):
         super().__init__()
         self.left   = 200
