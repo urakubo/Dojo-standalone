@@ -203,6 +203,8 @@ The copyright policy of this software is pre-determined, but must be one of free
 	- Open CV3 (3-clause BSD License, https://opencv.org/license.html)
 	- Scikit image (http://scikit-image.org/docs/dev/license.html)
 	- Three.js (MIT)
+	- Tabulator (MIT) https://github.com/olifolkerd/tabulator/blob/master/LICENSE
+	- Bootstrap (MIT) https://getbootstrap.com/docs/4.0/about/license/
 
 Hidetoshi Urakubo
 2019/2/1
