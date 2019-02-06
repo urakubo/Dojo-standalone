@@ -259,6 +259,8 @@ class Controller(object):
 
     elif input['name'] == 'ADJUST':
       #########################################
+      print('input')
+      print(input)
       self.adjust(input)
       #########################################
 
@@ -836,8 +838,10 @@ class Controller(object):
     label_id = values['id']
     i_js = values['i_js']
     i_js = np.array(i_js, np.int32)+np.array(brush_size/2, dtype='int32')
-
-
+    #print(i_js)
+    #print(np.all(i_js > 0, axis=1))
+    i_js = i_js[np.all(i_js > 0, axis=1),:]
+    #print(i_js)
     #print('brush size: ',brush_size)
     #print('i_js: ',i_js)
     #print('label_id : ', label_id)
