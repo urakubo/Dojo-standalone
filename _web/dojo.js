@@ -14,6 +14,10 @@ DOJO.link_active = false;
 DOJO.mousemove_timeout = null;
 DOJO.single_segment = false;
 
+DOJO.onmouse_prevous_leftclick = false;
+DOJO.onmouse_present_leftclick = false;
+
+
 DOJO.init = function() {
 
   DOJO.viewer = new J.viewer('dojo1');
@@ -290,22 +294,25 @@ DOJO.onleftclick = function(x, y) {
 
 };
 
+
+//
+// Mod by H Urakubo
+//
+
 DOJO.onmousemove = function(x, y) {
 
-  if (DOJO.mode == DOJO.modes.split && DOJO.viewer._interactor._left_down) {
-
-    DOJO.viewer._controller.draw_split(x, y);
-
-  } else if (DOJO.mode == DOJO.modes.adjust && DOJO.viewer._interactor._left_down) {
-
-    DOJO.viewer._controller.draw_adjust(x, y);
-
-  } else if (DOJO.mode == DOJO.modes.merge && DOJO.viewer._interactor._left_down) {
-
-    DOJO.viewer._controller.draw_merge(x, y);
-
-  }
-
+	DOJO.onmouse_present_leftclick = false;
+	if (DOJO.viewer._interactor._left_down){
+		DOJO.onmouse_present_leftclick = true;
+  		if (DOJO.mode == DOJO.modes.split) {
+			DOJO.viewer._controller.draw_split(x, y);
+		} else if (DOJO.mode == DOJO.modes.adjust) {
+			DOJO.viewer._controller.draw_adjust(x, y);
+		} else if (DOJO.mode == DOJO.modes.merge) {
+			DOJO.viewer._controller.draw_merge(x, y);
+		}
+	}
+	DOJO.onmouse_previous_leftclick = DOJO.onmouse_present_leftclick;
 };
 
 DOJO.onmouseup = function(x, y) {

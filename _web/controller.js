@@ -47,6 +47,10 @@ J.controller = function(viewer) {
   this._brush_bbox = [];
   this._brush_size = 3;
   this._brush_ijs = [];
+  
+  // H Urakubo
+  this._brush_sizes = [];
+  this._brush_segment_ids = [];
 
   this._merge_id = -1;
   this._merge_mode = -1;
@@ -797,6 +801,10 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   this._adjust_mode = 1;
   this._adjust_id = id;
   this._brush_ijs = [];
+  
+  // H Urakubo
+  this._brush_segment_ids = [];
+  this._brush_sizes    = [];
 
   this._viewer._canvas.style.cursor = 'crosshair';
 
@@ -806,37 +814,38 @@ J.controller.prototype.start_adjust = function(id, x, y) {
 
 J.controller.prototype.draw_adjust = function(x, y) {
 
-  if (this._adjust_mode != 1 && this._adjust_mode != 2) return;
+	if (this._adjust_mode != 1 && this._adjust_mode != 2) return;
 
-  this._adjust_mode = 2;
+	this._adjust_mode = 2;
 
-  var i_js = this._viewer.xy2ij(x, y);
-
+	var i_js = this._viewer.xy2ij(x, y);
     var color = this._viewer.get_color(this._adjust_id);
-
-    //var id = this._viewer._overlay_buffer_context.createImageData(this._brush_size, this._brush_size);
-    //var d = id.data;
-    //for(var j=0;j<this._brush_size*this._brush_size;j++) {
-    //  d[j*4+0] = color[0];
-    //  d[j*4+1] = color[1];
-    //  d[j*4+2] = color[2];
-    //  d[j*4+3] = this._viewer._overlay_opacity;
-    //}
-
-    var brush_ij = [Math.floor(i_js[0]-this._brush_size/2), Math.floor(i_js[1]-this._brush_size/2)];
-    var u_v = this._viewer.ij2uv_no_zoom(brush_ij[0], brush_ij[1]);
-    this._brush_ijs.push(brush_ij);
 
 	////
 	//// Mod by H Urakubo
 	////
-    var id = this._viewer._overlay_buffer_context.getImageData(u_v[0], u_v[1], this._brush_size, this._brush_size);
-    var d = id.data;
-    var center = Math.floor(this._brush_size / 2);
+	//console.log('Zoomlevel');
+	//console.log(this._viewer._camera._w);
+	//
+	// Start a line segment
+	//
+	if (DOJO.onmouse_previous_leftclick == false) {
+			this._brush_segment_ids.push(this._brush_ijs.length);
+			this._brush_sizes.push(this._brush_size);
+		}
+	var bsize = this._brush_sizes.slice(-1)[0] / Math.pow(2, this._viewer._camera._w);
+
+    var brush_ij = [Math.floor(i_js[0]-bsize/2), Math.floor(i_js[1]-bsize/2)];
+    var u_v = this._viewer.ij2uv_no_zoom(brush_ij[0], brush_ij[1]);
+    this._brush_ijs.push(brush_ij);
+
+    var id = this._viewer._overlay_buffer_context.getImageData(u_v[0], u_v[1], bsize, bsize);
+    var d  = id.data;
+    var center = Math.floor(bsize / 2);
     //console.log(center);
-    for(var x=0;x<this._brush_size; x++ ) {
-    	for(var y=0;y<this._brush_size;y++) {
-    		var i = x * this._brush_size * 4 + y * 4;
+    for(var x=0;x<bsize; x++ ) {
+    	for(var y=0;y<bsize;y++) {
+    		var i = x * bsize * 4 + y * 4;
     		inside_circle = (x-center)*(x-center)+(y-center)*(y-center) - center*center;
     		if(inside_circle <= 0) {
       			d[i+0] = color[0];
@@ -861,7 +870,8 @@ J.controller.prototype.end_adjust = function() {
   data['id'] = this._adjust_id;
   data['i_js'] = this._brush_ijs;
   data['z'] = this._viewer._camera._z;
-  data['brush_size'] = this._brush_size;
+  data['brush_sizes'] = this._brush_sizes;
+  data['brush_segment_ids'] = this._brush_segment_ids;
   this.send('ADJUST', data);
 
   this._adjust_mode = 3;

@@ -834,20 +834,30 @@ class Controller(object):
     #######################
 
     #
-    brush_size = values['brush_size']
+    # brush_size = values['brush_size']
+    brush_sizes = values['brush_sizes']
+    brush_segment_ids = values['brush_segment_ids']
     label_id = values['id']
     i_js = values['i_js']
-    i_js = np.array(i_js, np.int32)+np.array(brush_size/2, dtype='int32')
-    #print(i_js)
+
+    if len(brush_segment_ids) > 0 :
+      brush_segment_ids.pop(0)
+      i_js = np.split(i_js, brush_segment_ids)
+
+    print('i_js: ',i_js)
     #print(np.all(i_js > 0, axis=1))
-    i_js = i_js[np.all(i_js > 0, axis=1),:]
+
     #print(i_js)
-    #print('brush size: ',brush_size)
+    print('brush sizes: ',brush_sizes)
     #print('i_js: ',i_js)
     #print('label_id : ', label_id)
 
-    paint_area = cv2.polylines(paint_area, [i_js], False, 255, brush_size)
-    tile[paint_area > 0] = label_id
+    for (brush_size, i_j) in zip(brush_sizes, i_js):
+      i_j = i_j[np.all(i_j > 0, axis=1), :]  # Remove negative location
+      # i_j = i_j[np.all(i_j == None, axis=1), :]  # Remove negative location
+      i_j = np.array(i_j, np.int32) + np.array(brush_size / 2, dtype='int32') # Shift location
+      paint_area = cv2.polylines(paint_area, [i_j], False, 255, brush_size)
+      tile[paint_area > 0] = label_id
 
     full_coords = np.where(tile == label_id)
     full_bbox = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]
