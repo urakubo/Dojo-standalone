@@ -25,6 +25,16 @@ class Params:
         ###C:\Users\urakubo\Desktop\ffn\180620Laxmi
         ### C:\Users\urakubo\Desktop\dojo180721
 
+        ## Server infos of Dojo and 3D Annotator
+        self.ip = socket.gethostbyname(socket.gethostname())
+        self.configured = True
+        self.port = 8887
+        self.dojo_thread = None
+        self.url  = 'http://' + self.ip + ':' + str(self.port) + '/dojo/'
+        self.port_stl = 3000
+        self.url_stl  = 'http://' + self.ip + ':' + str(self.port_stl) + '/'
+        self.stl_thread = None
+
 
         # Mojo unit image size for import
         self.tile_num_pixels_y  = 512
@@ -102,17 +112,12 @@ class Params:
         self.flag_undo                  = 0
         self.flag_redo                  = 0
 
-        self.ip = socket.gethostbyname(socket.gethostname())
-        self.configured = True
-        self.port = 8888
-        self.url  = 'http://' + self.ip + ':' + str(self.port) + '/dojo/'
         self.tmpdir = tempfile.mkdtemp()
         self.merge_table = []
         self.tmp_ids_path = self.tmpdir + os.sep + 'ids'
         self.tmp_tile_ids_path = self.tmpdir + os.sep + 'ids' + os.sep + 'tiles'
-        self.dojo_thread = None
 
-        self.port_stl = 3000
+        ## Recheck current ip
+        self.ip = socket.gethostbyname(socket.gethostname())
+        self.url  = 'http://' + self.ip + ':' + str(self.port) + '/dojo/'
         self.url_stl  = 'http://' + self.ip + ':' + str(self.port_stl) + '/'
-        self.stl_thread = None
-

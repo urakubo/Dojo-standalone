@@ -844,11 +844,11 @@ class Controller(object):
       brush_segment_ids.pop(0)
       i_js = np.split(i_js, brush_segment_ids)
 
-    print('i_js: ',i_js)
+    #print('i_js: ',i_js)
     #print(np.all(i_js > 0, axis=1))
 
     #print(i_js)
-    print('brush sizes: ',brush_sizes)
+    #print('brush sizes: ',brush_sizes)
     #print('i_js: ',i_js)
     #print('label_id : ', label_id)
 

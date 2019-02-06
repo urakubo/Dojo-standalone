@@ -70,7 +70,6 @@ class FileIO():
 
 
     def StartThreadDojo(self):
-
         logic = ServerLogic()
         logic.run(self.u_info)
 
@@ -84,19 +83,20 @@ class FileIO():
 
         time.sleep(1)
         print('Restart dojo server.')
-
+        self.u_info.port = self.u_info.port + 1
+        print('Port Num: ', self.u_info.port)
         self.u_info.worker_loop = asyncio.new_event_loop()
         self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
         self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
         self.u_info.dojo_thread.start()
 
         time.sleep(1)
+        self.u_info.url = 'http://' + self.u_info.ip + ':' + str(self.u_info.port) + '/dojo/'
         self.table_widget.addTab('dojo', 'Dojo', self.u_info.url) # ID, Title, URL
 
     def TerminateDojo(self):
 
         print("Asked tornado to exit\n")
-
         # Python3
         self.u_info.worker_loop.stop()
         time.sleep(1)
@@ -121,12 +121,12 @@ class FileIO():
 
 
         # Python3
+        self.u_info.port = self.u_info.port + 1
+        print('Port Num: ', self.u_info.port)
         self.u_info.worker_loop = asyncio.new_event_loop()
         self.u_info.dojo_thread = threading.Thread(target=self.StartThreadDojo)
         self.u_info.dojo_thread.setDaemon(True) # Stops if control-C
         self.u_info.dojo_thread.start()
-
-        print(self.u_info.url)
 
         # self.DojoHTTP.SetURL(self.u_info.url)
         # self.DojoHTTP.SetLabel(self.u_info.url)
@@ -134,6 +134,7 @@ class FileIO():
         # self.panel_URL.Show()
         self.ActiveModeFileMenu(self.file_id)
         # time.sleep(10)
+        self.u_info.url = 'http://' + self.u_info.ip + ':' + str(self.u_info.port) + '/dojo/'
         self.table_widget.addTab('dojo', 'Dojo', self.u_info.url) # ID, Title, URL
 
 

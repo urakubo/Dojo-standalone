@@ -128,7 +128,6 @@ class ServerLogic:
     # def sig_handler(signum, frame):
     #  IOLoop.current().add_callback_from_signal(receiver.shutdown)
 
-
     print("Tornado web server stops.")
 
     return
