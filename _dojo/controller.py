@@ -2,6 +2,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+import time
+
 import cv2
 import glob
 import h5py
@@ -818,9 +820,47 @@ class Controller(object):
     # if only one dict, copy first row to second row
     return rows*2 if lend == 1 else rows
 
+  #######################
+  # save_all intarnally
+  #######################
+
+  def save_internal(self):
+
+    ### STORE MERGE TABLE
+    for i in self.__new_merge_table:
+      self.__database.insert_merge(i, self.__new_merge_table[i])
+      # self.__database.store()
+
+    ### STORED LOCK TABLE
+    for i in self.__lock_table:
+      if i=='0':
+        continue
+      self.__database.insert_lock(i)
+
+    for i in self.__old_lock_table:
+      if i=='0':
+        continue
+      self.__database.remove_lock(i)
+
+    self.__database.store()
+
+	#
+    # re-harden updated merge table from database
+    #
+    
+    # I stoped it because it takes long time.
+    # I should rewrite this at saving stage.
+    # Because Adjust changes segment volumes.
+    
+    #self.__database._merge_table = self.__database.get_merge_table()
+    #self.__hard_merge_table = self.__database._merge_table
+
+    #print('TIME FOR NEW MARGE TABLE: ', time.time() -tt)
+    #tt = time.time()
 
 
-
+  #######################
+  #######################
 
   def adjust(self, input):
 
@@ -829,6 +869,7 @@ class Controller(object):
     print('adjust')
 
     #######################
+    self.save_internal()
     tile       = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
     paint_area = np.zeros_like(tile, dtype = np.uint8)
     #######################

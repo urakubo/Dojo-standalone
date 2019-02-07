@@ -38,12 +38,13 @@ def ObtainFullSizeImagesPanel(u_info, db, iz):
 def ObtainFullSizeIdsPanel(u_info, db, iz):
 
     ## try the temporary data first
-    data_path = u_info.tmp_tile_ids_path + u_info.tile_path_wz.format(0, iz)
+#    data_path = u_info.tmp_tile_ids_path + u_info.tile_path_wz.format(0, iz)
+#    if not os.path.isdir(data_path):
+#        target_path = u_info.tile_ids_path
+#    else:
+#        target_path = u_info.tmp_tile_ids_path
 
-    if not os.path.isdir(data_path):
-        target_path = u_info.tile_ids_path
-    else:
-        target_path = u_info.tmp_tile_ids_path
+    target_path = u_info.tile_ids_path
 
     merged_ids = np.zeros((db.canvas_size_y, db.canvas_size_x), u_info.ids_dtype)
     iw = 0
@@ -65,10 +66,12 @@ def SaveFullSizeIdsPanel(u_info, db, iz, merged_ids):
 #    u_info.ids_files_undo = []
 #    self.flag_undo = 1
 #    self.flag_redo = 0
-    target_path = u_info.tmp_ids_path
-    m.mkdir_safe(target_path)
-    target_path = u_info.tmp_tile_ids_path
-    m.mkdir_safe(target_path)
+    #target_path = u_info.tmp_ids_path
+    #m.mkdir_safe(target_path)
+    #target_path = u_info.tmp_tile_ids_path
+    #m.mkdir_safe(target_path)
+
+    target_path = u_info.tile_ids_path
 
     for iw in range(db.num_tiles_w):
 
@@ -92,8 +95,8 @@ def SaveFullSizeIdsPanel(u_info, db, iz, merged_ids):
             tile_ids = current_labels[yid_start: yid_goal, xid_start: xid_goal]
 
             ## Set filename
-            target_path2 = target_path + u_info.tile_path_wz.format(iw, iz)
-            m.mkdir_safe(target_path2)
+            #target_path2 = target_path + u_info.tile_path_wz.format(iw, iz)
+            #m.mkdir_safe(target_path2)
             current_tile_ids_name = target_path \
                             + u_info.tile_ids_filename_wzyx.format(iw, iz, iy, ix)
 
