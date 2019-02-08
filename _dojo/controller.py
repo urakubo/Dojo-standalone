@@ -350,8 +350,8 @@ class Controller(object):
         bb = action['value'][1]
         old_area = action['value'][2]
 
-        self.x_tiles = range((bb[0]//512), (((bb[2]-1)//512) + 1))
-        self.y_tiles = range((bb[1]//512), (((bb[3]-1)//512) + 1))
+        self.x_tiles = range((bb[0]//self.__u_info.tile_num_pixels_x), (((bb[2]-1)//self.__u_info.tile_num_pixels_x) + 1))
+        self.y_tiles = range((bb[1]//self.__u_info.tile_num_pixels_y), (((bb[3]-1)//self.__u_info.tile_num_pixels_y) + 1))
         self.x_tiles = list(self.x_tiles)
         self.y_tiles = list(self.y_tiles)
 
@@ -440,8 +440,9 @@ class Controller(object):
         bb = action['value'][1]
         new_area = action['value'][3]
 
-        self.x_tiles = range((bb[0]//512), (((bb[2]-1)//512) + 1))
-        self.y_tiles = range((bb[1]//512), (((bb[3]-1)//512) + 1))
+
+        self.x_tiles = range((bb[0]//self.__u_info.tile_num_pixels_x), (((bb[2]-1)//self.__u_info.tile_num_pixels_x) + 1))
+        self.y_tiles = range((bb[1]//self.__u_info.tile_num_pixels_y), (((bb[3]-1)//self.__u_info.tile_num_pixels_y) + 1))
         self.x_tiles = list(self.x_tiles)
         self.y_tiles = list(self.y_tiles)
 
@@ -569,10 +570,16 @@ class Controller(object):
     # find tiles we need for this split on highest res and make sure the bb is valid
     bb = np.clip(np.array(bb),0,[image._width]*2 + [image._height]*2)
 
-    self.x_tiles = range((bb[0]//512), (((bb[1]-1)//512) + 1))
-    self.y_tiles = range((bb[2]//512), (((bb[3]-1)//512) + 1))
+    self.x_tiles = range((bb[0] // self.__u_info.tile_num_pixels_x),
+                         (((bb[2] - 1) // self.__u_info.tile_num_pixels_x) + 1))
+    self.y_tiles = range((bb[1] // self.__u_info.tile_num_pixels_y),
+                         (((bb[3] - 1) // self.__u_info.tile_num_pixels_y) + 1))
     self.x_tiles = list(self.x_tiles)
     self.y_tiles = list(self.y_tiles)
+    #
+    offset_x = self.x_tiles[0]*512
+    offset_y = self.y_tiles[0]*512
+    #
 
     tile_dict = {} # here this is the segmentation
 
@@ -600,11 +607,7 @@ class Controller(object):
     i_js = values['line']
     click = values['click']
 
-    #
-    # Take offset of tile into account
-    #
-    offset_x = self.x_tiles[0]*512
-    offset_y = self.y_tiles[0]*512
+
 
     s_tile = np.zeros(row_val.shape)
     s_tile[row_val == self.label_id] = 1
