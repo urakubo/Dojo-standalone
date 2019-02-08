@@ -451,7 +451,7 @@ class Canvas(object):
       # disconnectedness predictions in the course of inference.
       if self.options.disco_seed_threshold >= 0:
         th_max = logit(0.5)
-        old_seed = self.seed[sel]
+        old_seed = self.seed[tuple(sel)]
 
         if self._keep_history:
           self.history_deleted.append(
@@ -469,7 +469,7 @@ class Canvas(object):
           logits[mask] = old_seed[mask]
 
       # Update working space.
-      self.seed[sel] = logits
+      self.seed[tuple(sel)] = logits
 
     return logits
 
@@ -624,17 +624,17 @@ class Canvas(object):
 
         # We only allow creation of new segments in areas that are currently
         # empty.
-        mask = self.seed[sel] >= self.options.segment_threshold
+        mask = self.seed[tuple(sel)] >= self.options.segment_threshold
         raw_segmented_voxels = np.sum(mask)
 
         # Record existing segment IDs overlapped by the newly added object.
-        overlapped_ids, counts = np.unique(self.segmentation[sel][mask],
+        overlapped_ids, counts = np.unique(self.segmentation[tuple(sel)][mask],
                                            return_counts=True)
         valid = overlapped_ids > 0
         overlapped_ids = overlapped_ids[valid]
         counts = counts[valid]
 
-        mask &= self.segmentation[sel] <= 0
+        mask &= self.segmentation[tuple(sel)] <= 0
         actual_segmented_voxels = np.sum(mask)
 
         # Segment too small?
@@ -655,9 +655,9 @@ class Canvas(object):
         while self._max_id in self.origins:
           self._max_id += 1
 
-        self.segmentation[sel][mask] = self._max_id
-        self.seg_prob[sel][mask] = storage.quantize_probability(
-            expit(self.seed[sel][mask]))
+        self.segmentation[tuple(sel)][mask] = self._max_id
+        self.seg_prob[tuple(sel)][mask] = storage.quantize_probability(
+            expit(self.seed[tuple(sel)][mask]))
 
         self.log_info('Created supervoxel:%d  seed(zyx):%s  size:%d  iters:%d',
                       self._max_id, pos,

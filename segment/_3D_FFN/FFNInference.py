@@ -11,6 +11,8 @@ import cv2
 import h5py
 import threading
 
+import contextlib
+
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtCore import Qt
 
@@ -21,7 +23,7 @@ icon_dir = path.join(main_dir, "icons")
 segmentation_dir = path.join(main_dir, "segment")
 sys.path.append(segmentation_dir)
 sys.path.append(os.path.join(main_dir, "filesystem"))
-
+import Miscellaneous as m
 
 #######
 
@@ -123,7 +125,7 @@ class FFNInference(MiscellaneousSegment):
         ##
         ## Inference start (I gave up the use of run_inference because of the augment parsing problem)
         ##
-
+        m.mkdir_safe(os.path.join( params['Output Inference Folder'] ,'0','0' ) )
         ##
         comm_inference = exec_run_inference + ' ' \
                     + ' --image_size_x '  + np.str( image_x ) \
@@ -170,6 +172,22 @@ class FFNInference(MiscellaneousSegment):
 
     def Execute(self, parent, comm_title, obj_args, args):
         params = self.ObtainParams(obj_args, args)
+
+        removal_file1 = os.path.join( params['Output Inference Folder'] ,'0','0','seg-0_0_0.npz' )
+        removal_file2 = os.path.join( params['Output Inference Folder'], '0','0','seg-0_0_0.prob')
+
+        if os.path.isfile(removal_file1) or os.path.isfile(removal_file2) :
+            Reply = QMessageBox.question(parent, 'FFN', 'seg-0_0_0 files were found at the Output Inference Folder. Remove them?',  QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if Reply == QMessageBox.Yes:
+                with contextlib.suppress(FileNotFoundError):
+                    os.remove(removal_file1)
+                with contextlib.suppress(FileNotFoundError):
+                    os.remove(removal_file2)
+                print('seg-0_0_0 files were removed.')
+            else:
+                print('FFN inference was canceled.')
+                return
+
         thread = threading.Thread(target=self._Run, args=( parent, params, comm_title ) )
         thread.daemon = True
         thread.start()
