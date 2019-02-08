@@ -14,8 +14,8 @@ import numpy as np
 import mahotas as mh
 import math
 import shutil
-from scipy import ndimage        ################## Unnecessary??
-from skimage import exposure     ################## Unnecessary??
+from scipy import ndimage        ################## Unnecessary?!
+from skimage import exposure     ################## Unnecessary?!
 import skimage
 
 from PIL import Image as PILImage
@@ -34,7 +34,6 @@ from Params import Params
 import Miscellaneous as m
 
 class Controller(object):
-
 
   def __init__(self, u_info, database, dojoserver):
     '''
@@ -252,17 +251,19 @@ class Controller(object):
       self.__websocket.send(json.dumps(input))
 
     elif input['name'] == 'SPLIT':
-      print('input')
-      print(input)
+
       self.split(input)
 
     elif input['name'] == 'FINALIZESPLIT':
+
+      #print('FINALIZESPLIT:')
+      #print(input)
       self.finalize_split(input)
 
     elif input['name'] == 'ADJUST':
       #########################################
-      print('input')
-      print(input)
+      #print('input')
+      #print(input)
       self.adjust(input)
       #########################################
 
@@ -372,8 +373,8 @@ class Controller(object):
         # NOW REPLACE THE PIXEL DATA
         # but take offset of tile into account
         #
-        offset_x = self.x_tiles[0]*512
-        offset_y = self.y_tiles[0]*512
+        offset_x = self.x_tiles[0]*self.__u_info.tile_num_pixels_x
+        offset_y = self.y_tiles[0]*self.__u_info.tile_num_pixels_y
 
         bb_relative =  np.array(bb) - [offset_x, offset_y, offset_x , offset_y]
 
@@ -440,8 +441,8 @@ class Controller(object):
         bb = action['value'][1]
         new_area = action['value'][3]
 
-        self.x_tiles = range((bb[0]//512), (((bb[2]-1)//512) + 1))
-        self.y_tiles = range((bb[1]//512), (((bb[3]-1)//512) + 1))
+        self.x_tiles = range((bb[0]//self.__u_info.tile_num_pixels_x), (((bb[2]-1)//self.__u_info.tile_num_pixels_x) + 1))
+        self.y_tiles = range((bb[1]//self.__u_info.tile_num_pixels_y), (((bb[3]-1)//self.__u_info.tile_num_pixels_y) + 1))
         self.x_tiles = list(self.x_tiles)
         self.y_tiles = list(self.y_tiles)
 
@@ -488,7 +489,6 @@ class Controller(object):
     output['origin'] = username
     output['value'] = [value, len(self.__actions[username])]
     self.__websocket.send(json.dumps(output))
-
 
 
 
@@ -557,6 +557,7 @@ class Controller(object):
     # send merge table
     self.__new_merge_table = {}
     self.send_new_merge_table('SERVER')
+
 
   def finalize_split(self, input):
 
@@ -686,15 +687,37 @@ class Controller(object):
     self.__split_count += 1
 
 
+  def _finalize_split_(self, input):
+
+    #for c in i_js:
+    #  s_tile[c[1]-offset_y, c[0]-offset_x] = 0
+    tmp = np.array(i_js) - np.array([offset_x, offset_y])
+    s_tile_split = cv2.polylines(s_tile, [tmp], False, 0, 1) # lineType=cv2.LINE_8
+
+    label_image, n = mh.label(s_tile_split)
+
+    # check which label was unselected
+    selected_label = label_image[click[1]-offset_y, click[0]-offset_x]
+    unselected_image = s_tile - (label_image == selected_label)
+
+
+    self.__largest_id += 1
+    new_id = self.__largest_id
+
+    full_coords = np.where(label_image > 0)
+    full_bb = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]
+
+    unselected_image = unselected_image * (new_id - self.lookup_label(self.label_id))
+    tile = np.add(row_val, unselected_image).astype(np.uint32)
+
+
 
   def file_iter(self,*dicts,**kwargs):
   
     # print('file_iter')
     # print(self.x_tiles)
     # print(self.y_tiles)
-  
-  
-  
+
     lend = range(len(dicts))
     for x in self.x_tiles:
       for y in self.y_tiles:
@@ -718,8 +741,7 @@ class Controller(object):
 		#################################
         # try the temporary data first
 		#################################        
-        
-        
+
         
         ids_data_path = self.__mojo_tmp_dir + '/ids/tiles/w=00000000/z='+str(self.z).zfill(8)
         if not os.path.exists(os.path.join(ids_data_path,seg)):
@@ -824,26 +846,6 @@ class Controller(object):
   # save_all intarnally
   #######################
 
-  def save_internal(self):
-
-    ### STORE MERGE TABLE
-    for i in self.__new_merge_table:
-      self.__database.insert_merge(i, self.__new_merge_table[i])
-      # self.__database.store()
-
-    ### STORED LOCK TABLE
-    for i in self.__lock_table:
-      if i=='0':
-        continue
-      self.__database.insert_lock(i)
-
-    for i in self.__old_lock_table:
-      if i=='0':
-        continue
-      self.__database.remove_lock(i)
-
-    self.__database.store()
-
 	#
     # re-harden updated merge table from database
     #
@@ -860,6 +862,28 @@ class Controller(object):
 
 
   #######################
+  def ObtainTargetPanel(self, bb): # bb: minmax bb
+
+      self.x_tiles = range((bb[0] // self.__u_info.tile_num_pixels_x), (((bb[2] - 1) // self.__u_info.tile_num_pixels_x) + 1))
+      self.y_tiles = range((bb[1] // self.__u_info.tile_num_pixels_y), (((bb[3] - 1) // self.__u_info.tile_num_pixels_y) + 1))
+      self.x_tiles = list(self.x_tiles)
+      self.y_tiles = list(self.y_tiles)
+      #
+      offset_x = self.x_tiles[0] * self.__u_info.tile_num_pixels_x
+      offset_y = self.y_tiles[0] * self.__u_info.tile_num_pixels_y
+      #
+      tile_dict = {}  # here this is the segmentation
+      # Load segmentation data
+      tile_dict = self.file_iter(tile_dict)[0]
+      # go through rows of each tile and segmentation
+      row_val = self.tile_iter(tile_dict)[0]
+
+      # [row_val, old_tile] = self.edge_iter(tile_dict, row_val) ### ??
+
+      return tile_dict, row_val, offset_x, offset_y
+
+
+
   #######################
 
   def adjust(self, input):
@@ -869,65 +893,98 @@ class Controller(object):
     print('adjust')
 
     #######################
-    self.save_internal()
-    tile       = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
-    paint_area = np.zeros_like(tile, dtype = np.uint8)
+    #self.save_internal()
+    #tile       = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
     #######################
 
-    #
-    # brush_size = values['brush_size']
     brush_sizes = values['brush_sizes']
     brush_segment_ids = values['brush_segment_ids']
     label_id = values['id']
     i_js = values['i_js']
+    self.z = values['z']
+    ##
+    ## Obtain correspondent ID panels
+    ##
+    image = self.__dojoserver.get_image()
+    bb = [0,0,image._width, image._height]
+    old_tile, row_val, offset_x, offset_y = self.ObtainTargetPanel(bb)
 
+    ##
+    ## Multiple lines splitting
+    ##
     if len(brush_segment_ids) > 0 :
       brush_segment_ids.pop(0)
       i_js = np.split(i_js, brush_segment_ids)
 
-    #print('i_js: ',i_js)
-    #print(np.all(i_js > 0, axis=1))
+    # print('i_js: ',i_js)
+    # print(np.all(i_js > 0, axis=1))
 
-    #print(i_js)
-    #print('brush sizes: ',brush_sizes)
-    #print('i_js: ',i_js)
-    #print('label_id : ', label_id)
+    # print(i_js)
+    # print('brush sizes: ',brush_sizes)
+    # print('i_js: ',i_js)
+    # print('label_id : ', label_id)
 
+    paint_area = np.zeros_like(row_val, dtype=np.uint8)
     for (brush_size, i_j) in zip(brush_sizes, i_js):
       i_j = i_j[np.all(i_j > 0, axis=1), :]  # Remove negative location
-      # i_j = i_j[np.all(i_j == None, axis=1), :]  # Remove negative location
+      i_j = i_j - np.array([offset_x, offset_y])
       i_j = np.array(i_j, np.int32) + np.array(brush_size / 2, dtype='int32') # Shift location
       paint_area = cv2.polylines(paint_area, [i_j], False, 255, brush_size)
-      tile[paint_area > 0] = label_id
 
-    full_coords = np.where(tile == label_id)
-    full_bbox = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]
+    row_val[paint_area > 0] = label_id
+
+    # full_coords = np.where(tile == label_id)
+    # full_bbox = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]
+
+    # Save all the splits, yielding offsets
+    offsets = self.save_iter(row_val)
+
+    full_bbox = bb
+    # full_coords = np.where(row_val == label_id)
+    # full_bbox = [min(full_coords[1]), min(full_coords[0]), max(full_coords[1]), max(full_coords[0])]
+    # full_bb[0] += offsets[0]
+    # full_bb[1] += offsets[1]
+    # full_bb[2] += offsets[0]
+    # full_bb[3] += offsets[1]
 
 
-    #######################
-    m.SaveFullSizeIdsPanel(self.__u_info, self.__db, values["z"], tile)
-    #######################
+    #
+    # this is for undo
+    #
+
+
+    #old_area = old_tile[bb[1]:bb[3],bb[0]:bb[2]]
+    #new_area = tile[bb[1]:bb[3],bb[0]:bb[2]]
+    #current_action = values['current_action']
+    #upd_full_bb = bb
+    #action = {}
+    #action['origin'] = input['origin']
+    #action['name'] = 'ACTION'
+    #action_value = {}
+    #action_value['type'] = 'ADJUST'
+    #action_value['value'] = [values["z"], upd_full_bb, old_area, new_area]
+    #action['value'] = [current_action, action_value]
+    #self.add_action(action)
 
     output = {}
     output['name'] = 'RELOAD'
     output['origin'] = input['origin']
     output['value'] = {'z':values["z"], 'full_bbox':str(full_bbox)}
-    # print output
     self.__websocket.send(json.dumps(output))
 
     output = {}
     output['name'] = 'ADJUSTDONE'
     output['origin'] = input['origin']
     output['value'] = {'z':values["z"], 'full_bbox':str(full_bbox)}
-
     self.__websocket.send(json.dumps(output))
+
 
 
     #######################
     #	tile = m.ObtainFullSizeIdsPanel(self.__u_info, self.__db, values["z"])
     #######################
 
-   #######################
+    #######################
  	#   m.SaveFullSizeIdsPanel(self.__u_info, self.__db, values["z"], tile)
     #######################
 
