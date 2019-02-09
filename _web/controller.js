@@ -44,6 +44,7 @@ J.controller = function(viewer) {
   this._split_line = [];
   this._adjust_mode = -1;
   this._adjust_id = -1;
+  //this._adjust_prev_id = -1;
   this._brush_bbox = [];
   this._brush_size = 3;
   this._brush_ijs = [];
@@ -785,31 +786,45 @@ J.controller.prototype.update_3D_textures = function(z, full_bbox, texture) {
         labelmap_x.texture.updateTexture(data);
         labelmap_x.modified();
       }
-
     }
-
   }
-
 };
 
 J.controller.prototype.start_adjust = function(id, x, y) {
 
+
   if (this._adjust_mode != -1) return;
+  if (id == 0) return;
 
   console.log('start adjust');
+  console.log('This viewer: ');
+  console.log(this._viewer);
 
   this._adjust_mode = 1;
   this._adjust_id = id;
+  // this._adjust_prev_id = id;
   this._brush_ijs = [];
   
   // H Urakubo
   this._brush_segment_ids = [];
   this._brush_sizes    = [];
+  var color = this._viewer.get_color(this._adjust_id);
+  document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
   this._viewer._canvas.style.cursor = 'crosshair';
-
   this.activate(id);
+};
 
+
+J.controller.prototype.start_adjust_colorbox = function() {
+  this._adjust_mode = 1;
+  this._brush_ijs = [];
+  
+  this._brush_segment_ids = [];
+  this._brush_sizes    = [];
+  this._viewer = DOJO.viewer;
+  this._viewer._canvas.style.cursor = 'crosshair';
+  this.activate(this._adjust_id);
 };
 
 J.controller.prototype.draw_adjust = function(x, y) {

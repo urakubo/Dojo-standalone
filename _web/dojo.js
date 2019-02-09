@@ -123,26 +123,21 @@ DOJO.setup_buttons = function() {
   var adjust = document.getElementById('adjust');
   var adjust_selected = document.getElementById('adjust_selected');
 
-  if (adjust && adjust_selected) {
     adjust.onclick = adjust_selected.onclick = function() {
-
       if (DOJO.mode != DOJO.modes.adjust) {
 
         DOJO.reset_tools();
-
+        $('#extend_adjust, #extend_adjust_header').show();
         adjust.style.display = 'none';
         adjust_selected.style.display = 'block';
-
         DOJO.mode = DOJO.modes.adjust;
 
       } else {
-
         DOJO.reset_tools();
-
+        $('#extend_adjust, #extend_adjust_header').hide();
       }
 
     };
-  }
 
   var threed = document.getElementById('3d');
   var threed_selected = document.getElementById('3d_selected');
@@ -181,6 +176,51 @@ DOJO.setup_buttons = function() {
     }
 
   };
+
+
+  //
+  // Adds by H Urakubo (19/2/10)
+  //
+
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  var extend_adjust = document.getElementById('extend_adjust');
+  extend_adjust.onmousedown = function(e) {
+		// console.log('Anyway, on mouse button')
+    	e = e || window.event;
+    	e.preventDefault();
+    	// get the mouse cursor position at startup:
+    	pos3 = e.clientX;
+    	pos4 = e.clientY;
+    	document.onmouseup = closeDragElement;
+    	// call a function whenever the cursor moves:
+    	document.onmousemove = elementDrag;
+  		}
+	elementDrag = function(e) {
+		// console.log('elementDrag on Adjust');
+    	e = e || window.event;
+    	e.preventDefault();
+    	// calculate the new cursor position:
+    	pos1 = pos3 - e.clientX;
+   		pos2 = pos4 - e.clientY;
+    	pos3 = e.clientX;
+    	pos4 = e.clientY;
+    	// set the element's new position:
+    	extend_adjust.style.top = (extend_adjust.offsetTop - pos2) + "px";
+    	extend_adjust.style.left = (extend_adjust.offsetLeft - pos1) + "px";
+  		}
+	closeDragElement = function() {
+    	// stop moving when mouse button is released:
+    	document.onmouseup = null;
+    	document.onmousemove = null;
+  		}
+
+
+  var adjust_start_colorbox = document.getElementById('colorbox');
+  adjust_start_colorbox.onclick = function() {
+  			if (!DOJO.viewer.is_locked(this._adjust_id))
+				DOJO.viewer._controller.start_adjust_colorbox()
+  		}
+
 
   var save = document.getElementById('save');
 
