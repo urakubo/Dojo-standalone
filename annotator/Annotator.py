@@ -33,7 +33,8 @@ class Annotator():
             return
 
         ## Dialog: Is the 3D Viewer already launched?
-        if 2 in self.table_widget.appl:
+        print( self.table_widget.appl )
+        if 'annotator' in self.table_widget.appl:
             QMessageBox.information(self, "3D Annotator", "3D Annotator has already been launched!")
             return
 
@@ -44,7 +45,7 @@ class Annotator():
         self.u_info.annotator.LaunchStlViewer()
 
         ## Call StlViewer
-        self.table_widget.addTab('stlviewer', '3D Annotator', self.u_info.url_stl+'index.html' )
+        self.table_widget.addTab('annotator', '3D Annotator', self.u_info.url_stl+'index.html' )
 
     def CloseStlViewer(self):
         ## Start StlServer

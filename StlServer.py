@@ -143,7 +143,7 @@ class StlServerLogic:
     server.listen(self.u_info.port_stl)
 
     print('*'*80)
-    print('*', '3D Viewer RUNNING')
+    print('*', '3D Annotator RUNNING')
     print('*')
     print('*', 'open', '[ http://' + self.u_info.ip + ':' + str(self.u_info.port_stl) + '/] ')
     print('*'*80)

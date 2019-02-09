@@ -263,7 +263,7 @@ class PersephonepTableWidget(QWidget):
                 if (fail == 1):
                     return
             ###
-            if ('stlviewer' == self.appl[index]):
+            if ('annotator' == self.appl[index]):
                 fail = self.parent.CloseStlViewer()
                 if (fail == 1):
                     return

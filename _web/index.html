@@ -6,9 +6,14 @@
   <link rel="stylesheet" type="text/css" href="css/opentip.css">
   <link rel="stylesheet" type="text/css" href="css/dragresize.css">
 
+<!-- Add by HU  -->
+  <link rel="stylesheet" type="text/css" href="css/dragmenu.css">
+
+
   <link rel="stylesheet" type="text/css" href="gui/css/vendors/bootstrap/theme/flatly/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="gui/css/vendors/bootstrap-slider/bootstrap-slider.min.css">
   <link rel="stylesheet" type="text/css" href="gui/css/gui.css">
+
 
   <script src="gui/js/vendors/es5-shim/es5-shim.min.js"></script>
   <script src="gui/js/vendors/es5-shim/es5-sham.min.js"></script>
@@ -44,7 +49,12 @@
   <script type='text/javascript' src='offscreen_renderer.js'></script>
   <script type='text/javascript' src='util.js'></script>
 
+
+<!-- Add by HU  -->
+  <script type='text/javascript' src='dragmenu.js'></script>
+
   <script src="gui/js/dist/gui.js"></script>
+
 
   <!--
   // <script type="text/javascript" src="lib/X/lib/google-closure-library/closure/goog/base.js"></script>
@@ -338,6 +348,15 @@
     </div>
   </div>
 
+	<!-- Draggable DIV Adds by HU -->
+	<div id="mydiv1" style='left:500px;top:50px;'>
+ 	 <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
+ 	 <div id="mydiv1header">Click here to move</div>
+  	<p>Move</p>
+  	<p>this</p>
+  	<p>DIV</p>
+	</div>
+
   <div class="gui-header-toolbar clearfix">
     <div class="gui-menu gui-unselectable">
       <img src='gfx/menu.png'>
@@ -380,6 +399,7 @@
       <img src='gfx/save.png' id='save' class='tool' style='margin-top:6px;' data-ot='Save' data-ot-target='true' data-ot-tip-joint='bottom'>
     </div>
   </div>
+
 
   <div id='dojo1' class='viewer'></div>
   <div class="gui-slice">
@@ -439,5 +459,9 @@
     <div class="drsMoveHandle" style='position:absolute;width:100%;z-index:2000;'>3D Rendering</div>
     <div id='threeDcontent' style='width:100%;height:100%;'></div>
   </div>
+  
+  
+
+  
 </body>
 </html>
