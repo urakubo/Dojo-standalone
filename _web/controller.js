@@ -686,13 +686,24 @@ J.controller.prototype.lock = function(x, y) {
 J.controller.prototype.larger_brush = function() {
 
   this._brush_size = Math.min(30, this._brush_size+=1);
-
+  if (this._adjust_mode == 2) this.circle_cursor();
 };
 
 J.controller.prototype.smaller_brush = function() {
 
   this._brush_size = Math.max(1, this._brush_size-=1);
+  if (this._adjust_mode == 2) this.circle_cursor();
+};
 
+
+J.controller.prototype.circle_cursor = function() {
+  var iconname = ('000' + this._brush_size).slice(-3);
+  iconname = 'url(gfx/cursors/' + iconname + '.ico) 128 128, auto';
+  this._viewer._canvas.style.cursor = iconname;
+};
+
+J.controller.prototype.regular_cursor = function() {
+  this._viewer._canvas.style.cursor = 'auto';
 };
 
 J.controller.prototype.reload_tiles = function(values) {
@@ -792,7 +803,6 @@ J.controller.prototype.update_3D_textures = function(z, full_bbox, texture) {
 
 J.controller.prototype.start_adjust = function(id, x, y) {
 
-
   if (this._adjust_mode != -1) return;
   if (id == 0) return;
 
@@ -808,8 +818,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   var color = this._viewer.get_color(this._adjust_id);
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
-  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
-
+  this.circle_cursor();
   this.activate(id);
 };
 
@@ -823,9 +832,6 @@ J.controller.prototype.start_adjust_colorbox = function() {
   this._brush_segment_ids = [];
   this._brush_sizes    = [];
   this._viewer = DOJO.viewer;
-
-
-  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
 
 
   this.activate(this._adjust_id);
@@ -893,11 +899,8 @@ J.controller.prototype.end_adjust = function() {
   data['brush_segment_ids'] = this._brush_segment_ids;
   this.send('ADJUST', data);
 
+  this.regular_cursor();
   this._adjust_mode = 3;
-
-
-  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
-//  this._viewer._canvas.style.cursor = '';
 
 };
 
@@ -914,6 +917,7 @@ J.controller.prototype.finish_adjust = function(values) {
   var color1 = DOJO.viewer.get_color(this._adjust_id);
   var color1_hex = rgbToHex(color1[0], color1[1], color1[2]);
   var log = 'User $USER adjusted label <font color="'+color1_hex+'">'+this._adjust_id+'</font>.';
+  this.regular_cursor();
   this.send_log(log);
 
 };

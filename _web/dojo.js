@@ -130,7 +130,12 @@ DOJO.setup_buttons = function() {
         adjust.style.display = 'none';
         adjust_selected.style.display = 'block';
         DOJO.mode = DOJO.modes.adjust;
-        DOJO.viewer._canvas.style.cursor = 'url(gfx/circle2.ico),auto';
+        
+        //console.log( 'DOJO.viewer._controller._brush_size: ', DOJO.viewer._controller._brush_size )
+        //iconname = ('000' + DOJO.viewer._controller._brush_size).slice(-3);
+        //iconname = 'url(gfx/cursors/' + iconname + '.ico) 32 32, auto';
+        //console.log( iconname )
+        //DOJO.viewer._canvas.style.cursor = iconname;
       } else {
       	DOJO.viewer._canvas.style.cursor = 'auto';
         DOJO.reset_tools();
@@ -228,10 +233,7 @@ DOJO.setup_buttons = function() {
 
     // if (confirm("Saving might take hours and Dojo will be unusable during this time!\n\nDo you really want to save right now?") == true) {
 
-
       $('#blocker').show();
-
-
       DOJO.viewer._controller.save();
 
     // }
