@@ -697,9 +697,24 @@ J.controller.prototype.smaller_brush = function() {
 
 
 J.controller.prototype.circle_cursor = function() {
-  var iconname = ('000' + this._brush_size).slice(-3);
-  iconname = 'url(gfx/cursors/' + iconname + '.ico) 128 128, auto';
+
+  var scale  = this._viewer._camera._view[0];
+  var icon_r = Math.round( scale * this._brush_size / 2 );
+  var R_MAX = 63;
+  if (icon_r > R_MAX) icon_r = R_MAX;
+  
+  var iconname = ( '000' + icon_r ).slice(-3);
+  //iconname = 'url(gfx/cursors_/' + iconname + '.ico) 128 128, auto';
+  iconname = 'url(gfx/cursors/' + iconname + '.ico) 64 64, auto';
+  // console.log(iconname)
+
   this._viewer._canvas.style.cursor = iconname;
+
+//  console.log('viewer._camera: ', this._viewer._camera);
+//  console.log('image zoom_levels: ', this._viewer._image.zoom_levels);
+//  console.log('image: ', this._viewer._image);
+
+
 };
 
 J.controller.prototype.regular_cursor = function() {
@@ -807,7 +822,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   if (id == 0) return;
 
   console.log('start adjust');
-
+  this.circle_cursor();
   this._adjust_mode = 1;
   this._adjust_id = id;
   this._brush_ijs = [];
@@ -818,7 +833,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   var color = this._viewer.get_color(this._adjust_id);
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
-  this.circle_cursor();
+
   this.activate(id);
 };
 
@@ -833,7 +848,7 @@ J.controller.prototype.start_adjust_colorbox = function() {
   this._brush_sizes    = [];
   this._viewer = DOJO.viewer;
 
-
+  this.circle_cursor();
   this.activate(this._adjust_id);
 };
 
