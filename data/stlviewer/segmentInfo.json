@@ -30352,7 +30352,7 @@
   {
     "id": 3036,
     "name": "segment3036",
-    "size": 4185810,
+    "size": 8475243,
     "confidence": 0,
     "r": 128,
     "g": 128,
@@ -61833,126 +61833,6 @@
     "id": 6184,
     "name": "segment6184",
     "size": 303,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6185,
-    "name": "segment6185",
-    "size": 294950,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6188,
-    "name": "segment6188",
-    "size": 51831,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6193,
-    "name": "segment6193",
-    "size": 294166,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6196,
-    "name": "segment6196",
-    "size": 53386,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6198,
-    "name": "segment6198",
-    "size": 1710710,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6200,
-    "name": "segment6200",
-    "size": 55031,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6207,
-    "name": "segment6207",
-    "size": 1757514,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6210,
-    "name": "segment6210",
-    "size": 11585,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6217,
-    "name": "segment6217",
-    "size": 60000,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6219,
-    "name": "segment6219",
-    "size": 121,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6220,
-    "name": "segment6220",
-    "size": 39,
-    "confidence": 0,
-    "r": 128,
-    "g": 128,
-    "b": 128,
-    "act": 0
-  },
-  {
-    "id": 6221,
-    "name": "segment6221",
-    "size": 100,
     "confidence": 0,
     "r": 128,
     "g": 128,

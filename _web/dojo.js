@@ -125,15 +125,14 @@ DOJO.setup_buttons = function() {
 
     adjust.onclick = adjust_selected.onclick = function() {
       if (DOJO.mode != DOJO.modes.adjust) {
-      	var hhost = "http://"+window.location.hostname+":"+window.location.port+"/dojo/gfx/circle2.ico";
-		DOJO.viewer._canvas.style.cursor = 'url(hhost),auto';
         DOJO.reset_tools();
         $('#extend_adjust, #extend_adjust_header').show();
         adjust.style.display = 'none';
         adjust_selected.style.display = 'block';
         DOJO.mode = DOJO.modes.adjust;
-
+        DOJO.viewer._canvas.style.cursor = 'url(gfx/circle2.ico),auto';
       } else {
+      	DOJO.viewer._canvas.style.cursor = 'auto';
         DOJO.reset_tools();
         $('#extend_adjust, #extend_adjust_header').hide();
       }

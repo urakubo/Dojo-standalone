@@ -808,13 +808,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   var color = this._viewer.get_color(this._adjust_id);
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
-  // this._viewer._canvas.style.cursor = 'crosshair';
-  // this._viewer._canvas.style.cursor = 'url("http://alphasis.info/wp-content/uploads/2013/10/cursor32x32-himawari.ico"),auto';
-  var host = "http://"+window.location.hostname+":"+window.location.port+"/dojo/gfx/circle2.ico";
-  console.log(host)
-  this._viewer._canvas.style.cursor = 'url(host),auto';
-
-
+  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
 
   this.activate(id);
 };
@@ -829,7 +823,11 @@ J.controller.prototype.start_adjust_colorbox = function() {
   this._brush_segment_ids = [];
   this._brush_sizes    = [];
   this._viewer = DOJO.viewer;
-  this._viewer._canvas.style.cursor = 'crosshair';
+
+
+  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
+
+
   this.activate(this._adjust_id);
 };
 
@@ -897,7 +895,9 @@ J.controller.prototype.end_adjust = function() {
 
   this._adjust_mode = 3;
 
-  this._viewer._canvas.style.cursor = '';
+
+  this._viewer._canvas.style.cursor = 'url(gfx/circle2.ico) 16 16, auto';
+//  this._viewer._canvas.style.cursor = '';
 
 };
 
