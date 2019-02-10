@@ -192,7 +192,11 @@ J.camera.prototype.zoom = function(x, y, delta) {
   }
 
   this._zoom_end_timeout = setTimeout(this.zoom_end.bind(this), 60);
-
+	
+	//
+	// Adds by HU 19/2/10
+	//
+	if (DOJO.mode == DOJO.modes.adjust)	DOJO.viewer._controller.circle_cursor();
 };
 
 J.camera.prototype.pan = function(dx, dy) {

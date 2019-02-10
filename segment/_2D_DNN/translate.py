@@ -957,12 +957,12 @@ def save_images_test(fetches, step=None):
 
         filename = name + ".png"
         if step is not None:
-        	filename = "%08d-%s" % (step, filename)
+            filename = "%08d-%s" % (step, filename)
         fileset['outputs'] = filename
         out_path = os.path.join(image_dir, filename)
         contents = fetches['outputs'][i]
         with open(out_path, "wb") as f:
-        	f.write(contents)
+            f.write(contents)
         filesets.append(fileset)
     return filesets
 
@@ -1114,9 +1114,9 @@ def main():
                 filesets = save_images_test(results)
                 for i, f in enumerate(filesets):
                     print("evaluated image", f["name"])
-                index_path = append_index(filesets)
+                # index_path = append_index(filesets)
 
-            print("wrote index at", index_path)
+            # print("wrote index at", index_path)
         else:
             # training
             start = time.time()

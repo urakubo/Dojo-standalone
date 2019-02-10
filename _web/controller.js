@@ -686,20 +686,20 @@ J.controller.prototype.lock = function(x, y) {
 J.controller.prototype.larger_brush = function() {
 
   this._brush_size = Math.min(30, this._brush_size+=1);
-  if (this._adjust_mode == 2) this.circle_cursor();
+  if (DOJO.mode == DOJO.modes.adjust) this.circle_cursor();
 };
 
 J.controller.prototype.smaller_brush = function() {
 
   this._brush_size = Math.max(1, this._brush_size-=1);
-  if (this._adjust_mode == 2) this.circle_cursor();
+  if (DOJO.mode == DOJO.modes.adjust) this.circle_cursor();
 };
 
 
 J.controller.prototype.circle_cursor = function() {
 
   var scale  = this._viewer._camera._view[0];
-  var icon_r = Math.round( scale * this._brush_size / 2 );
+  var icon_r = Math.round( scale * this._brush_size / 2 / (this._viewer._camera._w + 1) );
   var R_MAX = 63;
   if (icon_r > R_MAX) icon_r = R_MAX;
   
@@ -822,7 +822,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   if (id == 0) return;
 
   console.log('start adjust');
-  this.circle_cursor();
+  //this.circle_cursor();
   this._adjust_mode = 1;
   this._adjust_id = id;
   this._brush_ijs = [];
@@ -841,6 +841,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
 J.controller.prototype.start_adjust_colorbox = function() {
 
   if (id == 0) return;
+  if (this._adjust_id < 1) return;
   this._adjust_mode = 1;
   this._brush_ijs = [];
   
@@ -848,7 +849,7 @@ J.controller.prototype.start_adjust_colorbox = function() {
   this._brush_sizes    = [];
   this._viewer = DOJO.viewer;
 
-  this.circle_cursor();
+  //this.circle_cursor();
   this.activate(this._adjust_id);
 };
 
@@ -860,6 +861,10 @@ J.controller.prototype.draw_adjust = function(x, y) {
 
 	var i_js = this._viewer.xy2ij(x, y);
     var color = this._viewer.get_color(this._adjust_id);
+
+	//console.log('this._adjust_id : ', this._adjust_id);
+	//console.log('i_js            : ', i_js);
+	//console.log('color           : ', color);
 
 	////
 	//// Mod by H Urakubo
@@ -914,7 +919,7 @@ J.controller.prototype.end_adjust = function() {
   data['brush_segment_ids'] = this._brush_segment_ids;
   this.send('ADJUST', data);
 
-  this.regular_cursor();
+  // this.regular_cursor();
   this._adjust_mode = 3;
 
 };
@@ -932,7 +937,7 @@ J.controller.prototype.finish_adjust = function(values) {
   var color1 = DOJO.viewer.get_color(this._adjust_id);
   var color1_hex = rgbToHex(color1[0], color1[1], color1[2]);
   var log = 'User $USER adjusted label <font color="'+color1_hex+'">'+this._adjust_id+'</font>.';
-  this.regular_cursor();
+  // this.regular_cursor();
   this.send_log(log);
 
 };
@@ -1053,14 +1058,14 @@ J.controller.prototype.discard = function() {
   } else {
 
     this._adjust_mode = -1;
-    this._adjust_id = -1;
+    //this._adjust_id = -1;
 
     this._split_mode = -1;
     this._brush_bbox = [];
     this._brush_ijs = [];
     this._last_id = null;
     this.activate(null);
-    this._viewer._canvas.style.cursor = '';
+    if (DOJO.mode != DOJO.modes.adjust)	this._viewer._canvas.style.cursor = '';
     this._viewer.clear_overlay_buffer();
   }
 

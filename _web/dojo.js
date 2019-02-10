@@ -130,12 +130,9 @@ DOJO.setup_buttons = function() {
         adjust.style.display = 'none';
         adjust_selected.style.display = 'block';
         DOJO.mode = DOJO.modes.adjust;
-        
-        //console.log( 'DOJO.viewer._controller._brush_size: ', DOJO.viewer._controller._brush_size )
-        //iconname = ('000' + DOJO.viewer._controller._brush_size).slice(-3);
-        //iconname = 'url(gfx/cursors/' + iconname + '.ico) 32 32, auto';
-        //console.log( iconname )
-        //DOJO.viewer._canvas.style.cursor = iconname;
+        console.log(DOJO.viewer._controller)
+		DOJO.viewer._controller.circle_cursor()
+        //DOJO.viewer._canvas.style.cursor = iconname; 
       } else {
       	DOJO.viewer._canvas.style.cursor = 'auto';
         DOJO.reset_tools();
