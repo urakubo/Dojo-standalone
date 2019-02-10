@@ -797,12 +797,9 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   if (id == 0) return;
 
   console.log('start adjust');
-  console.log('This viewer: ');
-  console.log(this._viewer);
 
   this._adjust_mode = 1;
   this._adjust_id = id;
-  // this._adjust_prev_id = id;
   this._brush_ijs = [];
   
   // H Urakubo
@@ -811,12 +808,21 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   var color = this._viewer.get_color(this._adjust_id);
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
-  this._viewer._canvas.style.cursor = 'crosshair';
+  // this._viewer._canvas.style.cursor = 'crosshair';
+  // this._viewer._canvas.style.cursor = 'url("http://alphasis.info/wp-content/uploads/2013/10/cursor32x32-himawari.ico"),auto';
+  var host = "http://"+window.location.hostname+":"+window.location.port+"/dojo/gfx/circle2.ico";
+  console.log(host)
+  this._viewer._canvas.style.cursor = 'url(host),auto';
+
+
+
   this.activate(id);
 };
 
 
 J.controller.prototype.start_adjust_colorbox = function() {
+
+  if (id == 0) return;
   this._adjust_mode = 1;
   this._brush_ijs = [];
   
