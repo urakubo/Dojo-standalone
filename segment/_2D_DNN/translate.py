@@ -941,6 +941,32 @@ def save_images(fetches, step=None):
     return filesets
 
 
+def save_images_test(fetches, step=None):
+    image_dir = a.output_dir ##
+    if not os.path.exists(image_dir):
+        os.makedirs(image_dir)
+
+    filesets = []
+    for i, in_path in enumerate(fetches["input_paths"]):
+        name, _ = os.path.splitext(os.path.basename(in_path.decode("utf8")))
+        fileset = {"name": name, "step": step}
+        if not a.model == 'pix2pix':
+            target_path =  fetches["target_paths"][i]
+            name2, _ = os.path.splitext(os.path.basename(target_path.decode("utf8")))
+            fileset["name2"] = name2
+
+        filename = name + ".png"
+        if step is not None:
+        	filename = "%08d-%s" % (step, filename)
+        fileset['outputs'] = filename
+        out_path = os.path.join(image_dir, filename)
+        contents = fetches['outputs'][i]
+        with open(out_path, "wb") as f:
+        	f.write(contents)
+        filesets.append(fileset)
+    return filesets
+
+
 def append_index(filesets, step=False):
     index_path = os.path.join(a.output_dir, "index.html")
     if os.path.exists(index_path):
@@ -1085,7 +1111,7 @@ def main():
             max_steps = min(examples.steps_per_epoch, max_steps)
             for step in range(max_steps):
                 results = sess.run(display_fetches)
-                filesets = save_images(results)
+                filesets = save_images_test(results)
                 for i, f in enumerate(filesets):
                     print("evaluated image", f["name"])
                 index_path = append_index(filesets)
