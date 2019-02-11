@@ -7,7 +7,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 - https://opendatacommons.org/licenses/by/1-0/
 - http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
-#### Target EM images and ground truth segmentation 
+#### Target EM images and ground truth
 
 1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder under the UNI-EM ([UNI-EM). Here a training image was stored in "[UNI-EM]/data/_2DNN_training_images", and ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
