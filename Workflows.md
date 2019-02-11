@@ -9,7 +9,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 
 #### Target EM images and ground truth
 
-1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder under the UNI-EM ([UNI-EM). Here a training image was stored in "[UNI-EM]/data/_2DNN_training_images", and ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder under the UNI-EM ([UNI-EM]). Here a training image was stored in "[UNI-EM]/data/_2DNN_training_images", and ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
@@ -23,10 +23,10 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 
 2. Launch the UNI-EM.
 
-3. Select "Segmentation → 2DNN" from the dropdown menu to lauch a dialogue for the training and inference of 2D DNNs (**Fig. 2a**).
+3. Select "Segmentation → 2DNN" from UNI-EM dropdown menu to lauch the dialogue that is named as 2D DNN (**Fig. 2a**).
 	- Select the Training tab (**Fig. 2b**).
-	- Confirm that "Image Folder" targets "[UNI-EM]/data/_2DNN_training_images" (**Fig. 2c**), 、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
-	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
+	- Confirm that "Image Folder" targets "[UNI-EM]/data/_2DNN_training_images" (**Fig. 2c**), "Segmentation Folder" targets "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 2d**), and "Checkpoint Folder" targets "[UNI-EM]/data/_2DNN_model_tensorflow" (**Fig. 2e**).
+	- Resnet is one of the best network tolopgies for mitochondria segmentation. Select "resnet" from  (Ref 1) ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
 	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
 
 4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください(**Fig. 2g**)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
