@@ -3,7 +3,7 @@
 ## 2次元DNNによるミトコンドリアのセグメンテーション
 UNI-EMを用いて行うセグメンテーションの一例として、2次元DNNによるミトコンドリアのセグメンテーションを行います。
 
-1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"_2DNN_training_images" にトレーニング画像、"_2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
+1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_2DNN_training_images" にトレーニング画像、"[UNI-EM]/data/_2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
 
 #### ● 教師セグメンテーションに基づいた2次元DNNのトレーニングと推論を行います。
 
@@ -11,7 +11,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください。
 	- Training タブを選択してください。
-	- 最上段のImage Folder 右列の "Browse..."をクリックしてトレーニング画像が存在すること、Segmentation Folder 右列の "Browse..."をクリックして教師セグメンテーション画像が存在することを確認してください。また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください。
+	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください。
 	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し、 N res blocks を 16 に設定します。
 	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
 
@@ -35,7 +35,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         saving model
 ```
 5. 2D DNNダイアログのInferenceタブを選択してください。
-	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であり、右列の "Browse..."をクリックして推論用画像が存在すること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
+	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
 
 6. Inferenceタブ最下段の Execute をクリックして、Inferenceを開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
 ```2D DNN Inference
@@ -50,7 +50,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
+7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 #### ● 推定結果に対して、二値化およびラベル化による後処理を行います。
 
