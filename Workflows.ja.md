@@ -78,12 +78,12 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Binary was executed!
 ```
 
-9. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
+10. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
 	- Label (ラベルづけ) タブを選択してください。
 	- Target Folder を **"[UNI-EM]/data/_2DNN_segmentation"** に設定してください。
 	- Output Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
 
-10. Label タブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
+11. Label タブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
 ```3D Labeling
         Target Folder:  [UNI-EM]/data/_2DNN_segmentation
         Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
@@ -93,20 +93,20 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 #### ● 推論セグメンテーションのプルーフリード、視覚化、アノテーション
 
-11. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
+12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
 	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
 	- Source Segmentation Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
 	- **分かりやすい場所に Destination Dojo Folder を作成・指定してください。**フォルダ中にDojo形式でファイルが保存されます。
 
-12. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します（図1）。
+13. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します（図1）。
 
-13. 下段のSliceバー、上段のZoomバー、Opacityバーを動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
+14. 下段のSliceバー、上段のZoomバー、Opacityバーを動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
 
-14. 不正確なセグメンテーションがある場合は、ひょうたん形状のAdjustボタンをクリックして、欠損がある部分を補強したり、過剰な部分を削ったりするプルーフリード（校正）を行ってください（図）。
+15. 不正確なセグメンテーションがある場合は、ひょうたん形状のAdjustボタンをクリックして、欠損がある部分を補強したり、過剰な部分を削ったりするプルーフリード（校正）を行ってください（図）。
 
-15. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Import Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
+16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Import Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
 
-16. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます（図）。詳細な使い方は[使い方：3D Annotator](#3D-Annotator)をご覧ください。
+17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます（図）。詳細な使い方は[使い方：3D Annotator](#3D-Annotator)をご覧ください。
 
 
 - (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
