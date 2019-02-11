@@ -1,9 +1,11 @@
 # 適用事例
 
-### 2次元DNNによるミトコンドリアのセグメンテーション
+## 2次元DNNによるミトコンドリアのセグメンテーション
 UNI-EMを用いて行うセグメンテーションの一例として、2次元DNNによるミトコンドリアのセグメンテーションを行います。
 
 1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"_2DNN_training_images" にトレーニング画像、"_2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
+
+### 教師セグメンテーションに基づいた2次元DNNのトレーニングと推論を行います。
 
 2. UNI-EMを起動してください。
 
@@ -34,6 +36,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 5. 2D DNNダイアログのInferenceタブを選択してください。
 	- 最上段のImage Folder右列の "Browse..."をクリックして推論用画像が存在すること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_model_inference" が存在すること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
+
 6. Inferenceタブ最下段の Execute をクリックして、Inferenceを開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
 ```2D DNN Inference
         parameter_count = 68334848
@@ -49,7 +52,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
 
-続いて、推定結果に対して、二値化およびラベル化による後処理を行います。
+### 推定結果に対して、二値化およびラベル化による後処理を行います。
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
 	- Binary (二値化) タブを選択してください。
@@ -69,6 +72,9 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         No: 99
         Binary was executed!
 ```
+
+### 後処理した推論セグメンテーションのプルーフリード、視覚化、アノテーションを行います。
+
 10. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
 	- Label (ラベルづけ) タブを選択してください。
 	- Target Folder を ## "[UNI-EM]/data/_2DNN_segmentation" ## に設定してください。
@@ -82,5 +88,8 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Saving images ...
         Label was executed!
 ```
+
+
+
 - (参考1) Dr. Torsten Bullmann ミトコンドリアのセグメンテーションのために最適なモデルを探索しました。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
