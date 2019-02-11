@@ -136,7 +136,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
   <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
 </p>
 
-<p></p>
+<BR><BR>
 <p></p>
 
 - (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
