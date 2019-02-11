@@ -15,7 +15,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
 ```2D DNN Training
-progress  epoch 49  step 1  image/sec 5.2  remaining 6m
+    progress  epoch 49  step 1  image/sec 5.2  remaining 6m
 discrim_loss 0.49639216
 gen_loss_GAN 0.41848987
 gen_loss_classic 0.13485438
