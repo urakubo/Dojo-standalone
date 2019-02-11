@@ -47,11 +47,40 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_model_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
+7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
 
 続いて、推定結果に対して、二値化およびラベル化による後処理を行います。
-8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
-	- Training タブを選択してください。
 
-- (参考1) Dr. Torsten Bullmann ミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
+8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
+	- Binary (二値化) タブを選択してください。
+	- Target Folder が "[UNI-EM]/data/_2DNN_inference" であることを確認してください。
+	- Output Folder が "[UNI-EM]/data/_2DNN_segmentation" であることを確認してください。
+	- Target X, Target Y, Target Z を動かすと Target Folder内画像のサムネイルが Target image に表示されます。"Obtain sample output"ボタンをクリックすると、二値化結果が表示されます。
+
+9. Binary タブ最下段の Execute をクリックして、二値化を行ってください。コンソールに次の様なプログレスメッセージが現れます。
+```2D Binarization
+        Target Folder:  [UNI-EM]/data/_2DNN_inference
+        Output Folder:  [UNI-EM]/data/_2DNN_segmentation
+        No: 0
+        No: 1
+        ...
+        ...
+        No: 98
+        No: 99
+        Binary was executed!
+```
+10. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
+	- Label (ラベルづけ) タブを選択してください。
+	- Target Folder を ## "[UNI-EM]/data/_2DNN_segmentation" ## に設定してください。
+	- Output Folder を # "[UNI-EM]/data/_2DNN_segmentation2" # に設定してください。
+
+11. Labelタブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
+```3D Labeling
+        Target Folder:  [UNI-EM]/data/_2DNN_segmentation
+        Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
+        Loading images ...
+        Saving images ...
+        Label was executed!
+```
+- (参考1) Dr. Torsten Bullmann ミトコンドリアのセグメンテーションのために最適なモデルを探索しました。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
