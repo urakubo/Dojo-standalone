@@ -5,7 +5,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_2DNN_training_images" にトレーニング画像、"[UNI-EM]/data/_2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
 
-#### ● 2次元DNNのトレーニングと推論を行います。
+#### ● 2次元DNNのトレーニングと推論
 
 2. UNI-EMを起動してください。
 
@@ -52,7 +52,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
-#### ● 推論セグメンテーションに対して、二値化およびラベル化による後処理を行います。
+#### ● 推論セグメンテーションに対する二値化およびラベル化による後処理
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
 	- Binary (二値化) タブを選択してください。
@@ -73,18 +73,33 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Binary was executed!
 ```
 
-#### ● 推論セグメンテーションのプルーフリード、視覚化、アノテーションを行います。
+9. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
+	- Label (ラベルづけ) タブを選択してください。
+	- Target Folder を **"[UNI-EM]/data/_2DNN_segmentation"** に設定してください。
+	- Output Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
+
+10. Label タブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
+```3D Labeling
+        Target Folder:  [UNI-EM]/data/_2DNN_segmentation
+        Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
+        Loading images ...
+        Saving images ...
+        Label was executed!
+```
+#### ● 推論セグメンテーションのプルーフリード、視覚化、アノテーション
 
 10. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- **Source Image Folder を "[UNI-EM]/data/_2DNN_" に設定してください。**
-	- **Source Segmentation Folder を "[UNI-EM]/data/_2DNN_segmentation2" に設定してください。**
-	- Destination Dojo Folder を分かりやすい場所に指定してください。フォルダ中にDojo形式でファイルが保存されます。
+	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
+	- Source Segmentation Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
+	- **分かりやすい場所に Destination Dojo Folder を作成・指定してください。**フォルダ中にDojo形式でファイルが保存されます。
 
-11. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。Dojoファイル作成後、Dojo が起動します。
+11. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。Dojoファイル作成後、Dojo が起動します（図1）。
 
-12. 
+12. 下段のSliceバーを動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
 
+13. 不正確なセグメンテーションがある場合は、
 
+14. 
 
 - (参考1) Dr. Torsten Bullmann ミトコンドリアのセグメンテーションのために最適なモデルを探索しました。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
