@@ -8,8 +8,9 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
 </p>
-<center> <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font> </center>
-
+<p align="center">
+  <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
+</p>
 
 
 #### ● 2次元DNNのトレーニングと推論
