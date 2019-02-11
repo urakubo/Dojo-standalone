@@ -44,9 +44,9 @@ J.controller = function(viewer) {
   this._split_line = [];
   this._adjust_mode = -1;
   this._adjust_id = -1;
-  //this._adjust_prev_id = -1;
+  this._adjust_prev_id = -1;
   this._brush_bbox = [];
-  this._brush_size = 3;
+  this._brush_size = 10;
   this._brush_ijs = [];
   
   // H Urakubo
@@ -831,6 +831,7 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   this._brush_segment_ids = [];
   this._brush_sizes    = [];
   var color = this._viewer.get_color(this._adjust_id);
+  this._adjust_prev_id = this._adjust_id;
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
 
@@ -850,8 +851,23 @@ J.controller.prototype.start_adjust_colorbox = function() {
   this._viewer = DOJO.viewer;
 
   //this.circle_cursor();
+  this.activate(this._adjust_prev_id);
+};
+
+
+J.controller.prototype.start_adjust_eraser = function() {
+
+	console.log("Anyway eraser was activated.")
+
+  this._adjust_id = 0;
+  this._adjust_mode = 1;
+  this._brush_ijs = [];
+  this._brush_segment_ids = [];
+  this._brush_sizes    = [];
+  this._viewer = DOJO.viewer;
   this.activate(this._adjust_id);
 };
+
 
 J.controller.prototype.draw_adjust = function(x, y) {
 

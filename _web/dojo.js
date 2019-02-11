@@ -130,7 +130,7 @@ DOJO.setup_buttons = function() {
         adjust.style.display = 'none';
         adjust_selected.style.display = 'block';
         DOJO.mode = DOJO.modes.adjust;
-        console.log(DOJO.viewer._controller)
+        //console.log(DOJO.viewer._controller)
 		DOJO.viewer._controller.circle_cursor()
         //DOJO.viewer._canvas.style.cursor = iconname; 
       } else {
@@ -221,6 +221,13 @@ DOJO.setup_buttons = function() {
   adjust_start_colorbox.onclick = function() {
   			if (!DOJO.viewer.is_locked(this._adjust_id))
 				DOJO.viewer._controller.start_adjust_colorbox()
+  		}
+
+
+  var adjust_start_eraser = document.getElementById('eraser');
+  adjust_start_eraser.onclick = function() {
+  			if (!DOJO.viewer.is_locked(this._adjust_id))
+				DOJO.viewer._controller.start_adjust_eraser()
   		}
 
 
