@@ -57,7 +57,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 
 
-#### ● 推論セグメンテーションに対する二値化およびラベル化による後処理
+#### ● 推論結果の後処理 [二値化およびラベル化]
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
 	- Binary (二値化) タブを選択してください。
@@ -91,7 +91,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Saving images ...
         Label was executed!
 ```
-#### ● 推論セグメンテーションのプルーフリード、視覚化、アノテーション
+#### ● 推論結果のプルーフリード、視覚化、アノテーション
 
 12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
 	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
