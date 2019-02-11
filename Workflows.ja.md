@@ -9,13 +9,13 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 2. UNI-EMを起動してください。
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください。
-	- Training タブを選択してください。
-	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください。
-	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し、 N res blocks を 16 に設定します。
+3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください(Fig. 1a)。
+	- Training タブを選択してください(Fig. 1b)。
+	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること(Fig. 1c)、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(Fig. 1d)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(Fig. 1e)。
+	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(Fig. 1f)、 N res blocks を 16 に設定します(Fig. 1g)。
 	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
 
-4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
+4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください(Fig. 1g)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
 ```2D DNN Training
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
@@ -54,7 +54,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 <html>
 <figure align="center">
-<img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" width="600" alt="2D DNN Training">
+<img style="text-align:center;"><img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN Training" width="600"></img>
 <figcaption> <font size="5"> <b>Figure 1. 2D DNN Training</b> </font> </figcaption>
 </figure>
 </html>
