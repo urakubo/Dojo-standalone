@@ -54,13 +54,10 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 <html>
 <figure id="kaeru">
-<img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN Training">
-<figcaption><center> 2D DNN Training </center></figcaption>
+<img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" width="200" alt="2D DNN Training">
+<center><figcaption> <b>2D DNN Training<b> </figcaption></center>
 </figure>
 </html>
-
-![2D DNN Training](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png "2D DNN Training")
-        **Figure. 1**
 
 
 #### ● 推論セグメンテーションに対する二値化およびラベル化による後処理
