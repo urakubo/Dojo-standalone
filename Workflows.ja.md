@@ -11,7 +11,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 <p align="center">
   <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
 </p>
-
+<BR>
 
 #### ● 2次元DNNのトレーニングと推論
 
@@ -66,7 +66,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 <p align="center">
   <font size="5"> <b>Figure 2. 2D DNN training dialog</b> </font>
 </p>
-
+<BR>
 
 
 #### ● 推論結果の後処理 [二値化およびラベル化]
@@ -110,7 +110,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 <p align="center">
   <font size="5"> <b>Figure 3. Dialog for binarization</b> </font>
 </p>
-
+<BR>
 
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
 
