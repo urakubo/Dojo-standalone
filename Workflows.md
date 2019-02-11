@@ -1,15 +1,15 @@
 # Example workflows
 
 ## 1. Mitochondria segmentation by use of 2D DNN
-Here we try automated mitochondria segmentation by use of 2D DDN. The target stack of EM images was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used automatic tape-collecting ultra-microtome (ATUM) for SEM imaging (ATUM/SEM). This stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The target brain region is mouse somatosensory cortex, and the EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
+Here we try automated mitochondria segmentation by use of a 2-dimentional deep neural network (2D DNN). The target stack of EM images was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM). This stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The target brain region is mouse somatosensory cortex, and the EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
 - http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
-#### Training and inference by use of 2D DNN
+#### Target EM images and ground truth segmentation 
 
-1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_2DNN_training_images" にトレーニング画像、"[UNI-EM]/data/_2DNN_ground_truth" に教師セグメンテーションが入ります(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
+1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder under the UNI-EM ([UNI-EM). Here a training image was stored in "[UNI-EM]/data/_2DNN_training_images", and ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
@@ -19,13 +19,13 @@ Here we try automated mitochondria segmentation by use of 2D DDN. The target sta
 </p>
 <BR>
 
-#### ● 2次元DNNのトレーニングと推論
+#### Training and inference by use of 2D DNN
 
-2. UNI-EMを起動してください。
+2. Launch the UNI-EM.
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
-	- Training タブを選択してください(**Fig. 2b**)。
-	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること(**Fig. 2c**)、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
+3. Select "Segmentation → 2DNN" from the dropdown menu to lauch a dialogue for the training and inference of 2D DNNs (**Fig. 2a**).
+	- Select the Training tab (**Fig. 2b**).
+	- Confirm that "Image Folder" targets "[UNI-EM]/data/_2DNN_training_images" (**Fig. 2c**), 、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
 	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
 	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
 
