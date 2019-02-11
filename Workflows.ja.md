@@ -76,18 +76,13 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 #### ● 後処理した推論セグメンテーションのプルーフリード、視覚化、アノテーションを行います。
 
 10. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- Source Image Folder を ## "[UNI-EM]/data/_2DNN_" ## に設定してください。
-	- Source Segmentation Folder を ## "[UNI-EM]/data/_2DNN_segmentation2" ## に設定してください。
+	- **Source Image Folder を "[UNI-EM]/data/_2DNN_" に設定してください。**
+	- **Source Segmentation Folder を "[UNI-EM]/data/_2DNN_segmentation2" に設定してください。**
 	- Destination Dojo Folder を分かりやすい場所に指定してください。フォルダ中にDojo形式でファイルが保存されます。
 
-11. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。
-```3D Labeling
-        Target Folder:  [UNI-EM]/data/_2DNN_segmentation
-        Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
-        Loading images ...
-        Saving images ...
-        Label was executed!
-```
+11. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。Dojoファイル作成後、Dojo が起動します。
+
+12. 
 
 
 
