@@ -123,7 +123,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 14. 下段のSliceバー(**Fig. 3b**)、上段のZoomバー(**Fig. 3c**)、Opacityバー(**Fig. 3d**)を動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
 
-15. 不正確なセグメンテーションがある場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 3e**)、欠損がある部分を補強したり、過剰な部分を消しゴムで削ったりするプルーフリード（校正）を行ってください(**Fig. 3f**)。
+15. 不正確なセグメンテーションを校正する場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 3e**)、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 3f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
 
 16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Export Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
 
@@ -131,7 +131,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="600">
+  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
