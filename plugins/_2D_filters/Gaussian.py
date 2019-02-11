@@ -23,7 +23,7 @@ class Gaussian():
         outpath =  os.path.join(datadir, "_2DNN_segmentation")
         self.paramfile = os.path.join(datadir, "parameters", "Gaussian_2D.pickle")
 
-        self.filter_name = 'Gaussian'
+        self.filter_name = 'Gaussian Blur'
 
         self.tips = [
                         'Minimum number of pixels separating peaks'
