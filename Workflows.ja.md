@@ -137,7 +137,6 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 </p>
 
 <BR><BR>
-<p></p>
 
 - (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
