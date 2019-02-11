@@ -5,7 +5,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 1. 下の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"_2DNN_training_images" にトレーニング画像、"_2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoでも作成できるようにする予定です。
 
-#### 1. 教師セグメンテーションに基づいた2次元DNNのトレーニングと推論を行います。
+#### ● 教師セグメンテーションに基づいた2次元DNNのトレーニングと推論を行います。
 
 2. UNI-EMを起動してください。
 
@@ -52,7 +52,7 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
 
-#### 2. 推定結果に対して、二値化およびラベル化による後処理を行います。
+#### ● 推定結果に対して、二値化およびラベル化による後処理を行います。
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
 	- Binary (二値化) タブを選択してください。
@@ -73,14 +73,14 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Binary was executed!
 ```
 
-#### 3. 後処理した推論セグメンテーションのプルーフリード、視覚化、アノテーションを行います。
+#### ● 後処理した推論セグメンテーションのプルーフリード、視覚化、アノテーションを行います。
 
 10. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- Source Image Folder を ## "[UNI-EM]/data/_2DNN_segmentation" ## に設定してください。
+	- Source Image Folder を ## "[UNI-EM]/data/_2DNN_" ## に設定してください。
 	- Source Segmentation Folder を ## "[UNI-EM]/data/_2DNN_segmentation2" ## に設定してください。
-	- Output Folder を # "[UNI-EM]/data/_2DNN_segmentation2" # に設定してください。
+	- Destination Dojo Folder を分かりやすい場所に指定してください。フォルダ中にDojo形式でファイルが保存されます。
 
-11. Labelタブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
+11. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。
 ```3D Labeling
         Target Folder:  [UNI-EM]/data/_2DNN_segmentation
         Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
