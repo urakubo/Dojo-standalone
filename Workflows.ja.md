@@ -34,10 +34,10 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         gen_loss_classic 0.04729831
         saving model
 ```
-5. 2D DNNダイアログのInferenceタブを選択してください。
+5. 2D DNNダイアログのInferenceタブを選択してください(**Fig. 1b**)。
 	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
 
-6. Inferenceタブ最下段の Execute をクリックして、Inferenceを開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
+6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
 ```2D DNN Inference
         parameter_count = 68334848
         loading all from checkpoint
