@@ -119,15 +119,24 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 	- Source Segmentation Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
 	- 分かりやすい場所にフォルダを作成して Destination Dojo Folder に指定してください。フォルダ中にDojo形式でファイルが保存されます。
 
-13. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します（図1）。
+13. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します(**Fig. 3a**)。
 
-14. 下段のSliceバー、上段のZoomバー、Opacityバーを動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
+14. 下段のSliceバー(**Fig. 3b**)、上段のZoomバー(**Fig. 3c**)、Opacityバー(**Fig. 3d**)を動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
 
-15. 不正確なセグメンテーションがある場合は、ひょうたん形状のAdjustボタンをクリックして、欠損がある部分を補強したり、過剰な部分を削ったりするプルーフリード（校正）を行ってください（図）。
+15. 不正確なセグメンテーションがある場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 3e**)、欠損がある部分を補強したり、過剰な部分を消しゴムで削ったりするプルーフリード（校正）を行ってください(**Fig. 3f**)。
 
-16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Import Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
+16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Export Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
 
-17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます（図）。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
+17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 3b**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
+
+
+<p align="center">
+  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="600">
+</p>
+<p align="center">
+  <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
+</p>
+
 
 
 - (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
