@@ -4,7 +4,9 @@
 UNI-EMを用いて行う2D DNNセグメンテーションの一例として、ATUM/SEMによって連続断層撮影されたMouse somatosensory cortexのミトコンドリアのセグメンテーションを行います。撮影データは ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)) において用いられたものをそもまま使用させて頂いております。同データを用いた論文は Kasthuri et al. ( Cell 162(3):648-61, 2015 ) として出版され、その後EM画像は Open Data Commons Attribution License (ODC-By) v1.0 ライセンスのもと公開されています。
 
 https://neurodata.io/data/kasthuri15/
+
 https://opendatacommons.org/licenses/by/1-0/
+
 http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
 #### ● 2次元DNNのトレーニングと推論
