@@ -5,9 +5,10 @@
 - [インストール方法](#インストール方法)
 - [使い方：校正ソフトウェアDojo](#校正ソフトウェアDojo)
 - [使い方：3D Annotator](#3D-Annotator)
-- [使い方：二次元DNNを用いたセグメンテーション](#二次元DNNを用いたセグメンテーション)
-- [使い方：三次元FFNを用いたセグメンテーション](#三次元FFNを用いたセグメンテーション)
+- [使い方：2次元DNNを用いたセグメンテーション](#2次元DNNを用いたセグメンテーション)
+- [使い方：3次元FFNを用いたセグメンテーション](#3次元FFNを用いたセグメンテーション)
 - [使い方：2D/3Dフィルタ](#2D3Dフィルタ)
+- [使用例：2次元DNNによるミトコンドリアのセグメンテーション](#2次元DNNによるミトコンドリアのセグメンテーション)
 - [お願い](#お願い)
 
 ## はじめに：
@@ -85,8 +86,8 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 ![3D Annotator](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Annotator.png "3D Annotator")
 
 
-### 二次元DNNを用いたセグメンテーション：
-コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて二次元EM画像のセグメンテーションを行うことができます。U-netは空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。Torsten Bullmann博士が実装を行いました。
+### 2次元DNNを用いたセグメンテーション：
+コントロールパネルからResNet/U-net/Highwaynet/Densenet に基づいて2次元EM画像のセグメンテーションを行うことができます。U-netは空間高周波数の境界部分と大域的な特徴の両方を同時に抽出することのできる優れたCNNです。Torsten Bullmann博士が実装を行いました。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
 
 1. Vast liteを利用するなどして ( https://software.rc.fas.harvard.edu/lichtman/vast/ )、EM画像から正解セグメンテーション（ground truth）を作成してください。EM画像、Segmentation画像のペアとして、Dojo-standalone/data/_2DNN_training_imagesおよびDojo-standalone/data/ _2DNN_ground_truth_imagesフォルダに保存してください。画像フォーマットはどちらもgray scale png, tiffとしてください。
@@ -120,8 +121,8 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 ![2D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "2D DNN")
 
 
-### 三次元FFNを用いたセグメンテーション
-Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNはPaintルーチンのアルゴリズムを基盤として、境界を3D DNNにより決定する細胞膜専用のセグメンターです。 **[実装しました。説明書き中]** 
+### 3次元FFNを用いたセグメンテーション
+Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基づいています。FFNはPaintルーチンのアルゴリズムを基盤として、境界を3D DNNにより決定する細胞膜専用のセグメンターです。 **[実装しました。使用方法は英語ページをご覧ください]** 
 
  <https://github.com/google/ffn>
 
@@ -134,6 +135,12 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 ### 2D/3Dフィルタ
 2Dスタック画像を対象とした、各種の2D/3Dフィルタ関数が実装されています。
 上端のドロップダウンメニュー左から四番目のPlugins → 2D Filters, 2D Watershed, 3D Filtersを選択してください。各フィルタのダイアログが起動します。特に2D DNN セグメンテーション適用後の後処理に使用することを想定しています。順次機能拡張予定です。
+
+
+## はじめに：
+### 2次元DNNによるミトコンドリアのセグメンテーション
+UNI-EMを用いて行うセグメンテーションの例として、
+
 
 ## お願い：
 2019/2/1まだ実用では使われていません。しかし、日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします（urakubo-h あっと sys.i.kyoto-u.ac.jp; **[参考3]** ）。私一人で開発を続けることは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
