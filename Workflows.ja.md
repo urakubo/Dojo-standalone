@@ -16,40 +16,39 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
 ```2D DNN Training
     progress  epoch 49  step 1  image/sec 5.2  remaining 6m
-discrim_loss 0.49639216
-gen_loss_GAN 0.41848987
-gen_loss_classic 0.13485438
-recording summary
-progress  epoch 99  step 1  image/sec 5.5  remaining 5m
-discrim_loss 0.69121116
-gen_loss_GAN 0.73412275
-gen_loss_classic 0.13613938
-...
-...
-progress  epoch 1999  step 1  image/sec 7.3  remaining 0m
-discrim_loss 0.715416
-gen_loss_GAN 2.1579466
-gen_loss_classic 0.04729831
-saving model
+    discrim_loss 0.49639216
+    gen_loss_GAN 0.41848987
+    gen_loss_classic 0.13485438
+    recording summary
+    progress  epoch 99  step 1  image/sec 5.5  remaining 5m
+    discrim_loss 0.69121116
+    gen_loss_GAN 0.73412275
+    gen_loss_classic 0.13613938
+    ...
+    ...
+    progress  epoch 1999  step 1  image/sec 7.3  remaining 0m
+    discrim_loss 0.715416
+    gen_loss_GAN 2.1579466
+    gen_loss_classic 0.04729831
+    saving model
 ```
 5. 2D DNNダイアログのTraining タブを選択してください。
 	- 最上段のImage Folder 右列の "Browse..."をクリックして推論用画像が存在すること、Output Segmentation Folder "[UNI]/data/_2DNN_model_inference" が存在すること、Checkpoint Folder が"[UNI]/data/_2DNN_model_tensorflow" であることを確認してください。
 6. Training タブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"saving model"と表示されたら、Trainingは終了です。
 ```2D DNN Inference
-parameter_count = 68334848
-loading all from checkpoint
-evaluated image 0000
-evaluated image 0001
-evaluated image 0002
-...
-...
-evaluated image 0097
-evaluated image 0098
-evaluated image 0099
+    parameter_count = 68334848
+    loading all from checkpoint
+    evaluated image 0000
+    evaluated image 0001
+    evaluated image 0002
+    ...
+    ...
+    evaluated image 0097
+    evaluated image 0098
+    evaluated image 0099
 ```
-7. Training タブ最下段の Execute をクリックして、推論を開始してください。2D DNN の推論プログラムが別プロセスで呼び出されます。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"saving model"と表示されたら、Trainingは終了です。
+7. Output Segmentation Folder "[UNI]/data/_2DNN_model_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
 8. Output Segmentation Folder "[UNI]/data/_2DNN_model_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が存在することを確認してください。
-
 
 - (参考1) Dr. Torsten Bullmann ミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
