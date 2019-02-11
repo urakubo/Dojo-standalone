@@ -8,7 +8,7 @@
 - [使い方：2次元DNNを用いたセグメンテーション](#2次元DNNを用いたセグメンテーション)
 - [使い方：3次元FFNを用いたセグメンテーション](#3次元FFNを用いたセグメンテーション)
 - [使い方：2D/3Dフィルタ](#2D3Dフィルタ)
-- [使用例：2次元DNNによるミトコンドリアのセグメンテーション](#2次元DNNによるミトコンドリアのセグメンテーション)
+- [適用例：2次元DNNによるミトコンドリアのセグメンテーション](#2次元DNNによるミトコンドリアのセグメンテーション)
 - [お願い](#お願い)
 
 ## はじめに：
@@ -137,14 +137,17 @@ Michał Januszewski 博士らが開発した、Flood filling network (FFN)に基
 上端のドロップダウンメニュー左から四番目のPlugins → 2D Filters, 2D Watershed, 3D Filtersを選択してください。各フィルタのダイアログが起動します。特に2D DNN セグメンテーション適用後の後処理に使用することを想定しています。順次機能拡張予定です。
 
 
-## はじめに：
+## 適用例：
 ### 2次元DNNによるミトコンドリアのセグメンテーション
 UNI-EMを用いて行うセグメンテーションの一例として、2次元DNNによるミトコンドリアのセグメンテーションを行います。
 
-1. 次の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身[ __ 2DNN ]をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"__2DNN_training_images" にトレーニング画像、"__2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoで作成可能にする予定です。
+1. 次の Example2DNN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"__2DNN_training_images" にトレーニング画像、"__2DNN_ground_truth" に教師セグメンテーションが入っています（図）。教師セグメンテーションの作成にはVast liteの使用をお勧めします ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。近いうちにDojoで作成可能にする予定です。
 
-2. 続いてUNI-EMを起動して、
+2. 続いて、UNI-EMを起動します。コントロールパネル上端のドロップダウンメニューよりSegmentation → 2DNNを選択して、Training, Inferenceの2つのタブを持つダイアログを起動してください。
 
+3. 最上段のImage Folder 右の "Browse..."をクリックしてトレーニング画像が入っていること、Segmentation Folder 右の "Browse..."をクリックして教師セグメンテーションが入っていることを確認します。また Checkpoint Folder ("[[UNI]]") が存在することを確認します。
+
+4. ミトコンドリアのセグメンテーションにはResNetを用いると高い正確さのセグメンテーションを得ることができます。
 
 
 ## お願い：
