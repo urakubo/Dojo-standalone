@@ -52,6 +52,11 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 ```
 7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
+
+![2D DNN Training](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png "2D DNN Training")
+        **Figure. 1**
+
+
 #### ● 推論セグメンテーションに対する二値化およびラベル化による後処理
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
