@@ -53,9 +53,9 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <html>
-<figure id="kaeru">
+<figure align="center">
 <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" width="600" alt="2D DNN Training">
-<center><figcaption> <font size="5"> <b>Figure 1.: 2D DNN Training<b> </font> </figcaption></center>
+<figcaption> <font size="5"> <b>Figure 1. 2D DNN Training</b> </font> </figcaption>
 </figure>
 </html>
 
