@@ -71,13 +71,13 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 #### ● 推論結果の後処理 [二値化およびラベル化]
 
-8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください。
-	- Binary (二値化) タブを選択してください。
-	- Target Folder が "[UNI-EM]/data/_2DNN_inference" であることを確認してください。
-	- Output Folder が "[UNI-EM]/data/_2DNN_segmentation" であることを確認してください。
-	- Target X, Target Y, Target Z を動かすと Target Folder内画像のサムネイルが Target image に表示されます。"Obtain sample output"ボタンをクリックすると、二値化結果が表示されます。
+8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください(**Fig. 3**)。
+	- Binary (二値化) タブを選択してください(**Fig. 3a**)。
+	- Target Folder が "[UNI-EM]/data/_2DNN_inference" であることを確認してください(**Fig. 3b**)。
+	- Output Folder が "[UNI-EM]/data/_2DNN_segmentation" であることを確認してください(**Fig. 3c**)。
+	- Target X, Target Y, Target Z を動かすと Target Folder内画像のサムネイルが Target image に表示されます(**Fig. 3d**)。"Obtain sample output"ボタンをクリックすると、二値化結果が表示されます(**Fig. 3e**)。
 
-9. Binary タブ最下段の Execute をクリックして、二値化を行ってください。コンソールに次の様なプログレスメッセージが現れます。
+9. Binary タブ最下段の Execute をクリックして、二値化を行ってください(**Fig. 3f**)。コンソールに次の様なプログレスメッセージが現れます。
 ```2D Binarization
         Target Folder:  [UNI-EM]/data/_2DNN_inference
         Output Folder:  [UNI-EM]/data/_2DNN_segmentation
@@ -103,6 +103,15 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
         Saving images ...
         Label was executed!
 ```
+
+<p align="center">
+  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2D_Binary.png" alt="Dialog for binarization" width="600">
+</p>
+<p align="center">
+  <font size="5"> <b>Figure 3. Dialog for binarization</b> </font>
+</p>
+
+
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
 
 12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
