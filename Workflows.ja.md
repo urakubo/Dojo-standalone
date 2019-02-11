@@ -54,8 +54,8 @@ UNI-EMを用いて行うセグメンテーションの一例として、2次元D
 
 <html>
 <figure id="kaeru">
-<img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" width="200" alt="2D DNN Training">
-<center><figcaption> <b>2D DNN Training<b> </figcaption></center>
+<img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" width="600" alt="2D DNN Training">
+<center><figcaption> <h1> <b>Figure 1.: 2D DNN Training<b> </h1> </figcaption></center>
 </figure>
 </html>
 
