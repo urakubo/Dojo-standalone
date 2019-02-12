@@ -77,7 +77,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 #### Postprocessing of inferred segmentation: binarization and labeling
 
-8. Select "Plugins → 2D Filters" from the UNI-EM dropdown menu to lauch the dialogue "2D Filters" (**Fig. 3**).
+8. Select "Plugins → 2D Filters" from the UNI-EM dropdown menu to launch the dialogue "2D Filters" (**Fig. 3**).
 	- Select the Binary tab (**Fig. 3a**).
 	- Confirm that "Target Folder" targets [UNI-EM]/data/_2DNN_inference (**Fig. 3b**).
 	- Confirm that "Output Folder" targets [UNI-EM]/data/_2DNN_segmentation (**Fig. 3c**)。
@@ -120,7 +120,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 #### Proofreading, annotation, and visualization of inferred segmentation
 
-12. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to lauch the dialogue "Import Images & Segments".
+12. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to launch the dialogue "Import Images & Segments".
 	- Set "Source Image Folder" as **[UNI-EM]/data/_2DNN_test_images** .
 	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_2DNN_segmentation2** .
 	- Create a file folder and set it as "Destination Dojo Folder". Dojo style files will be generated in this folder.
@@ -129,7 +129,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 14. Inspect successsful segmentaion visually by manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
 
-15. Modify inaccurate segmentation by entering the mode "Adjust". Click  不正確なセグメンテーションを校正する場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 4e**)、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 4f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
+15. Correct errorous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two areas (**Fig. 4e**). In the adjust mode, users can fill void by dragging circled .、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 4f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
 
 16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Export Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
 
