@@ -1,6 +1,5 @@
-# Example workflows
+# Example workflow 1: Mitochondria segmentation by use of 2D DNN
 
-## 1. Mitochondria segmentation by use of 2D DNN
 Here we try automated mitochondria segmentation of a stack of EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. The EM stack was originally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
 
 - https://neurodata.io/data/kasthuri15/
