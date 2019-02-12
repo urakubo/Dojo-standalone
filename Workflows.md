@@ -64,7 +64,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
         evaluated image 0098
         evaluated image 0099
 ```
-7. Confirm that the "Output Segmentation Folder" [UNI]/data/_2DNN_inference contains 0000.png, 0001.png, ..., 0099.png .
+7. Confirm that the "Output Segmentation Folder" [UNI-EM]/data/_2DNN_inference contains 0000.png, 0001.png, ..., 0099.png .
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
