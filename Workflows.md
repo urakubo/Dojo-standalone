@@ -1,7 +1,7 @@
 # Example workflows
 
 ## 1. Mitochondria segmentation by use of 2D DNN
-Here we try automated mitochondria segmentation by use of a 2-dimentional deep neural network (2D DNN). The target stack of EM images was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM). This stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The target brain region is mouse somatosensory cortex, and the EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
+Here we try automated mitochondria segmentation by use of a 2-dimentional deep neural network (2D DNN). The target EM-image stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM). This stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The target brain region is mouse somatosensory cortex, and the EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
@@ -9,7 +9,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 
 #### Target EM images and ground truth
 
-1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder under the UNI-EM ([UNI-EM]). Here a training image was stored in "[UNI-EM]/data/_2DNN_training_images", and ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder of the UNI-EM ([UNI-EM]). Here the training image was stored in "[UNI-EM]/data/_2DNN_training_images", and the ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). We recommend you to make such ground truth segmentation by use of the software Vast lite ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
@@ -23,13 +23,13 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 
 2. Launch the UNI-EM.
 
-3. Select "Segmentation → 2DNN" from UNI-EM dropdown menu to lauch the dialogue that is named as 2D DNN (**Fig. 2a**).
-	- Select the Training tab (**Fig. 2b**).
+3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to lauch the dialogue that is named as 2D DNN (**Fig. 2a**).
+	- Select Training tab (**Fig. 2b**).
 	- Confirm that "Image Folder" targets "[UNI-EM]/data/_2DNN_training_images" (**Fig. 2c**), "Segmentation Folder" targets "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 2d**), and "Checkpoint Folder" targets "[UNI-EM]/data/_2DNN_model_tensorflow" (**Fig. 2e**).
-	- Resnet is one of the best network tolopgies for mitochondria segmentation. Select "resnet" from  (Ref 1) ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
-	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
+	- Select "resnet" from the tab menu at the middle (**Fig. 2f**), and Set "N res blocks" as 16. This is because Resnet is one of the best network tolopgies for mitochondria segmentation (Ref 1).
+	- Save the parameters by clicking "Save Parameters". The saved parameters are loaded by clicking "Load Parameters".
 
-4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください(**Fig. 2g**)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
+4. Execute the Res-net Training タブ最下段の Execute をクリックして、トレーニングを開始してください(**Fig. 2g**)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
 ```2D DNN Training
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
