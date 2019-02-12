@@ -48,10 +48,10 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
         gen_loss_classic 0.04729831
         saving model
 ```
-5. Select the Inference tab in the 2D DNN dialogue (**Fig. 2b**).
+5. Select the inference tab in the 2D DNN dialogue (**Fig. 2b**).
 	- Confirm that "Image Folder " targets [UNI-EM]/data/_2DNN_test_images, "Output Segmentation Folder" targets [UNI-EM]/data/_2DNN_inference, and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow.
 
-6. Start Inference by clicking the "Execute" button in the Inference tab. Users will see initial and progress messages in the console window (shown below). Users will see "evaluated image 0099" when Inference is finished.
+6. Start inference by clicking the "Execute" button in the Inference tab. Users will see initial and progress messages in the console window (shown below). Users will see "evaluated image 0099" when Inference is finished.
 ```2D DNN Inference
         parameter_count = 68334848
         loading all from checkpoint
