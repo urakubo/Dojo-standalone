@@ -98,7 +98,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 10. Select "Plugins → 3D Filters" from the UNI-EM dropdown menu to launch the dialogue "3D Filters".
 	- Select the Label tab.
 	- Set "Target Folder" as **[UNI-EM]/data/_2DNN_segmentation** . 
-	- Set "Output Folder" as **[UNI-EM]/data/_2DNN_segmentation2"** .
+	- Set "Output Folder" as **[UNI-EM]/data/_2DNN_segmentation2** .
 
 11. Start labeling by clicking the "Execute" button. Users will see progress messages as follows.
 ```3D Labeling
