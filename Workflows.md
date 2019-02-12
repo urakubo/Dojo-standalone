@@ -64,7 +64,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
         evaluated image 0098
         evaluated image 0099
 ```
-7. Confirm that the Output Segmentation Folder [UNI]/data/_2DNN_inference contains 0000.png, 0001.png, ..., 0099.png .
+7. Confirm that the Output Segmentation Folder contains [UNI]/data/_2DNN_inference contains 0000.png, 0001.png, ..., 0099.png .
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
@@ -96,12 +96,12 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
         Binary was executed!
 ```
 
-10. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
-	- Label (ラベルづけ) タブを選択してください。
-	- Target Folder を **"[UNI-EM]/data/_2DNN_segmentation"** に設定してください。
-	- Output Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
+10. Select "Plugins → 3D Filters" from the UNI-EM dropdown menu to lauch the dialogue "3D Filters".
+	- Select the Label tab.
+	- Set "Target Folder" as **[UNI-EM]/data/_2DNN_segmentation** . 
+	- Set "Output Folder" as **[UNI-EM]/data/_2DNN_segmentation2"** .
 
-11. Label タブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
+11. Start labeling by clicking the "Execute" button. Users will see progress messages as follows.
 ```3D Labeling
         Target Folder:  [UNI-EM]/data/_2DNN_segmentation
         Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
@@ -118,7 +118,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 </p>
 <BR>
 
-#### ● 推論結果のプルーフリード、視覚化、アノテーション
+#### Proofreading, annotation, and visualization of inferred segmentation
 
 12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
 	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
