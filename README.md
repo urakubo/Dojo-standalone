@@ -13,6 +13,7 @@ This software is under development!
 - [How to use: 2D DNN](#2D-DNN)
 - [How to use: 3D FFN](#3D-FFN)
 - [How to use: 2D and 3D filters](#2D-and-3D-filters)
+- [Example workflow: Mitochondria segmentation by use of 2D DNN](Workflows.md#)
 - [About copyrights](#About-copyrights)
 
 
