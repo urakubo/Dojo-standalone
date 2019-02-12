@@ -37,7 +37,7 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 
 ### Pyinstaller version 
 1.	Download one of the following two versions, and unzip it:
-	- CPU version (Ver0.61: 366 MB): https://www.dropbox.com/s/lm1lctvs81ngclh/UNI_EM0.61_Pyinstaller.zip?dl=0
+	- CPU version (Ver0.62: 340 MB): https://www.dropbox.com/s/a8aepoikrpsmgob/UNI_EM0.62_Pyinstaller.zip?dl=0
    	- GPU version (Ver0.XX: XXX MB): Under construction.
 
 2.	Download sample EM/segmentation data from the following website, and unzip it:
