@@ -23,7 +23,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 2. Launch the UNI-EM.
 
-3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to lauch a dialogue that is named as 2D DNN (**Fig. 2a**).
+3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to launch a dialogue that is named as 2D DNN (**Fig. 2a**).
 	- Select Training tab (**Fig. 2b**).
 	- Confirm that "Image Folder" targets [UNI-EM]/data/_2DNN_training_images (**Fig. 2c**), "Segmentation Folder" targets [UNI-EM]/data/_2DNN_ground_truth (**Fig. 2d**), and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow (**Fig. 2e**).
 	- Select "resnet" from the tab menu in the middle (**Fig. 2f**), and Set "N res blocks" as 16. This is because Resnet is one of the best network tolopgies for mitochondria segmentation (Ref 1).
@@ -96,7 +96,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
         Binary was executed!
 ```
 
-10. Select "Plugins → 3D Filters" from the UNI-EM dropdown menu to lauch the dialogue "3D Filters".
+10. Select "Plugins → 3D Filters" from the UNI-EM dropdown menu to launch the dialogue "3D Filters".
 	- Select the Label tab.
 	- Set "Target Folder" as **[UNI-EM]/data/_2DNN_segmentation** . 
 	- Set "Output Folder" as **[UNI-EM]/data/_2DNN_segmentation2"** .
@@ -127,13 +127,13 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 13. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
 
-14. Inspect successsful segmentaion visually by manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
+14. Inspect successsful segmentaion visually through manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
 
-15. Correct errorous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two areas (**Fig. 4e**). In the adjust mode, users can fill void by dragging circled .、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 4f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
+15. Correct errorous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two areas (**Fig. 4e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 4f**).
 
-16. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Export Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
+16. Save segmentation after the proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file stye is sequential png/tiff images.
 
-17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 4g**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
+17. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save the 3D images, annotate them, and locate markers (**Fig. 4g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
@@ -144,5 +144,5 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 <BR><BR>
 
-- (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
+- (Ref1) Dr. Torsten Bullmann conducted a parameter survey for the best segmentation of mitchondria, membranes, and PSDs.
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
