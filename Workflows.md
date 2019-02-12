@@ -1,7 +1,7 @@
 # Example workflows
 
 ## 1. Mitochondria segmentation by use of 2D DNN
-Here we try automated mitochondria segmentation of a stack of 2D EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. This stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
+Here we try automated mitochondria segmentation of a stack of 2D EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. The EM stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
@@ -120,14 +120,14 @@ Here we try automated mitochondria segmentation of a stack of 2D EM images by us
 
 #### Proofreading, annotation, and visualization of inferred segmentation
 
-12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
-	- Source Segmentation Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
-	- 分かりやすい場所にフォルダを作成して Destination Dojo Folder に指定してください。フォルダ中にDojo形式でファイルが保存されます。
+12. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to lauch the dialogue "Import Images & Segments".
+	- Set "Source Image Folder" as **[UNI-EM]/data/_2DNN_test_images** .
+	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_2DNN_segmentation2** .
+	- Create a file folder and set it as "Destination Dojo Folder". Dojo style files will be generated in this folder.
 
-13. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します(**Fig. 4a**)。
+13. Generate the Dojo style file by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
 
-14. 下段のSliceバー(**Fig. 4b**)、上段のZoomバー(**Fig. 4c**)、Opacityバー(**Fig. 4d**)を動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
+14. Confirm the successsful segmentaion by manipulating 下段のSliceバー(**Fig. 4b**)、上段のZoomバー(**Fig. 4c**)、Opacityバー(**Fig. 4d**)を動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
 
 15. 不正確なセグメンテーションを校正する場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 4e**)、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 4f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
 
