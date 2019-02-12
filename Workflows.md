@@ -29,7 +29,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 	- Select "resnet" from the tab menu in the middle (**Fig. 2f**), and Set "N res blocks" as 16. This is because Resnet is one of the best network tolopgies for mitochondria segmentation (Ref 1).
 	- Save all parameters by clicking "Save Parameters". The saved parameters are loaded by clicking "Load Parameters".
 
-4. Start Res-net Training by clicking the "Execute" button (**Fig. 2g**). Users will see initial and progress messages in the console window (shown below). It takes 6-min for a desktop PC equipped with a NIVIDA GTX1070 GPU. The console window shows a message "saving model" when the trainig is finished. During and after the training period, users can visually inspect its progression through Tensorboad by selecting "Segmentation → Tensorboard".
+4. Start Res-net training by clicking the "Execute" button (**Fig. 2g**). Users will see initial and progress messages in the console window (shown below). It takes 6-min for a desktop PC equipped with a NIVIDA GTX1070 GPU. The console window shows a message "saving model" when the trainig is finished. During and after the training period, users can visually inspect its progression through Tensorboad by selecting "Segmentation → Tensorboard".
 ```2D DNN Training
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
