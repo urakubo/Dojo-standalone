@@ -8,7 +8,7 @@ This software is under development!
 - [System requirements](#System-requirements)
 - [Installation](#Installation)
 - [How to use: Dojo proofreader](#Dojo-proofreader)
-- [How to use: 3D Annotator](#3D-Annotator)
+- [How to use: 3D annotator](#3D-annotator)
 - [How to use: 2D DNN](#2D-DNN)
 - [How to use: 3D FFN](#3D-FFN)
 - [How to use: 2D and 3D filters](#2D-and-3D-filters)
@@ -79,7 +79,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 ![Dojo Proofreading software](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Dojo.png "Dojo")
 
 
-### 3D Annotator
+### 3D annotator
 Select Annotator → Open in the dropdown menu. The 3D Annotator will be launched.
 
 1.	Check red crosses in the object table of the right side. The checked objects will appear in the left side. Objects in the object table can be re-ordered by size, and users can see visible big objects by clicking the red crosses of large size objects.
