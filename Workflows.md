@@ -23,13 +23,13 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 
 2. Launch the UNI-EM.
 
-3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to lauch the dialogue that is named as 2D DNN (**Fig. 2a**).
+3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to lauch a dialogue that is named as 2D DNN (**Fig. 2a**).
 	- Select Training tab (**Fig. 2b**).
-	- Confirm that "Image Folder" targets "[UNI-EM]/data/_2DNN_training_images" (**Fig. 2c**), "Segmentation Folder" targets "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 2d**), and "Checkpoint Folder" targets "[UNI-EM]/data/_2DNN_model_tensorflow" (**Fig. 2e**).
+	- Confirm that "Image Folder" targets [UNI-EM]/data/_2DNN_training_images (**Fig. 2c**), "Segmentation Folder" targets [UNI-EM]/data/_2DNN_ground_truth (**Fig. 2d**), and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow (**Fig. 2e**).
 	- Select "resnet" from the tab menu at the middle (**Fig. 2f**), and Set "N res blocks" as 16. This is because Resnet is one of the best network tolopgies for mitochondria segmentation (Ref 1).
-	- Save the parameters by clicking "Save Parameters". The saved parameters are loaded by clicking "Load Parameters".
+	- Save all the parameters by clicking "Save Parameters". The saved parameters are loaded by clicking "Load Parameters".
 
-4. Execute the Res-net Training タブ最下段の Execute をクリックして、トレーニングを開始してください(**Fig. 2g**)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
+4. Start Res-net Training by clicking the "Execute" button (**Fig. 2g**). Users will see initial and progress messages in the console window (shown below). It takes 6-min for a desktop PC equipped with a NIVIDA GTX1070 GPU. The console window shows a message "saving model" when the trainig is finished. During and after the training period, users can visually inspect its progression through Tensorboad by selecting "Segmentation → Tensorboard".
 ```2D DNN Training
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
@@ -48,10 +48,10 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
         gen_loss_classic 0.04729831
         saving model
 ```
-5. 2D DNNダイアログのInferenceタブを選択してください(**Fig. 2b**)。
-	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
+5. Select the Inference tab in the 2D DNN dialogue (**Fig. 2b**).
+	- Confirm that "Image Folder " targets [UNI-EM]/data/_2DNN_test_images, "Output Segmentation Folder" targets [UNI-EM]/data/_2DNN_inference, and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow.
 
-6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
+6. Start Inference by clicking the "Execute" button in the Inference tab. Users will see initial and progress messages in the console window (shown below). Users will see "evaluated image 0099" when Inference is finished.
 ```2D DNN Inference
         parameter_count = 68334848
         loading all from checkpoint
@@ -64,7 +64,7 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+7. Confirm that the Output Segmentation Folder [UNI]/data/_2DNN_inference contains 0000.png, 0001.png, ..., 0099.png .
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
@@ -75,15 +75,15 @@ Here we try automated mitochondria segmentation by use of a 2-dimentional deep n
 <BR>
 
 
-#### ● 推論結果の後処理 [二値化およびラベル化]
+#### Postprocessing of inferred segmentation: binarization and labeling
 
-8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください(**Fig. 3**)。
-	- Binary (二値化) タブを選択してください(**Fig. 3a**)。
-	- Target Folder が "[UNI-EM]/data/_2DNN_inference" であることを確認してください(**Fig. 3b**)。
-	- Output Folder が "[UNI-EM]/data/_2DNN_segmentation" であることを確認してください(**Fig. 3c**)。
-	- Target X, Target Y, Target Z を動かすと Target Folder内画像のサムネイルが Target image に表示されます(**Fig. 3d**)。"Obtain sample output"ボタンをクリックすると、二値化結果が表示されます(**Fig. 3e**)。
+8. Select "Plugins → 2D Filters" from the UNI-EM dropdown menu to lauch the dialogue "2D Filters" (**Fig. 3**).
+	- Select the Binary tab (**Fig. 3a**).
+	- Confirm that "Target Folder" targets [UNI-EM]/data/_2DNN_inference (**Fig. 3b**).
+	- Confirm that "Output Folder" targets [UNI-EM]/data/_2DNN_segmentation (**Fig. 3c**)。
+	- Users will see a thumbnail image in the "Target image" space and maniplate it by the silde bars of Target X, Target Y, and Target Z (**Fig. 3d**). Users will see a example result of binarization by clicking "Obtain sample output" (**Fig. 3e**).
 
-9. Binary タブ最下段の Execute をクリックして、二値化を行ってください(**Fig. 3f**)。コンソールに次の様なプログレスメッセージが現れます。
+9. Start binarization by clicking the "Execute" button (**Fig. 3f**). Users will see progress messages in the console window as follows.
 ```2D Binarization
         Target Folder:  [UNI-EM]/data/_2DNN_inference
         Output Folder:  [UNI-EM]/data/_2DNN_segmentation
