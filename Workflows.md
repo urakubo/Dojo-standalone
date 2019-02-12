@@ -1,7 +1,7 @@
 # Example workflows
 
 ## 1. Mitochondria segmentation by use of 2D DNN
-Here we try automated mitochondria segmentation of a stack of EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. The EM stack was orginally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
+Here we try automated mitochondria segmentation of a stack of EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. The EM stack was originally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. 
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
@@ -26,10 +26,10 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 3. Select "Segmentation → 2DNN" from a UNI-EM dropdown menu to launch a dialogue that is named as 2D DNN (**Fig. 2a**).
 	- Select Training tab (**Fig. 2b**).
 	- Confirm that "Image Folder" targets [UNI-EM]/data/_2DNN_training_images (**Fig. 2c**), "Segmentation Folder" targets [UNI-EM]/data/_2DNN_ground_truth (**Fig. 2d**), and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow (**Fig. 2e**).
-	- Select "resnet" from the tab menu in the middle (**Fig. 2f**), and Set "N res blocks" as 16 (**Fig. 2g**). This is because Resnet is one of the best network tolopgies for mitochondria segmentation (Ref 1).
+	- Select "resnet" from the tab menu in the middle (**Fig. 2f**), and Set "N res blocks" as 16 (**Fig. 2g**). This is because Resnet is one of the best network topologies for mitochondria segmentation (Ref 1).
 	- Save all parameters by clicking "Save Parameters". The saved parameters are loaded by clicking "Load Parameters".
 
-4. Start Res-net training by clicking the "Execute" button (**Fig. 2h**). Users will see initial and progress messages in the console window (shown below). It takes 6-min for a desktop PC equipped with a NIVIDA GTX1070 GPU. The console window shows a message "saving model" when the trainig is finished. During and after the training period, users can visually inspect its progression through Tensorboad by selecting "Segmentation → Tensorboard".
+4. Start Res-net training by clicking the "Execute" button (**Fig. 2h**). Users will see initial and progress messages in the console window (shown below). It takes 6-min for a desktop PC equipped with a NIVIDA GTX1070 GPU. The console window shows a message "saving model" when the training is finished. During and after the training period, users can visually inspect its progression through Tensorboad by selecting "Segmentation → Tensorboard".
 ```2D DNN Training
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
@@ -81,7 +81,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 	- Select the Binary tab (**Fig. 3a**).
 	- Confirm that "Target Folder" targets [UNI-EM]/data/_2DNN_inference (**Fig. 3b**).
 	- Confirm that "Output Folder" targets [UNI-EM]/data/_2DNN_segmentation (**Fig. 3c**)。
-	- Users will see a thumbnail image in the "Target image" space and maniplate it by the silde bars of Target X, Target Y, and Target Z (**Fig. 3d**). Users will see a example result of binarization by clicking "Obtain sample output" (**Fig. 3e**).
+	- Users will see a thumbnail image in the "Target image" space and manipulate it by the slide bars of Target X, Target Y, and Target Z (**Fig. 3d**). Users will see an example result of binarization by clicking "Obtain sample output" (**Fig. 3e**).
 
 9. Start binarization by clicking the "Execute" button (**Fig. 3f**). Users will see progress messages in the console window as follows.
 ```2D Binarization
@@ -127,11 +127,11 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 13. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
 
-14. Inspect successsful segmentaion visually through manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
+14. Inspect successful segmentation visually through manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
 
-15. Correct errorous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two areas (**Fig. 4e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 4f**).
+15. Correct erroneous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two areas (**Fig. 4e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 4f**).
 
-16. Save segmentation after the proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file stye is sequential png/tiff images.
+16. Save segmentation after the proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file style is sequential png/tiff images.
 
 17. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save the 3D images, annotate them, and locate markers (**Fig. 4g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
 
@@ -144,5 +144,5 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 
 <BR><BR>
 
-- (Ref1) Dr. Torsten Bullmann conducted a parameter survey for the best segmentation of mitchondria, membranes, and PSDs.
+- (Ref1) Dr. Torsten Bullmann conducted a parameter survey for the best segmentation of mitochondria, membranes, and PSDs.
 	- <https://github.com/tbullmann/imagetranslation-tensorflow>
