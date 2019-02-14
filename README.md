@@ -40,6 +40,10 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 	- CPU version (Ver0.62: 340 MB): https://www.dropbox.com/s/a8aepoikrpsmgob/UNI_EM0.62_Pyinstaller.zip?dl=0
    	- GPU version (Ver0.62: 953 MB): https://www.dropbox.com/s/xsmz0wf5m77oezz/0.62_PyinstallerGPU.zip?dl=0
 
+	The GPU version can be used if the PC has over 3.5 compute capability:
+
+	- https://developer.nvidia.com/cuda-gpus
+
 2.	Download sample EM/segmentation data from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
