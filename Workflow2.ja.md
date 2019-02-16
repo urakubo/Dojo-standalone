@@ -14,14 +14,6 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 "Example3DNN.zip": 現在作成中
 
-<BR>
-<p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
-</p>
-<p align="center">
-  <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
-</p>
-<BR>
 
 #### ●前処理
 
@@ -43,7 +35,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 ```
 
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を適切な値に設定してください。推論のためには数百万ステップ以上の学習が必要になります。ただし、NVIDIA GTX1080tiを用いて一週間以上のトレーニングが必要になります。
+	- Max Training Steps を適切な値に設定してください。正確な推論のためには数百万ステップ以上のトレーニングを行ったモデルが必要です。Training 時には約一万ステップごとにモデルを。しかし、NVIDIA GTX1080tiを用いて一週間以上の時間がかかります。
 	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
 
 6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
