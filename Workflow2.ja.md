@@ -9,7 +9,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 #### EM画像と教師セグメンテーション
 
-下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_3DNN_training_images" にトレーニング画像 (0000.png, ..., 0099.png) 、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーション (0000.png, ..., 0099.png) が入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします
+下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_3DNN_training_images" にトレーニング画像 (0000.png, ..., 0099.png; 8bit, grayscale png) 、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーション (0000.png, ..., 0099.png; 16bit, grayscale png) が入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします
 ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。
 
 "Example3DNN.zip": 現在作成中
@@ -29,30 +29,20 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください(**Fig. 2a**)。
 	- Preprocessing タブを選択してください(**Fig. 2b**)。
-	- Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、Segmentation Folder が "[UNI-EM]/data/_3DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
-	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
-	- 必要であれば、右列下段の "Save Parameters" をクリックしてパラメータを保存してください。"Load Parameters" をクリックすると保存したパラメータを呼び出すことができます。
+	- Training Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、Ground Truth Folder が "[UNI-EM]/data/_3DNN_ground_truth"であること(**Fig. 2d**)を確認してください。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
+	また FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。
 
-4. Training タブ最下段の Execute をクリックして、トレーニングを開始してください(**Fig. 2h**)。コンソールに起動に関するメッセージが現れたのち、プログレスメッセージが現れます（下）。トレーニング時間はNIVIDA GTX1070 GPUを搭載したPCで6分程度です。"saving model"と表示されたら、Trainingは終了です。トレーニング期間中、Segmentation → Tensorboard を選択して、"[UNI-EM]/data/_2DNN_model_tensorflow" フォルダを指定すると、トレーニングの進捗をグラフ表示することができます。 
-```2D DNN Training
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。EM画像のhdf5ファイル"grayscale_maps.h5", 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5", FFN中間ファイル"af.h5", FFN中間ファイル"af.h5", "tf_record_file" が作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Trainingは終了です。 
+
+```Preprocessing
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
-        gen_loss_GAN 0.41848987
-        gen_loss_classic 0.13485438
-        recording summary
-        progress  epoch 99  step 1  image/sec 5.5  remaining 5m
-        discrim_loss 0.69121116
-        gen_loss_GAN 0.73412275
         gen_loss_classic 0.13613938
         ...
-        ...
-        progress  epoch 1999  step 1  image/sec 7.3  remaining 0m
-        discrim_loss 0.715416
-        gen_loss_GAN 2.1579466
-        gen_loss_classic 0.04729831
         saving model
 ```
-5. 2D DNNダイアログのInferenceタブを選択してください(**Fig. 2b**)。
+5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
+	- Max Training Steps を適切な値に設定してください "[UNI-EM]/data/_3DNN_training_images" 
 	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
 
 6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
