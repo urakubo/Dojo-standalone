@@ -7,9 +7,9 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 - http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
 
-#### FFNのためののトレーニングと推論
+#### EM画像と教師セグメンテーション
 
-下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/ _3DNN_training_images" にトレーニング画像、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーションが入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします 
+下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_3DNN_training_images" にトレーニング画像(0000.png, ..., 0099.png)、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーション(0000.png, ..., 0099.png)が入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします
 ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。
 
 "Example3DNN.zip": 現在作成中
@@ -23,14 +23,11 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 </p>
 <BR>
 
-#### ●EM画像・教師セグメンテーション画像の前処理
-
-
-#### ● 3次元DNNのトレーニングと推論
+#### ●前処理
 
 2. UNI-EMを起動してください。
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
+3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFNダイアログを起動してください(**Fig. 2a**)。
 	- Training タブを選択してください(**Fig. 2b**)。
 	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること(**Fig. 2c**)、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
 	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
