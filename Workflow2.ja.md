@@ -21,8 +21,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください(**Fig. 2a**)。
 	- Preprocessing タブを選択してください(**Fig. 2b**)。
-	- Training Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、Ground Truth Folder が "[UNI-EM]/data/_3DNN_ground_truth"であることを確認してください(**Fig. 2d**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
-	また FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。
+	- Training Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、Ground Truth Folder が "[UNI-EM]/data/_3DNN_ground_truth"であることを確認してください(**Fig. 2d**)。FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
 
 4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。EM画像のhdf5ファイル"grayscale_maps.h5", 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5", FFN中間ファイル"af.h5", FFN中間ファイル"af.h5", "tf_record_file" が順次作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Trainingは終了です。 
 
@@ -34,11 +33,34 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
         saving model
 ```
 
-5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を適切な値に設定してください。正確な推論のためには数百万ステップ以上のトレーニングを行ったモデルが必要です。Training 時には約一万ステップごとにモデルを出力します。新たにTrainingを実行すると、。しかし、NVIDIA GTX1080tiを用いて一週間以上の時間がかかります。
-	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
+#### ●トレーニング
 
-6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
+5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 実行中は約一万ステップごとにモデルを出力する仕組みになっており、途中でトレーニングを止めた場合でも新たにTrainingを実行すると"[UNI-EM]/data/_3DNN_model_tensorflow”から最新のモデルを読み込んでトレーニングを再開されます
+	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
+		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
+		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
+
+	- "Ground Truth h5 File", "Tensorflow Record File", "Tensorflow Record File"を前処理後のファイルを指定していることを確認してください。
+	- "Tensorflow Model Folder" に空フォルダが指定されていることを確認してください。
+
+6. Trainingタブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに次の様なプログレスメッセージが現れます。
+
+```Preprocessing
+        progress  epoch 49  step 1  image/sec 5.2  remaining 6m
+        discrim_loss 0.49639216
+        gen_loss_classic 0.13613938
+        ...
+        saving model
+```
+
+#### ●推論
+
+7. FFNダイアログのInferenceタブを選択してください(**Fig. 2b**)。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 実行中は約一万ステップごとにモデルを出力する仕組みになっており、途中でトレーニングを止めた場合でも新たにTrainingを実行すると"[UNI-EM]/data/_3DNN_model_tensorflow”から最新のモデルを読み込んでトレーニングを再開されます
+	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
+	
+8. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
 ```2D DNN Inference
         parameter_count = 68334848
         loading all from checkpoint
