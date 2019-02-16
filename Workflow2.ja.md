@@ -32,7 +32,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- Training Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、Ground Truth Folder が "[UNI-EM]/data/_3DNN_ground_truth"であること(**Fig. 2d**)を確認してください。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
 	また FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。EM画像のhdf5ファイル"grayscale_maps.h5", 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5", FFN中間ファイル"af.h5", FFN中間ファイル"af.h5", "tf_record_file" が作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Trainingは終了です。 
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。EM画像のhdf5ファイル"grayscale_maps.h5", 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5", FFN中間ファイル"af.h5", FFN中間ファイル"af.h5", "tf_record_file" が順次作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Trainingは終了です。 
 
 ```Preprocessing
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
@@ -41,8 +41,9 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
         ...
         saving model
 ```
+
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を適切な値に設定してください "[UNI-EM]/data/_3DNN_training_images" 
+	- Max Training Steps を適切な値に設定してください。数百万ステップ以上の学習が必要になりますが。
 	- 最上段のImage Folder が "[UNI-EM]/data/_2DNN_test_images" であること、Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" であること、Checkpoint Folder が"[UNI-EM]/data/_2DNN_model_tensorflow" であることを確認してください。
 
 6. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
