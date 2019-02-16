@@ -24,7 +24,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 
 2. UNI-EMを起動してください。
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
+3. UNI-EM上端のドロップダウンメニューより Segmentation → 2D DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
 	- Training タブを選択してください(**Fig. 2b**)。
 	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること(**Fig. 2c**)、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
 	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
