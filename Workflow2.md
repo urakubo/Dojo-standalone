@@ -27,14 +27,13 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 
 3. Select "Segmentation → 3D FFN" from a UNI-EM dropdown menu to launch the dialogue, 3D FFN.
 	- Select Preprocessing tab (**Fig. 2a**).
-	- Confirm that "Image Folder" targets [UNI-EM]/data/_2DNN_training_images (**Fig. 2c**), "Segmentation Folder" targets [UNI-EM]/data/_2DNN_ground_truth (**Fig. 2d**), and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow (**Fig. 2e**).
-	- Confirm that "Training Image Folder" ( [UNI-EM]/data/_3DNN_training_images ) has the EM images (**Fig. 2b**), "Ground Truth Folder" ( [UNI-EM]/data/_3DNN_ground_truth ) has ground truth generation (**Fig. 2c**), and "FFN File Folder" ( [UNI-EM]/data/ffn ) exists (**Fig. 2d**). The 左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます(**Fig. 2e**)。
+	- Confirm that "Training Image Folder" ( [UNI-EM]/data/_3DNN_training_images ) has the training EM images (**Fig. 2b**), "Ground Truth Folder" ( [UNI-EM]/data/_3DNN_ground_truth ) has the ground truth images (**Fig. 2c**), and "FFN File Folder" ( [UNI-EM]/data/ffn ) exists (**Fig. 2d**). The training EM images are shown in the left thumbnail, and the ground truth are shown in the right thumbnail (**Fig. 2e**).
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2f**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分です。コンソールに下の様なプログレスメッセージが現れます。
-	- EM画像のhdf5ファイル"grayscale_maps.h5"
-	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
-	- FFN中間ファイル"af.h5"
-	- FFN中間ファイル"tf_record_file"
+4. Start preprocessing by clicking the "Execute" button (**Fig. 2f**). Four intermediate files are generated in the FFN File Folder. It takes 6-60 min, depending mainly on image volume. Users will see progress messages in the console window (shown below).
+	- "grayscale_maps.h5: a hdf5 file of training EM images
+	- "groundtruth.h5": a hdf5 file of ground truth images
+	- "af.h5": a intermediate file for FFN
+	- "tf_record_file": a intermediate file for FFN
 
 ```Preprocessing
         "grayscale_maps.h5" file (training image) was generated.
@@ -66,9 +65,9 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 <BR>
 
 
-#### ●トレーニング
+#### Training
 
-5. FFNダイアログのTrainingタブを選択してください(**Fig. 2a**)。
+5. Select the training tab in the FFN dialogue (**Fig. 2a**).
 	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約3000ステップごとにtensorflowモデルが出力され、途中でトレーニングを止めた場合でも新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルを読み込み、そこからトレーニングを再開します。Max Training Steps に達するとモデルを出力してトレーニングは終了します。推論結果よりトレーニング不足であった場合は、さらに大きな Max Training Stepsを設定してトレーニングを再実行（再開）します。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はSparse Zにチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
