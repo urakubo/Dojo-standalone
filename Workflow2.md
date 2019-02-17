@@ -27,7 +27,7 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 
 3. Select "Segmentation → 3D FFN" from a UNI-EM dropdown menu to launch the dialogue, 3D FFN.
 	- Select Preprocessing tab (**Fig. 2a**).
-	- Confirm that "Training Image Folder" ( [UNI-EM]/data/_3DNN_training_images ) has the training EM images (**Fig. 2b**), "Ground Truth Folder" ( [UNI-EM]/data/_3DNN_ground_truth ) has the ground truth images (**Fig. 2c**), and "FFN File Folder" ( [UNI-EM]/data/ffn ) exists (**Fig. 2d**). The training EM images are shown in the left thumbnail, and the ground truth are shown in the right thumbnail (**Fig. 2e**).
+	- Confirm that "Training Image Folder" ( [UNI-EM]/data/_3DNN_training_images ) has the training EM images (**Fig. 2b**), "Ground Truth Folder" ( [UNI-EM]/data/_3DNN_ground_truth ) has the ground truth images (**Fig. 2c**), and the empty "FFN File Folder" ( [UNI-EM]/data/ffn ) exists (**Fig. 2d**). The training EM images are shown in the left thumbnail, and the ground truth are shown in the right thumbnail (**Fig. 2e**).
 
 4. Start preprocessing by clicking the "Execute" button (**Fig. 2f**). Four intermediate files are generated in the FFN File Folder. It takes 6-60 min, depending mainly on image volume. Users will see progress messages in the console window (shown below).
 	- "grayscale_maps.h5: a hdf5 file of training EM images
@@ -68,8 +68,8 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 #### Training
 
 5. Select the training tab in the FFN dialogue (**Fig. 2a**).
-	- Set the parameter Max Training Steps. It is necessary to train the tensorflow model over several million times, and it takes over one week for precise inference with a NVIDIA GTX1080ti-equipped PC. The training process outputs a tensorflow model every 3000 steps. Training 中は約3000ステップごとにtensorflowモデルが出力され、途中でトレーニングを止めた場合でも新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルを読み込み、そこからトレーニングを再開します。Max Training Steps に達するとモデルを出力してトレーニングは終了します。推論結果よりトレーニング不足であった場合は、さらに大きな Max Training Stepsを設定してトレーニングを再実行（再開）します。
-	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はSparse Zにチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
+	- Set the parameter Max Training Steps. It is necessary to train the tensorflow model over several million times, and it takes over one week for precise inference with a NVIDIA GTX1080ti-equipped PC. The training program outputs a tensorflow model every 3000 steps. Users can restart the training from the latest model even if the training process is interrupted. The training program automatically read the latest model from the Tensorflow Model Folder. The training process ends if it reaches the Max Training Steps. Users can execute additional training by setting the larger Max Training Steps if the training appears to be insufficient.
+	- Check "Sparse Z" if the z-pitch (nm/pixel) is smaller than the xy-pitch (nm/pixel). Internally, 
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
 
