@@ -93,12 +93,12 @@ I0217 23:14:48.805234  2272 train.py:699]
 #### Inference
 
 7. Select the inference tab in the FFN dialogue (**Fig. 2a**).
-	- Confirm that the target images are located in the "Target Image Folder" (sequentially numbered image files; 8bit, grayscale png).
+	- Confirm that the target EM images are located in the "Target Image Folder" (sequentially numbered image files; 8bit, grayscale png).
 	- Confirm that the "Output Inference Folder" exists. Inferred segmentation will be stored in this folder.
-	- Specify the Tensorflow Model File.  にトレーニング済 tensorflow model file を指定してください。モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
-	- トレーニングにおいて、Sparse Z にチェックを入れた場合は同様にチェックを入れてください。
+	- Specify the Tensorflow Model File. The tensorflow model file consists of the three files ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", and "model.ckpt-4000000.meta". Specify the common prefix of those files: "model.ckpt-XXXXX".
+	- Check "Sparse Z" if the user check it in the process of training.
 
-8. Inferenceタブ最下段の Execute をクリックして推論を開始してください。まず Target Image Folder にあるEM画像のhdf5ファイル "grayscale_inf.h5" およびパラメータファイル "inference_params.pbtxt" が FFN File Folder に作成されます。次に、推論が開始されます。コンソールに次の様なプログレスメッセージが現れます。"Executor shutdown complete."と表示されたら、Inferenceは終了です。Output Inference Folder 中サブフォルダ"0/0" に "seg-0_0_0.npz" という名前で推論セグメンテーションファイルが作成されます。 
+8. Start inference by clicking the "Execute" button. The inference program firstly generates the hdf5 style file of target EM images "grayscale_inf.h5" and the parameter file "inference_params.pbtxt" in the FFN File Folder. Then, the inference starts based on those intermediate files. Users will see progress messages in the console window (shown below). "Executor shutdown complete."と表示されたら、Inferenceは終了です。Output Inference Folder 中サブフォルダ"0/0" に "seg-0_0_0.npz" という名前で推論セグメンテーションファイルが作成されます。 
 
 ```FFN Inference
 	...
