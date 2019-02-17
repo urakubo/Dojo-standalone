@@ -125,6 +125,7 @@ I0217 23:14:48.805234  2272 train.py:699]
 12. Start postprocessing by clicking the "Execute" button. Confirm that the inferred segmentation files 0000.png, 0001.png, ..., 0099.png were generated in the Output Segmentation Folder.
 
 <BR>
+
 #### Proofreading, annotation, and visualization
 
 13. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to launch the dialogue "Import Images & Segments".
@@ -132,22 +133,22 @@ I0217 23:14:48.805234  2272 train.py:699]
 	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_3DNN_inference** .
 	- Create a file folder and set it as "Destination Dojo Folder". Dojo style files will be generated in this folder.
 
-14. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
+14. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 3a**).
 
-15. Inspect successful segmentation visually through manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
+15. Inspect successful segmentation visually through manipulating the bottom slice bar (**Fig. 3b**), top Zoom bar (**Fig. 3c**), and top Opacity bar (**Fig. 3d**).
 
-16. Correct erroneous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two area (**Fig. 4e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 4f**).
+16. Correct erroneous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two area (**Fig. 3e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 3f**).
 
 17. Save the segmentation after proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file style is sequential png/tiff images.
 
-18. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save 3D images, annotate the target objects, and locate markers (**Fig. 4g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
+18. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save 3D images, annotate the target objects, and locate markers (**Fig. 3g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
 
 
 <p align="center">
   <img src="Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
 </p>
 <p align="center">
-  <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
+  <font size="5"> <b>Figure 3. Proofreader Dojo and 3D Annotator</b> </font>
 </p>
 
 <BR><BR>
