@@ -30,11 +30,23 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- FFN中間ファイル"tf_record_file"
 
 ```Preprocessing
-        progress  epoch 49  step 1  image/sec 5.2  remaining 6m
-        discrim_loss 0.49639216
-        gen_loss_classic 0.13613938
+        "grayscale_maps.h5" file (training image) was generated.
+	"groundtruth.h5" file (ground truth) was generated.
+	FFN Preparation
+	Start compute_partitions.
+	I0217 21:49:47.965403 20392 compute_partitions.py:189] Done processing 2
+	I0217 21:49:49.039531 20392 compute_partitions.py:189] Done processing 3
         ...
-        saving model
+	I0217 21:52:07.314850 20392 compute_partitions.py:191] Nonzero values: 8875887
+	Start build_coordinates.
+        ...
+	I0217 21:52:10.161867  4268 build_coordinates.py:76] Partition counts:
+	I0217 21:52:10.161867  4268 build_coordinates.py:78]  0: 2319505
+	I0217 21:52:10.162837  4268 build_coordinates.py:78]  1: 22446
+        ...
+	I0217 21:52:10.164829  4268 build_coordinates.py:78]  13: 71675
+	I0217 21:52:10.164829  4268 build_coordinates.py:80] Resampling and shuffling coordinates.
+	I0217 21:52:38.350505  4268 build_coordinates.py:88] Saving coordinates.
 ```
 
 #### ●トレーニング
