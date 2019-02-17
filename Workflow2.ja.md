@@ -28,11 +28,11 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 2. UNI-EMを起動してください。
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください(**Fig. 2a**)。
-	- Preprocessing タブを選択してください(**Fig. 2b**)。
-	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2c**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2d**)。同様にFFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
+3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください。
+	- Preprocessing タブを選択してください(**Fig. 2a**)。
+	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2b**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2c**)。同様にFFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2d**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます(**Fig. 2e**)。
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分です。コンソールに下の様なプログレスメッセージが現れます。
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2f**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分です。コンソールに下の様なプログレスメッセージが現れます。
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
 	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
 	- FFN中間ファイル"af.h5"
@@ -70,7 +70,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 #### ●トレーニング
 
-5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
+5. FFNダイアログのTrainingタブを選択してください(**Fig. 2a**)。
 	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルが出力され、途中でトレーニングを止めた場合でも新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルを読み込み、そこからトレーニングを再開します。Max Training Steps に達するとモデルを出力してトレーニングは終了します。推論結果よりトレーニング不足であった場合は、さらに大きな Max Training Stepsを設定してトレーニングを再実行（再開）します。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はSparse Zにチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
@@ -90,7 +90,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 #### ●推論
 
-7. FFNダイアログのInferenceタブを選択してください。
+7. FFNダイアログのInferenceタブを選択してください(**Fig. 2a**)。
 	- Target Image Folder に推論EM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
 	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
 	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
@@ -114,7 +114,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 #### ●後処理
 
-9. FFNダイアログのPostprocessingタブを選択してください。
+9. FFNダイアログのPostprocessingタブを選択してください(**Fig. 2a**)。
 
 10. Target Inference Fileに推論セグメンテーションファイル "seg-0_0_0.npz" が指定されていることを確認してください。
 
