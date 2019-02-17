@@ -13,7 +13,7 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 <BR>
 	- ExampleFFN.zip 522MB: https://www.dropbox.com/s/cztcf8w0ywj1pmz/ExampleFFN.zip?dl=0
 <BR>
-	
+<BR>
 <p align="center">
   <img src="Images/FFN_GT.png" alt="2D DNN Training" width="600">
 </p>
