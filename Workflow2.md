@@ -25,9 +25,10 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 
 2. Launch the UNI-EM.
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください。
-	- Preprocessing タブを選択してください(**Fig. 2a**)。
-	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2b**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2c**)。同様にFFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2d**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます(**Fig. 2e**)。
+3. Select "Segmentation → 3D FFN" from a UNI-EM dropdown menu to launch the dialogue, 3D FFN.
+	- Select Preprocessing tab (**Fig. 2a**).
+	- Confirm that "Image Folder" targets [UNI-EM]/data/_2DNN_training_images (**Fig. 2c**), "Segmentation Folder" targets [UNI-EM]/data/_2DNN_ground_truth (**Fig. 2d**), and "Checkpoint Folder" targets [UNI-EM]/data/_2DNN_model_tensorflow (**Fig. 2e**).
+	- Confirm that "Training Image Folder" ( [UNI-EM]/data/_3DNN_training_images ) has the EM images (**Fig. 2b**), "Ground Truth Folder" ( [UNI-EM]/data/_3DNN_ground_truth ) has ground truth generation (**Fig. 2c**), and "FFN File Folder" ( [UNI-EM]/data/ffn ) exists (**Fig. 2d**). The 左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます(**Fig. 2e**)。
 
 4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2f**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分です。コンソールに下の様なプログレスメッセージが現れます。
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
