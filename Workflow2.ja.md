@@ -40,7 +40,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●トレーニング
 
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めた後であっても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれてトレーニングが再開されます。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。このために NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれてトレーニングが再開されます。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
@@ -61,9 +61,9 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●推論
 
 7. FFNダイアログのInferenceタブを選択してください(**Fig. 2b**)。
-	- Training Image Folder が"[UNI-EM]/data/_3DNN_training_images" であること(**Fig. 2c**)、
-	正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 実行中は約一万ステップごとにモデルを出力する仕組みになっており、途中でトレーニングを止めた場合でも新たにTrainingを実行すると"[UNI-EM]/data/_3DNN_model_tensorflow”から最新のモデルを読み込んでトレーニングを再開されます
-	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
+	- Target Image Folder に推論予定のEM画像が存在することを確認してください(0000.png, ..., 0099.png; 8bit, grayscale png; **Fig. 2c**)。
+	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
+	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。”model.ckpt-XXXXX" の。
 	
 8. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
 ```2D DNN Inference
@@ -78,7 +78,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+9. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
