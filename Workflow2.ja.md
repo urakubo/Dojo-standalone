@@ -124,12 +124,6 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
         Label was executed!
 ```
 
-<p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2D_Binary.png" alt="Dialog for binarization" width="600">
-</p>
-<p align="center">
-  <font size="5"> <b>Figure 3. Dialog for binarization</b> </font>
-</p>
 <BR>
 
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
