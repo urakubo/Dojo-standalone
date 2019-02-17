@@ -119,5 +119,3 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 <BR><BR>
 
-- (参考1) Dr. Torsten Bullmann がミトコンドリアのセグメンテーションのために最適なモデルを探索しています。
-	- <https://github.com/tbullmann/imagetranslation-tensorflow>
