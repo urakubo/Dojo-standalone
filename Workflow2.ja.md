@@ -23,7 +23,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- Preprocessing タブを選択してください(**Fig. 2b**)。
 	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2c**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2d**)。FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Preprocessing は終了です。 
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分程度です。
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
 	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
 	- FFN中間ファイル"af.h5"
@@ -40,7 +40,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●トレーニング
 
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。このために NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれてトレーニングが再開されます。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれ、そこからトレーニングが再開されます。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
@@ -60,24 +60,31 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 #### ●推論
 
-7. FFNダイアログのInferenceタブを選択してください(**Fig. 2b**)。
-	- Target Image Folder に推論予定のEM画像が存在することを確認してください(0000.png, ..., 0099.png; 8bit, grayscale png; **Fig. 2c**)。
+7. FFNダイアログのInferenceタブを選択してください。
+	- Target Image Folder に推論するEM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
 	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
-	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。”model.ckpt-XXXXX" の。
+	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。各モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
+	- トレーニングにおいて、Sparse Z にチェックを入れた場合は、同様にチェックを入れてください。
 	
-8. Inferenceタブ最下段の Execute をクリックして、推論を開始してください。コンソールに起動に関するメッセージが現れたのち、次の様なプログレスメッセージが現れます。"evaluated image 0099"と表示されたら、Inferenceは終了です。
-```2D DNN Inference
-        parameter_count = 68334848
-        loading all from checkpoint
-        evaluated image 0000
-        evaluated image 0001
-        evaluated image 0002
-        ...
-        ...
-        evaluated image 0097
-        evaluated image 0098
-        evaluated image 0099
+	
+8. Inferenceタブ最下段の Execute をクリックして推論を開始してください。FFN File Folder に Target Image Folder に存在するEM画像のhdf5ファイル "grayscale_inf.h5" およびパラメータファイル "inference_params.pbtxt" が作成されたのち、推論が開始されます。
+コンソールに次の様なプログレスメッセージが現れます。"Executor shutdown complete."と表示されたら、Inferenceは終了です。
+```3D FFN Inference
+	...
+        I0215 19:10:57.461078 15336 inference.py:554] [cl 0] Starting segmentation at (91, 489, 338) (zyx)
+        I0215 19:10:57.474040 15336 inference.py:554] [cl 0] Failed: weak seed
+        I0215 19:10:57.475013 15336 inference.py:554] [cl 0] Starting segmentation at (91, 495, 365) (zyx)
+        I0215 19:10:57.487977 15336 inference.py:554] [cl 0] Failed: too small: 27
+        I0215 19:10:57.504959 15336 inference.py:554] [cl 0] Segmentation done.
+        I0215 19:10:57.504959 15336 inference.py:303] Deregistering client 0
+        I0215 19:10:57.505930 14064 executor.py:200] client 0 terminating
+        I0215 19:11:00.035366 15336 executor.py:169] Requesting executor shutdown.
+        I0215 19:11:00.036337 14064 executor.py:191] Executor shut down requested.
+        I0215 19:11:00.044339 15336 executor.py:172] Executor shutdown complete.
 ```
+
+#### ●後処理
+
 9. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
@@ -90,6 +97,9 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 
 #### ● 推論結果の後処理 [二値化およびラベル化]
+
+10. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれ、そこからトレーニングが再開されます。
 
 8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください(**Fig. 3**)。
 	- Binary (二値化) タブを選択してください(**Fig. 3a**)。
