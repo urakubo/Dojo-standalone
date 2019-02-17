@@ -13,7 +13,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 	- "Example2DNN.zip": https://www.dropbox.com/s/k1baokh6yz1ucjk/Example2DNN.zip?dl=0
 <BR>
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
+  <img src="main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
@@ -68,7 +68,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 7. Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
+  <img src="main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 2. 2D DNN training dialog</b> </font>
