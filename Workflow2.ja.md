@@ -45,11 +45,10 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
 
-	- "Ground Truth h5 File", "Tensorflow Record File", "Tensorflow Record File"を前処理後のファイルを指定していることを確認してください。
-	- "Tensorflow Model Folder" に空フォルダが指定されていることを確認してください。
+	- Ground Truth h5 File, Tensorflow Record File, Tensorflow Record File が前処理したファイルを指定していることを確認してください。
+	- Tensorflow Model Folder に空フォルダが指定されていることを確認してください。
 
 6. Trainingタブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに次の様なプログレスメッセージが現れます。
-
 ```Preprocessing
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
         discrim_loss 0.49639216
@@ -61,14 +60,13 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●推論
 
 7. FFNダイアログのInferenceタブを選択してください。
-	- Target Image Folder に推論するEM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
+	- Target Inference FIle に推論EM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
 	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
 	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。各モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
-	- トレーニングにおいて、Sparse Z にチェックを入れた場合は、同様にチェックを入れてください。
-	
-	
-8. Inferenceタブ最下段の Execute をクリックして推論を開始してください。FFN File Folder に Target Image Folder に存在するEM画像のhdf5ファイル "grayscale_inf.h5" およびパラメータファイル "inference_params.pbtxt" が作成されたのち、推論が開始されます。
-コンソールに次の様なプログレスメッセージが現れます。"Executor shutdown complete."と表示されたら、Inferenceは終了です。
+	- トレーニングにおいて、Sparse Z にチェックを入れた場合は同様にチェックを入れてください。
+
+8. Inferenceタブ最下段の Execute をクリックして推論を開始してください。Target Image Folder にあるEM画像のhdf5ファイル "grayscale_inf.h5" およびパラメータファイル "inference_params.pbtxt" が FFN File Folder に作成されたのち、推論が開始されます。コンソールに次の様なプログレスメッセージが現れます。"Executor shutdown complete."と表示されたら、Inferenceは終了です。Output Inference Folder のさらに下に "0/0/seg-0_0_0.npz" という名前で推論セグメンテーションファイルが作成されます。 
+
 ```3D FFN Inference
 	...
         I0215 19:10:57.461078 15336 inference.py:554] [cl 0] Starting segmentation at (91, 489, 338) (zyx)
@@ -87,14 +85,12 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 9. FFNダイアログのPostprocessingタブを選択してください。
 
-9. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+10. Target Inference Fileに "0/0/seg-0_0_0.npz" が指定されていることを確認してください。
 
-<p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
-</p>
-<p align="center">
-  <font size="5"> <b>Figure 2. 2D DNN training dialog</b> </font>
-</p>
+11. "Output Filetype" に出力形式を指定してください。
+
+10. Target Inference Fileに"[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+
 <BR>
 
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
