@@ -81,11 +81,15 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 6. Trainingタブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに次の様なプログレスメッセージが現れます。
 ```Preprocessing
-        progress  epoch 49  step 1  image/sec 5.2  remaining 6m
-        discrim_loss 0.49639216
-        gen_loss_classic 0.13613938
         ...
-        saving model
+	INFO:tensorflow:global_step/sec: 9.96695
+	I0217 23:14:35.690611  2272 tf_logging.py:115] global_step/sec: 9.96695
+	INFO:tensorflow:global_step/sec: 9.93734
+	I0217 23:14:45.753664  2272 tf_logging.py:115] global_step/sec: 9.93734
+	INFO:tensorflow:Saving checkpoints for 5724 into C:[UNI-EM]\data\_3DNN_model_tensorflow\model.ckpt.
+	I0217 23:14:48.400605  2272 tf_logging.py:115] Saving checkpoints for 5724 into C:[UNI-EM]\data\_3DNN_model_tensorflow\model.ckpt.
+I0217 23:14:48.805234  2272 train.py:699] Saving summaries.
+        ...
 ```
 
 #### ●推論
