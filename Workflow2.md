@@ -98,7 +98,7 @@ I0217 23:14:48.805234  2272 train.py:699]
 	- Specify the Tensorflow Model File. The tensorflow model file consists of the three files ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", and "model.ckpt-4000000.meta". Specify the common prefix of those files: "model.ckpt-XXXXX".
 	- Check "Sparse Z" if the user check it in the process of training.
 
-8. Start inference by clicking the "Execute" button. The inference program firstly generates the hdf5 style file of target EM images "grayscale_inf.h5" and the parameter file "inference_params.pbtxt" in the FFN File Folder. Then, the inference starts based on those intermediate files. Users will see progress messages in the console window (shown below). "Executor shutdown complete."と表示されたら、Inferenceは終了です。Output Inference Folder 中サブフォルダ"0/0" に "seg-0_0_0.npz" という名前で推論セグメンテーションファイルが作成されます。 
+8. Start inference by clicking the "Execute" button. The inference program firstly generates the hdf5 style file of target EM images "grayscale_inf.h5" and the parameter file "inference_params.pbtxt" in the FFN File Folder. Then, the inference starts based on those intermediate files. Users will see progress messages in the console window (shown below). Inference is finished if the message "Executor shutdown complete" appears. Confirm that the file "0/0/seg-0_0_0.npz" has been generated in the Output Inference Folder. This is the inferred segmentation. 
 
 ```FFN Inference
 	...
@@ -116,9 +116,9 @@ I0217 23:14:48.805234  2272 train.py:699]
 
 #### Postprocessing
 
-9. FFNダイアログのPostprocessingタブを選択してください(**Fig. 2a**)。
+9. Select the postprocessing tab in the FFN dialogue (**Fig. 2a**).
 
-10. Target Inference Fileに推論セグメンテーションファイル "seg-0_0_0.npz" が指定されていることを確認してください。
+10. Confirm that the in "Target Inference File" に推論セグメンテーションファイル "seg-0_0_0.npz" が指定されていることを確認してください。
 
 11. Output Filetype に出力形式を指定してください。画像ファイルにて直観的に推定結果を確認したい場合には 8-bit color PNGを、プルーフリード・視覚化・アノテーションなどの操作を行いたい場合は16-bit gray scale PNGを指定してください。
 
@@ -128,20 +128,21 @@ I0217 23:14:48.805234  2272 train.py:699]
 
 #### Proofreading, annotation, and visualization
 
-13. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- Source Image Folder を ** Target Image Folder "[UNI-EM]/data/_3DNN_test_images" ** に設定してください。
-	- Source Segmentation Folder を ** Output Segmentation Folder "[UNI-EM]/data/_3DNN_inference" ** と同じに設定してください。
-	- 分かりやすい場所にフォルダを作成して Destination Dojo Folder に指定してください。フォルダ中にDojo形式でファイルが保存されます。
+13. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to launch the dialogue "Import Images & Segments".
+	- Set "Source Image Folder" as **[UNI-EM]/data/_2DNN_test_images** .
+	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_2DNN_segmentation2** .
+	- Create a file folder and set it as "Destination Dojo Folder". Dojo style files will be generated in this folder.
 
-14. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します(**Fig. 4a**)。
+14. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
 
-15. 下段のSliceバー(**Fig. 4b**)、上段のZoomバー(**Fig. 4c**)、Opacityバー(**Fig. 4d**)を動かしつつ、セグメンテーションの正確さを視覚的に確認してください。 
+15. Inspect successful segmentation visually through manipulating the bottom slice bar (**Fig. 4b**), top Zoom bar (**Fig. 4c**), and top Opacity bar (**Fig. 4d**).
 
-16. 不正確なセグメンテーションを校正する場合は、ひょうたん形状のAdjustボタンをクリックして(**Fig. 4e**)、Adjustモードにしてください。欠損がある部分に向かってカーソル円(+/-で拡縮)をドラッグすると欠損を埋めることができます。欠損を埋めたのち、Tabボタンを押して変更反映してください。Escボタンを押すとキャンセルになります。また、消しゴムをクリックしたのち(**Fig. 4f**）、余分な部分をドラッグして余分な部分を削ってください。Tabボタンで消去を反映し、Escボタンでキャンセルします。
+16. Correct erroneous segmentation by entering the mode "Adjust". Click an icon whose shape has a fused two area (**Fig. 4e**). In the adjust mode, users can fill voids by dragging the circled cursor from a filled area. The +/- keys change its radius. Press the Tab key to verify the change, or the Esc key to cancel the change. Users can erase unnecessary areas by dragging the circled cursor after clicking the eraser icon (**Fig. 4f**).
 
-17. 十分に校正ができたら、セグメンテーションを保存してください。また、UNI-EM上端のドロップダウンメニューより Dojo → Export Segmentation を選択することにより、校正したセグメンテーションファイルをpng/tiff形式で保存することができます。 
+17. Save the segmentation after proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file style is sequential png/tiff images.
 
-18. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 4g**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
+18. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save 3D images, annotate the target objects, and locate markers (**Fig. 4g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
+
 
 <p align="center">
   <img src="Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
