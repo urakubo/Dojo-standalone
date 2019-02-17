@@ -1,24 +1,17 @@
 # Example workflow 2: Membrane segmentation by use of 3D Flood Filling Networks (FFN)
 
-Here we try automated mitochondria segmentation of a stack of EM images by use of a 2-dimentional deep neural network (2D DNN). The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM), and the target brain region is mouse somatosensory cortex. The EM stack was originally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. The original images were passed through the Contrast Limited Adaptive Histogram Equalization filter (CLAHE; blocksize 127,　Histogram bins 256, max slope 1.50).
+Here we try automated membrane segmentation of a stack of EM images from mouse somatosensory cortex. The target EM stack was obtained by Kasthuri et al. ( Cell 162(3):648-61, 2015 ). They used an automatic tape-collecting ultra-microtome system (ATUM) for SEM imaging (ATUM/SEM). The EM stack was originally arranged for ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)), and we here reuse it. The EM images are open to public under Open Data Commons Attribution License (ODC-By) v1.0. The original images were passed through the Contrast Limited Adaptive Histogram Equalization filter (CLAHE; blocksize 127,　Histogram bins 256, max slope 1.50).
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
 - http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
-#### 
-
-
 
 #### Target EM images and ground truth
 
-1. Download the file "Example2DNN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder of the UNI-EM ([UNI-EM]). Here the training image is stored in "[UNI-EM]/data/_2DNN_training_images", and the ground truth segmentation is stored in "[UNI-EM]/data/_2DNN_ground_truth" (**Fig. 1**). The software Vast lite is recommend to make such ground truth segmentation ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
-
-1. 下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_3DNN_training_images" にトレーニング画像 (0000.png, ..., 0099.png; 8bit, grayscale png) 、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーション (0000.png, ..., 0099.png; 16bit, grayscale png) が入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします
-( https://software.rc.fas.harvard.edu/lichtman/vast/ )。
-
+1. Download the file "ExampleFFN.zip" from the link below and unzip it on your UNI-EM installed PC. Copy and paste the unzipped contents to the "data" folder of the UNI-EM ([UNI-EM]). Here the training image is stored in "[UNI-EM]/data/_3DNN_training_images" (0000.png, ..., 0099.png; 8bit, grayscale png), and the ground truth segmentation is stored in "[UNI-EM]/data/_3DNN_ground_truth"  (0000.png, ..., 0099.png; 16bit, grayscale png) (**Fig. 1**). The software Vast lite is recommend to make such ground truth segmentation ( https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+<BR>
 **ExampleFFN.zip** 522MB: https://www.dropbox.com/s/cztcf8w0ywj1pmz/ExampleFFN.zip?dl=0
-
 <BR>
 <p align="center">
   <img src="Images/FFN_GT.png" alt="2D DNN Training" width="600">
@@ -28,10 +21,9 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 </p>
 <BR>
 
+#### Preprocessing
 
-#### ●前処理
-
-2. UNI-EMを起動してください。
+2. Launch the UNI-EM.
 
 3. UNI-EM上端のドロップダウンメニューより Segmentation → 3D FFN を選択して、3D FFN ダイアログを起動してください。
 	- Preprocessing タブを選択してください(**Fig. 2a**)。
