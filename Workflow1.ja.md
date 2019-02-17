@@ -65,7 +65,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+7. Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
   <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
