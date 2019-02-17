@@ -69,14 +69,14 @@ Here we try automated membrane segmentation of a stack of EM images from mouse s
 
 5. Select the training tab in the FFN dialogue (**Fig. 2a**).
 	- Set the parameter Max Training Steps. It is necessary to train the tensorflow model over several million times, and it takes over one week for precise inference with a NVIDIA GTX1080ti-equipped PC. The training program outputs a tensorflow model every 3000 steps. Users can restart the training from the latest model even if the training process is interrupted. The training program automatically read the latest model from the Tensorflow Model Folder. The training process ends if it reaches the Max Training Steps. Users can execute additional training by setting the larger Max Training Steps if the training appears to be insufficient.
-	- Check "Sparse Z" if the z-pitch (nm/pixel) is smaller than the xy-pitch (nm/pixel). Internally, 
-		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
-		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
+	- Check "Sparse Z" if the z-pitch (nm/pixel) of the EM image is smaller than the xy-pitch (nm/pixel). Here please check it because the target EM images have a 29-nm z pitch and a 3-nm xy pitch ( Cell 162(3):648-61, 2015 ). Internally, the parameters are set as :
+		- "depth":12,"fov_size":[33,33,33],"deltas":[8,8,8] for checked
+		- "depth":9,"fov_size":[33,33,17],"deltas":[8,8,4] for unchecked
 
-	- Ground Truth h5 File, Tensorflow Record File, Tensorflow Record File が前処理したファイルを指定していることを確認してください。
-	- Tensorflow Model Folder に空フォルダが指定されていることを確認してください。
+	- Confirm that the rows "Ground Truth h5 File", "Tensorflow Record File", and "Tensorflow Record File" specify the files generated in the preprocessing step.
+	- Confirm that the empty "Tensorflow Model Folder" exists.
 
-6. Trainingタブ最下段の Execute をクリックして、トレーニングを開始してください。コンソールに次の様なプログレスメッセージが現れます。
+6. Start training by clicking the "Execute" button. Users will see the following progress messages in the console window:
 ```FFN Training
         ...
 	INFO:tensorflow:global_step/sec: 9.96695
@@ -89,12 +89,13 @@ I0217 23:14:48.805234  2272 train.py:699]
         ...
 ```
 
-#### ●推論
 
-7. FFNダイアログのInferenceタブを選択してください(**Fig. 2a**)。
-	- Target Image Folder に推論EM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
-	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
-	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
+#### Inference
+
+7. Select the inference tab in the FFN dialogue (**Fig. 2a**).
+	- Confirm that the target images are located in the "Target Image Folder" (sequentially numbered image files; 8bit, grayscale png).
+	- Confirm that the "Output Inference Folder" exists. Inferred segmentation will be stored in this folder.
+	- Specify the Tensorflow Model File.  にトレーニング済 tensorflow model file を指定してください。モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
 	- トレーニングにおいて、Sparse Z にチェックを入れた場合は同様にチェックを入れてください。
 
 8. Inferenceタブ最下段の Execute をクリックして推論を開始してください。まず Target Image Folder にあるEM画像のhdf5ファイル "grayscale_inf.h5" およびパラメータファイル "inference_params.pbtxt" が FFN File Folder に作成されます。次に、推論が開始されます。コンソールに次の様なプログレスメッセージが現れます。"Executor shutdown complete."と表示されたら、Inferenceは終了です。Output Inference Folder 中サブフォルダ"0/0" に "seg-0_0_0.npz" という名前で推論セグメンテーションファイルが作成されます。 
@@ -113,7 +114,7 @@ I0217 23:14:48.805234  2272 train.py:699]
         I0215 19:11:00.044339 15336 executor.py:172] Executor shutdown complete.
 ```
 
-#### ●後処理
+#### Postprocessing
 
 9. FFNダイアログのPostprocessingタブを選択してください(**Fig. 2a**)。
 
@@ -125,7 +126,7 @@ I0217 23:14:48.805234  2272 train.py:699]
 
 <BR>
 
-#### ● 推論結果のプルーフリード、視覚化、アノテーション
+#### Proofreading, annotation, and visualization
 
 13. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
 	- Source Image Folder を ** Target Image Folder "[UNI-EM]/data/_3DNN_test_images" ** に設定してください。
