@@ -23,7 +23,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- Preprocessing タブを選択してください(**Fig. 2b**)。
 	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2c**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2d**)。FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分程度です。
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分です。
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
 	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
 	- FFN中間ファイル"af.h5"
@@ -84,6 +84,8 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 ```
 
 #### ●後処理
+
+9. FFNダイアログのPostprocessingタブを選択してください。
 
 9. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
