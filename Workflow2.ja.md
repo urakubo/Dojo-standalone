@@ -60,7 +60,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●推論
 
 7. FFNダイアログのInferenceタブを選択してください。
-	- Target Inference FIle に推論EM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
+	- Target Image Folder に推論EM画像が存在することを確認してください(8bit, grayscale pngの連続番号ファイル)。
 	- Output Inference Folder が存在することを確認してください。同フォルダに推論結果が保存されます。
 	- Tensorflow Model Files にトレーニング済 tensorflow model file を指定してください。各モデルファイルは ”model.ckpt-XXXXX.data-00000-of-00001", "model.ckpt-XXXXX.index", "model.ckpt-4000000.meta" の3つのファイルに分かれています。モデルファイル前半の各モデル共通部分"model.ckpt-XXXXX"を指定してください。
 	- トレーニングにおいて、Sparse Z にチェックを入れた場合は同様にチェックを入れてください。
@@ -87,17 +87,17 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 10. Target Inference Fileに "0/0/seg-0_0_0.npz" が指定されていることを確認してください。
 
-11. "Output Filetype" に出力形式を指定してください。
+11. Output Filetype に出力形式を指定してください。画像ファイルにて直観的に推定結果を確認したい場合には 8-bit color PNGを、さらにプルーフリード、視覚化、アノテーションなどの操作を行いたい場合は16-bit gray scale PNGを指定してください。
 
-10. Target Inference Fileに"[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+12. Postprocessingタブ最下段のExecuteをクリックして後処理を開始してください。Output Segmentation Folder に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <BR>
 
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
 
 12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
-	- Source Image Folder を **"[UNI-EM]/data/_2DNN_test_images"** に設定してください。
-	- Source Segmentation Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
+	- Source Image Folder を ** Target Image Folder "[UNI-EM]/data/_3DNN_test_images" ** に設定してください。
+	- Source Segmentation Folder を ** Output Segmentation Folder "[UNI-EM]/data/_3DNN_inference" ** と同じに設定してください。
 	- 分かりやすい場所にフォルダを作成して Destination Dojo Folder に指定してください。フォルダ中にDojo形式でファイルが保存されます。
 
 13. Import Images & Segments ダイアログ最下段の OK をクリックして、Dojoファイルの生成を行ってください。ファイル作成後、Dojo が起動します(**Fig. 4a**)。
