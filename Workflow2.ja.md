@@ -40,7 +40,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●トレーニング
 
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれ、そこからトレーニングが再開されます。Max Training Steps に達するとトレーニングは終了します。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めた場合でも新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれ、そこからトレーニングが再開されます。Max Training Steps に達するとトレーニングは終了します。トレーニングが不足である場合は、さらに大きな Max Training Steps を設定してトレーニングを再開することができます。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はSparse Zにチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
