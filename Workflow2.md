@@ -118,19 +118,18 @@ I0217 23:14:48.805234  2272 train.py:699]
 
 9. Select the postprocessing tab in the FFN dialogue (**Fig. 2a**).
 
-10. Confirm that the in "Target Inference File" に推論セグメンテーションファイル "seg-0_0_0.npz" が指定されていることを確認してください。
+10. Confirm that the inferred segmentation file "seg-0_0_0.npz" was specified in the Target Inference File.
 
-11. Output Filetype に出力形式を指定してください。画像ファイルにて直観的に推定結果を確認したい場合には 8-bit color PNGを、プルーフリード・視覚化・アノテーションなどの操作を行いたい場合は16-bit gray scale PNGを指定してください。
+11. Set Output Filetype. The 8-bit color PNG style is recommended for visual inspection of the png files, and the 16-bit gray scale PNG style is recommended for further proofreading, 3D visualization, and annotation.
 
-12. Postprocessingタブ最下段のExecuteをクリックして後処理を開始してください。Output Segmentation Folder に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+12. Start postprocessing by clicking the "Execute" button. Confirm that the inferred segmentation files 0000.png, 0001.png, ..., 0099.png were generated in the Output Segmentation Folder.
 
 <BR>
-
 #### Proofreading, annotation, and visualization
 
 13. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to launch the dialogue "Import Images & Segments".
-	- Set "Source Image Folder" as **[UNI-EM]/data/_2DNN_test_images** .
-	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_2DNN_segmentation2** .
+	- Set "Source Image Folder" as **[UNI-EM]/data/_3DNN_test_images** .
+	- Set "Source Segmentation Folder" as **[UNI-EM]/data/_3DNN_inference** .
 	- Create a file folder and set it as "Destination Dojo Folder". Dojo style files will be generated in this folder.
 
 14. Generate the Dojo style files by clicking the "OK" button. The software Dojo will be launched after the file generation (**Fig. 4a**).
