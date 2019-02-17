@@ -111,7 +111,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 18. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 4g**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
+  <img src="Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
