@@ -27,7 +27,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
 	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
 	- FFN中間ファイル"af.h5"
-	- FFN中間ファイル"af.h5", "tf_record_file"
+	- FFN中間ファイル"tf_record_file"
 
 ```Preprocessing
         progress  epoch 49  step 1  image/sec 5.2  remaining 6m
