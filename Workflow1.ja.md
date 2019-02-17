@@ -68,7 +68,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 7. Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
-  <img src="main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
+  <img src="Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 2. 2D DNN training dialog</b> </font>
@@ -112,7 +112,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 ```
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2D_Binary.png" alt="Dialog for binarization" width="600">
+  <img src="Images/2D_Binary.png" alt="Dialog for binarization" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 3. Dialog for binarization</b> </font>
@@ -137,7 +137,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 4g**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
+  <img src="Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
