@@ -7,7 +7,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 - http://docs.neurodata.io/kasthuri2015/kasthuri15docs.html
 
 
-#### EM画像と教師セグメンテーション
+#### ●EM画像と教師セグメンテーション
 
 1. 下の ExampleFFN.zip をダウンロードして展開してください。dataフォルダの中身をUNI-EMフォルダ（[UNI-EM]）中のdataフォルダに置いてください。"[UNI-EM]/data/_3DNN_training_images" にトレーニング画像 (0000.png, ..., 0099.png; 8bit, grayscale png) 、"[UNI-EM]/data/_3DNN_ground_truth" に教師セグメンテーション (0000.png, ..., 0099.png; 16bit, grayscale png) が入っています(**Fig. 1**)。教師セグメンテーションの作成にはVast liteの使用をお勧めします
 ( https://software.rc.fas.harvard.edu/lichtman/vast/ )。
@@ -48,6 +48,16 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	I0217 21:52:10.164829  4268 build_coordinates.py:80] Resampling and shuffling coordinates.
 	I0217 21:52:38.350505  4268 build_coordinates.py:88] Saving coordinates.
 ```
+
+<BR>
+<p align="center">
+  <img src="Images/FFN_GT.png" alt="2D DNN Training" width="600">
+</p>
+<p align="center">
+  <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
+</p>
+<BR>
+
 
 #### ●トレーニング
 
