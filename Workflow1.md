@@ -20,7 +20,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 </p>
 <BR>
 
-#### Training and inference by use of 2D DNN
+#### Training and inference
 
 2. Launch the UNI-EM.
 
@@ -76,7 +76,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 <BR>
 
 
-#### Postprocessing of inferred segmentation: binarization and labeling
+#### Postprocessing: binarization and labeling
 
 8. Select "Plugins → 2D Filters" from the UNI-EM dropdown menu to launch the dialogue "2D Filters" (**Fig. 3**).
 	- Select the Binary tab (**Fig. 3a**).
@@ -119,7 +119,7 @@ Here we try automated mitochondria segmentation of a stack of EM images by use o
 </p>
 <BR>
 
-#### Proofreading, annotation, and visualization of inferred segmentation
+#### Proofreading, annotation, and visualization
 
 12. Select "Dojo → Import EM Stack/Segmentation" from the UNI-EM dropdown menu to launch the dialogue "Import Images & Segments".
 	- Set "Source Image Folder" as **[UNI-EM]/data/_2DNN_test_images** .
