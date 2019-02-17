@@ -14,6 +14,15 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 "ExampleFFN.zip": 現在作成中
 
+<BR>
+<p align="center">
+  <img src="Images/FFN_GT.png" alt="2D DNN Training" width="600">
+</p>
+<p align="center">
+  <font size="5"> <b>Figure 1. Training EM image and membrane ground truth segmentation</b> </font>
+</p>
+<BR>
+
 
 #### ●前処理
 
@@ -51,10 +60,10 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 
 <BR>
 <p align="center">
-  <img src="Images/FFN_GT.png" alt="2D DNN Training" width="600">
+  <img src="Images/FFN_Prep.png" alt="2D DNN Training" width="600">
 </p>
 <p align="center">
-  <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
+  <font size="5"> <b>Figure 2. Preprocessing of FFN</b> </font>
 </p>
 <BR>
 
