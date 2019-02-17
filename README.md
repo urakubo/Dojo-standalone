@@ -23,8 +23,8 @@ Recent years have seen a rapid expansion in the field of micro-connectomics, whi
 1.	We built a desktop version of the proofreading software Dojo (IEEE Trans. Vis. Comput. Graph. 20, 2466–2475) on Microsoft Windows 10, 64 bit.
 2.	We merged it with a DNN framework: Google Tensorflow/tensorboard. 
 3.	We then incorporated two types of DNN-based segmentation programs: 2D U-net/Resnet (https://github.com/tbullmann/imagetranslation-tensorflow) and flood-filling networks (https://github.com/google/ffn).
-4.	A 3D annotator was equipped for visual inspection and annotation (based on Three .js).
-5.	2D/3D filtration functions were incorporated for the manipulation of DNN-filtered segmentation images (based on skimage and opencv3).
+4.	A 3D annotator was equipped for visual inspection and annotation (based on Three.js).
+5.	2D/3D filtration functions were incorporated for the postprocessing of DNN-generated segmentation images (based on skimage and opencv3).
 
 Multiple users can simultaneously use it through web browsers. The goal is to develop a unified software environment for DNN-based segmentation, postprocessing, proofreading, annotation, and visualization of EM images. The VAST Lite is recommended for ground truth generation for DNNs (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
@@ -38,7 +38,11 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 ### Pyinstaller version 
 1.	Download one of the following two versions, and unzip it:
 	- CPU version (Ver0.62: 340 MB): https://www.dropbox.com/s/a8aepoikrpsmgob/UNI_EM0.62_Pyinstaller.zip?dl=0
-   	- GPU version (Ver0.XX: XXX MB): Under construction.
+   	- GPU version (Ver0.62: 953 MB): https://www.dropbox.com/s/xsmz0wf5m77oezz/0.62_PyinstallerGPU.zip?dl=0
+
+	The GPU version can be used if the PC-equipped NVIDIA GPU has over 3.5 compute capability:
+
+	- https://developer.nvidia.com/cuda-gpus
 
 2.	Download sample EM/segmentation data from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
@@ -74,7 +78,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 2. Please push the "Reload" button first if the Dojo seems to be in trouble. The Dojo can also be seen in the other web browser if users copy and paste the URL [ http://X.X.X.X:8888/dojo/ ] . Users can also use Dojo through the web browsers of other PCs within the same LAN.
 3.	The usage of Dojo is described in the original web page [ https://www.rhoana.org/dojo/ ] . For example, users can move the layers by pressing w/s keys, and change the opacity of segmentation by pressing c/d keys.
 4.	Users can import pairs of new EM images and segmentation by selecting Dojo → Import EM Stack/Segmentation. Specify the folders containing a stack of EM images and a stack of segmentation images through the dialog (sequentially numbered, gray-scale png/tiff files). 
-5.	The edited segmentation images can be exported as sequentially numbered, gray-scale png/tiff files, by selecting Dojo -> Export EM Stack / Export. 
+5.	The edited segmentation images can be exported as sequentially numbered, gray-scale png/tiff files, by selecting Dojo → Export EM Stack / Export. 
 
 ![Dojo Proofreading software](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Dojo.png "Dojo")
 

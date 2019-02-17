@@ -12,7 +12,8 @@
 - [使い方：2次元DNNを用いたセグメンテーション](#2次元DNNを用いたセグメンテーション)
 - [使い方：3次元FFNを用いたセグメンテーション](#3次元FFNを用いたセグメンテーション)
 - [使い方：2D/3Dフィルタ](#2D3Dフィルタ)
-- [適用事例：2次元DNNによるミトコンドリアのセグメンテーション](Workflow1.ja.md)
+- [適用事例1：2次元DNNによるミトコンドリアのセグメンテーション](Workflow1.ja.md)
+- [適用事例2：3次元FFNによる細胞膜のセグメンテーション](Workflow2.ja.md)
 - [お願い](#お願い)
 
 ## はじめに：
@@ -40,11 +41,13 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 1. Tensorflow-GPU 版(498 MB)とTensorflow-CPU版(XXX MB, 作成中)を用意しました。いずれかをダウンロードして展開してください。
 	- CPU版 (340 MB; Ver 0.62): https://www.dropbox.com/s/a8aepoikrpsmgob/UNI_EM0.62_Pyinstaller.zip?dl=0
 	
-	- GPU版 (XXX MB; Ver 0.XX): Under construction
+	- GPU版 (953 MB; Ver0.62): https://www.dropbox.com/s/xsmz0wf5m77oezz/0.62_PyinstallerGPU.zip?dl=0
 
 2. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
 	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
+
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
+
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください。
 
 ### Python版：
@@ -63,6 +66,7 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 ### 校正ソフトウェアDojo：
 自動セグメンテーション結果を確認・校正するためのツールです。Lichtman/Pfister 研が開発した Rhoana piplineの一部です。
+
 	- https://www.rhoana.org/dojo/
 
 1. 上端のドロップダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりkasthuri15フォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。

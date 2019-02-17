@@ -1,6 +1,6 @@
 # 適用事例1: 2次元DNNによるミトコンドリアのセグメンテーション
 
-UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMによって連続断層撮影されたMouse somatosensory cortexのミトコンドリアのセグメンテーションを行います。撮影データは ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)) において用いられたものをそもまま使用させて頂いております。同データを用いた論文は Kasthuri et al. ( Cell 162(3):648-61, 2015 ) に出版されており、その後EM画像は Open Data Commons Attribution License (ODC-By) v1.0 ライセンスのもと公開されています。
+UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMによって連続断層撮影されたMouse somatosensory cortexのミトコンドリアのセグメンテーションを行います。撮影データは ISBI 2013 challenge ([SNEMI3D](http://brainiac2.mit.edu/SNEMI3D/)) において用いられたものをそのまま使用させて頂いております。同データを用いた論文は Kasthuri et al. ( Cell 162(3):648-61, 2015 ) に出版されました。その後EM画像は Open Data Commons Attribution License (ODC-By) v1.0 ライセンスのもと公開されています。EM画像には、使用前に Contrast Limited Adaptive Histogram Equalization (CLAHE)フィルタを通しました (blocksize 127,　Histogram bins 256, max slope 1.50) 。
 
 - https://neurodata.io/data/kasthuri15/
 - https://opendatacommons.org/licenses/by/1-0/
@@ -13,7 +13,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 	- "Example2DNN.zip": https://www.dropbox.com/s/k1baokh6yz1ucjk/Example2DNN.zip?dl=0
 <BR>
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
+  <img src="Images/Training_GroundTruth.png" alt="2D DNN Training" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 1. Training EM image and mitochondria ground truth segmentation</b> </font>
@@ -24,7 +24,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 
 2. UNI-EMを起動してください。
 
-3. UNI-EM上端のドロップダウンメニューより Segmentation → 2DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
+3. UNI-EM上端のドロップダウンメニューより Segmentation → 2D DNN を選択して、2D DNNダイアログを起動してください(**Fig. 2a**)。
 	- Training タブを選択してください(**Fig. 2b**)。
 	- Image Folder が"[UNI-EM]/data/_2DNN_training_images" であること(**Fig. 2c**)、Segmentation Folder が "[UNI-EM]/data/_2DNN_ground_truth"であること(**Fig. 2d**)、また Checkpoint Folder ("[UNI-EM]/data/_2DNN_model_tensorflow") が存在することを確認してください(**Fig. 2e**)。
 	- ミトコンドリアのセグメンテーションにはResnetが最適であるため（参考１）、中段 Generator タブにて resnet を選択し(**Fig. 2f**)、 N res blocks を 16 に設定します(**Fig. 2g**)。
@@ -65,10 +65,10 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
         evaluated image 0098
         evaluated image 0099
 ```
-7. Output Segmentation Folder "[UNI]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
+7. Output Segmentation Folder "[UNI-EM]/data/_2DNN_inference" に推論結果ファイル 0000.png, 0001.png, ..., 0099.png が保存されていることを確認してください。
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
+  <img src="Images/2DNN_Training.png" alt="2D DNN dialog for training" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 2. 2D DNN training dialog</b> </font>
@@ -112,7 +112,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 ```
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/2D_Binary.png" alt="Dialog for binarization" width="600">
+  <img src="Images/2D_Binary.png" alt="Dialog for binarization" width="600">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 3. Dialog for binarization</b> </font>
@@ -137,7 +137,7 @@ UNI-EMによる2D DNNセグメンテーションの一例として、ATUM/SEMに
 17. UNI-EM上端のドロップダウンメニューより Annotator → Open を選択して3D Annotatorを開いてください。セグメンテーションしたミトコンドリアの3次元形状の視覚化・保存、名前づけ（アノテーション）、Markerの設置ができます(**Fig. 4g**)。詳細な使い方は[使い方：3D Annotator](README.ja.md#3D-Annotator)をご覧ください。
 
 <p align="center">
-  <img src="https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
+  <img src="Images/Proof_Annotation.png" alt="Proofreader Dojo and 3D Annotator" width="1000">
 </p>
 <p align="center">
   <font size="5"> <b>Figure 4. Proofreader Dojo and 3D Annotator</b> </font>
