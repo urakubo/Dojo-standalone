@@ -97,47 +97,6 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 </p>
 <BR>
 
-
-#### ● 推論結果の後処理 [二値化およびラベル化]
-
-10. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれ、そこからトレーニングが再開されます。
-
-8. UNI-EM上端のドロップダウンメニューより Plugins → 2D Filters を選択して、2D Filters ダイアログを起動してください(**Fig. 3**)。
-	- Binary (二値化) タブを選択してください(**Fig. 3a**)。
-	- Target Folder が "[UNI-EM]/data/_2DNN_inference" であることを確認してください(**Fig. 3b**)。
-	- Output Folder が "[UNI-EM]/data/_2DNN_segmentation" であることを確認してください(**Fig. 3c**)。
-	- Target X, Target Y, Target Z を動かすと Target Folder内画像のサムネイルが Target image に表示されます(**Fig. 3d**)。"Obtain sample output"ボタンをクリックすると、二値化結果が表示されます(**Fig. 3e**)。
-
-9. Binary タブ最下段の Execute をクリックして、二値化を行ってください(**Fig. 3f**)。コンソールに次の様なプログレスメッセージが現れます。
-```2D Binarization
-        Target Folder:  [UNI-EM]/data/_2DNN_inference
-        Output Folder:  [UNI-EM]/data/_2DNN_segmentation
-        No: 0
-        No: 1
-        ...
-        ...
-        No: 98
-        No: 99
-        Binary was executed!
-```
-
-10. UNI-EM上端のドロップダウンメニューより Plugins → 3D Filters を選択して、3D Filters ダイアログを起動してください。
-	- Label (ラベルづけ) タブを選択してください。
-	- Target Folder を **"[UNI-EM]/data/_2DNN_segmentation"** に設定してください。
-	- Output Folder を **"[UNI-EM]/data/_2DNN_segmentation2"** に設定してください。
-
-11. Label タブ最下段の Execute をクリックして、ラベルづけを行ってください。コンソールに次の様なプログレスメッセージが現れます。
-```3D Labeling
-        Target Folder:  [UNI-EM]/data/_2DNN_segmentation
-        Output Folder:  [UNI-EM]/data/_2DNN_segmentation2
-        Loading images ...
-        Saving images ...
-        Label was executed!
-```
-
-<BR>
-
 #### ● 推論結果のプルーフリード、視覚化、アノテーション
 
 12. UNI-EM上端のドロップダウンメニューより Dojo → Import EM Stack/Segmentation を選択して、Import Images & Segments ダイアログを起動してください。
