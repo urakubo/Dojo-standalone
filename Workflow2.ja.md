@@ -23,7 +23,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 	- Preprocessing タブを選択してください(**Fig. 2b**)。
 	- Training Image Folder "[UNI-EM]/data/_3DNN_training_images" にEM画像が存在すること(**Fig. 2c**)、Ground Truth Folder "[UNI-EM]/data/_3DNN_ground_truth"に教師セグメンテーション画像が存在することを確認してください(**Fig. 2d**)。FFN File Folder ("[UNI-EM]/data/ffn") が存在することを確認してください(**Fig. 2e**)。左側のサムネイルにTraining Imageが、右側にGround Truthが表示されます。
 
-4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Trainingは終了です。 
+4. Preprocessing タブ最下段の Execute をクリックして、前処理ファイルの作成を開始してください(**Fig. 2h**)。FFN File Folderに次の４つのファイルが作成されます。作成時間は6-60分程度です。"XXXX XXXX"と表示されたら、Preprocessing は終了です。 
 	- EM画像のhdf5ファイル"grayscale_maps.h5"
 	- 教師セグメンテーション画像のhdf5ファイル"groundtruth.h5"
 	- FFN中間ファイル"af.h5"
@@ -40,7 +40,7 @@ UNI-EMによる3D FFNセグメンテーションの一例として、ATUM/SEMに
 #### ●トレーニング
 
 5. FFNダイアログのTrainingタブを選択してください(**Fig. 2b**)。
-	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。ただし、Training 実行中は約一万ステップごとにモデルを出力する仕組みになっており、途中でトレーニングを止めた場合でも新たにTrainingを実行すると"[UNI-EM]/data/_3DNN_model_tensorflow”から最新のモデルが読み込まれてトレーニングが再開されます。
+	- Max Training Steps を設定してください。正確な推論のためには数百万ステップ以上のトレーニングが必要です。NVIDIA GTX1080tiを用いた場合で一週間以上かかります。Training 中は約一万ステップごとにtensorflowモデルを出力する仕組みになっており、途中でトレーニングを止めた後であっても新たにTrainingを開始すると "[UNI-EM]/data/_3DNN_model_tensorflow” から最新のモデルが読み込まれてトレーニングが再開されます。
 	- xyピッチ(nm/pixel)に比べてz方向のピッチ(nm/pixel)が大きい場合はチェックを入れてください。チェックの有無でFFNトレーニングパラメータが次のように変わります。
 		- チェックを入れない場合：　"depth":12,"fov_size":[33,33,33],"deltas":[8,8,8]
 		- チェックを入れた場合："depth":9,"fov_size":[33,33,17],"deltas":[8,8,4]
