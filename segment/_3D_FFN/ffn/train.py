@@ -56,7 +56,7 @@ from ffn.training import inputs
 from ffn.training import augmentation
 # Necessary so that optimizer flags are defined.
 # pylint: disable=unused-import
-from ffn.training import optimizer
+#from ffn.training import optimizer
 # pylint: enable=unused-import
 
 FLAGS = flags.FLAGS

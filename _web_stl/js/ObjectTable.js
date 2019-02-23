@@ -13,17 +13,20 @@ var ObjObjextTable = new Tabulator("#ObjectTable", {
 		{column:"name", dir:"asc"},
 	],
 	columns:[                 //define the table columns
-		{title:"Visible", field:"act", width:80, align:"center",formatter:"tickCross", editor:"tickCross"},
-		{title:"ID", field:"id", width:90},
+    // ActやConfidenceはダウンロード時に除外されないよう定義しておく。ただしカラムvisible: falseにして非表示にする
+    {title:"Act", field: "act", download: true, visible: false},
+		{title:"Visible", field:"act", width: 73, align:"center",formatter:"tickCross", editor:"tickCross", download: false},
+		{title:"ID", field:"id", width: 50},
 		{title:"Name", field:"name", editor:"input"},
 		{title:"Size", field:"size", width:60, align:"right"},
-		{title:"R", field:"r", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
-		{title:"G", field:"g", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
-		{title:"B", field:"b", width:40, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
+    {title:"Confidence", field: "confidence", download: true, visible: false},
+		{title:"R", field:"r", minWidth: 30, width: 35, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
+		{title:"G", field:"g", minWidth: 30, width: 35, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
+		{title:"B", field:"b", minWidth: 30, width: 35, align:"right", editor:"range",editorParams:{min:0, max:255, step:1}},
 	],
-	
+
 	// セルが編集されたとき
-    cellEdited: function(cell) {
+  cellEdited: function(cell) {
       // 渡ってくるパラメータcellについて: http://tabulator.info/docs/4.1/components#component-cell
       // 編集後の値
       var cellValue = cell.getValue();
@@ -70,7 +73,19 @@ var ObjObjextTable = new Tabulator("#ObjectTable", {
 			APP.changecolorSTLObject(id, r*256*256+g*256+b*1);
 		}
     }
-	
+
 });
 
+// 「Download CSV」ボタンを押したとき
+$('#save-object-table-csv').on('click', function(event) {
+  downloadObjectTableAsCSV();
+  return false;
+});
 
+/**
+ * ObjectTableをCSVでダウンロードする
+ */
+function downloadObjectTableAsCSV() {
+  console.log("downloadObjectTableAsCSV");
+  ObjObjextTable.download(csvFormatter, 'ObjextTable.csv');
+}

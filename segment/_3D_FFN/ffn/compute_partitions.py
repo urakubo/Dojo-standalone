@@ -135,7 +135,7 @@ def compute_partitions(seg_array,
       return slice(i, -i)
 
   valid_sel = [_sel(x) for x in lom_radius_zyx]
-  output = np.zeros(seg_array[valid_sel].shape, dtype=np.uint8)
+  output = np.zeros(seg_array[tuple(valid_sel)].shape, dtype=np.uint8)
   corner = lom_radius
 
   if exclusion_regions is not None:
@@ -177,7 +177,7 @@ def compute_partitions(seg_array,
 
     # Drop context that is only necessary for computing the active fraction
     # (i.e. one LOM radius in every direction).
-    object_mask = object_mask[valid_sel]
+    object_mask = object_mask[tuple(valid_sel)]
 
     # TODO(mjanusz): Use np.digitize here.
     for i, th in enumerate(thresholds):

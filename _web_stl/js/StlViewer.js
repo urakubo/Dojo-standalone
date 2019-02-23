@@ -39,18 +39,18 @@ function onWindowResize() {
 APP.addSTLObject = function(url, name, objcolor) {
     var loader = new THREE.STLLoader();
     loader.load(url, function (geometry) {
-		var material = new THREE.MeshLambertMaterial( { color: objcolor } ); //ambient: 0xff0000, 
+		var material = new THREE.MeshLambertMaterial( { color: objcolor } ); //ambient: 0xff0000,
         var mesh = new THREE.Mesh(geometry, material);
         // APP.scene.add(mesh);
         mesh.name = name;
         mesh.scale.set(1,1,1);
 		mesh.material.side = THREE.DoubleSide;
         APP.scene.add(mesh);
-        
+
         mesh.translateX( xshift );
         mesh.translateY( yshift );
         mesh.translateZ( zshift );
-        
+
 		//APP.scene.getObjectByName('test_name2').rotation.x += 0.005;
 		//APP.scene.getObjectByName('test_name2').rotation.y += 0.005;
 		//console.log('Object name:');
@@ -127,16 +127,15 @@ function rgb2hex ( rgb ) {
 
 // Operation on mouse click
 function clickPosition( event ) {
-
 	// Location of mouse
-	var x = event.clientX;
-	var y = event.clientY;
- 
+	var clientX = event.clientX;
+	var clientY = event.clientY;
+
 	// Normalization of location
 	var mouse = new THREE.Vector2();
-	mouse.x = ( ( x - APP.renderer.domElement.offsetLeft ) / APP.renderer.domElement.clientWidth ) * 2 - 1;
-	mouse.y = - ( ( y - APP.renderer.domElement.offsetTop ) / APP.renderer.domElement.clientHeight ) * 2 + 1;
- 
+	mouse.x = ( ( clientX - APP.renderer.domElement.offsetLeft ) / APP.renderer.domElement.clientWidth ) * 2 - 1;
+	mouse.y = - ( ( clientY - APP.renderer.domElement.offsetTop ) / APP.renderer.domElement.clientHeight ) * 2 + 1;
+
 	// Raycasterインスタンス作成
 	var raycaster = new THREE.Raycaster();
 	// 取得したX、Y座標でrayの位置を更新
@@ -144,66 +143,145 @@ function clickPosition( event ) {
 
 	// Indetify crossing objects.
 	var intersects = raycaster.intersectObjects( APP.scene.children );
-	
+
 	// Write the most proximal one.
-	var obj = {};
 	if (Object.keys(intersects).length > 0) {
 		var objid = intersects[0].object.name;
- 		target = document.getElementById("ClickedObjectID");
+		target = document.getElementById("ClickedObjectID");
 		target.innerHTML = objid;
 
 		if (APP.MarkerOffOn == 1) {
-			x = intersects[ 0 ].point.x;
-			y = intersects[ 0 ].point.y;
-			z = intersects[ 0 ].point.z;
-			col = rgb2hex( [ APP.MarkerR, APP.MarkerG, APP.MarkerB ] );
+			var x = intersects[ 0 ].point.x;
+			var y = intersects[ 0 ].point.y;
+			var z = intersects[ 0 ].point.z;
 
-			// Add sphere
-			var geometry = new THREE.SphereGeometry( 1 );
-			var material = new THREE.MeshBasicMaterial( {color: col} );
-			var sphere = new THREE.Mesh( geometry, material );
-			sphere.scale.set(APP.MarkerRadius,APP.MarkerRadius,APP.MarkerRadius);
-			sphere.position.set(x, y, z);
-			sphere.name = 'm'+ APP.MarkerID.toString();
-			APP.scene.add( sphere );
-			
-			
-			//console.log(APP.scene);
-			
 			//Append Jsontable
-			markername = APP.MarkerPrefix+String(APP.MarkerSuffix);
-			
-			var NewMarker = {
-				"act": 1,
-				"id":  APP.MarkerID,
-				"name": markername,
-				"parentid": objid,
-    			"radius": APP.MarkerRadius,
-    			"r": APP.MarkerR,
-    			"g": APP.MarkerG,
-    			"b": APP.MarkerB,
-    			"x": parseInt(x),
-    			"y": parseInt(y),
-    			"z": parseInt(z)
-    			};
+			var markerName = APP.MarkerPrefix + String(APP.MarkerSuffix);
 
-    		console.log(NewMarker);
-			ObjMarkerTable.addData(NewMarker);  // Change database MarkerTable (setData)
-			
-			APP.MarkerSuffix = APP.MarkerSuffix + 1;
-			APP.MarkerID     = APP.MarkerID + 1;
-			$('#SetSuffixNum').val(APP.MarkerSuffix); // Change suffix for index.html
-			}
-
+			APP.addMarker({
+				act: 1,
+				name: markerName,
+				parentid: objid,
+				radius: APP.MarkerRadius,
+				r: APP.MarkerR,
+				g: APP.MarkerG,
+				b: APP.MarkerB,
+				x: x,
+				y: y,
+				z: z
+			});
+		}
 	}else{
- 		target = document.getElementById("ClickedObjectID");
+		target = document.getElementById("ClickedObjectID");
 		target.innerHTML = "Background";
 	}
-	}
+}
+
+/**
+ * マーカーを追加する
+ *
+ * @param {Object} markerData CSVで読み込まれたプロパティを持つオブジェクト。以下のプロパティが有効
+ *   - act      : {number} 例: 1
+ *   - name     : {string} 例: "Marker1"
+ *   - parentid : {number} 例: 3036
+ *   - radius   : {number} 例: 2.8
+ *   - r        : {number} 例: 255
+ *   - g        : {number} 例: 30
+ *   - b        : {number} 例: 100
+ *   - x        : {number} 例: 9.076891761740626
+ *   - y        : {number} 例: 10.850928915374125
+ *   - z        : {number} 例: 252.16774396931498
+ *
+ * @param {bool} [isImportFromFile=false] ファイルからの読み込みかどうか。
+ *   ファイルからの読み込み時はMarkerがOFFでもMarkerTableに追加する
+ * @return {bool} マーカーを追加したらtrueが返る
+ */
+APP.addMarker = function(markerData, isImportFromFile) {
+  var markerData_act = Number(markerData.act);
+  var markerData_name = String(markerData.name);
+  var markerData_parentid = Number(markerData.parentid);
+  var markerData_radius = Number(markerData.radius);
+  var markerData_r = Number(markerData.r);
+  var markerData_g = Number(markerData.g);
+  var markerData_b = Number(markerData.b);
+  var markerData_x = Number(markerData.x);
+  var markerData_y = Number(markerData.y);
+  var markerData_z = Number(markerData.z);
+
+  // CSVファイルからの読み込み時はMarkerがOFFでも描画する(要確認)
+  if (APP.MarkerOffOn == 1 || isImportFromFile) {
+    var color = rgb2hex([markerData_r, markerData_g, markerData_b]);
+
+    // Add sphere
+    var geometry = new THREE.SphereGeometry(1);
+    var material = new THREE.MeshBasicMaterial({ color: color });
+    var sphere = new THREE.Mesh(geometry, material);
+
+    sphere.scale.set(markerData_radius, markerData_radius, markerData_radius);
+    sphere.position.set(markerData_x, markerData_y, markerData_z);
+    sphere.name = 'm' + APP.MarkerID.toString();
+    APP.scene.add(sphere);
+
+    var NewMarker = {
+      act: markerData_act,
+      id: APP.MarkerID,
+      name: markerData_name,
+      parentid: markerData_parentid,
+      radius: markerData_radius,
+      r: markerData_r,
+      g: markerData_g,
+      b: markerData_b,
+      x: markerData_x,
+      y: markerData_y,
+      z: markerData_z
+    };
+
+    ObjMarkerTable.addData(NewMarker);  // Change database MarkerTable (setData)
+    APP.updateMarkerId();
+    return true;
+  }
+  return false;
+};
+
+/**
+ * MarkerIDを更新する
+ */
+APP.updateMarkerId = function() {
+  APP.MarkerSuffix = APP.MarkerSuffix + 1;
+  APP.MarkerID = APP.MarkerID + 1;
+  $('#SetSuffixNum').val(APP.MarkerSuffix); // Change suffix for index.html
+};
+
+/**
+ * マーカーを描画する
+ *
+ * @example
+ * renderMarker({
+ *   "act": 1,
+ *   "name": "test1",
+ *   "parentid": 3000,
+ *   "radius": 2,
+ *   "r": 100,
+ *   "g": 0,
+ *   "b": 0,
+ *   "x": 100,
+ *   "y": 200,
+ *   "z": 200
+ * })
+ *
+ * @param {Object} markerData CSVで読み込まれたプロパティを持つオブジェクト。addMarkerの引数と同じ
+ */
+APP.renderMarker = function(markerData) {
+  var obj = APP.scene.getObjectByName(Number(markerData.parentid));
+  if (obj == null) {
+    return false;
+  }
+  return APP.addMarker(markerData, true);
+};
 
 // Change the color of the stl object specified by a name after generation.
 APP.changeMarkerRadius = function(id, r){
-	name = 'm'+ id.toString();
+	var name = 'm'+ id.toString();
 	var obj = APP.scene.getObjectByName(name);
 	console.log(obj);
 	if ( obj != undefined ) {
@@ -213,7 +291,7 @@ APP.changeMarkerRadius = function(id, r){
 
 // Change the color of the stl object specified by a name after generation.
 APP.changeMarkerColor = function(id, objcolor){
-	name = 'm'+ id.toString();
+	var name = 'm'+ id.toString();
 	var obj = APP.scene.getObjectByName(name);
 	if ( obj != undefined ) {
     		obj.material.color.setHex( objcolor );
@@ -224,20 +302,15 @@ APP.changeMarkerColor = function(id, objcolor){
 APP.removeMarker = function(id){
 
 	// Remove from scene
-	name = 'm'+ id.toString();
+	var name = 'm'+ id.toString();
 	var obj = APP.scene.getObjectByName(name);
 	if ( obj != undefined ) {
-    		APP.scene.remove(obj);
-		}
-	
+    APP.scene.remove(obj);
+	}
+
 	// Remove from json variable
 	//var newData = APP.MarkerTable.filter(function(item, index){ if (item.id != id) return true;});
 	//APP.MarkerTable = newData
-	
-	}
-
-function getJSON(url) {
-	
 }
 
 function StlViewer() {
@@ -295,24 +368,12 @@ function StlViewer() {
 	var prot = location.protocol;
 	var url = prot +"/data/Boundingbox.json";
 
-	var req = new XMLHttpRequest();		  // XMLHttpRequest オブジェクトを生成する
-		req.onreadystatechange = function() {		  // XMLHttpRequest オブジェクトの状態が変化した際に呼び出されるイベントハンドラ
-    	if(req.readyState == 4 && req.status == 200){ // サーバーからのレスポンスが完了し、かつ、通信が正常に終了した場合
-			data = req.responseText;
-			var jsondata = JSON.parse(data);
-			APP.BoundingboxX = jsondata.x;
-			APP.BoundingboxY = jsondata.y;
-			APP.BoundingboxZ = jsondata.z;
-    		};
-  		};
-  	req.open("GET", url, true);
-  	req.send(null);	
-
-	console.log(APP.BoundingboxX)
-	console.log(APP.BoundingboxY)
-	console.log(APP.BoundingboxZ)
-
-};
+  // jQuery getJSONを使用
+  $.getJSON(url, function(data) {
+    APP.BoundingboxX = data.x;
+    APP.BoundingboxY = data.y;
+    APP.BoundingboxZ = data.z;
+  });
+}
 
 window.addEventListener( 'resize', onWindowResize, false );
-

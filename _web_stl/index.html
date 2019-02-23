@@ -3,124 +3,140 @@
 <head>
   <meta charset="utf-8">
   <title>3D Annotator</title>
-  	<link rel="shortcut icon" href="/favicon.ico?v=b3f1">
-	<link rel="stylesheet" type="text/css" href="css/tabulator.css">
-	<link rel="stylesheet" type="text/css" href="css/construction.css">
-	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="js/tabulator.js"></script>
-	<script type="text/javascript" src="js/three.min.js"></script>
-	<script type="text/javascript" src="js/STLLoader.js?000000"></script> 
-	<!--  I used the new version of STLLoader.js to avoid the warning "A synchronous XMLHttpRequest" -->
-	<script type="text/javascript" src="js/CanvasRenderer.js"></script>
-	<script type="text/javascript" src="js/Projector.js"></script>
-	<script type="text/javascript" src="js/TrackballControls.js"></script>
-	<script type="text/javascript" src="js/agh.sprintf.js"></script>
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="css/tabulator.css">
+  <link rel="stylesheet" type="text/css" href="css/construction.css">
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="js/tabulator.js"></script>
 
-	<script type="text/javascript" src="js/StlViewer.js?102"></script>
+  <script type="text/javascript" src="js/three.min.js"></script>
+  <script type="text/javascript" src="js/STLLoader.js"></script>
+  <script type="text/javascript" src="js/CanvasRenderer.js"></script>
+  <script type="text/javascript" src="js/Projector.js"></script>
+  <script type="text/javascript" src="js/TrackballControls.js"></script>
+  <script type="text/javascript" src="js/agh.sprintf.js"></script>
+
+  <script type="text/javascript" src="js/StlViewer.js"></script>
 </head>
 <body>
-    <div class="left-container">
-    	<div id="myCanvas"></div>
+  <div class="left-container">
+    <div id="myCanvas"></div>
+  </div>
+
+  <div class="right-container">
+    <h3><strong>3D Annotator</strong></h3>
+    <div class="InLineMessage">
+      Clicked object ID:
+      <div class="contents InLineMessage" id="ClickedObjectID"></div>
     </div>
-    <script>
-		StlViewer()
-	</script>
-    
-    <div class="right-container">
-    <H3><B>3D Annotator</B></H3>
-	<div class="InLineMessage"> Clicked object ID: 
-	<div class="contents InLineMessage" id="ClickedObjectID"></div></div>
-	<ul id="menu">
-    <li><div class="archive">Appearance</div>
-        <ul class="subMenu">
-            <li>
-                Background: White
-                	<label class="switch">
-					<input type="checkbox" onclick="BackgroundWhiteBlack(this.checked);">
-					<span class="slider round"></span>
-					</label>
-					Black
-            </li>
-            <li>
-                Bounding box: OFF
-    			<label class="switch">
-  				<input type="checkbox" onclick="FrameOffOn(this.checked);">
-  				<span class="slider round"></span>
-				</label>
-				ON
-            </li>
-            <li>
-            	Directional light intensity:
-    			<input type="number" min="0" max="100" step="5" value="80" onchange="DirLight(this.value);"> 
-            </li>
-            <li>
-				Ambient light intensity:
-				<input type="number" min="0" max="100" step="5" value="50" onchange="AmbLight(this.value);"> 
-            </li>
+    <ul id="menu">
+      <li>
+        <div class="archive">Appearance</div>
+        <ul class="subMenu appearance-actions">
+          <li>
+            <div class="menu-label">Background:</div>
+            White
+            <label class="switch">
+              <input type="checkbox" onclick="BackgroundWhiteBlack(this.checked);">
+              <span class="slider round"></span>
+            </label>
+            Black
+          </li>
+          <li>
+            <div class="menu-label">Bounding box:</div>
+            OFF
+            <label class="switch">
+              <input type="checkbox" onclick="FrameOffOn(this.checked);">
+              <span class="slider round"></span>
+            </label>
+            ON
+          </li>
+          <li>
+            <div class="menu-label">Directional light intensity:</div>
+            <input type="number" min="0" max="100" step="5" value="80" onchange="DirLight(this.value);">
+          </li>
+          <li>
+            <div class="menu-label">Ambient light intensity:</div>
+            <input type="number" min="0" max="100" step="5" value="50" onchange="AmbLight(this.value);">
+          </li>
         </ul>
-        <li><div class="archive">Marker label</div>
-        <ul class="subMenu">
+        <li>
+          <div class="archive">Marker label</div>
+          <ul class="subMenu marker-label-actions">
             <li>
-                OFF
-                <label class="switch">
-  				<input type="checkbox" onclick="MarkerOffOn(this.checked);">
-  				<span class="slider round"></span>
-				</label>
-                ON
+              <div class="menu-label"> </div>
+              OFF
+              <label class="switch">
+                <input type="checkbox" onclick="MarkerOffOn(this.checked);">
+                <span class="slider round"></span>
+              </label>
+              ON
             </li>
             <li>
-				Radius: <input type="number" min="0.2" max="20" step="0.2" value="2.0" onchange="APP.MarkerRadius = Number(this.value);"> 
+              <div class="menu-label">Radius:</div>
+              <input type="number" min="0.2" max="20" step="0.2" value="2.0" onchange="APP.MarkerRadius = Number(this.value);">
             </li>
             <li>
-				Color
-				 R: <input type="number" min="0" max="255" step="1" value="255" onchange="APP.MarkerR = Number(this.value);"> 
-				 G: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerG = Number(this.value);"> 
-				 B: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerB = Number(this.value);"> 
+              <div class="menu-label">Color:</div>
+              R: <input type="number" min="0" max="255" step="1" value="255" onchange="APP.MarkerR = Number(this.value);">
+              G: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerG = Number(this.value);">
+              B: <input type="number" min="0" max="255" step="1" value="0"   onchange="APP.MarkerB = Number(this.value);">
             </li>
             <li>
-				Prefix: <input type="text" value="Marker" onchange="APP.MarkerPrefix = this.value;">
+              <div class="menu-label">Prefix:</div>
+              <input type="text" value="Marker" onchange="APP.MarkerPrefix = this.value;">
             </li>
             <li>
-				Suffix: <input type="number" id="SetSuffixNum" min="0" step="1" value="0" onchange="APP.MarkerSuffix = Number(this.value);"> 
+              <div class="menu-label">Suffix:</div>
+              <input type="number" id="SetSuffixNum" min="0" step="1" value="0" onchange="APP.MarkerSuffix = Number(this.value);">
             </li>
-        </ul>
-		<li><div class="archive" onClick="SaveImage(this.checked);">Save image</div></li>
-	</li>
-	</ul>
+          </ul>
+          <li>
+            <button type="button" class="save-image btn btn4 font3" onClick="SaveImage(this.checked);">Save Image</button>
+          </li>
+        </li>
+      </li>
+    </ul>
 
     <p>
-    Object Table
-      <div id="ObjectTable"></div>
-      <button type="button" class="btn btn4 font3" onClick="ObjObjextTable.download('csv', 'ObjectTable.csv');"> Download CSV </button>
+      <fieldset class="table-frame">
+        <legend>Object Table</legend>
+        <div id="ObjectTable"></div>
+        <div class="object-table-actions">
+          <button type="button" id="save-object-table-csv" class="download-csv btn btn4 font3">Download CSV</button>
+        </div>
+      </fieldset>
+    </p>
     <p>
-    Marker Table
-      <div id="MarkerTable"></div>
-      <button type="button" class="btn btn4 font3" onClick="ObjMarkerTable.download('csv', 'MarkerTable.csv');"> Download CSV </button>
-    <p>
-    
+      <fieldset class="table-frame marker-table-frame">
+        <legend>Marker Table</legend>
+        <div id="MarkerTable"></div>
+        <div class="marker-table-actions">
+          <button type="button" id="save-marker-table-csv" class="btn btn4 font3">Download CSV</button>
+          <label for="import-csv-marker-table" id="import-csv-marker-table-label" class="load-csv-label btn btn4 font3">
+            Import CSV
+            <input type="file" id="import-csv-marker-table" class="btn btn4 font3" style="display: none;">
+          </label>
+          <button type="button" id="clear-marker-table" class="btn btn4 font3">Clear</button>
+        </div>
+      </fieldset>
+    </p>
+  </div>
+
+  <script type="text/javascript" src="js/util.js"></script>
+  <script type="text/javascript" src="js/csv.js"></script>
+  <script type="text/javascript" src="js/ObjectTable.js"></script>
+  <script type="text/javascript" src="js/MarkerTable.js"></script>
+  <script type="text/javascript" src="js/ControlStlViewer.js"></script>
+  <script>
+  $(function() {
+    StlViewer();
+
+    $('.subMenu').hide();
+    $('#menu .archive').click(function(e){
+        $('+ul.subMenu',this).slideToggle();
+    });
+  });
+  </script>
 </body>
-	<script type="text/javascript" src="js/ObjectTable.js"></script>
-	<script type="text/javascript" src="js/MarkerTable.js?00"></script>
-    <script type="text/javascript" src="js/ControlStlViewer.js?2222"></script>
-	<script type="text/javascript">
-	$('#form-ticker-symbol').on("keypress", function(event){return leaveOnlyNumber(event);});
-	function leaveOnlyNumber(e){
-  		var st = String.fromCharCode(e.which);
-  		if ("0123456789".indexOf(st,0) < 0) { return false; }
-  		return true;  
-	}
-</script>
-	<script type="text/javascript">
-	<!--
-    	$(function(){
-        	$('.subMenu').hide();
-        	//
-        	$('#menu .archive').click(function(e){
-            	$('+ul.subMenu',this).slideToggle();
-        	});
-    	});
-	-->
-	</script>
 </html>
-
-

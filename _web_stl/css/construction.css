@@ -1,41 +1,42 @@
 /* 全体コンテンツ包み */
 
 html,body {
-height: 100%;
-margin: 0;
-padding: 0;
-overflow:hidden
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 /* コンテンツ(左) */
 .left-container {
-  	width:  60%;
-  	height: 95%;
-	float: left;
-  	background-color: #FFFFFF;
-    position: static; /* Three.js を上手く動かすために fixed or static でなくてはならないらしい*/
-    //top:  0px;
-	//left:  0px;
-	margin: 0px;
-  	padding: 0px;
-  	border : 0px;
+  width: 60%;
+  height: 100vh;
+  float: left;
+  background-color: #FFFFFF;
+  position: static; /* Three.js を上手く動かすために fixed or static でなくてはならないらしい*/
+  top: 0;
+  left: 0;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  overflow: auto;
 }
 
 /* コンテンツ(右) */
 .right-container {
-  width: 38%;
+  width: 40%;
+  min-width: 400px;
   float: right;
   background-color: #FFFFFF;
-  margin: 0px;
-  padding: 5px;
-  border : 0px;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
   font-family: 'Arial',sans-serif;
   font-size:14px;
   height: 100vh;
-  overflow:scroll
+  overflow: auto;
 }
 
-.tabulator{ 
+.tabulator{
   font-size:12px;
 }
 
@@ -53,11 +54,12 @@ ol ,ul {
     padding-left: 5px
 }
 #menu {
-    width:350px;
-    margin:0px 0px 0px 0px;
+    width: 98%;
+    margin:0;
 }
+
 .archive {
-    background:#d7d7d7;
+    background:#e2e2e2;
     color:#000;
     padding:2px 5px;
     border-bottom:1px solid #FFF;
@@ -68,6 +70,40 @@ ol ,ul {
     background-color:#9CF;
     padding:5px 10px;
     border-bottom:1px solid #FFF;
+}
+
+.menu-label {
+  display: inline-block;
+}
+
+.appearance-actions .menu-label {
+  width: 160px;
+  font-size: 14px;
+}
+
+.marker-label-actions .menu-label {
+  width: 56px;
+  font-size: 14px;
+}
+
+.save-image {
+  margin-top: 8px;
+}
+
+fieldset.table-frame {
+  width: 92%;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 6px;
+  margin: 0;
+}
+
+.object-table-actions {
+  margin-top: 8px;
+}
+
+.marker-table-actions {
+  margin: 8px 0 2px 0;
 }
 
 
@@ -88,8 +124,8 @@ ol ,ul {
 
 .btn1 {background-color: #4CAF50;} /* Green */
 .btn2 {background-color: #008CBA;} /* Blue */
-.btn3 {background-color: #f44336;} /* Red */ 
-.btn4 {background-color: #d7d7d7;color:black;} /* Grey */ 
+.btn3 {background-color: #f44336;} /* Red */
+.btn4 {background-color: #d7d7d7;color:black;} /* Grey */
 .btn5 {background-color: #555555;} /* Orange */
 
 .btn1:hover {background-color: #4CAF50;}
@@ -104,7 +140,6 @@ ol ,ul {
 .font4 {font-size:16px;}
 .font5 {font-size:18px;}
 
-
 /* Toggle switch */
 
 .switch {
@@ -114,7 +149,7 @@ ol ,ul {
   height: 14px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -166,5 +201,3 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-
-
