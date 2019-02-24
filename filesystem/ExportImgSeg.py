@@ -44,7 +44,7 @@ class ExportImgSeg():
         colordata = m.load_hdf5(u_info.color_map_file, u_info.hdf_color_name)
         filename = dir + os.sep + u_info.export_col_name + '.csv'
         print(filename)
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f, lineterminator='\n')
             writer.writerows(colordata)
 
@@ -58,7 +58,7 @@ class ExportImgSeg():
 
         filename = dir + os.sep + u_info.export_db_name + '.csv'
         print(filename)
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             writer = csv.writer(f, lineterminator='\n')
             writer.writerow( u_info.export_db_ids )
             writer.writerows(dbdata)
@@ -108,7 +108,7 @@ class ExportImgSeg():
                 elif flag == 'ids' :
                     filename = u_info.tile_ids_path + u_info.tile_ids_filename_wzyx.format(iw, iz, iy, ix)
                     print(filename)
-                    tile_image = self.load_hdf5(filename, u_info.tile_var_name)
+                    tile_image = m.load_hdf5(filename, u_info.tile_var_name)
                 else:
                     return False
 
@@ -156,7 +156,7 @@ class ExportImgSeg():
             tifffile.imsave(current_frefix + ".tif", volume_images_ids)
         elif ftype == "MTIF8C":
             print('Multi-tiff 8 color, save.')
-            colordata = self.load_hdf5(u_info.color_map_file, u_info.hdf_color_name)
+            colordata = m.load_hdf5(u_info.color_map_file, u_info.hdf_color_name)
             volume_images_ids = self.gen_col_multi(volume_images_ids, colordata)
             tifffile.imsave(current_frefix + ".tif", volume_images_ids)
         elif ftype == "NUMPY32":

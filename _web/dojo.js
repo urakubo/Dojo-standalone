@@ -53,9 +53,7 @@ DOJO.init = function() {
       } else {
 
         DOJO.viewer._camera._w = 0;
-
         DOJO.viewer._camera.jumpIJK(coords[0], coords[1], coords[2]);
-
       }
 
     };
@@ -221,6 +219,13 @@ DOJO.setup_buttons = function() {
   adjust_start_colorbox.onclick = function() {
   			if (!DOJO.viewer.is_locked(this._adjust_id))
 				DOJO.viewer._controller.start_adjust_colorbox()
+  		}
+
+
+  var adjust_start_colorbox = document.getElementById('colorbox2');
+  adjust_start_colorbox.onclick = function() {
+  			if (!DOJO.viewer.is_locked(this._adjust_id))
+				DOJO.viewer._controller.start_adjust_colorbox2()
   		}
 
 

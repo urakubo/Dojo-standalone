@@ -170,8 +170,6 @@ J.loader.prototype.load_tiles = function(x, y, z, w, w_new, no_draw) {
   var tilescount_y = this._viewer._image.zoom_levels[mojo_w_new][1];
 
 
-
-
   // I,J for the MOUSE (image space)
   var i_j = this._viewer._camera._i_j;
   if (i_j[0] == -1 || i_j[1] == -1) {

@@ -834,6 +834,8 @@ J.controller.prototype.start_adjust = function(id, x, y) {
   this._adjust_prev_id = this._adjust_id;
   document.getElementById('colorbox').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
+  var color = this._viewer.get_color(1);
+  document.getElementById('colorbox2').style.backgroundColor = rgbToHex(color[0], color[1], color[2]);
 
   this.activate(id);
 };
@@ -852,6 +854,21 @@ J.controller.prototype.start_adjust_colorbox = function() {
 
   //this.circle_cursor();
   this.activate(this._adjust_prev_id);
+};
+
+J.controller.prototype.start_adjust_colorbox2 = function() {
+
+  if (id == 0) return;
+  this._adjust_mode = 1;
+  this._adjust_id = 1;
+  this._brush_ijs = [];
+  
+  this._brush_segment_ids = [];
+  this._brush_sizes    = [];
+  this._viewer = DOJO.viewer;
+
+  //this.circle_cursor();
+  this.activate(this._adjust_id);
 };
 
 

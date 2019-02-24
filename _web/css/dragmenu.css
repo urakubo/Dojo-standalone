@@ -24,10 +24,19 @@ border-radius:0.4em;
 }
 
 #colorbox {
-border:0px gray;   /* 枠線 */
+border:1px  solid #FFF;   /* 枠線 */
 border-radius:0.4em;        /* 角丸 */
 background-color:#ccffcc; /* 背景色 */
 width: 50px;
-height: 50px;
+height: 40px;
+margin: auto;
+}
+
+#colorbox2 {
+border:1px  solid #FFF;   /* 枠線 */
+border-radius:0.4em;        /* 角丸 */
+background-color:#ccbbcc; /* 背景色 */
+width: 50px;
+height: 40px;
 margin: auto;
 }
