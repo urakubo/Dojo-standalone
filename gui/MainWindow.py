@@ -55,7 +55,7 @@ class MainWindow(QMainWindow, FileMenu, Credit, Annotator, Plugins, Segment, Fil
         # Prepare the main window
         #
         super().__init__()
-        self.title = 'Dojo Standalone'
+        self.title = 'UNI-EM'
         self.left = 200
         self.top  = 200
         self.width = 1200
