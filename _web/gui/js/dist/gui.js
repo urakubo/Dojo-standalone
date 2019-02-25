@@ -472,12 +472,24 @@ function extendDojo() {
       this._viewer._controller.reset_cursors();
 
       this._viewer.loading(true);
+      var oldZ = this._z;
       this._z = n - 1;
 
       this._loader.load_tiles(this._x, this._y, this._z, this._w, this._w, false);
 
       if (DOJO.threeD) {
-        DOJO.threeD.slice.transform.translateZ(DOJO.threeD.volume.spacing[2] * this._zStack);
+        // 3D Viewerを表示してるときの赤い線を移動する
+        var count = this._z - oldZ;
+        if (this._z > oldZ) {
+          while (--count >= 0) {
+            DOJO.threeD.slice.transform.translateZ(DOJO.threeD.volume.spacing[2] * this._zStack);
+          }
+        } else {
+          count = Math.abs(count);
+          while (--count >= 0) {
+            DOJO.threeD.slice.transform.translateZ(-DOJO.threeD.volume.spacing[2] * this._zStack);
+          }
+        }
       }
 
       DOJO.update_slice_number(this._z + 1);
