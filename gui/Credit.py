@@ -23,11 +23,11 @@ sys.path.append(os.path.join(main_dir, "gui"))
 class Credit():
     def Credit(self):
         #QMessageBox.setIcon(QMessageBox.Information)
-        msg = QMessageBox(QMessageBox.Information, "About Dojo",
-                            "<h1>Dojo standalone Ver1.0</h1><BR>"
+        msg = QMessageBox(QMessageBox.Information, "About UNI-EM",
+                            "<h1>UNI-EM Ver0.65</h1><BR>"
                             "(C) 2019 Hidetoshi Urakubo, Torsten Bullmann, Ryoji Miyamoto, Shin Ishii.<BR>"
                             "Powered by the following software:<BR>"
-                            "<a href=\"https://github.com/google/ffn\">Flood filling network</a><BR> "
+                            "<a href=\"https://github.com/google/ffn\">Flood filling networks</a><BR> "
                             "<a href=\"https://github.com/affinelayer/pix2pix-tensorflow\">Imagetranslation-tensorflow</a><BR> "
                             "<a href=\"https://www.tensorflow.org/\">Tensorflow</a>,<BR>"
                             "<a href=\"http://doc.qt.digia.com/4.5/stylesheet.html\">Qt</a>,<BR>"

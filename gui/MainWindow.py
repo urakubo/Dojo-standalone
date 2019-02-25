@@ -183,7 +183,7 @@ class MainWindow(QMainWindow, FileMenu, Credit, Annotator, Plugins, Segment, Fil
         ## Help menu
         ##
 
-        help_id  = QAction('About Dojo', self)
+        help_id  = QAction('About UNI-EM', self)
         help_id.triggered.connect(self.Credit)
 
         help_folder = main_menu.addMenu('Help')
