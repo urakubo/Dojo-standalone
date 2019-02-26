@@ -82,7 +82,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 4.	Users can import pairs of new EM images and segmentation by selecting Dojo → Import EM Stack/Segmentation. Specify the folders containing a stack of EM images and a stack of segmentation images through the dialog (sequentially numbered, gray-scale png/tiff files). 
 5.	The edited segmentation images can be exported as sequentially numbered, gray-scale png/tiff files, by selecting Dojo → Export EM Stack / Export. 
 
-![Dojo Proofreading software](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Dojo.png "Dojo")
+[Dojo Proofreading software](Images/Dojo.png "Dojo")
 
 
 ### 3D annotator
@@ -101,7 +101,7 @@ Turn on the toggle switch in the accordion menu 'Marker label' (right side), the
 
 Click the "Save image" button at the right side. A screenshot of the scene will be saved as "Screenshot.png".
 
-![3D Annotator](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Annotator.png "3D Annotator")
+[3D Annotator](Images/Annotator.png "3D Annotator")
 
 
 ### 2D DNN
@@ -142,7 +142,7 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 10. Execute inference.
 11. Check that the inference results are stored in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
 
-![2D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "2D DNN")
+[2D DNN](Images/_2DNN.png "2D DNN")
 
 
 ### 3D FFN
