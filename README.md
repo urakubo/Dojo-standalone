@@ -1,6 +1,7 @@
 [Japanese version here](README.ja.md)
 
-https://img.shields.io/aur/license/:packageName.svg
+[](https://img.shields.io/aur/license/:packageName.svg "GPL")
+
 This software is under development!
 
 # A unified environment for DNN-based automated segmentation of neuronal EM images
