@@ -1,6 +1,6 @@
 [Japanese version here](README.ja.md)
 
-[](https://img.shields.io/aur/license/:packageName.svg "GPL")
+[![GPL License](http://img.shields.io/badge/license-GPL-green.svg?style=flat)](LICENSE)
 
 This software is under development!
 
