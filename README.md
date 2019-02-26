@@ -82,8 +82,11 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 4.	Users can import pairs of new EM images and segmentation by selecting Dojo → Import EM Stack/Segmentation. Specify the folders containing a stack of EM images and a stack of segmentation images through the dialog (sequentially numbered, gray-scale png/tiff files). 
 5.	The edited segmentation images can be exported as sequentially numbered, gray-scale png/tiff files, by selecting Dojo → Export EM Stack / Export. 
 
-[Dojo Proofreading software](Images/Dojo.png "Dojo")
-
+<BR>
+<p align="center">
+  <img src="Images/Dojo.png" alt="Dojo Proofreading software" width="600">
+</p>
+<BR>
 
 ### 3D annotator
 Select Annotator → Open in the dropdown menu. The 3D Annotator will be launched.
@@ -101,8 +104,11 @@ Turn on the toggle switch in the accordion menu 'Marker label' (right side), the
 
 Click the "Save image" button at the right side. A screenshot of the scene will be saved as "Screenshot.png".
 
-[3D Annotator](Images/Annotator.png "3D Annotator")
-
+<BR>
+<p align="center">
+  <img src="Images/Annotator.png" alt="3D Annotator" width="600">
+</p>
+<BR>
 
 ### 2D DNN
 We implemented 2D CNN (Resnet/U-net/Highwaynet/Densenet)-based segmentation programs on Tensorflow V1.12. Programmed by Dr. Torsten Bullmann.
@@ -142,8 +148,11 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 10. Execute inference.
 11. Check that the inference results are stored in the Output Segmentation Folder (Dojo_Standalone/data/_2DNN_inference by default).
 
-[2D DNN](Images/_2DNN.png "2D DNN")
-
+<BR>
+<p align="center">
+  <img src="Images/_2DNN.png" alt="2D DNN" width="600">
+</p>
+<BR>
 
 ### 3D FFN
 Here, we wrapped an excellent membrane segmentation program that was developed by Dr. Michał Januszewski et al. : flood filling networks (FFN, Nature Methods, vol. 15 (2018), pp. 605-610 ; https://github.com/google/ffn ). The FFN, which is a recurrent 3D convolutional network, directly produce 3D volume segmentation with high precision. 
