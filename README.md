@@ -209,9 +209,9 @@ We equipped a variety of 2D and 3D image filters. Select Plugins → 2D/3D Filte
 
 ## Authors
 
-* **Hidetoshi Urakubo** - *Initial work* - [PurpleBooth](https://researchmap.jp/urakubo/?lang=english)
-* **Ryoji Miyamoto** - *frontend programming* - [PurpleBooth](https://polygonpla.net/)
-* **Torsten Bullmann** - *2D convolutional neural networks* - [PurpleBooth](https://www.cb.hs-mittweida.de/en/mitarbeiterinnen-mitarbeiter-in-ihren-fachgruppen/bullmann-torsten.html)
+* **Hidetoshi Urakubo** - *Initial work* - [Webpage](https://researchmap.jp/urakubo/?lang=english)
+* **Ryoji Miyamoto** - *frontend programming* - [Webpage](https://polygonpla.net/)
+* **Torsten Bullmann** - *2D convolutional neural networks* - [Webpage](https://www.cb.hs-mittweida.de/en/mitarbeiterinnen-mitarbeiter-in-ihren-fachgruppen/bullmann-torsten.html)
 
 ## License
 
