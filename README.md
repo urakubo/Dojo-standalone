@@ -207,6 +207,9 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 ### 2D and 3D filters
 We equipped a variety of 2D and 3D image filters. Select Plugins → 2D/3D Filters. Those filters are intended to use a postprocessing of 2D DNN segmentation. I will soon describe how to use them.
 
+## License
+
+This project is licensed under the GNU General Public License (GPLv3) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 This software relies on many excellent free and copyrighted software packages. We obey policies of those software packages.
@@ -214,7 +217,7 @@ This software relies on many excellent free and copyrighted software packages. W
 	- Flood-filling networks (Apache License 2.0)
 	- Imagetranslation-tensorflow (MIT)
 	- Tensorflow, Tensorboard (Apache License 2.0)
-	- PyQT5 (GPL Ver3.0)
+	- PyQT5 (GPLv3)
 	- Rhoana Dojo (MIT)
 	- Open CV3 (3-clause BSD License, https://opencv.org/license.html)
 	- Scikit image (http://scikit-image.org/docs/dev/license.html)
