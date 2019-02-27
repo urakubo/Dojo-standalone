@@ -207,6 +207,12 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 ### 2D and 3D filters
 We equipped a variety of 2D and 3D image filters. Select Plugins → 2D/3D Filters. Those filters are intended to use a postprocessing of 2D DNN segmentation. I will soon describe how to use them.
 
+## Authors
+
+* **Hidetoshi Urakubo** - *Initial work* - [PurpleBooth](https://researchmap.jp/urakubo/?lang=english)
+* **Ryoji Miyamoto** - *frontend programming* - [PurpleBooth](https://polygonpla.net/)
+* **Torsten Bullmann** - *2D convolutional neural networks* - [PurpleBooth](https://www.cb.hs-mittweida.de/en/mitarbeiterinnen-mitarbeiter-in-ihren-fachgruppen/bullmann-torsten.html)
+
 ## License
 
 This project is licensed under the GNU General Public License (GPLv3) - see the [LICENSE](LICENSE) file for details.
