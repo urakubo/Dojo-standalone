@@ -218,7 +218,7 @@ We equipped a variety of 2D and 3D image filters. Select Plugins → 2D/3D Filte
 This project is licensed under the GNU General Public License (GPLv3) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-This software relies on many excellent free and copyrighted software packages. We obey policies of those software packages.
+This software relies on the following excellent free and copyrighted software packages. We obey policies of those software packages.
 
 	- Flood-filling networks (Apache License 2.0)
 	- Imagetranslation-tensorflow (MIT)
