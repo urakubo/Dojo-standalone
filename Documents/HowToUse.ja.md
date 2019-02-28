@@ -21,8 +21,13 @@
 4. 新しいEM画像を編集する場合は、ドロップダウンメニュー Dojo → Import EM stackを選択して、tiff/pngの連続番号EM画像・Segmentation画像ファイルが入ったフォルダを指定してください **[実装予定；マルチページtiff画像読込 19/2/1]** 。
 5. 編集後はドロップダウンメニュー Dojo → Export EM Stack / Export Segmentationを選択することにより、tiff/pngの連続番号ファイルして保存することができます。
 
-![Dojo Proofreading software](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Dojo.png "Dojo")
+<BR>
+<p align="center">
+  <img src="Images/Dojo.png" alt="Dojo Proofreading software" width="800">
+</p>
+<BR>
 
+### 3D annotat
 
 ### 3D Annotator：
 Dojoファイルを開いた状態で、 上端のドロップダウンメニュー左から二番目のAnntator → Openを選択してください。3D Annotatorが起動します。
@@ -37,7 +42,11 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 	- テーブル下"Download JSON"ボタンをクリックすることで、テーブルの内容をJSON形式で保存できます **[CSV形式に変更予定 19/2/1]**。
 3. 右上段アコーディオンメニューのSave imageをクリックすることで、左表示パネルにおける表示内容が"Screenshot.png"として保存されます。
 
-![3D Annotator](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/Annotator.png "3D Annotator")
+<BR>
+<p align="center">
+  <img src="Images/Annotator.png" alt="3D Annotator" width="800">
+</p>
+<BR>
 
 
 ### 2次元DNNを用いたセグメンテーション：
@@ -72,7 +81,12 @@ Dojoファイルを開いた状態で、 上端のドロップダウンメニュ
 9. Executeボタンをクリックして推定を開始します。
 10. 推定結果はデフォルトでDojo_Standalone/data/_2DNN_inferenceに保存されます 。
 
-![2D DNN](https://github.com/urakubo/Dojo-standalone/blob/main0.3/Images/_2DNN.png "2D DNN")
+<BR>
+<p align="center">
+  <img src="Images/_2DNN.png" alt="2D DNN" width="800">
+</p>
+<BR>
+
 
 
 ### 3次元FFNを用いたセグメンテーション
