@@ -141,7 +141,7 @@ I0217 23:14:48.805234  2272 train.py:699]
 
 17. Save the segmentation after proofreading. Users can also export the segmentation by selecting "Dojo → Export Segmentation" from the UNI-EM dropdown menu. The export file style is sequential png/tiff images.
 
-18. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save 3D images, annotate the target objects, and locate markers (**Fig. 3g**). Refer [3D Annotator](README.md#3D-Annotator) for detail.
+18. Select "Annotator → Open" from the UNI-EM dropdown menu to launch the 3D Annotator. Users can visually inspect the 3D shapes of target objects, save 3D images, annotate the target objects, and locate markers (**Fig. 3g**). Refer [3D Annotator](../README.md#3D-Annotator) for detail.
 
 
 <p align="center">
