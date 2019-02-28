@@ -16,9 +16,9 @@ This software is under development!
 - [How to use: 2D and 3D filters](#2D-and-3D-filters)
 - [Example workflow1: Mitochondria segmentation by use of 2D DNN](Workflow1.md)
 - [Example workflow2: Membrane segmentation by use of 3D FFN](Workflow2.md) 
-- [Authors](# Authors)
-- [License](# License)
-- [Acknowledgments](# Acknowledgments)
+- [Authors](#Authors)
+- [License](#License)
+- [Acknowledgments](#Acknowledgments)
 
 
 ## Introduction
@@ -212,8 +212,8 @@ We equipped a variety of 2D and 3D image filters. Select Plugins → 2D/3D Filte
 ## Authors
 
 * [**Hidetoshi Urakubo**](https://researchmap.jp/urakubo/?lang=english) - *Initial work* - 
-* **Ryoji Miyamoto** - *Frontend programming* - [Webpage](https://polygonpla.net/)
-* **Torsten Bullmann** - *2D convolutional neural networks* - [Webpage](https://www.cb.hs-mittweida.de/en/mitarbeiterinnen-mitarbeiter-in-ihren-fachgruppen/bullmann-torsten.html)
+* [**Ryoji Miyamoto**](https://polygonpla.net/) - *Frontend programming* - 
+* [**Torsten Bullmann**](https://www.cb.hs-mittweida.de/en/mitarbeiterinnen-mitarbeiter-in-ihren-fachgruppen/bullmann-torsten.html) - *2D convolutional neural networks* -
 
 ## License
 
