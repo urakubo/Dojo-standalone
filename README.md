@@ -12,7 +12,7 @@ This software is under development!
 - [Authors](#Authors)
 - [License](#License)
 - [Acknowledgments](#Acknowledgments)
-<BR>
+
 - [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
 - [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
 - [How to use: 2D DNN](Documents/HowToUse.md#2D-DNN)
