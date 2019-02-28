@@ -11,8 +11,9 @@ This software is under development!
 - [Installation](#Installation)
 - [Authors](#Authors)
 - [License](#License)
-- [Acknowledgments](#Acknowledgments)  
-  ---
+- [Acknowledgments](#Acknowledgments)
+
+---
 Check the following pages after installation.
 - [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
 - [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
@@ -21,7 +22,7 @@ Check the following pages after installation.
 - [How to use: 2D and 3D filters](Documents/HowToUse.md#2D-and-3D-filters)
 - [Example workflow1: Mitochondria segmentation by use of 2D DNN](Documents/Workflow1.md)
 - [Example workflow2: Membrane segmentation by use of 3D FFN](Documents/Workflow2.md) 
- ---
+---
 
 ## Introduction
 Recent years have seen a rapid expansion in the field of micro-connectomics, which targets 3D reconstruction of neuronal networks from a stack of 2D electron microscopic (EM). The spatial scale of the 3D reconstruction grows rapidly over 1 mm3, thank to deep neural networks (DNN) that enable automated neuronal segmentation. Advanced research teams have developed their own pipelines for the DNN-based large-scale segmentation (Informatics 2017, 4:3, 29). Those pipelines are typically a series of client-server software for alignment, segmentation, proofreading, etc., each of which requires specific PC configuration. Because of such complexity, it is difficult even for computer experts to use them, and impossible for experimentalists. This makes a serious divide between the advanced and general experimental laboratories.
