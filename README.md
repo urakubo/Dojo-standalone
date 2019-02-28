@@ -11,8 +11,8 @@ This software is under development!
 - [Installation](#Installation)
 - [Authors](#Authors)
 - [License](#License)
-- [Acknowledgments](#Acknowledgments)
-<br>
+- [Acknowledgments](#Acknowledgments)  
+  
 Check the following pages after installation.
 - [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
 - [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
