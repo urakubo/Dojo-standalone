@@ -1,15 +1,14 @@
 [Japanese version here](HowToUse.ja.md)
 
-## How to use
-
-- [How to use: Dojo proofreader](#Dojo-proofreader)
-- [How to use: 3D annotator](#3D-annotator)
-- [How to use: 2D DNN](#2D-DNN)
-- [How to use: 3D FFN](#3D-FFN)
-- [How to use: 2D and 3D filters](#2D-and-3D-filters)
+- [How to use: Dojo proofreader](HowToUse.md#Dojo-proofreader)
+- [How to use: 3D annotator](HowToUse.md#3D-annotator)
+- [How to use: 2D DNN](HowToUse.md#2D-DNN)
+- [How to use: 3D FFN](HowToUse.md#3D-FFN)
+- [How to use: 2D and 3D filters](HowToUse.md#2D-and-3D-filters)
 - [Example workflow1: Mitochondria segmentation by use of 2D DNN](Workflow1.md)
 - [Example workflow2: Membrane segmentation by use of 3D FFN](Workflow2.md) 
 
+## How to use
 
 ### Dojo proofreader
 This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtman/Pfister lab, Harvard, USA).
