@@ -12,13 +12,15 @@ This software is under development!
 - [Authors](#Authors)
 - [License](#License)
 - [Acknowledgments](#Acknowledgments)
-	- [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
-	- [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
-	- [How to use: 2D DNN](Documents/HowToUse.md#2D-DNN)
-	- [How to use: 3D FFN](Documents/HowToUse.md#3D-FFN)
-	- [How to use: 2D and 3D filters](Documents/HowToUse.md#2D-and-3D-filters)
-	- [Example workflow1: Mitochondria segmentation by use of 2D DNN](Documents/Workflow1.md)
-	- [Example workflow2: Membrane segmentation by use of 3D FFN](Documents/Workflow2.md) 
+
+Please refer the following pages after installation.
+- [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
+- [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
+- [How to use: 2D DNN](Documents/HowToUse.md#2D-DNN)
+- [How to use: 3D FFN](Documents/HowToUse.md#3D-FFN)
+- [How to use: 2D and 3D filters](Documents/HowToUse.md#2D-and-3D-filters)
+- [Example workflow1: Mitochondria segmentation by use of 2D DNN](Documents/Workflow1.md)
+- [Example workflow2: Membrane segmentation by use of 3D FFN](Documents/Workflow2.md) 
 
 
 ## Introduction
