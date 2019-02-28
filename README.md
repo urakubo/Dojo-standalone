@@ -87,7 +87,7 @@ This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtma
 
 <BR>
 <p align="center">
-  <img src="Images/Dojo.png" alt="Dojo Proofreading software" width="700">
+  <img src="Images/Dojo.png" alt="Dojo Proofreading software" width="800">
 </p>
 <BR>
 
@@ -109,7 +109,7 @@ Click the "Save image" button at the right side. A screenshot of the scene will 
 
 <BR>
 <p align="center">
-  <img src="Images/Annotator.png" alt="3D Annotator" width="700">
+  <img src="Images/Annotator.png" alt="3D Annotator" width="800">
 </p>
 <BR>
 
@@ -153,7 +153,7 @@ The VAST Lite is recommended for the ground truth generation (https://software.r
 
 <BR>
 <p align="center">
-  <img src="Images/_2DNN.png" alt="2D DNN" width="700">
+  <img src="Images/_2DNN.png" alt="2D DNN" width="800">
 </p>
 <BR>
 
