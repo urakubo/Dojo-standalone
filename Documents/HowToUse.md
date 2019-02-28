@@ -1,4 +1,6 @@
-[Japanese version here](README.ja.md)
+[Japanese version here](HowToUse.ja.md)
+
+## How to use
 
 - [How to use: Dojo proofreader](#Dojo-proofreader)
 - [How to use: 3D annotator](#3D-annotator)
@@ -8,7 +10,7 @@
 - [Example workflow1: Mitochondria segmentation by use of 2D DNN](Workflow1.md)
 - [Example workflow2: Membrane segmentation by use of 3D FFN](Workflow2.md) 
 
-## How to use
+
 ### Dojo proofreader
 This is a proofreading software as a part of Rhoana pipeline (Copyright, Lichtman/Pfister lab, Harvard, USA).
 
