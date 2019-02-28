@@ -9,6 +9,10 @@ This software is under development!
 - [Introduction](#Introduction)
 - [System requirements](#System-requirements)
 - [Installation](#Installation)
+- [Authors](#Authors)
+- [License](#License)
+- [Acknowledgments](#Acknowledgments)
+<p>
 - [How to use: Dojo proofreader](Documents/HowToUse.md#Dojo-proofreader)
 - [How to use: 3D annotator](Documents/HowToUse.md#3D-annotator)
 - [How to use: 2D DNN](Documents/HowToUse.md#2D-DNN)
@@ -16,9 +20,6 @@ This software is under development!
 - [How to use: 2D and 3D filters](Documents/HowToUse.md#2D-and-3D-filters)
 - [Example workflow1: Mitochondria segmentation by use of 2D DNN](Documents/Workflow1.md)
 - [Example workflow2: Membrane segmentation by use of 3D FFN](Documents/Workflow2.md) 
-- [Authors](#Authors)
-- [License](#License)
-- [Acknowledgments](#Acknowledgments)
 
 
 ## Introduction
