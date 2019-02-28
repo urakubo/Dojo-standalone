@@ -6,6 +6,7 @@ This software is under development!
 
 # A unified environment for DNN-based automated segmentation of neuronal EM images
 
+### table of contents
 - [Introduction](#Introduction)
 - [System requirements](#System-requirements)
 - [Installation](#Installation)
