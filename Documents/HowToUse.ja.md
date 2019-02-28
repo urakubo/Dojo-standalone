@@ -1,6 +1,6 @@
-[English version here](README.md)
+[English version here](HowToUse.md)
 
-# DNNを用いた神経EM画像セグメンテーションのための統合環境（UNI-EM）
+## 使い方：
 
 - [使い方：校正ソフトウェアDojo](#校正ソフトウェアDojo)
 - [使い方：3D Annotator](#3D-Annotator)
@@ -9,8 +9,6 @@
 - [使い方：2D/3Dフィルタ](#2D3Dフィルタ)
 - [適用事例1：2次元DNNによるミトコンドリアのセグメンテーション](Workflow1.ja.md)
 - [適用事例2：3次元FFNによる細胞膜のセグメンテーション](Workflow2.ja.md)
-
-## 使い方：
 
 ### 校正ソフトウェアDojo：
 自動セグメンテーション結果を確認・校正するためのツールです。Lichtman/Pfister 研が開発した Rhoana piplineの一部です。
