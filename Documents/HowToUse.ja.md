@@ -1,14 +1,16 @@
 [English version here](HowToUse.md)
 
-## 使い方：
-
-- [使い方：校正ソフトウェアDojo](#校正ソフトウェアDojo)
-- [使い方：3D Annotator](#3D-Annotator)
-- [使い方：2次元DNNを用いたセグメンテーション](#2次元DNNを用いたセグメンテーション)
-- [使い方：3次元FFNを用いたセグメンテーション](#3次元FFNを用いたセグメンテーション)
-- [使い方：2D/3Dフィルタ](#2D3Dフィルタ)
+- [使い方：校正ソフトウェアDojo](HowToUse.ja.md#校正ソフトウェアDojo)
+- [使い方：3D Annotator](HowToUse.ja.md#3D-Annotator)
+- [使い方：2次元DNNを用いたセグメンテーション](HowToUse.ja.md#2次元DNNを用いたセグメンテーション)
+- [使い方：3次元FFNを用いたセグメンテーション](HowToUse.ja.md#3次元FFNを用いたセグメンテーション)
+- [使い方：2D/3Dフィルタ](HowToUse.ja.md#2D3Dフィルタ)
 - [適用事例1：2次元DNNによるミトコンドリアのセグメンテーション](Workflow1.ja.md)
 - [適用事例2：3次元FFNによる細胞膜のセグメンテーション](Workflow2.ja.md)
+
+
+
+## 使い方：
 
 ### 校正ソフトウェアDojo：
 自動セグメンテーション結果を確認・校正するためのツールです。Lichtman/Pfister 研が開発した Rhoana piplineの一部です。
