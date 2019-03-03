@@ -53,12 +53,13 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 
 	- https://developer.nvidia.com/cuda-gpus
 
-2.	Download sample EM/segmentation data from the following website, and unzip it:
+2.	Download sample EM/segmentation dojo files from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
 3.	Please click the link "main.exe" in Dojo_StandaloneX.XX to launch the control panel.
 
+4.	Select Dojo → Open Dojo Folder from the dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
 
 ### Python version 
 1. Install Python 3.5 or 3.6 in a Microsoft Windows PC, 64 bit.
@@ -70,12 +71,14 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 
 	- This marching cube program is obtained from the ilastik: https://github.com/ilastik/marching_cubes
 
-6. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder. The control panel will appear.
 
-7. Download sample EM/segmentation data from the following website, and unzip it:
+6. Download sample EM/segmentation dojo files from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
+7. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder. The control panel will appear.
+
+8.	Select Dojo → Open Dojo Folder from the dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
 
 ## Authors
 
