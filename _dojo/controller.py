@@ -662,6 +662,7 @@ class Controller(object):
 
     self.add_action(action)
     print('split done\n')
+    print(action)
 
     # Save all the splits, yielding offsets
     offsets = self.save_iter(tile)
@@ -742,7 +743,6 @@ class Controller(object):
         # try the temporary data first
 		#################################        
 
-        
         ids_data_path = self.__mojo_tmp_dir + '/ids/tiles/w=00000000/z='+str(self.z).zfill(8)
         if not os.path.exists(os.path.join(ids_data_path,seg)):
           ids_data_path = self.__mojo_dir + '/ids/tiles/w=00000000/z='+str(self.z).zfill(8)
@@ -989,8 +989,6 @@ class Controller(object):
     #######################
 
 
-
-
 #    ### Image and Segmentation tile
 #    values = input['value']
 #    tile = m.ObtainFullSizeImagesPanel(self.__u_info, self.__db, values["z"])
@@ -1232,7 +1230,6 @@ class Controller(object):
         tile = ndimage.interpolation.zoom(tile, .5, order=0, mode='nearest')
 
       # find tiles
-
 
       self.x_tiles = range(int(target_i//512), int(((target_i + target_width-1)//512) + 1))
       self.y_tiles = range(int(target_j//512), int(((target_j + target_height-1)//512) + 1))
