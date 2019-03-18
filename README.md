@@ -33,9 +33,9 @@ Recent years have seen a rapid expansion in the field of micro-connectomics, whi
 2.	We merged it with a DNN framework: Google Tensorflow/tensorboard. 
 3.	We then incorporated two types of DNN-based segmentation programs: 2D U-net/Resnet (https://github.com/tbullmann/imagetranslation-tensorflow) and flood-filling networks (https://github.com/google/ffn).
 4.	A 3D annotator was equipped for visual inspection and annotation (based on Three.js).
-5.	2D/3D filtration functions were incorporated for the postprocessing of DNN-generated segmentation images (based on skimage and opencv3).
+5.	2D/3D filtration functions were equipped for pre/postprocessing of the segmented images (based on skimage and opencv3).
 
-Multiple users can simultaneously use it through web browsers. The goal is to develop a unified software environment for DNN-based segmentation, postprocessing, proofreading, annotation, and visualization of EM images. The VAST Lite is recommended for ground truth generation for DNNs (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
+Multiple users can simultaneously use it through web browsers. The goal is to develop a unified software environment for DNN-based segmentation, ground truth segmentation, pre/postprocessing, proofreading, annotation, and visualization. The VAST Lite is recommended for 3D ground truth generation (https://software.rc.fas.harvard.edu/lichtman/vast/ ).
 
 ## System requirements
 Operating system: Microsoft Windows 10 (64 bit). Linux and macOS versions will be built in future.
@@ -53,12 +53,13 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 
 	- https://developer.nvidia.com/cuda-gpus
 
-2.	Download sample EM/segmentation data from the following website, and unzip it:
+2.	Download sample EM/segmentation dojo files from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
 3.	Please click the link "main.exe" in Dojo_StandaloneX.XX to launch the control panel.
 
+4.	Select Dojo → Open Dojo Folder from the dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
 
 ### Python version 
 1. Install Python 3.5 or 3.6 in a Microsoft Windows PC, 64 bit.
@@ -70,12 +71,14 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 
 	- This marching cube program is obtained from the ilastik: https://github.com/ilastik/marching_cubes
 
-6. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder. The control panel will appear.
 
-7. Download sample EM/segmentation data from the following website, and unzip it:
+6. Download sample EM/segmentation dojo files from the following website, and unzip it:
    	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
+7. Execute "python main.py" in the Dojo_StandaloneX.XX/ folder. The control panel will appear.
+
+8.	Select Dojo → Open Dojo Folder from the dropdown menu, and specify the folder of the sample EM/segmentation dojo files. Dojo will be launched as a web application.
 
 ## Authors
 
@@ -88,7 +91,7 @@ We provide standalone versions (pyinstaller version) and Python source codes.
 This project is licensed under the GNU General Public License (GPLv3) - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
-This software relies on the following excellent free and copyrighted software packages. We obey policies of those software packages.
+This software relies on the following excellent free yet copyrighted software packages. We obey policies of those software packages.
 
 	- Flood-filling networks (Apache License 2.0)
 	- Imagetranslation-tensorflow (MIT)

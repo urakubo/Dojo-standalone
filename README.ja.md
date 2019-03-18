@@ -50,11 +50,11 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 
 2. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
 	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
-
 	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
 3. Dojo_StandaloneX.XXフォルダ中のmain.exeをクリックして、コントロールパネルを起動してください。
 
+4. 上端のドロップダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりkasthuri15フォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。
 
 ### Python版：
 1. Windows10 において、 Python3.5-3.6 をインストールしてください。
@@ -66,7 +66,9 @@ Pythonのインストールの必要のないPyinstaller版とPythonソースコ
 6. コマンドププロンプトにてDojo_StandaloneX.XXフォルダへ移動して、 python main.py と実行してコントロールパネルを起動してください。
 7. 公開サンプルデータkasthuri15をダウンロードして適当なフォルダに展開してください。
 	- https://www.dropbox.com/s/pxds28wdckmnpe8/ac3x75.zip?dl=0
+	- https://www.dropbox.com/s/6nvu8o6she6rx9v/ISBI_Dojo.zip?dl=0
 
+8. 上端のドロップダウンメニューより一番左のDojo → Open Dojo Folderを選択して、ダイアログよりkasthuri15フォルダ下のmojoを指定してください。サンプルデータがダウンロードされてDojoが起動します。
 
 ## お願い：
 2019/2/11現在、まだ実用では使われていません。しかし、日本国内の実験研究者、情報学研究者さまのフィードバックをお待ちします（urakubo-h あっと sys.i.kyoto-u.ac.jp; **[参考3]** ）。私一人で開発を続けることは困難なので、共同開発者も募集いたします。本アプリは、自然画像のセグメンテーション等に利用することも可能と思われますので、多様なコメントをお待ちしております。本アプリの開発には、革新脳、新学術、基盤Cのご支援をいただいております。
