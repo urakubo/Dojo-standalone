@@ -1,5 +1,5 @@
 
-# Please  visit our new github web site! (https://github.com/urakubo/UNI-EM)
+# 新しい github サイトをご覧ください! (https://github.com/urakubo/UNI-EM)
 
 
 [English version here](README.md)
